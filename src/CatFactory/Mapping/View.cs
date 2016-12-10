@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace CatFactory.Mapping
 {
+    [DebuggerDisplay("FullName={FullName}, Columns={Columns.Count}")]
     public class View : IView
     {
         public View()
         {
-
         }
 
         public String Schema { get; set; }

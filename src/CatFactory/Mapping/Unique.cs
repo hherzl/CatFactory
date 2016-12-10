@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace CatFactory.Mapping
 {
-    public class PrimaryKey
+    public class Unique
     {
-        public PrimaryKey()
+        public Unique()
         {
         }
 
-        public PrimaryKey(String[] key)
+        public Unique(String[] key)
         {
             Key = new List<String>(key);
         }

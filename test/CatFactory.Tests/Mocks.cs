@@ -17,6 +17,20 @@ namespace CatFactory.Tests
                     {
                         new Table
                         {
+                            Schema = "",
+                            Name = "EventLog",
+                            Columns = new List<Column>()
+                            {
+                                new Column { Name = "EventLogID", Type = "int", Nullable = false },
+                                new Column { Name = "EventType", Type = "int", Nullable = false },
+                                new Column { Name = "Key", Type = "varchar", Length = 255, Nullable = false },
+                                new Column { Name = "Message", Type = "varchar", Nullable = false },
+                                new Column { Name = "EntryDate", Type = "datetime", Nullable = false }
+                            },
+                            Identity = new Identity { Name = "EventLogID", Seed = 1, Increment = 1 }
+                        },
+                        new Table
+                        {
                             Schema = "HumanResources",
                             Name = "Employee",
                             Columns = new List<Column>()
@@ -32,14 +46,63 @@ namespace CatFactory.Tests
                         new Table
                         {
                             Schema = "Production",
+                            Name = "ProductCategory",
+                            Columns = new List<Column>()
+                            {
+                                new Column { Name = "ProductCategoryID", Type = "int", Nullable = false },
+                                new Column { Name = "ProductCategoryName", Type = "varchar", Length = 100, Nullable = false },
+                            },
+                            Identity = new Identity { Name = "ProductCategoryID", Seed = 1, Increment = 1 }
+                        },
+                        new Table
+                        {
+                            Schema = "Production",
                             Name = "Product",
                             Columns = new List<Column>()
                             {
                                 new Column { Name = "ProductID", Type = "int", Nullable = false },
                                 new Column { Name = "ProductName", Type = "varchar", Length = 100, Nullable = false },
+                                new Column { Name = "ProductCategoryID", Type = "int", Nullable = false },
                                 new Column { Name = "Description", Type = "varchar", Length = 255, Nullable = true }
                             },
                             Identity = new Identity { Name = "ProductID", Seed = 1, Increment = 1 }
+                        },
+                        new Table
+                        {
+                            Schema = "Production",
+                            Name = "ProductInventory",
+                            Columns = new List<Column>()
+                            {
+                                new Column { Name = "ProductInventoryID", Type = "int", Nullable = false },
+                                new Column { Name = "ProductID", Type = "int", Nullable = false },
+                                new Column { Name = "EntryDate", Type = "datetime", Nullable = false },
+                                new Column { Name = "Quantity", Type = "int", Nullable = false }
+                            },
+                            Identity = new Identity { Name = "ProductInventoryID", Seed = 1, Increment = 1 }
+                        },
+                        new Table
+                        {
+                            Schema = "Sales",
+                            Name = "Customer",
+                            Columns = new List<Column>()
+                            {
+                                new Column { Name = "CustomerID", Type = "int", Nullable = false },
+                                new Column { Name = "CompanyName", Type = "varchar", Length = 100, Nullable = true },
+                                new Column { Name = "ContactName", Type = "varchar", Length = 100, Nullable = true }
+                            },
+                            Identity = new Identity { Name = "CustomerID", Seed = 1, Increment = 1 }
+                        },
+                        new Table
+                        {
+                            Schema = "Sales",
+                            Name = "Shipper",
+                            Columns = new List<Column>()
+                            {
+                                new Column { Name = "ShipperID", Type = "int", Nullable = false },
+                                new Column { Name = "CompanyName", Type = "varchar", Length = 100, Nullable = true },
+                                new Column { Name = "ContactName", Type = "varchar", Length = 100, Nullable = true }
+                            },
+                            Identity = new Identity { Name = "ShipperID", Seed = 1, Increment = 1 }
                         },
                         new Table
                         {
@@ -81,8 +144,11 @@ namespace CatFactory.Tests
                             Columns = new List<Column>()
                             {
                                 new Column { Name = "OrderID", Type = "int", Nullable = false },
+                                new Column { Name = "OrderDate", Type = "datetime", Nullable = false },
                                 new Column { Name = "CustomerName", Type = "varchar", Length = 100, Nullable = false },
-                                new Column { Name = "OrderDate", Type = "datetime", Nullable = false }
+                                new Column { Name = "EmployeeName", Type = "varchar", Length = 100, Nullable = false },
+                                new Column { Name = "ShipperName", Type = "varchar", Length = 100, Nullable = false },
+                                new Column { Name = "OrderLines", Type = "int", Nullable = false }
                             }
                         }
                     }
@@ -99,6 +165,8 @@ namespace CatFactory.Tests
                 }
 
                 db.AddPrimaryKeyToTables();
+
+                db.LinkTables();
 
                 return db;
             }

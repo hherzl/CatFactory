@@ -3,17 +3,19 @@ using System.Collections.Generic;
 
 namespace CatFactory.Mapping
 {
-    public class PrimaryKey
+    public class ForeignKey
     {
-        public PrimaryKey()
+        public ForeignKey()
         {
         }
 
-        public PrimaryKey(String[] key)
+        public ForeignKey(String[] key)
         {
             Key = new List<String>(key);
         }
 
         public List<String> Key { get; set; }
+
+        public String References { get; set; }
     }
 }

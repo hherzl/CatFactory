@@ -5,7 +5,7 @@ namespace CatFactory.Tests
     public class ProjectTests
     {
         [Fact]
-        public void TestProject()
+        public void TestBuildFeaturesForProject()
         {
             var db = Mocks.SalesDatabase;
 

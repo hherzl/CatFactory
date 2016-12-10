@@ -51,24 +51,29 @@ namespace CatFactory.CodeFactory
             }
         }
 
-        public virtual void CreateOutputDirectory(String targetDirectory)
+        public virtual void CreateOutputDirectory()
         {
-            if (String.IsNullOrEmpty(targetDirectory))
+            if (!Directory.Exists(OutputDirectory))
             {
-                targetDirectory = OutputDirectory;
-            }
-
-            if (!Directory.Exists(targetDirectory))
-            {
-                Directory.CreateDirectory(targetDirectory);
+                Directory.CreateDirectory(OutputDirectory);
             }
         }
 
-        public virtual void CreateFile(String targetDirectory)
+        public virtual void CreateFile(String subdirectory = "")
         {
-            CreateOutputDirectory(targetDirectory);
+            CreateOutputDirectory();
 
-            TextFileHelper.CreateFile(Path.Combine(targetDirectory, FullFileName), Code);
+            if (!String.IsNullOrEmpty(subdirectory))
+            {
+                var subdirectoryPath = Path.Combine(OutputDirectory, subdirectory);
+
+                if (!Directory.Exists(subdirectoryPath))
+                {
+                    Directory.CreateDirectory(subdirectoryPath);
+                }
+            }
+
+            TextFileHelper.CreateFile(Path.Combine(OutputDirectory, subdirectory, FullFileName), Code);
         }
     }
 }

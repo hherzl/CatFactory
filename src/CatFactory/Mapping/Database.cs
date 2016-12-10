@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace CatFactory.Mapping
 {
+    [DebuggerDisplay("Name={Name}, DbObjects={DbObjects.Count}")]
     public class Database
     {
         public Database()
         {
-
         }
 
         public String Name { get; set; }
@@ -49,6 +50,31 @@ namespace CatFactory.Mapping
             set
             {
                 m_views = value;
+            }
+        }
+
+        public virtual void LinkTables()
+        {
+            foreach (var table in Tables)
+            {
+                foreach (var column in table.Columns)
+                {
+                    if (!table.PrimaryKey.Key.Contains(column.Name))
+                    {
+                        foreach (var parentTable in Tables)
+                        {
+                            if (table.FullName == parentTable.FullName)
+                            {
+                                continue;
+                            }
+
+                            if (parentTable.PrimaryKey != null && parentTable.PrimaryKey.Key.Contains(column.Name))
+                            {
+                                table.ForeignKeys.Add(new ForeignKey { Key = new List<String>() { column.Name }, References = parentTable.FullName });
+                            }
+                        }
+                    }
+                }
             }
         }
     }
