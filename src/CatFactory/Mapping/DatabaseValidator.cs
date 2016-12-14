@@ -1,0 +1,59 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace CatFactory.Mapping
+{
+    public class DatabaseValidator : IDatabaseValidator
+    {
+        public IEnumerable<String> Validate(Database database)
+        {
+            foreach (var table in database.Tables)
+            {
+                if (table.Columns.Count == 0)
+                {
+                    yield return String.Format("The table '{0}' doesn't have columns", table.FullName);
+
+                    foreach (var column in table.Columns)
+                    {
+                        if (String.IsNullOrEmpty(column.Name))
+                        {
+                            yield return String.Format("The table '{0}' has one column without name", table.FullName);
+                        }
+                        else if (table.Columns.Where(item => item.Name == column.Name).Count() > 1)
+                        {
+                            yield return String.Format("The table '{0}' has more than one column with name: '{1}'", table.FullName, column.Name);
+                        }
+                    }
+                }
+
+                if (table.Identity != null)
+                {
+                    if (table.Columns.Where(item => item.Name == table.Identity.Name).Count() == 0)
+                    {
+                        yield return String.Format("The table '{0}' has null reference on identity, column: '{1}'", table.FullName, table.Identity.Name);
+                    }
+                }
+
+                if (table.PrimaryKey != null)
+                {
+                    var flag = false;
+
+                    foreach (var column in table.Columns)
+                    {
+                        if (table.PrimaryKey.Key.Contains(column.Name))
+                        {
+                            flag = true;
+                            break;
+                        }
+                    }
+
+                    if (!flag)
+                    {
+                        yield return String.Format("The table '{0}' has null reference on primary key, key: '{1}'", table.FullName, String.Join(",", table.PrimaryKey.Key.Select(item => item)));
+                    }
+                }
+            }
+        }
+    }
+}

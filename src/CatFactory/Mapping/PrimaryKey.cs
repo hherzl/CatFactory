@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CatFactory.Mapping
 {
-    public class PrimaryKey
+    public class PrimaryKey : IConstraint
     {
         public PrimaryKey()
         {
@@ -13,6 +13,8 @@ namespace CatFactory.Mapping
         {
             Key = new List<String>(key);
         }
+
+        public String ConstraintName { get; set; }
 
         public List<String> Key { get; set; }
     }

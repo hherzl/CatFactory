@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CatFactory.Mapping
 {
-    public class ForeignKey
+    public class ForeignKey : IConstraint
     {
         public ForeignKey()
         {
@@ -13,6 +13,8 @@ namespace CatFactory.Mapping
         {
             Key = new List<String>(key);
         }
+
+        public String ConstraintName { get; set; }
 
         public List<String> Key { get; set; }
 

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace CatFactory.Mapping
 {
@@ -10,7 +9,5 @@ namespace CatFactory.Mapping
         String Name { get; set; }
 
         String FullName { get; }
-
-        List<Column> Columns { get; set; }
     }
 }

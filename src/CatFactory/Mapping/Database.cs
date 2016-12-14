@@ -16,6 +16,7 @@ namespace CatFactory.Mapping
         private List<DbObject> m_dbObjects;
         private List<Table> m_tables;
         private List<View> m_views;
+        private List<Procedure> m_procedures;
 
         public List<DbObject> DbObjects
         {
@@ -50,6 +51,18 @@ namespace CatFactory.Mapping
             set
             {
                 m_views = value;
+            }
+        }
+
+        public List<Procedure> Procedures
+        {
+            get
+            {
+                return m_procedures ?? (m_procedures = new List<Procedure>());
+            }
+            set
+            {
+                m_procedures = value;
             }
         }
 

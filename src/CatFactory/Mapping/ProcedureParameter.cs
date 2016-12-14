@@ -4,9 +4,9 @@ using System.Diagnostics;
 namespace CatFactory.Mapping
 {
     [DebuggerDisplay("Name={Name}, Type={Type}")]
-    public class Column
+    public class ProcedureParameter
     {
-        public Column()
+        public ProcedureParameter()
         {
         }
 
@@ -20,7 +20,7 @@ namespace CatFactory.Mapping
 
         public Int16 Scale { get; set; }
 
-        public Boolean Nullable { get; set; }
+        public Int16 ParamOrder { get; set; }
 
         public String Collation { get; set; }
     }
