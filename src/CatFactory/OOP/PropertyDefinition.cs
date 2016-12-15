@@ -38,7 +38,7 @@ namespace CatFactory.OOP
             }
         }
 
-        public ModifierAccess ModifierAccess { get; set; }
+        public AccessModifier AccessModifier { get; set; }
 
         public String Type { get; set; }
 

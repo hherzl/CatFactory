@@ -9,3 +9,4 @@ dotnet test
 cd %srcPath%
 dotnet pack
 cd %initialPath%
+pause

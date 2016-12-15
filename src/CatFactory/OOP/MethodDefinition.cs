@@ -6,6 +6,10 @@ namespace CatFactory.OOP
 {
     public class MethodDefinition
     {
+        public MethodDefinition()
+        {
+        }
+
         public MethodDefinition(String type, String name)
         {
             Type = type;
@@ -28,7 +32,15 @@ namespace CatFactory.OOP
             }
         }
 
-        public ModifierAccess ModifierAccess { get; set; }
+        public AccessModifier AccessModifier { get; set; }
+
+        public Boolean IsStatic { get; set; }
+
+        public Boolean IsVirtual { get; set; }
+
+        public Boolean IsOverride { get; set; }
+
+        public Boolean IsAsync { get; set; }
 
         public String Prefix { get; set; }
 

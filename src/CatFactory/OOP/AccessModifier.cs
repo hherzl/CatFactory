@@ -1,6 +1,6 @@
 ﻿namespace CatFactory.OOP
 {
-    public enum ModifierAccess
+    public enum AccessModifier
     {
         Public,
         Private,

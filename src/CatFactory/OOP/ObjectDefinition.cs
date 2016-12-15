@@ -30,7 +30,7 @@ namespace CatFactory.OOP
 
         public String BaseClass { get; set; }
 
-        private List<String> m_implements { get; set; }
+        private List<String> m_implements;
         private List<FieldDefinition> m_fields;
         private List<PropertyDefinition> m_properties;
         private List<MethodDefinition> m_methods;

@@ -70,7 +70,8 @@ namespace Tests
                 Name = "Gender",
                 Attributes = new List<MetadataAttribute>()
                 {
-                    new MetadataAttribute("Required")
+                    new MetadataAttribute("Required"),
+                    new MetadataAttribute("StringLength") { Arguments = new List<String>() { "1" } }
                 }
             });
 

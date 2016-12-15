@@ -7,7 +7,6 @@ namespace CatFactory.OOP
     {
         public FieldDefinition()
         {
-
         }
 
         public FieldDefinition(String type, String name, params MetadataAttribute[] attribs)
@@ -17,7 +16,7 @@ namespace CatFactory.OOP
             Attributes.AddRange(attribs);
         }
 
-        public ModifierAccess ModifierAccess { get; set; }
+        public AccessModifier AccessModifier { get; set; }
 
         public String Type { get; set; }
 
