@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace CatFactory.Mapping
 {
-    public interface ITable : IDbObject
+    public interface ITable : IReadableObject
     {
-        List<Column> Columns { get; set; }
+        String Description { get; set; }
 
         PrimaryKey PrimaryKey { get; set; }
 

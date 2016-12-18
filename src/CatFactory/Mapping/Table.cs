@@ -23,6 +23,8 @@ namespace CatFactory.Mapping
             }
         }
 
+        public String Description { get; set; }
+
         private List<Column> m_columns;
 
         public List<Column> Columns

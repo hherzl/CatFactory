@@ -23,6 +23,8 @@ namespace CatFactory.Mapping
             }
         }
 
+        public String Description { get; set; }
+
         private List<ProcedureParameter> m_parameters;
 
         public List<ProcedureParameter> Parameters

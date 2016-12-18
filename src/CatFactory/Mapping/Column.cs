@@ -23,5 +23,7 @@ namespace CatFactory.Mapping
         public Boolean Nullable { get; set; }
 
         public String Collation { get; set; }
+
+        public String Description { get; set; }
     }
 }
