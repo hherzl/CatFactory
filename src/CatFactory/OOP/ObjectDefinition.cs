@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using CatFactory.CodeFactory;
 
 namespace CatFactory.OOP
 {
     public class ObjectDefinition : IObjectDefinition
     {
-        public INamingConvention NamingConvention { get; protected set; }
-
         private List<String> m_namespaces;
 
         public List<String> Namespaces
@@ -30,7 +27,16 @@ namespace CatFactory.OOP
 
         public String BaseClass { get; set; }
 
+        public Boolean HasInheritance
+        {
+            get
+            {
+                return !String.IsNullOrEmpty(BaseClass) || Implements.Count > 0;
+            }
+        }
+
         private List<String> m_implements;
+        private List<MetadataAttribute> m_attributes;
         private List<FieldDefinition> m_fields;
         private List<PropertyDefinition> m_properties;
         private List<MethodDefinition> m_methods;
@@ -44,6 +50,18 @@ namespace CatFactory.OOP
             set
             {
                 m_implements = value;
+            }
+        }
+
+        public List<MetadataAttribute> Attributes
+        {
+            get
+            {
+                return m_attributes ?? (m_attributes = new List<MetadataAttribute>());
+            }
+            set
+            {
+                m_attributes = value;
             }
         }
 
@@ -80,14 +98,6 @@ namespace CatFactory.OOP
             set
             {
                 m_methods = value;
-            }
-        }
-
-        public Boolean HasInheritance
-        {
-            get
-            {
-                return !String.IsNullOrEmpty(BaseClass) || Implements.Count > 0;
             }
         }
     }

@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using CatFactory.CodeFactory;
 
 namespace CatFactory.OOP
 {
     public interface IObjectDefinition
     {
-        INamingConvention NamingConvention { get; }
-
         List<String> Namespaces { get; set; }
 
         String Namespace { get; set; }

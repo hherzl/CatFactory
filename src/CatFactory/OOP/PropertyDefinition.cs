@@ -45,6 +45,7 @@ namespace CatFactory.OOP
         public String Name { get; set; }
 
         private List<CodeLine> m_getBody;
+        private List<CodeLine> m_setBody;
 
         public List<CodeLine> GetBody
         {
@@ -55,6 +56,18 @@ namespace CatFactory.OOP
             set
             {
                 m_getBody = value;
+            }
+        }
+
+        public List<CodeLine> SetBody
+        {
+            get
+            {
+                return m_setBody ?? (m_setBody = new List<CodeLine>());
+            }
+            set
+            {
+                m_setBody = value;
             }
         }
     }
