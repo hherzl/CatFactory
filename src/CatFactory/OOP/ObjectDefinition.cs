@@ -73,7 +73,7 @@ namespace CatFactory.OOP
             }
             set
             {
-                m_fields = new List<FieldDefinition>();
+                m_fields = value;
             }
         }
 

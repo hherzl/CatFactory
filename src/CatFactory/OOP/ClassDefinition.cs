@@ -15,20 +15,7 @@ namespace CatFactory.OOP
 
         public Boolean IsPartial { get; set; }
 
-        private List<MetadataAttribute> m_attributes;
         private List<ClassConstructorDefinition> m_constructors;
-
-        public List<MetadataAttribute> Attributes
-        {
-            get
-            {
-                return m_attributes ?? (m_attributes = new List<MetadataAttribute>());
-            }
-            set
-            {
-                m_attributes = value;
-            }
-        }
 
         public List<ClassConstructorDefinition> Constructors
         {
