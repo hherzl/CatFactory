@@ -7,6 +7,8 @@ namespace CatFactory.OOP
     {
         List<MetadataAttribute> Attributes { get; set; }
 
+        List<EventDefinition> Events { get; set; }
+
         Boolean IsPartial { get; set; }
     }
 }

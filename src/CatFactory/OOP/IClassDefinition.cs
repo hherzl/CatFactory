@@ -9,6 +9,8 @@ namespace CatFactory.OOP
 
         List<ClassConstructorDefinition> Constructors { get; set; }
 
+        List<EventDefinition> Events { get; set; }
+
         Boolean IsPartial { get; set; }
     }
 }

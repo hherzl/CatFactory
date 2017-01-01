@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CatFactory.CodeFactory;
 using CatFactory.OOP;
 using Xunit;
 
@@ -82,6 +83,37 @@ namespace Tests
                 Attributes = new List<MetadataAttribute>()
                 {
                     new MetadataAttribute("Required")
+                }
+            });
+        }
+
+        [Fact]
+        public void TestViewModelClassDefinition()
+        {
+            var classDefinition = new ClassDefinition();
+
+            classDefinition.Namespaces.Add("System.ComponentModel");
+
+            classDefinition.Implements.Add("INotifyPropertyChanged");
+
+            classDefinition.Events.Add(new EventDefinition("PropertyChangedEventHandler", "PropertyChanged"));
+
+            classDefinition.Fields.Add(new FieldDefinition("String", "m_firstName"));
+
+            classDefinition.Properties.Add(new PropertyDefinition("String", "FirstName")
+            {
+                GetBody = new List<CodeLine>()
+                {
+                    new CodeLine("return m_firstName;")
+                },
+                SetBody = new List<CodeLine>()
+                {
+                    new CodeLine("if (m_firstName != value)"),
+                    new CodeLine("{{"),
+                    new CodeLine("m_firstName = value;"),
+                    new CodeLine(),
+                    new CodeLine("PropertyChanged?Invoke(this, new PropertyChangedEventArgs(\"FirstName\"));"),
+                    new CodeLine("}}")
                 }
             });
         }

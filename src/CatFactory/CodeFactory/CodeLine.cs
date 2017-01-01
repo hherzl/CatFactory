@@ -6,7 +6,6 @@ namespace CatFactory.CodeFactory
     {
         public CodeLine()
         {
-
         }
 
         public CodeLine(Int32 indent, String content, params String[] values)
