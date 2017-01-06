@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using CatFactory.Mapping;
 
 namespace CatFactory
 {
+    [DebuggerDisplay("Name={Name}, Features={Features.Count}")]
     public class Project
     {
+        public Project()
+        {
+        }
+
         public String Name { get; set; }
 
         public Database Database { get; set; }
@@ -15,7 +21,7 @@ namespace CatFactory
 
         public String OutputDirectory { get; set; }
 
-        public void BuildFeatures()
+        public virtual void BuildFeatures()
         {
             if (Database == null)
             {
@@ -26,7 +32,7 @@ namespace CatFactory
                 .DbObjects
                 .Select(item => item.Schema)
                 .Distinct()
-                .Select(item => new ProjectFeature { Name = item, Database = Database, DbObjects = Database.DbObjects.Where(db => db.Schema == item).ToList() })
+                .Select(item => new ProjectFeature(item, Database.DbObjects.Where(db => db.Schema == item).ToList(), Database))
                 .ToList();
         }
     }

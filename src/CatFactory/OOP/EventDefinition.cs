@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace CatFactory.OOP
 {
+    [DebuggerDisplay("AccessModifier={AccessModifier}, Type={Type}, Name={Name}")]
     public class EventDefinition
     {
         public EventDefinition()

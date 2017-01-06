@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace CatFactory.OOP
 {
+    [DebuggerDisplay("Type={Type}, Name={Name}")]
     public class ParameterDefinition
     {
         public ParameterDefinition(String type, String name)

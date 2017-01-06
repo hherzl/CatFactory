@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using CatFactory.CodeFactory;
 
 namespace CatFactory.OOP
 {
+    [DebuggerDisplay("AccessModifier={AccessModifier}, Type={Type}, Name={Name}, Parameters={Parameters.Count}")]
     public class MethodDefinition
     {
         public MethodDefinition()
