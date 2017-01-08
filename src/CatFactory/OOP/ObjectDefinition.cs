@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace CatFactory.OOP
 {
+    [DebuggerDisplay("Namespace={Namespace}, Name={Name}")]
     public class ObjectDefinition : IObjectDefinition
     {
         private List<String> m_namespaces;
@@ -22,6 +24,8 @@ namespace CatFactory.OOP
         public String Namespace { get; set; }
 
         public Metadata Documentation { get; set; }
+
+        public AccessModifier AccessModifier { get; set; }
 
         public String Name { get; set; }
 

@@ -11,6 +11,8 @@ namespace CatFactory.OOP
 
         Metadata Documentation { get; set; }
 
+        AccessModifier AccessModifier { get; set; }
+
         String Name { get; set; }
 
         String BaseClass { get; set; }

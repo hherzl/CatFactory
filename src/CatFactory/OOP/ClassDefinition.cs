@@ -11,8 +11,6 @@ namespace CatFactory.OOP
         {
         }
 
-        public AccessModifier AccessModifier { get; set; }
-
         public Boolean IsStatic { get; set; }
 
         public Boolean IsPartial { get; set; }

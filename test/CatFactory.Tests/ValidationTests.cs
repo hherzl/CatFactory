@@ -7,15 +7,27 @@ namespace CatFactory.Tests
     public class ValidationTests
     {
         [Fact]
-        public void ValidateMockDatabase()
+        public void ValidateStoreDatabase()
         {
-            var db = Mocks.SalesDatabase;
+            var db = Mocks.StoreDatabase;
 
             var dbValidator = new DatabaseValidator();
 
             var result = dbValidator.Validate(db);
 
             Assert.True(result.Count() == 0);
+        }
+
+        [Fact]
+        public void ValidateSupermarketDatabase()
+        {
+            var db = Mocks.SupermarketDatabase;
+
+            var dbValidator = new DatabaseValidator();
+
+            var validationMessages = dbValidator.Validate(db);
+
+            Assert.True(validationMessages.Count() > 0);
         }
     }
 }

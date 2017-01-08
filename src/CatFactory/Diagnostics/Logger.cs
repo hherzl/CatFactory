@@ -18,7 +18,6 @@ namespace CatFactory.Diagnostics
 
         public Logger()
         {
-
         }
 
         public Boolean LogToConsole { get; set; }
@@ -27,19 +26,23 @@ namespace CatFactory.Diagnostics
 
         public String OutputFileName { get; set; }
 
-        private List<String> m_stack;
+        private List<LogEntry> m_stack;
 
-        public List<String> Stack
+        public List<LogEntry> Stack
         {
             get
             {
-                return m_stack ?? (m_stack = new List<String>());
+                return m_stack ?? (m_stack = new List<LogEntry>());
             }
         }
 
         public void Log(String message, params Object[] values)
         {
-            var entry = String.Format("{0} : {1}", DateTime.Now, String.Format(message, values));
+            var entry = new LogEntry
+            {
+                EntryType = MessageType.Message,
+                Message = String.Format("{0} : {1}", DateTime.Now, String.Format(message, values))
+            };
 
             Stack.Add(entry);
 
@@ -55,7 +58,7 @@ namespace CatFactory.Diagnostics
 
             if (AppendToOutputFile)
             {
-                TextFileHelper.AppendLine(OutputFileName, entry);
+                TextFileHelper.AppendLine(OutputFileName, entry.Message);
             }
         }
 
