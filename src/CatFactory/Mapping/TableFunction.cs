@@ -5,9 +5,9 @@ using System.Diagnostics;
 namespace CatFactory.Mapping
 {
     [DebuggerDisplay("FullName={FullName}, Parameters={Parameters.Count}")]
-    public class Procedure
+    public class TableFunction
     {
-        public Procedure()
+        public TableFunction()
         {
         }
 
@@ -25,18 +25,34 @@ namespace CatFactory.Mapping
 
         public String Description { get; set; }
 
-        private List<ProcedureParameter> m_parameters;
+        private List<Column> m_columns;
 
-        public List<ProcedureParameter> Parameters
+        public List<Column> Columns
         {
             get
             {
-                return m_parameters ?? (m_parameters = new List<ProcedureParameter>());
+                return m_columns ?? (m_columns = new List<Column>());
+            }
+            set
+            {
+                m_columns = value;
+            }
+        }
+
+        private List<Parameter> m_parameters;
+
+        public List<Parameter> Parameters
+        {
+            get
+            {
+                return m_parameters ?? (m_parameters = new List<Parameter>());
             }
             set
             {
                 m_parameters = value;
             }
         }
+
+        public Identity Identity { get; set; }
     }
 }

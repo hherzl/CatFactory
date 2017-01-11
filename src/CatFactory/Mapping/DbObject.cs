@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace CatFactory.Mapping
 {
+    [DebuggerDisplay("Type={Type}, FullName={FullName}")]
     public class DbObject
     {
         public DbObject()
         {
-
         }
 
         public String Schema { get; set; }

@@ -4,9 +4,9 @@ using System.Diagnostics;
 namespace CatFactory.Mapping
 {
     [DebuggerDisplay("Name={Name}, Type={Type}")]
-    public class ProcedureParameter
+    public class Parameter
     {
-        public ProcedureParameter()
+        public Parameter()
         {
         }
 
