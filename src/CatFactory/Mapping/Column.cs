@@ -25,5 +25,20 @@ namespace CatFactory.Mapping
         public String Collation { get; set; }
 
         public String Description { get; set; }
+
+        public override Boolean Equals(Object obj)
+        {
+            var cast = obj as Column;
+
+            if (cast != null)
+            {
+                return String.Compare(Name, cast.Name) == 0 ? true : false;
+            }
+
+            return false;
+        }
+
+        public override Int32 GetHashCode()
+            => Name == null ? 0 : Name.GetHashCode();
     }
 }

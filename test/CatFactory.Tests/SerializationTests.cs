@@ -13,7 +13,7 @@ namespace CatFactory.Tests
 
             var output = serializer.Serialize(db);
 
-            TextFileHelper.CreateFile("C:\\Temp\\Sales.xml", output);
+            TextFileHelper.CreateFile("C:\\Temp\\CatFactory\\Sales.xml", output);
         }
     }
 }

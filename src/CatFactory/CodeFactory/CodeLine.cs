@@ -41,16 +41,9 @@ namespace CatFactory.CodeFactory
         public String Content { get; private set; }
 
         public Boolean IsNullOrEmpty
-        {
-            get
-            {
-                return String.IsNullOrEmpty(Content);
-            }
-        }
+            => String.IsNullOrEmpty(Content);
 
         public override String ToString()
-        {
-            return Content;
-        }
+            => Content;
     }
 }

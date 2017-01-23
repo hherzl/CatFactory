@@ -10,8 +10,6 @@ namespace CatFactory.CodeFactory
         {
         }
 
-        public String OutputDirectory { get; set; }
-
         public String Tab { get; set; } = "\t";
 
         public String Indent(Int32 count)
@@ -19,37 +17,17 @@ namespace CatFactory.CodeFactory
             return String.Concat(Enumerable.Repeat(Tab, count));
         }
 
-        public virtual String FileName
-        {
-            get
-            {
-                return String.Empty;
-            }
-        }
+        public virtual String FileName => String.Empty;
 
-        public virtual String FileExtension
-        {
-            get
-            {
-                return String.Empty;
-            }
-        }
+        public virtual String FileExtension => String.Empty;
 
-        public virtual String Code
-        {
-            get
-            {
-                return String.Empty;
-            }
-        }
+        public virtual String FullFileName => String.Format("{0}.{1}", FileName, FileExtension);
 
-        public virtual String FullFileName
-        {
-            get
-            {
-                return String.Format("{0}.{1}", FileName, FileExtension);
-            }
-        }
+        public INamingConvention NamingConvention { get; set; }
+
+        public virtual String Code => String.Empty;
+
+        public String OutputDirectory { get; set; }
 
         public virtual void CreateOutputDirectory()
         {

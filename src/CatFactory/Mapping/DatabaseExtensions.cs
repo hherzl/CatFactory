@@ -14,5 +14,16 @@ namespace CatFactory.Mapping
                 }
             }
         }
+
+        public static void AddColumnForAllTables(this Database database, Column column)
+        {
+            foreach (var table in database.Tables)
+            {
+                if (!table.Columns.Contains(column))
+                {
+                    table.Columns.Add(column);
+                }
+            }
+        }
     }
 }

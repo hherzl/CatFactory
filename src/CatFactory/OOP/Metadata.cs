@@ -6,7 +6,6 @@ namespace CatFactory.OOP
     {
         public Metadata()
         {
-
         }
 
         public String Summary { get; set; }

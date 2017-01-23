@@ -1,31 +1,14 @@
-﻿using CatFactory.CodeFactory;
+﻿using System;
+using CatFactory.CodeFactory;
 
 namespace CatFactory.Tests
 {
     public class MockCodeBuilder : CodeBuilder
     {
-        public override string FileName
-        {
-            get
-            {
-                return "Mock";
-            }
-        }
+        public override String FileName => "Mock";
 
-        public override string FileExtension
-        {
-            get
-            {
-                return "txt";
-            }
-        }
+        public override String FileExtension => "txt";
 
-        public override string Code
-        {
-            get
-            {
-                return "MockCodeBuilder";
-            }
-        }
+        public override String Code => "MockCodeBuilder";
     }
 }

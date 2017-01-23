@@ -9,7 +9,7 @@ namespace CatFactory.Tests
         {
             var codeBuilder = new MockCodeBuilder()
             {
-                OutputDirectory = "C:\\Temp"
+                OutputDirectory = "C:\\Temp\\CatFactory"
             };
 
             codeBuilder.CreateFile();

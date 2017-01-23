@@ -25,18 +25,12 @@ namespace CatFactory
         }
 
         public static void CreateFile(String path, String data)
-        {
-            WriteFile(path, data, FileMode.Create, FileAccess.Write, Encoding.Unicode, false);
-        }
+            => WriteFile(path, data, FileMode.Create, FileAccess.Write, Encoding.Unicode, false);
 
         public static void AppendLine(String path, String data)
-        {
-            WriteFile(path, data, FileMode.Append, FileAccess.Write, Encoding.Unicode, true);
-        }
+            => WriteFile(path, data, FileMode.Append, FileAccess.Write, Encoding.Unicode, true);
 
         public static void Clear(String path)
-        {
-            WriteFile(path, String.Empty, FileMode.Create, FileAccess.Write, Encoding.Unicode, false);
-        }
+            => WriteFile(path, String.Empty, FileMode.Create, FileAccess.Write, Encoding.Unicode, false);
     }
 }
