@@ -2,9 +2,9 @@
 
 namespace CatFactory.OOP
 {
-    public class Metadata
+    public class Documentation
     {
-        public Metadata()
+        public Documentation()
         {
         }
 

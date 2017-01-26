@@ -17,9 +17,20 @@ namespace CatFactory.OOP
             Name = name;
         }
 
-        public Metadata Documentation { get; set; }
-
+        private Documentation m_documentation;
         private List<MetadataAttribute> m_attributes;
+
+        public Documentation Documentation
+        {
+            get
+            {
+                return m_documentation ?? (m_documentation = new Documentation());
+            }
+            set
+            {
+                m_documentation = value;
+            }
+        }
 
         public List<MetadataAttribute> Attributes
         {
@@ -35,8 +46,12 @@ namespace CatFactory.OOP
 
         public AccessModifier AccessModifier { get; set; }
 
+        public Boolean IsParams { get; set; }
+
         public String Type { get; set; }
 
         public String Name { get; set; }
+
+        public String DefaultValue { get; set; }
     }
 }

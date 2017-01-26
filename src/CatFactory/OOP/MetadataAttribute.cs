@@ -5,9 +5,10 @@ namespace CatFactory.OOP
 {
     public class MetadataAttribute
     {
-        public MetadataAttribute(String name)
+        public MetadataAttribute(String name, params String[] arguments)
         {
             Name = name;
+            Arguments = new List<String>(arguments);
         }
 
         public String Name { get; set; }

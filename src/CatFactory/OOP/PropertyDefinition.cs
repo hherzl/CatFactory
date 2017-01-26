@@ -20,7 +20,19 @@ namespace CatFactory.OOP
             Name = name;
         }
 
-        public Metadata Documentation { get; set; }
+        private Documentation m_documentation;
+
+        public Documentation Documentation
+        {
+            get
+            {
+                return m_documentation ?? (m_documentation = new Documentation());
+            }
+            set
+            {
+                m_documentation = value;
+            }
+        }
 
         public Boolean IsAutomatic { get; set; }
 

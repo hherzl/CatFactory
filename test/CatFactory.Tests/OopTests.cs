@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using CatFactory.CodeFactory;
 using CatFactory.OOP;
 using Xunit;
@@ -12,6 +11,8 @@ namespace Tests
         public void TestClassDefinition()
         {
             var classDefinition = new ClassDefinition();
+
+            classDefinition.Documentation.Summary = "Represents a simple class definition";
 
             classDefinition.Properties.Add(new PropertyDefinition { Type = "Int32?", Name = "ID" });
             classDefinition.Properties.Add(new PropertyDefinition { Type = "String", Name = "Name" });
@@ -40,7 +41,7 @@ namespace Tests
                 Attributes = new List<MetadataAttribute>()
                 {
                     new MetadataAttribute("Required"),
-                    new MetadataAttribute("StringLength") { Arguments = new List<String>() { "25" } }
+                    new MetadataAttribute("StringLength", "25")
                 }
             });
 
@@ -50,7 +51,7 @@ namespace Tests
                 Name = "MiddleName",
                 Attributes = new List<MetadataAttribute>()
                 {
-                    new MetadataAttribute("StringLength") { Arguments = new List<String>() { "25" } }
+                    new MetadataAttribute("StringLength", "25")
                 }
             });
 
@@ -61,7 +62,7 @@ namespace Tests
                 Attributes = new List<MetadataAttribute>()
                 {
                     new MetadataAttribute("Required"),
-                    new MetadataAttribute("StringLength") { Arguments = new List<String>() { "25" } }
+                    new MetadataAttribute("StringLength", "25")
                 }
             });
 
@@ -72,7 +73,7 @@ namespace Tests
                 Attributes = new List<MetadataAttribute>()
                 {
                     new MetadataAttribute("Required"),
-                    new MetadataAttribute("StringLength") { Arguments = new List<String>() { "1" } }
+                    new MetadataAttribute("StringLength", "1")
                 }
             });
 

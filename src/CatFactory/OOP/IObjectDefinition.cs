@@ -9,7 +9,7 @@ namespace CatFactory.OOP
 
         String Namespace { get; set; }
 
-        Metadata Documentation { get; set; }
+        Documentation Documentation { get; set; }
 
         AccessModifier AccessModifier { get; set; }
 

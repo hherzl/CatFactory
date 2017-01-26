@@ -11,7 +11,19 @@ namespace CatFactory.OOP
 
         }
 
-        public Metadata Documentation { get; set; }
+        private Documentation m_documentation;
+
+        public Documentation Documentation
+        {
+            get
+            {
+                return m_documentation ?? (m_documentation = new Documentation());
+            }
+            set
+            {
+                m_documentation = value;
+            }
+        }
 
         private List<ParameterDefinition> m_parameters;
 

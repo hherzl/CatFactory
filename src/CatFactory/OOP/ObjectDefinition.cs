@@ -23,7 +23,19 @@ namespace CatFactory.OOP
 
         public String Namespace { get; set; }
 
-        public Metadata Documentation { get; set; }
+        private Documentation m_documentation;
+
+        public Documentation Documentation
+        {
+            get
+            {
+                return m_documentation ?? (m_documentation = new Documentation());
+            }
+            set
+            {
+                m_documentation = value;
+            }
+        }
 
         public AccessModifier AccessModifier { get; set; }
 
