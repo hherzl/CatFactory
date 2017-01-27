@@ -9,7 +9,7 @@ namespace CatFactory.Mapping
         {
         }
 
-        public PrimaryKey(String[] key)
+        public PrimaryKey(params String[] key)
         {
             Key = new List<String>(key);
         }

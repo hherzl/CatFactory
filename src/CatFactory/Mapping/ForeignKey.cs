@@ -9,7 +9,7 @@ namespace CatFactory.Mapping
         {
         }
 
-        public ForeignKey(String[] key)
+        public ForeignKey(params String[] key)
         {
             Key = new List<String>(key);
         }

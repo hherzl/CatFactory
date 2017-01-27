@@ -10,13 +10,15 @@ namespace CatFactory.Mapping
         public Database()
         {
         }
-
+        
         public String Name { get; set; }
 
         private List<DbObject> m_dbObjects;
         private List<Table> m_tables;
         private List<View> m_views;
         private List<StoredProcedure> m_storedProcedures;
+        private List<ScalarFunction> m_scalarFunctions;
+        private List<TableFunction> m_tableFunctions;
 
         public List<DbObject> DbObjects
         {
@@ -66,28 +68,27 @@ namespace CatFactory.Mapping
             }
         }
 
-        public virtual void LinkTables()
+        public List<ScalarFunction> ScalarFunctions
         {
-            foreach (var table in Tables)
+            get
             {
-                foreach (var column in table.Columns)
-                {
-                    if (!table.PrimaryKey.Key.Contains(column.Name))
-                    {
-                        foreach (var parentTable in Tables)
-                        {
-                            if (table.FullName == parentTable.FullName)
-                            {
-                                continue;
-                            }
+                return m_scalarFunctions ?? (m_scalarFunctions = new List<ScalarFunction>());
+            }
+            set
+            {
+                m_scalarFunctions = value;
+            }
+        }
 
-                            if (parentTable.PrimaryKey != null && parentTable.PrimaryKey.Key.Contains(column.Name))
-                            {
-                                table.ForeignKeys.Add(new ForeignKey { Key = new List<String>() { column.Name }, References = parentTable.FullName });
-                            }
-                        }
-                    }
-                }
+        public List<TableFunction> TableFunctions
+        {
+            get
+            {
+                return m_tableFunctions ?? (m_tableFunctions = new List<TableFunction>());
+            }
+            set
+            {
+                m_tableFunctions = value;
             }
         }
     }

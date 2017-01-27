@@ -16,12 +16,7 @@ namespace CatFactory.Mapping
         public String Name { get; set; }
 
         public String FullName
-        {
-            get
-            {
-                return String.IsNullOrEmpty(Schema) ? Name : String.Format("{0}.{1}", Schema, Name);
-            }
-        }
+            => String.IsNullOrEmpty(Schema) ? Name : String.Format("{0}.{1}", Schema, Name);
 
         public String Description { get; set; }
 

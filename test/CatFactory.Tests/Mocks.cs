@@ -17,7 +17,7 @@ namespace CatFactory.Tests
                     {
                         new Table
                         {
-                            Schema = "",
+                            Schema = "dbo",
                             Name = "EventLog",
                             Columns = new List<Column>()
                             {

@@ -24,68 +24,12 @@ namespace Tests
         {
             var classDefinition = new ClassDefinition();
 
-            classDefinition.Properties.Add(new PropertyDefinition
-            {
-                Type = "Int32?",
-                Name = "ID",
-                Attributes = new List<MetadataAttribute>()
-                {
-                    new MetadataAttribute("Key")
-                }
-            });
-
-            classDefinition.Properties.Add(new PropertyDefinition
-            {
-                Type = "String",
-                Name = "FirstName",
-                Attributes = new List<MetadataAttribute>()
-                {
-                    new MetadataAttribute("Required"),
-                    new MetadataAttribute("StringLength", "25")
-                }
-            });
-
-            classDefinition.Properties.Add(new PropertyDefinition
-            {
-                Type = "String",
-                Name = "MiddleName",
-                Attributes = new List<MetadataAttribute>()
-                {
-                    new MetadataAttribute("StringLength", "25")
-                }
-            });
-
-            classDefinition.Properties.Add(new PropertyDefinition
-            {
-                Type = "String",
-                Name = "LastName",
-                Attributes = new List<MetadataAttribute>()
-                {
-                    new MetadataAttribute("Required"),
-                    new MetadataAttribute("StringLength", "25")
-                }
-            });
-
-            classDefinition.Properties.Add(new PropertyDefinition
-            {
-                Type = "String",
-                Name = "Gender",
-                Attributes = new List<MetadataAttribute>()
-                {
-                    new MetadataAttribute("Required"),
-                    new MetadataAttribute("StringLength", "1")
-                }
-            });
-
-            classDefinition.Properties.Add(new PropertyDefinition
-            {
-                Type = "DateTime?",
-                Name = "BirthDate",
-                Attributes = new List<MetadataAttribute>()
-                {
-                    new MetadataAttribute("Required")
-                }
-            });
+            classDefinition.Properties.Add(new PropertyDefinition("Int32?", "ID", new MetadataAttribute("Key")));
+            classDefinition.Properties.Add(new PropertyDefinition("String", "FirstName", new MetadataAttribute("Required"), new MetadataAttribute("StringLength", "25")));
+            classDefinition.Properties.Add(new PropertyDefinition("String", "MiddleName", new MetadataAttribute("StringLength", "25")));
+            classDefinition.Properties.Add(new PropertyDefinition("String", "LastName", new MetadataAttribute("Required"), new MetadataAttribute("StringLength", "25")));
+            classDefinition.Properties.Add(new PropertyDefinition("String", "Gender", new MetadataAttribute("Required"), new MetadataAttribute("StringLength", "1")));
+            classDefinition.Properties.Add(new PropertyDefinition("DateTime?", "BirthDate", new MetadataAttribute("Required")));
         }
 
         [Fact]

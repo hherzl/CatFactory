@@ -40,7 +40,7 @@ namespace CatFactory.Diagnostics
         {
             var entry = new LogEntry
             {
-                EntryType = MessageType.Message,
+                EntryType = MessageType.Information,
                 Message = String.Format("{0} : {1}", DateTime.Now, String.Format(message, values))
             };
 
