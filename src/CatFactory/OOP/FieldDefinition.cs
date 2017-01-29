@@ -18,6 +18,14 @@ namespace CatFactory.OOP
             Attributes.AddRange(attribs);
         }
 
+        public FieldDefinition(AccessModifier accessModifier, String type, String name, params MetadataAttribute[] attribs)
+        {
+            AccessModifier = accessModifier;
+            Type = type;
+            Name = name;
+            Attributes.AddRange(attribs);
+        }
+
         private Documentation m_documentation;
         private List<MetadataAttribute> m_attributes;
 

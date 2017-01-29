@@ -8,20 +8,43 @@ namespace CatFactory.OOP
         public MetadataAttribute(String name, params String[] arguments)
         {
             Name = name;
-            Arguments = new List<String>(arguments);
+            Arguments.AddRange(arguments);
         }
 
         public String Name { get; set; }
 
-        public List<String> Arguments { get; set; }
+        private List<String> m_arguments;
+        private List<String> m_sets;
 
-        public List<String> Sets { get; set; }
+        public List<String> Arguments
+        {
+            get
+            {
+                return m_arguments ?? (m_arguments = new List<String>());
+            }
+            set
+            {
+                m_arguments = value;
+            }
+        }
+
+        public List<String> Sets
+        {
+            get
+            {
+                return m_sets ?? (m_sets = new List<String>());
+            }
+            set
+            {
+                m_sets = value;
+            }
+        }
 
         public Boolean HasArguments
         {
             get
             {
-                return Arguments != null && Arguments.Count > 0;
+                return Arguments.Count > 0;
             }
         }
 
@@ -29,7 +52,7 @@ namespace CatFactory.OOP
         {
             get
             {
-                return Sets != null && Sets.Count > 0;
+                return Sets.Count > 0;
             }
         }
 

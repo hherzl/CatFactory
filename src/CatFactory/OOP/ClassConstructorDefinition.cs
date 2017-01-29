@@ -6,9 +6,15 @@ namespace CatFactory.OOP
 {
     public class ClassConstructorDefinition
     {
-        public ClassConstructorDefinition()
+        public ClassConstructorDefinition(params ParameterDefinition[] parameters)
         {
+            Parameters.AddRange(parameters);
+        }
 
+        public ClassConstructorDefinition(AccessModifier accessModifier, params ParameterDefinition[] parameters)
+        {
+            AccessModifier = accessModifier;
+            Parameters.AddRange(parameters);
         }
 
         private Documentation m_documentation;
@@ -24,6 +30,8 @@ namespace CatFactory.OOP
                 m_documentation = value;
             }
         }
+
+        public AccessModifier AccessModifier { get; set; }
 
         private List<ParameterDefinition> m_parameters;
 

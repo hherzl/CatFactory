@@ -18,6 +18,15 @@ namespace CatFactory.OOP
             IsAutomatic = true;
             Type = type;
             Name = name;
+            Attributes.AddRange(attribs);
+        }
+
+        public PropertyDefinition(AccessModifier accessModifier, String type, String name, params MetadataAttribute[] attribs)
+        {
+            AccessModifier = accessModifier;
+            Type = type;
+            Name = name;
+            Attributes.AddRange(attribs);
         }
 
         private Documentation m_documentation;
@@ -84,5 +93,7 @@ namespace CatFactory.OOP
                 m_setBody = value;
             }
         }
+
+        public String InitializationValue { get; set; }
     }
 }

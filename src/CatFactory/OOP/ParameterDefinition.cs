@@ -17,6 +17,28 @@ namespace CatFactory.OOP
             Name = name;
         }
 
+        public ParameterDefinition(AccessModifier accessModifier, String type, String name)
+        {
+            AccessModifier = accessModifier;
+            Type = type;
+            Name = name;
+        }
+
+        public ParameterDefinition(String type, String name, String defaultValue)
+        {
+            Type = type;
+            Name = name;
+            DefaultValue = defaultValue;
+        }
+
+        public ParameterDefinition(AccessModifier accessModifier, String type, String name, String defaultValue)
+        {
+            AccessModifier = accessModifier;
+            Type = type;
+            Name = name;
+            DefaultValue = defaultValue;
+        }
+
         private Documentation m_documentation;
         private List<MetadataAttribute> m_attributes;
 

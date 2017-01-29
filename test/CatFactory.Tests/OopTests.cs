@@ -14,9 +14,9 @@ namespace Tests
 
             classDefinition.Documentation.Summary = "Represents a simple class definition";
 
-            classDefinition.Properties.Add(new PropertyDefinition { Type = "Int32?", Name = "ID" });
-            classDefinition.Properties.Add(new PropertyDefinition { Type = "String", Name = "Name" });
-            classDefinition.Properties.Add(new PropertyDefinition { Type = "String", Name = "Description" });
+            classDefinition.Properties.Add(new PropertyDefinition("Int32?", "ID"));
+            classDefinition.Properties.Add(new PropertyDefinition("String", "Name"));
+            classDefinition.Properties.Add(new PropertyDefinition("String", "Description"));
         }
 
         [Fact]

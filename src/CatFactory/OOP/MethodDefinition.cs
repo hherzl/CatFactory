@@ -12,10 +12,19 @@ namespace CatFactory.OOP
         {
         }
 
-        public MethodDefinition(String type, String name)
+        public MethodDefinition(String type, String name, params ParameterDefinition[] parameters)
         {
             Type = type;
             Name = name;
+            Parameters.AddRange(parameters);
+        }
+
+        public MethodDefinition(AccessModifier accessModifier, String type, String name, params ParameterDefinition[] parameters)
+        {
+            AccessModifier = accessModifier;
+            Type = type;
+            Name = name;
+            Parameters.AddRange(parameters);
         }
 
         private Documentation m_documentation;
@@ -50,6 +59,8 @@ namespace CatFactory.OOP
 
         public Boolean IsStatic { get; set; }
 
+        public Boolean IsAbstract { get; set; }
+
         public Boolean IsVirtual { get; set; }
 
         public Boolean IsOverride { get; set; }
@@ -61,6 +72,8 @@ namespace CatFactory.OOP
         public String Type { get; set; }
 
         public String Name { get; set; }
+
+        public String GenericType { get; set; }
 
         private List<ParameterDefinition> m_parameters;
 
@@ -76,7 +89,20 @@ namespace CatFactory.OOP
             }
         }
 
+        private List<String> m_whereConstraints;
         private List<CodeLine> m_lines;
+
+        public List<String> WhereConstraints
+        {
+            get
+            {
+                return m_whereConstraints ?? (m_whereConstraints = new List<String>());
+            }
+            set
+            {
+                m_whereConstraints = value;
+            }
+        }
 
         public List<CodeLine> Lines
         {
