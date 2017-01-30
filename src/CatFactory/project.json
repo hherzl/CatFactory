@@ -1,11 +1,12 @@
 {
-  "version": "1.0.0-alpha-build20",
+  "version": "1.0.0-alpha-build21",
   "authors": [
     "C. Herzl"
   ],
 
   "dependencies": {
     "NETStandard.Library": "1.6.0",
+    "System.Reflection.TypeExtensions": "4.3.0",
     "System.Xml.XmlSerializer": "4.0.11"
   },
 

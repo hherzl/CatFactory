@@ -27,6 +27,9 @@ namespace CatFactory
         public static void CreateFile(String path, String data)
             => WriteFile(path, data, FileMode.Create, FileAccess.Write, Encoding.Unicode, false);
 
+        public static void Append(String path, String data)
+            => WriteFile(path, data, FileMode.Append, FileAccess.Write, Encoding.Unicode, false);
+
         public static void AppendLine(String path, String data)
             => WriteFile(path, data, FileMode.Append, FileAccess.Write, Encoding.Unicode, true);
 

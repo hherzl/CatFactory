@@ -67,8 +67,6 @@ namespace CatFactory.OOP
 
         public Boolean IsAsync { get; set; }
 
-        public String Prefix { get; set; }
-
         public String Type { get; set; }
 
         public String Name { get; set; }
