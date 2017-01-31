@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace CatFactory.Mapping
 {
+    [DebuggerDisplay("ConstraintName={ConstraintName}, Key={Key}")]
     public class ForeignKey : IConstraint
     {
         public ForeignKey()

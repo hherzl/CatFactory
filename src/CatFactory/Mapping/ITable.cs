@@ -10,5 +10,9 @@ namespace CatFactory.Mapping
         PrimaryKey PrimaryKey { get; set; }
 
         Identity Identity { get; set; }
+
+        List<ForeignKey> ForeignKeys { get; set; }
+
+        List<Unique> Uniques { get; set; }
     }
 }

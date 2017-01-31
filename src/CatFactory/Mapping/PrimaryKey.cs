@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace CatFactory.Mapping
 {
+    [DebuggerDisplay("ConstraintName={ConstraintName}, Key={Key}")]
     public class PrimaryKey : IConstraint
     {
         public PrimaryKey()
@@ -11,11 +13,23 @@ namespace CatFactory.Mapping
 
         public PrimaryKey(params String[] key)
         {
-            Key = new List<String>(key);
+            Key.AddRange(key);
         }
 
         public String ConstraintName { get; set; }
 
-        public List<String> Key { get; set; }
+        private List<String> m_key;
+
+        public List<String> Key
+        {
+            get
+            {
+                return m_key ?? (m_key = new List<String>());
+            }
+            set
+            {
+                m_key = value;
+            }
+        }
     }
 }

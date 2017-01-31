@@ -5,12 +5,10 @@ namespace CatFactory.OOP
 {
     public interface IClassDefinition : IObjectDefinition
     {
-        List<MetadataAttribute> Attributes { get; set; }
+        String BaseClass { get; set; }
+
+        List<FieldDefinition> Fields { get; set; }
 
         List<ClassConstructorDefinition> Constructors { get; set; }
-
-        List<EventDefinition> Events { get; set; }
-
-        Boolean IsPartial { get; set; }
     }
 }

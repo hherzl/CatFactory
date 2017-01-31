@@ -43,6 +43,10 @@ namespace CatFactory.OOP
             }
         }
 
+        public Boolean IsVirtual { get; set; }
+
+        public Boolean IsOverride { get; set; }
+
         public Boolean IsAutomatic { get; set; }
 
         public Boolean IsReadOnly { get; set; }

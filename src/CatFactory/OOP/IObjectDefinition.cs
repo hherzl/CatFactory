@@ -11,20 +11,22 @@ namespace CatFactory.OOP
 
         Documentation Documentation { get; set; }
 
+        List<MetadataAttribute> Attributes { get; set; }
+
         AccessModifier AccessModifier { get; set; }
+
+        Boolean IsPartial { get; set; }
 
         String Name { get; set; }
 
-        String BaseClass { get; set; }
-
         List<String> Implements { get; set; }
 
-        List<FieldDefinition> Fields { get; set; }
+        Boolean HasInheritance { get; }
+
+        List<EventDefinition> Events { get; set; }
 
         List<PropertyDefinition> Properties { get; set; }
 
         List<MethodDefinition> Methods { get; set; }
-
-        Boolean HasInheritance { get; }
     }
 }

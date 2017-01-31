@@ -39,6 +39,8 @@ namespace CatFactory.OOP
 
         public AccessModifier AccessModifier { get; set; }
 
+        public Boolean IsPartial { get; set; }
+
         public String Name { get; set; }
 
         public String BaseClass { get; set; }
@@ -53,6 +55,7 @@ namespace CatFactory.OOP
 
         private List<String> m_implements;
         private List<MetadataAttribute> m_attributes;
+        private List<EventDefinition> m_events;
         private List<FieldDefinition> m_fields;
         private List<PropertyDefinition> m_properties;
         private List<MethodDefinition> m_methods;
@@ -78,6 +81,18 @@ namespace CatFactory.OOP
             set
             {
                 m_attributes = value;
+            }
+        }
+
+        public List<EventDefinition> Events
+        {
+            get
+            {
+                return m_events ?? (m_events = new List<EventDefinition>());
+            }
+            set
+            {
+                m_events = value;
             }
         }
 
