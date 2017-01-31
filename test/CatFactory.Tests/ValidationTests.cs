@@ -9,7 +9,7 @@ namespace CatFactory.Tests
         [Fact]
         public void ValidateStoreDatabase()
         {
-            var db = Mocks.StoreDatabase;
+            var db = StoreDatabase.Mock;
 
             var dbValidator = new DatabaseValidator();
 
@@ -21,7 +21,7 @@ namespace CatFactory.Tests
         [Fact]
         public void ValidateSupermarketDatabase()
         {
-            var db = Mocks.SupermarketDatabase;
+            var db = SupermarketDatabase.Mock;
 
             var dbValidator = new DatabaseValidator();
 

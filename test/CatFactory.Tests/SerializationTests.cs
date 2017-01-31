@@ -7,7 +7,7 @@ namespace CatFactory.Tests
         [Fact]
         public void SerializeMockDatabaseTest()
         {
-            var db = Mocks.StoreDatabase;
+            var db = StoreDatabase.Mock;
 
             var serializer = new Serializer() as ISerializer;
 

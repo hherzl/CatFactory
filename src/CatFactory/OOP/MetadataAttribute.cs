@@ -5,6 +5,10 @@ namespace CatFactory.OOP
 {
     public class MetadataAttribute
     {
+        public MetadataAttribute()
+        {
+        }
+
         public MetadataAttribute(String name, params String[] arguments)
         {
             Name = name;
@@ -14,7 +18,7 @@ namespace CatFactory.OOP
         public String Name { get; set; }
 
         private List<String> m_arguments;
-        private List<String> m_sets;
+        private List<MetadataAttributeSet> m_sets;
 
         public List<String> Arguments
         {
@@ -28,11 +32,11 @@ namespace CatFactory.OOP
             }
         }
 
-        public List<String> Sets
+        public List<MetadataAttributeSet> Sets
         {
             get
             {
-                return m_sets ?? (m_sets = new List<String>());
+                return m_sets ?? (m_sets = new List<MetadataAttributeSet>());
             }
             set
             {

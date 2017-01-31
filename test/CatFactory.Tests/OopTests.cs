@@ -10,7 +10,10 @@ namespace Tests
         [Fact]
         public void TestClassDefinition()
         {
-            var classDefinition = new ClassDefinition();
+            var classDefinition = new ClassDefinition
+            {
+                Name = "Product"
+            };
 
             classDefinition.Documentation.Summary = "Represents a simple class definition";
 
@@ -22,7 +25,18 @@ namespace Tests
         [Fact]
         public void TestEntityWithDataAnnotationsDefinition()
         {
-            var classDefinition = new ClassDefinition();
+            var classDefinition = new ClassDefinition
+            {
+                Name = "Person"
+            };
+
+            classDefinition.Attributes.Add(new MetadataAttribute("Table", "\"Person\"")
+            {
+                Sets = new List<MetadataAttributeSet>()
+                {
+                    new MetadataAttributeSet("Schema", "\"HumanResources\"")
+                }
+            });
 
             classDefinition.Properties.Add(new PropertyDefinition("Int32?", "ID", new MetadataAttribute("Key")));
             classDefinition.Properties.Add(new PropertyDefinition("String", "FirstName", new MetadataAttribute("Required"), new MetadataAttribute("StringLength", "25")));
@@ -35,7 +49,10 @@ namespace Tests
         [Fact]
         public void TestViewModelClassDefinition()
         {
-            var classDefinition = new ClassDefinition();
+            var classDefinition = new ClassDefinition
+            {
+                Name = "PersonViewModel"
+            };
 
             classDefinition.Namespaces.Add("System.ComponentModel");
 
@@ -43,7 +60,7 @@ namespace Tests
 
             classDefinition.Events.Add(new EventDefinition("PropertyChangedEventHandler", "PropertyChanged"));
 
-            classDefinition.Fields.Add(new FieldDefinition("String", "m_firstName"));
+            classDefinition.Fields.Add(new FieldDefinition(AccessModifier.Private, "String", "m_firstName"));
 
             classDefinition.Properties.Add(new PropertyDefinition("String", "FirstName")
             {

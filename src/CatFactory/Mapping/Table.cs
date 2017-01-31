@@ -40,6 +40,7 @@ namespace CatFactory.Mapping
 
         private List<Unique> m_uniques;
         private List<ForeignKey> m_foreignKeys;
+        private List<String> m_childs;
 
         public List<ForeignKey> ForeignKeys
         {
@@ -62,6 +63,18 @@ namespace CatFactory.Mapping
             set
             {
                 m_uniques = value;
+            }
+        }
+
+        public List<String> Childs
+        {
+            get
+            {
+                return m_childs ?? (m_childs = new List<String>());
+            }
+            set
+            {
+                m_childs = value;
             }
         }
     }

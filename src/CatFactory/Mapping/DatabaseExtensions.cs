@@ -1,4 +1,7 @@
-﻿namespace CatFactory.Mapping
+﻿using System;
+using System.Linq;
+
+namespace CatFactory.Mapping
 {
     public static class DatabaseExtensions
     {
@@ -13,10 +16,15 @@
             }
         }
 
-        public static void AddColumnForAllTables(this Database database, Column column)
+        public static void AddColumnForAllTables(this Database database, Column column, params String[] exclusions)
         {
             foreach (var table in database.Tables)
             {
+                if (exclusions != null && exclusions.Contains(table.FullName))
+                {
+                    continue;
+                }
+
                 if (!table.Columns.Contains(column))
                 {
                     table.Columns.Add(column);
@@ -30,22 +38,31 @@
             {
                 foreach (var column in table.Columns)
                 {
-                    if (!table.PrimaryKey.Key.Contains(column.Name))
+                    if (table.PrimaryKey != null && table.PrimaryKey.Key.Count == 1 && table.PrimaryKey.Key.Contains(column.Name))
                     {
-                        foreach (var parentTable in db.Tables)
+                        continue;
+                    }
+
+                    foreach (var parentTable in db.Tables)
+                    {
+                        if (table.FullName == parentTable.FullName)
                         {
-                            if (table.FullName == parentTable.FullName)
+                            continue;
+                        }
+
+                        if (parentTable.PrimaryKey != null && parentTable.PrimaryKey.Key.Contains(column.Name))
+                        {
+                            table.ForeignKeys.Add(new ForeignKey(column.Name)
                             {
-                                continue;
+                                ConstraintName = String.Format("FK_{0}_{1}_{2}", table.Name, column.Name, parentTable.Name),
+                                References = parentTable.FullName
+                            });
+
+                            if (!parentTable.Childs.Contains(table.FullName))
+                            {
+                                parentTable.Childs.Add(table.FullName);
                             }
 
-                            if (parentTable.PrimaryKey != null && parentTable.PrimaryKey.Key.Contains(column.Name))
-                            {
-                                table.ForeignKeys.Add(new ForeignKey(column.Name)
-                                {
-                                    References = parentTable.FullName
-                                });
-                            }
                         }
                     }
                 }
