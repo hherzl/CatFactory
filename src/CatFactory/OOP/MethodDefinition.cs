@@ -19,12 +19,27 @@ namespace CatFactory.OOP
             Parameters.AddRange(parameters);
         }
 
+        public MethodDefinition(String type, String name, params CodeLine[] lines)
+        {
+            Type = type;
+            Name = name;
+            Lines.AddRange(lines);
+        }
+
         public MethodDefinition(AccessModifier accessModifier, String type, String name, params ParameterDefinition[] parameters)
         {
             AccessModifier = accessModifier;
             Type = type;
             Name = name;
             Parameters.AddRange(parameters);
+        }
+
+        public MethodDefinition(AccessModifier accessModifier, String type, String name, params CodeLine[] lines)
+        {
+            AccessModifier = accessModifier;
+            Type = type;
+            Name = name;
+            Lines.AddRange(lines);
         }
 
         private Documentation m_documentation;

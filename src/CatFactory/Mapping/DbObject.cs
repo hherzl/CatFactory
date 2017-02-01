@@ -4,7 +4,7 @@ using System.Diagnostics;
 namespace CatFactory.Mapping
 {
     [DebuggerDisplay("Type={Type}, FullName={FullName}")]
-    public class DbObject
+    public class DbObject : IDbObject
     {
         public DbObject()
         {

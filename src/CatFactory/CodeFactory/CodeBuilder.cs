@@ -17,11 +17,14 @@ namespace CatFactory.CodeFactory
             return String.Concat(Enumerable.Repeat(Tab, count));
         }
 
-        public virtual String FileName => String.Empty;
+        public virtual String FileName
+            => String.Empty;
 
-        public virtual String FileExtension => String.Empty;
+        public virtual String FileExtension
+            => String.Empty;
 
-        public virtual String FullFileName => String.Format("{0}.{1}", FileName, FileExtension);
+        public virtual String FullFileName
+            => String.Format("{0}.{1}", FileName, FileExtension);
 
         public INamingConvention NamingConvention { get; set; }
 
