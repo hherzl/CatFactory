@@ -6,26 +6,19 @@ namespace CatFactory.OOP
 {
     public class ClassConstructorDefinition
     {
+        public ClassConstructorDefinition()
+        {
+        }
+
         public ClassConstructorDefinition(params ParameterDefinition[] parameters)
         {
             Parameters.AddRange(parameters);
-        }
-
-        public ClassConstructorDefinition(params CodeLine[] lines)
-        {
-            Lines.AddRange(lines);
         }
 
         public ClassConstructorDefinition(AccessModifier accessModifier, params ParameterDefinition[] parameters)
         {
             AccessModifier = accessModifier;
             Parameters.AddRange(parameters);
-        }
-
-        public ClassConstructorDefinition(AccessModifier accessModifier, params CodeLine[] lines)
-        {
-            AccessModifier = accessModifier;
-            Lines.AddRange(lines);
         }
 
         private Documentation m_documentation;

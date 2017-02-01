@@ -19,27 +19,12 @@ namespace CatFactory.OOP
             Parameters.AddRange(parameters);
         }
 
-        public MethodDefinition(String type, String name, params CodeLine[] lines)
-        {
-            Type = type;
-            Name = name;
-            Lines.AddRange(lines);
-        }
-
         public MethodDefinition(AccessModifier accessModifier, String type, String name, params ParameterDefinition[] parameters)
         {
             AccessModifier = accessModifier;
             Type = type;
             Name = name;
             Parameters.AddRange(parameters);
-        }
-
-        public MethodDefinition(AccessModifier accessModifier, String type, String name, params CodeLine[] lines)
-        {
-            AccessModifier = accessModifier;
-            Type = type;
-            Name = name;
-            Lines.AddRange(lines);
         }
 
         private Documentation m_documentation;
@@ -89,6 +74,8 @@ namespace CatFactory.OOP
         public String GenericType { get; set; }
 
         private List<ParameterDefinition> m_parameters;
+        private List<String> m_whereConstraints;
+        private List<CodeLine> m_lines;
 
         public List<ParameterDefinition> Parameters
         {
@@ -101,9 +88,6 @@ namespace CatFactory.OOP
                 m_parameters = value;
             }
         }
-
-        private List<String> m_whereConstraints;
-        private List<CodeLine> m_lines;
 
         public List<String> WhereConstraints
         {
