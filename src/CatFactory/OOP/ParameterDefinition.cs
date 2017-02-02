@@ -4,39 +4,43 @@ using System.Diagnostics;
 
 namespace CatFactory.OOP
 {
-    [DebuggerDisplay("Type={Type}, Name={Name}")]
+    [DebuggerDisplay("Type={Type}, Name={Name}, DefaultValue={DefaultValue}")]
     public class ParameterDefinition
     {
         public ParameterDefinition()
         {
         }
 
-        public ParameterDefinition(String type, String name)
+        public ParameterDefinition(String type, String name, params MetadataAttribute[] attributes)
         {
             Type = type;
             Name = name;
+            Attributes.AddRange(attributes);
         }
 
-        public ParameterDefinition(AccessModifier accessModifier, String type, String name)
+        public ParameterDefinition(AccessModifier accessModifier, String type, String name, params MetadataAttribute[] attributes)
         {
             AccessModifier = accessModifier;
             Type = type;
             Name = name;
+            Attributes.AddRange(attributes);
         }
 
-        public ParameterDefinition(String type, String name, String defaultValue)
+        public ParameterDefinition(String type, String name, String defaultValue, params MetadataAttribute[] attributes)
         {
             Type = type;
             Name = name;
             DefaultValue = defaultValue;
+            Attributes.AddRange(attributes);
         }
 
-        public ParameterDefinition(AccessModifier accessModifier, String type, String name, String defaultValue)
+        public ParameterDefinition(AccessModifier accessModifier, String type, String name, String defaultValue, params MetadataAttribute[] attributes)
         {
             AccessModifier = accessModifier;
             Type = type;
             Name = name;
             DefaultValue = defaultValue;
+            Attributes.AddRange(attributes);
         }
 
         private Documentation m_documentation;

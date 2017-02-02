@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace CatFactory.OOP
 {
-    [DebuggerDisplay("AccessModifier={AccessModifier}, Type={Type}, Name={Name}")]
+    [DebuggerDisplay("IsReadOnly = {IsReadOnly}, AccessModifier={AccessModifier}, Type={Type}, Name={Name}")]
     public class FieldDefinition
     {
         public FieldDefinition()
@@ -52,6 +52,8 @@ namespace CatFactory.OOP
                 m_attributes = value;
             }
         }
+
+        public Boolean IsReadOnly { get; set; }
 
         public AccessModifier AccessModifier { get; set; }
 
