@@ -33,5 +33,7 @@ namespace CatFactory.Mapping
         }
 
         public String References { get; set; }
+
+        public String Child { get; set; }
     }
 }

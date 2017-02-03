@@ -55,7 +55,8 @@ namespace CatFactory.Mapping
                             table.ForeignKeys.Add(new ForeignKey(column.Name)
                             {
                                 ConstraintName = String.Format("FK_{0}_{1}_{2}", table.Name, column.Name, parentTable.Name),
-                                References = parentTable.FullName
+                                References = parentTable.FullName,
+                                Child = table.FullName
                             });
 
                             if (!parentTable.Childs.Contains(table.FullName))
