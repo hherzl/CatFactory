@@ -7,6 +7,12 @@ namespace CatFactory.OOP
     [DebuggerDisplay("Namespace={Namespace}, Name={Name}")]
     public class ObjectDefinition : IObjectDefinition
     {
+        public ObjectDefinition()
+        {
+        }
+
+        public IDefinitionValidator DefinitionValidator { get; protected set; }
+
         private List<String> m_namespaces;
 
         public List<String> Namespaces
@@ -56,7 +62,6 @@ namespace CatFactory.OOP
         private List<String> m_implements;
         private List<MetadataAttribute> m_attributes;
         private List<EventDefinition> m_events;
-        private List<FieldDefinition> m_fields;
         private List<PropertyDefinition> m_properties;
         private List<MethodDefinition> m_methods;
 
@@ -93,18 +98,6 @@ namespace CatFactory.OOP
             set
             {
                 m_events = value;
-            }
-        }
-
-        public List<FieldDefinition> Fields
-        {
-            get
-            {
-                return m_fields ?? (m_fields = new List<FieldDefinition>());
-            }
-            set
-            {
-                m_fields = value;
             }
         }
 

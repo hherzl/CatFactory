@@ -4,7 +4,7 @@ using System.Diagnostics;
 namespace CatFactory.OOP
 {
     [DebuggerDisplay("AccessModifier={AccessModifier}, Type={Type}, Name={Name}")]
-    public class EventDefinition
+    public class EventDefinition : IMemberDefinition
     {
         public EventDefinition()
         {

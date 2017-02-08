@@ -2,13 +2,13 @@
 
 namespace CatFactory.CodeFactory
 {
-    public interface INamingConvention
+    public interface ICodeNamingConvention : INamingConvention
     {
-        String ValidName(String name);
-
         String GetInterfaceName(String value);
 
         String GetClassName(String value);
+
+        String GetConstantName(String value);
 
         String GetFieldName(String value);
 

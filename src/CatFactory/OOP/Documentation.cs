@@ -8,6 +8,11 @@ namespace CatFactory.OOP
         {
         }
 
+        public Documentation(String summary)
+        {
+            Summary = summary;
+        }
+
         public String Summary { get; set; }
 
         public String Remarks { get; set; }

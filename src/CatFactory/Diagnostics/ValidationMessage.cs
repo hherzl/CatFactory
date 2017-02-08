@@ -1,6 +1,7 @@
 ﻿using System;
+using Microsoft.Extensions.Logging;
 
-namespace CatFactory.Mapping
+namespace CatFactory.Diagnostics
 {
     public class ValidationMessage
     {
@@ -8,13 +9,13 @@ namespace CatFactory.Mapping
         {
         }
 
-        public ValidationMessage(MessageType messageType, String message)
+        public ValidationMessage(LogLevel logLevel, String message)
         {
-            MessageType = messageType;
+            LogLevel = logLevel;
             Message = message;
         }
 
-        public MessageType MessageType { get; set; }
+        public LogLevel LogLevel { get; set; }
 
         public String Message { get; set; }
     }

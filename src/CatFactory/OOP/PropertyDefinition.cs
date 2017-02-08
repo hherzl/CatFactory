@@ -6,7 +6,7 @@ using CatFactory.CodeFactory;
 namespace CatFactory.OOP
 {
     [DebuggerDisplay("AccessModifier={AccessModifier}, Type={Type}, Name={Name}")]
-    public class PropertyDefinition
+    public class PropertyDefinition : IMemberDefinition
     {
         public PropertyDefinition()
         {
@@ -71,14 +71,14 @@ namespace CatFactory.OOP
 
         public String Name { get; set; }
 
-        private List<CodeLine> m_getBody;
-        private List<CodeLine> m_setBody;
+        private List<ILine> m_getBody;
+        private List<ILine> m_setBody;
 
-        public List<CodeLine> GetBody
+        public List<ILine> GetBody
         {
             get
             {
-                return m_getBody ?? (m_getBody = new List<CodeLine>());
+                return m_getBody ?? (m_getBody = new List<ILine>());
             }
             set
             {
@@ -86,11 +86,11 @@ namespace CatFactory.OOP
             }
         }
 
-        public List<CodeLine> SetBody
+        public List<ILine> SetBody
         {
             get
             {
-                return m_setBody ?? (m_setBody = new List<CodeLine>());
+                return m_setBody ?? (m_setBody = new List<ILine>());
             }
             set
             {

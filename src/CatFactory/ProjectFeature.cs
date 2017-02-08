@@ -12,19 +12,31 @@ namespace CatFactory
         {
         }
 
-        public ProjectFeature(String name, List<DbObject> dbObjects, Database database)
+        public ProjectFeature(String name, IEnumerable<DbObject> dbObjects, Database database)
         {
             Name = name;
-            DbObjects = dbObjects;
+            DbObjects.AddRange(dbObjects);
             Database = database;
         }
 
         public String Name { get; set; }
 
-        public List<DbObject> DbObjects { get; set; }
+        public String Description { get; set; }
 
         public Database Database { get; set; }
 
-        public String Description { get; set; }
+        private List<DbObject> m_dbObjects;
+
+        public List<DbObject> DbObjects
+        {
+            get
+            {
+                return m_dbObjects ?? (m_dbObjects = new List<DbObject>());
+            }
+            set
+            {
+                m_dbObjects = value;
+            }
+        }
     }
 }

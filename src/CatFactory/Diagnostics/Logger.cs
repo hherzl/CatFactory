@@ -1,70 +1,71 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Diagnostics;
+//using Microsoft.Extensions.Logging;
 
-namespace CatFactory.Diagnostics
-{
-    public class Logger
-    {
-        private static Logger m_detafult;
+//namespace CatFactory.Diagnostics
+//{
+//    public class Logger
+//    {
+//        private static Logger m_detafult;
 
-        public static Logger Default
-        {
-            get
-            {
-                return m_detafult ?? (m_detafult = new Logger());
-            }
-        }
+//        public static Logger Default
+//        {
+//            get
+//            {
+//                return m_detafult ?? (m_detafult = new Logger());
+//            }
+//        }
 
-        public Logger()
-        {
-        }
+//        public Logger()
+//        {
+//        }
 
-        public Boolean LogToConsole { get; set; }
+//        public Boolean LogToConsole { get; set; }
 
-        public Boolean AppendToOutputFile { get; set; }
+//        public Boolean AppendToOutputFile { get; set; }
 
-        public String OutputFileName { get; set; }
+//        public String OutputFileName { get; set; }
 
-        private List<LogEntry> m_stack;
+//        private List<LogEntry> m_stack;
 
-        public List<LogEntry> Stack
-        {
-            get
-            {
-                return m_stack ?? (m_stack = new List<LogEntry>());
-            }
-        }
+//        public List<LogEntry> Stack
+//        {
+//            get
+//            {
+//                return m_stack ?? (m_stack = new List<LogEntry>());
+//            }
+//        }
 
-        public void Log(String message, params Object[] values)
-        {
-            var entry = new LogEntry
-            {
-                EntryType = MessageType.Information,
-                Message = String.Format("{0} : {1}", DateTime.Now, String.Format(message, values))
-            };
+//        public void Log(String message, params Object[] values)
+//        {
+//            var entry = new LogEntry
+//            {
+//                LogLevel = LogLevel.Information,
+//                Message = String.Format("{0} : {1}", DateTime.Now, String.Format(message, values))
+//            };
 
-            Stack.Add(entry);
+//            Stack.Add(entry);
 
-            if (Debugger.IsAttached)
-            {
-                Debug.WriteLine(entry);
-            }
+//            if (Debugger.IsAttached)
+//            {
+//                Debug.WriteLine(entry);
+//            }
 
-            if (LogToConsole)
-            {
-                Console.WriteLine(entry);
-            }
+//            if (LogToConsole)
+//            {
+//                Console.WriteLine(entry);
+//            }
 
-            if (AppendToOutputFile)
-            {
-                TextFileHelper.AppendLine(OutputFileName, entry.Message);
-            }
-        }
+//            if (AppendToOutputFile)
+//            {
+//                TextFileHelper.AppendLine(OutputFileName, entry.Message);
+//            }
+//        }
 
-        public void ClearFile()
-        {
-            TextFileHelper.Clear(OutputFileName);
-        }
-    }
-}
+//        public void ClearFile()
+//        {
+//            TextFileHelper.Clear(OutputFileName);
+//        }
+//    }
+//}

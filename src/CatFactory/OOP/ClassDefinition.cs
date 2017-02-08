@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace CatFactory.OOP
 {
-    [DebuggerDisplay("Namespace={Namespace}, Name={Name}, Properties={Properties.Count}")]
+    [DebuggerDisplay("AccessModifier={AccessModifier}, Type={Type}, Name={Name}, Value={Value}")]
     public class ClassDefinition : ObjectDefinition, IClassDefinition
     {
         public ClassDefinition()
@@ -13,7 +13,21 @@ namespace CatFactory.OOP
 
         public Boolean IsStatic { get; set; }
 
+        private List<ConstantDefinition> m_constants;
         private List<ClassConstructorDefinition> m_constructors;
+        private List<FieldDefinition> m_fields;
+
+        public List<ConstantDefinition> Constants
+        {
+            get
+            {
+                return m_constants ?? (m_constants = new List<ConstantDefinition>());
+            }
+            set
+            {
+                m_constants = value;
+            }
+        }
 
         public List<ClassConstructorDefinition> Constructors
         {
@@ -24,6 +38,18 @@ namespace CatFactory.OOP
             set
             {
                 m_constructors = value;
+            }
+        }
+
+        public List<FieldDefinition> Fields
+        {
+            get
+            {
+                return m_fields ?? (m_fields = new List<FieldDefinition>());
+            }
+            set
+            {
+                m_fields = value;
             }
         }
     }

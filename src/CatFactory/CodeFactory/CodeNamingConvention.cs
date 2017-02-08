@@ -3,7 +3,7 @@ using System.Text;
 
 namespace CatFactory.CodeFactory
 {
-    public class NamingConvention
+    public static class CodeNamingConvention
     {
         private static Boolean IsFullUpper(String s)
         {

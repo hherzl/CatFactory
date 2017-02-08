@@ -9,5 +9,7 @@ namespace CatFactory.Mapping
         String Name { get; set; }
 
         String FullName { get; }
+
+        String Type { get; set; }
     }
 }

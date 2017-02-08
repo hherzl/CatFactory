@@ -6,7 +6,7 @@ using CatFactory.CodeFactory;
 namespace CatFactory.OOP
 {
     [DebuggerDisplay("AccessModifier={AccessModifier}, Type={Type}, Name={Name}, Parameters={Parameters.Count}")]
-    public class MethodDefinition
+    public class MethodDefinition : IMemberDefinition
     {
         public MethodDefinition()
         {
@@ -73,9 +73,11 @@ namespace CatFactory.OOP
 
         public String GenericType { get; set; }
 
+        public Boolean IsExtension { get; set; }
+
         private List<ParameterDefinition> m_parameters;
         private List<String> m_whereConstraints;
-        private List<CodeLine> m_lines;
+        private List<ILine> m_lines;
 
         public List<ParameterDefinition> Parameters
         {
@@ -101,11 +103,11 @@ namespace CatFactory.OOP
             }
         }
 
-        public List<CodeLine> Lines
+        public List<ILine> Lines
         {
             get
             {
-                return m_lines ?? (m_lines = new List<CodeLine>());
+                return m_lines ?? (m_lines = new List<ILine>());
             }
             set
             {

@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-alpha-build27",
+  "version": "1.0.0-alpha-build28",
   "authors": [
     "C. Herzl"
   ],
@@ -7,7 +7,8 @@
   "dependencies": {
     "NETStandard.Library": "1.6.0",
     "System.Reflection.TypeExtensions": "4.3.0",
-    "System.Xml.XmlSerializer": "4.0.11"
+    "System.Xml.XmlSerializer": "4.0.11",
+    "Microsoft.Extensions.Logging.Abstractions": "1.1.0"
   },
 
   "frameworks": {

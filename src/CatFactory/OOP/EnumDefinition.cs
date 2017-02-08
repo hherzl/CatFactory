@@ -1,27 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace CatFactory.OOP
 {
-    [DebuggerDisplay("IsReadOnly = {IsReadOnly}, AccessModifier={AccessModifier}, Type={Type}, Name={Name}")]
-    public class FieldDefinition : IMemberDefinition
+    public class EnumDefinition
     {
-        public FieldDefinition()
+        public EnumDefinition()
         {
         }
 
-        public FieldDefinition(String type, String name, params MetadataAttribute[] attribs)
+        public EnumDefinition(String name, params MetadataAttribute[] attribs)
         {
-            Type = type;
             Name = name;
             Attributes.AddRange(attribs);
         }
 
-        public FieldDefinition(AccessModifier accessModifier, String type, String name, params MetadataAttribute[] attribs)
+        public EnumDefinition(AccessModifier accessModifier, String name, params MetadataAttribute[] attribs)
         {
             AccessModifier = accessModifier;
-            Type = type;
             Name = name;
             Attributes.AddRange(attribs);
         }
@@ -53,16 +49,22 @@ namespace CatFactory.OOP
             }
         }
 
-        public Boolean IsStatic { get; set; }
-
-        public Boolean IsReadOnly { get; set; }
-
         public AccessModifier AccessModifier { get; set; }
-
-        public String Type { get; set; }
 
         public String Name { get; set; }
 
-        public String Value { get; set; }
+        private List<INameValue> m_sets;
+
+        public List<INameValue> Sets
+        {
+            get
+            {
+                return m_sets ?? (m_sets = new List<INameValue>());
+            }
+            set
+            {
+                m_sets = value;
+            }
+        }
     }
 }

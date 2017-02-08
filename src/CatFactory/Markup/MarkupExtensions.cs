@@ -30,30 +30,25 @@ namespace CatFactory.Markup
                 sb.AppendFormat("<{0} {1}>", name, attributes.GetAttributes());
             }
         }
-
-        public static void OpenTag(this StringBuilder sb, String ns, String name, Object attributes = null)
-        {
-            if (attributes == null)
-            {
-                sb.AppendFormat("<{0}:{1}>", ns, name);
-            }
-            else
-            {
-                sb.AppendFormat("<{0}:{1} {2}>", ns, name, attributes.GetAttributes());
-            }
-        }
-
+        
         public static void CloseTag(this StringBuilder sb, String name)
         {
             sb.AppendFormat("</{0}>", name);
         }
 
-        public static void CloseTag(this StringBuilder sb, String ns, String name)
+        public static void AppendTag(this StringBuilder sb, String name, Object attributes = null)
         {
-            sb.AppendFormat("</{0}:{1}>", ns, name);
+            if (attributes == null)
+            {
+                sb.AppendFormat("<{0}></{0}>", name);
+            }
+            else
+            {
+                sb.AppendFormat("<{0} {1}></{0}>", name, attributes.GetAttributes());
+            }
         }
 
-        public static void GetTag(this StringBuilder sb, String name, Object content, Object attributes = null)
+        public static void AppendTag(this StringBuilder sb, String name, Object content, Object attributes = null)
         {
             if (attributes == null)
             {
@@ -63,23 +58,6 @@ namespace CatFactory.Markup
             {
                 sb.AppendFormat("<{0} {1}>{2}</{0}>", name, attributes.GetAttributes(), content);
             }
-        }
-
-        public static void GetTag(this StringBuilder sb, String ns, String name, Object content, Object attributes = null)
-        {
-            if (attributes == null)
-            {
-                sb.AppendFormat("<{0}:{1}>{2}</{0}:{1}>", ns, name, content);
-            }
-            else
-            {
-                sb.AppendFormat("<{0}:{1}>{2}</{0}:{1}>", ns, name, attributes.GetAttributes(), content);
-            }
-        }
-
-        public static void GetTag(this StringBuilder sb, String name)
-        {
-            sb.AppendFormat("<{0} />", name);
         }
     }
 }

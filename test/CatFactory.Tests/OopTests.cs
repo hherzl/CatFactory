@@ -64,11 +64,11 @@ namespace Tests
 
             classDefinition.Properties.Add(new PropertyDefinition("String", "FirstName")
             {
-                GetBody = new List<CodeLine>()
+                GetBody = new List<ILine>()
                 {
                     new CodeLine("return m_firstName;")
                 },
-                SetBody = new List<CodeLine>()
+                SetBody = new List<ILine>()
                 {
                     new CodeLine("if (m_firstName != value)"),
                     new CodeLine("{{"),

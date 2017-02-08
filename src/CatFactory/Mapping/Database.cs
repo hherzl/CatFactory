@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Xml.Serialization;
 
 namespace CatFactory.Mapping
 {
@@ -10,15 +11,29 @@ namespace CatFactory.Mapping
         public Database()
         {
         }
-        
+
         public String Name { get; set; }
 
+        private IDatabaseNamingConvention m_namingConvention;
         private List<DbObject> m_dbObjects;
         private List<Table> m_tables;
         private List<View> m_views;
         private List<StoredProcedure> m_storedProcedures;
         private List<ScalarFunction> m_scalarFunctions;
         private List<TableFunction> m_tableFunctions;
+
+        [XmlIgnore]
+        public IDatabaseNamingConvention NamingConvention
+        {
+            get
+            {
+                return m_namingConvention ?? (m_namingConvention = new DatabaseNamingConvention());
+            }
+            set
+            {
+                m_namingConvention = value;
+            }
+        }
 
         public List<DbObject> DbObjects
         {

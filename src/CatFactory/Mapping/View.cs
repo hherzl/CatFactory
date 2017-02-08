@@ -18,6 +18,8 @@ namespace CatFactory.Mapping
         public String FullName
             => String.IsNullOrEmpty(Schema) ? Name : String.Format("{0}.{1}", Schema, Name);
 
+        public String Type { get; set; }
+
         public String Description { get; set; }
 
         private List<Column> m_columns;

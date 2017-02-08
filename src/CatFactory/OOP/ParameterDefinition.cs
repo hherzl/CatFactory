@@ -5,7 +5,7 @@ using System.Diagnostics;
 namespace CatFactory.OOP
 {
     [DebuggerDisplay("Type={Type}, Name={Name}, DefaultValue={DefaultValue}")]
-    public class ParameterDefinition
+    public class ParameterDefinition : IMemberDefinition
     {
         public ParameterDefinition()
         {
