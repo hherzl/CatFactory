@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CatFactory.Mapping
@@ -16,5 +17,8 @@ namespace CatFactory.Mapping
 
         public static IEnumerable<Column> GetUpdateColumns(this Table table, Project project)
             => table.GetColumnsWithOutKey().Where(item => !project.UpdateExclusions.Contains(item.Name));
+
+        public static Boolean IsPrimaryKeyGuid(this Table table)
+            => table.PrimaryKey != null && table.PrimaryKey.Key.Count == 1 && table.Columns[0].Type == "uniqueidentifier" ? true : false;
     }
 }

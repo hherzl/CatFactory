@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Text;
 
-namespace CatFactory.CodeFactory
+namespace CatFactory
 {
-    public static class CodeNamingConvention
+    public static class NamingConvention
     {
         private static Boolean IsFullUpper(String s)
         {

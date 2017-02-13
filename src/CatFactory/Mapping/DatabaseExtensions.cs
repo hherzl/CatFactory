@@ -16,7 +16,7 @@ namespace CatFactory.Mapping
             }
         }
 
-        public static void AddColumnForAllTables(this Database database, Column column, params String[] exclusions)
+        public static void AddColumnForAllTables(this Database database, Column[] columns, params String[] exclusions)
         {
             foreach (var table in database.Tables)
             {
@@ -25,11 +25,19 @@ namespace CatFactory.Mapping
                     continue;
                 }
 
-                if (!table.Columns.Contains(column))
+                foreach (var column in columns)
                 {
-                    table.Columns.Add(column);
+                    if (!table.Columns.Contains(column))
+                    {
+                        table.Columns.Add(column);
+                    }
                 }
             }
+        }
+
+        public static void AddColumnForAllTables(this Database database, Column column, params String[] exclusions)
+        {
+            AddColumnForAllTables(database, new Column[] { column }, exclusions);
         }
 
         public static void LinkTables(this Database db)
