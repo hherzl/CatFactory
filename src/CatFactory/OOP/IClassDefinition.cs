@@ -7,6 +7,8 @@ namespace CatFactory.OOP
     {
         String BaseClass { get; set; }
 
+        List<ConstantDefinition> Constants { get; set; }
+
         List<FieldDefinition> Fields { get; set; }
 
         List<ClassConstructorDefinition> Constructors { get; set; }
