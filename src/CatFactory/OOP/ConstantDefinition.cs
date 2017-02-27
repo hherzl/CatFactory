@@ -25,6 +25,20 @@ namespace CatFactory.OOP
             Value = value;
         }
 
+        private Documentation m_documentation;
+
+        public Documentation Documentation
+        {
+            get
+            {
+                return m_documentation ?? (m_documentation = new Documentation());
+            }
+            set
+            {
+                m_documentation = value;
+            }
+        }
+
         public AccessModifier AccessModifier { get; set; }
 
         public String Type { get; set; }

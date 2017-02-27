@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace CatFactory.OOP
 {
+    [DebuggerDisplay("AccessModifier={AccessModifier}, Name={Name}")]
     public class EnumDefinition
     {
         public EnumDefinition()

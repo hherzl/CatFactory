@@ -1,6 +1,6 @@
 ﻿namespace CatFactory.OOP
 {
-    public interface IInterfaceDefinition
+    public interface IInterfaceDefinition : IObjectDefinition
     {
 
     }
