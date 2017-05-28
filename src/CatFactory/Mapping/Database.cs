@@ -21,6 +21,7 @@ namespace CatFactory.Mapping
         private List<StoredProcedure> m_storedProcedures;
         private List<ScalarFunction> m_scalarFunctions;
         private List<TableFunction> m_tableFunctions;
+        private List<DbType> m_dbTypes;
 
         [XmlIgnore]
         public IDatabaseNamingConvention NamingConvention
@@ -104,6 +105,18 @@ namespace CatFactory.Mapping
             set
             {
                 m_tableFunctions = value;
+            }
+        }
+
+        public List<DbType> DbTypes
+        {
+            get
+            {
+                return m_dbTypes ?? (m_dbTypes = new List<DbType>());
+            }
+            set
+            {
+                m_dbTypes = value;
             }
         }
     }

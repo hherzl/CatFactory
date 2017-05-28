@@ -62,5 +62,29 @@ namespace CatFactory
                 .Select(item => new ProjectFeature(item, Database.DbObjects.Where(db => db.Schema == item).ToList(), Database))
                 .ToList();
         }
+
+        public virtual IDbObject FindObject(String fullName)
+        {
+            var dbObj = Database.DbObjects.FirstOrDefault(item => item.FullName == String.Format("{0}.{1}", Database.Name, fullName));
+
+            if (dbObj == null)
+            {
+                dbObj = Database.DbObjects.FirstOrDefault(item => item.FullName == fullName);
+            }
+
+            return dbObj;
+        }
+
+        public virtual ITable FindTable(String fullName)
+        {
+            var table = Database.Tables.FirstOrDefault(item => item.FullName == String.Format("{0}.{1}", Database.Name, fullName));
+
+            if (table == null)
+            {
+                table = Database.Tables.FirstOrDefault(item => item.FullName == fullName);
+            }
+
+            return table;
+        }
     }
 }
