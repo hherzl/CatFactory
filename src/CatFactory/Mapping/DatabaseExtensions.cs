@@ -79,7 +79,7 @@ namespace CatFactory.Mapping
                             table.ForeignKeys.Add(new ForeignKey(column.Name)
                             {
                                 ConstraintName = db.NamingConvention.GetForeignKeyConstraintName(table.Name, new String[] { column.Name }, parentTable.Name),
-                                References = parentTable.FullName,
+                                References = String.Format("{0}.{1}", db.Name, parentTable.FullName),
                                 Child = table.FullName
                             });
 
