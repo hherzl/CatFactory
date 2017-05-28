@@ -57,7 +57,7 @@ namespace CatFactory
                     }
                 }
             }
-            if (s.Contains("."))
+            else if (s.Contains("."))
             {
                 var pieces = s.Split('_');
 
