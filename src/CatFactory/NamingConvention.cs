@@ -57,6 +57,31 @@ namespace CatFactory
                     }
                 }
             }
+            if (s.Contains("."))
+            {
+                var pieces = s.Split('_');
+
+                for (var i = 0; i < pieces.Length; i++)
+                {
+                    var item = pieces[i];
+
+                    if (item.Length == 0)
+                    {
+                        continue;
+                    }
+
+                    if (IsFullUpper(item))
+                    {
+                        name.Append(item[0].ToString().ToUpper());
+                        name.Append(item.Substring(1).ToLower());
+                    }
+                    else
+                    {
+                        name.Append(item[0].ToString().ToUpper());
+                        name.Append(item.Substring(1));
+                    }
+                }
+            }
             else if (s.Contains(" "))
             {
                 var pieces = s.Split(' ');
@@ -110,7 +135,7 @@ namespace CatFactory
                 return s.ToLower();
             }
 
-            return String.Format("{0}{1}", s[0].ToString().ToLower(), s.Substring(1)).Replace("_", String.Empty);
+            return String.Format("{0}{1}", s[0].ToString().ToLower(), s.Substring(1)).Replace("_", String.Empty).Replace(".", String.Empty);
         }
     }
 }
