@@ -53,13 +53,13 @@ namespace CatFactory.OOP
 
         public String ParentInvoke { get; set; }
 
-        private List<CodeLine> m_lines;
+        private List<ILine> m_lines;
 
-        public List<CodeLine> Lines
+        public List<ILine> Lines
         {
             get
             {
-                return m_lines ?? (m_lines = new List<CodeLine>());
+                return m_lines ?? (m_lines = new List<ILine>());
             }
             set
             {

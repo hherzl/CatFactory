@@ -1,5 +1,12 @@
 {
-  "version": "1.0.0-alpha-build37",
+  "version": "1.0.0-alpha-build38",
+  "title": "CatFactory",
+  "description": "CatFactory Core",
+  "packOptions": {
+    "repository": {
+      "url": "https://github.com/hherzl/CatFactory"
+    }
+  },
   "authors": [
     "C. Herzl"
   ],
