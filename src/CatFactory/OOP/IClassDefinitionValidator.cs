@@ -1,9 +1,10 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using CatFactory.Diagnostics;
 
 namespace CatFactory.OOP
 {
-    public interface IClassDefinitionValidator
+    public interface IClassDefinitionValidator : IObjectDefinitionValidator
     {
-        Boolean Validate(ClassDefinition classDefinition);
+        IEnumerable<ValidationMessage> Validate(IClassDefinition classDefinition);
     }
 }

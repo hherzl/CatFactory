@@ -29,6 +29,8 @@ namespace CatFactory.OOP
             }
         }
 
+        public ClassConstructorDefinition StaticConstructor { get; set; }
+
         public List<ClassConstructorDefinition> Constructors
         {
             get

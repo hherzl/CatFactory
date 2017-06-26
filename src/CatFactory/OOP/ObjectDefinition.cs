@@ -11,8 +11,6 @@ namespace CatFactory.OOP
         {
         }
 
-        public IDefinitionValidator DefinitionValidator { get; protected set; }
-
         private List<String> m_namespaces;
 
         public List<String> Namespaces

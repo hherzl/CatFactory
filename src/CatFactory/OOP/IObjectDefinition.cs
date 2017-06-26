@@ -5,8 +5,6 @@ namespace CatFactory.OOP
 {
     public interface IObjectDefinition
     {
-        IDefinitionValidator DefinitionValidator { get; }
-
         List<String> Namespaces { get; set; }
 
         String Namespace { get; set; }

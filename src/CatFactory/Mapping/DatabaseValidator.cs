@@ -10,6 +10,11 @@ namespace CatFactory.Mapping
     {
         public virtual IEnumerable<ValidationMessage> Validate(Database database)
         {
+            if (database == null)
+            {
+                throw new ArgumentNullException(nameof(database));
+            }
+
             foreach (var table in database.Tables)
             {
                 if (table.Columns.Count == 0)

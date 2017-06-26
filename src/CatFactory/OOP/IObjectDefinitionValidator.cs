@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-using CatFactory.Diagnostics;
-
-namespace CatFactory.OOP
+﻿namespace CatFactory.OOP
 {
-    public interface IDefinitionValidator
+    public interface IObjectDefinitionValidator
     {
-        IEnumerable<ValidationMessage> Validate();
+        
     }
 }
