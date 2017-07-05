@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace CatFactory.CodeFactory
 {
+    [DebuggerDisplay("Content={Content}")]
     public class Line : ILine
     {
         public Line()
@@ -11,29 +13,13 @@ namespace CatFactory.CodeFactory
         public Line(Int32 indent, String content, params String[] values)
         {
             Indent = indent;
-
-            if (values == null)
-            {
-                Content = content;
-            }
-            else
-            {
-                Content = String.Format(content, values);
-            }
+            Content = values == null ? content : String.Format(content, values);
         }
 
         public Line(String content, params String[] values)
         {
             Content = content;
-
-            if (values == null)
-            {
-                Content = content;
-            }
-            else
-            {
-                Content = String.Format(content, values);
-            }
+            Content = values == null ? content : String.Format(content, values);
         }
 
         public Int32 Indent { get; protected set; }

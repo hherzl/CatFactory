@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace CatFactory.OOP
 {
+    [DebuggerDisplay("Name={Name}, Value={Value}")]
     public class MetadataAttributeSet : INameValue
     {
         public MetadataAttributeSet()

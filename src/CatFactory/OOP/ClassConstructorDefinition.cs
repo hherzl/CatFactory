@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using CatFactory.CodeFactory;
 
 namespace CatFactory.OOP
 {
+    [DebuggerDisplay("AccessModifier={AccessModifier}, ParentInvoke={ParentInvoke}")]
     public class ClassConstructorDefinition
     {
         public ClassConstructorDefinition()

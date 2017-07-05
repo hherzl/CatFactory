@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using CatFactory.CodeFactory;
 
 namespace CatFactory.OOP
 {
@@ -10,7 +11,7 @@ namespace CatFactory.OOP
         {
         }
 
-        public ConstantDefinition(AccessModifier accessModifier, String type, String name, String value)
+        public ConstantDefinition(AccessModifier accessModifier, String type, String name, Object value)
         {
             AccessModifier = accessModifier;
             Type = type;
@@ -18,7 +19,7 @@ namespace CatFactory.OOP
             Value = value;
         }
 
-        public ConstantDefinition(String type, String name, String value)
+        public ConstantDefinition(String type, String name, Object value)
         {
             Type = type;
             Name = name;
@@ -45,6 +46,6 @@ namespace CatFactory.OOP
 
         public String Name { get; set; }
 
-        public String Value { get; set; }
+        public Object Value { get; set; }
     }
 }

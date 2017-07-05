@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace CatFactory.OOP
 {
+    [DebuggerDisplay("Name={Name}, Arguments={Arguments.Count}, Sets={Sets.Count}")]
     public class MetadataAttribute
     {
         public MetadataAttribute()
@@ -17,7 +19,10 @@ namespace CatFactory.OOP
 
         public String Name { get; set; }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<String> m_arguments;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<MetadataAttributeSet> m_sets;
 
         public List<String> Arguments
@@ -45,27 +50,12 @@ namespace CatFactory.OOP
         }
 
         public Boolean HasArguments
-        {
-            get
-            {
-                return Arguments.Count > 0;
-            }
-        }
+            => Arguments.Count > 0;
 
         public Boolean HasSets
-        {
-            get
-            {
-                return Sets.Count > 0;
-            }
-        }
+            => Sets.Count > 0;
 
         public Boolean HasMembers
-        {
-            get
-            {
-                return HasArguments || HasSets;
-            }
-        }
+            => HasArguments || HasSets;
     }
 }
