@@ -23,6 +23,7 @@ namespace CatFactory.OOP
             Parameters.AddRange(parameters);
         }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private Documentation m_documentation;
 
         public Documentation Documentation
@@ -39,6 +40,7 @@ namespace CatFactory.OOP
 
         public AccessModifier AccessModifier { get; set; }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ParameterDefinition> m_parameters;
 
         public List<ParameterDefinition> Parameters
@@ -55,6 +57,7 @@ namespace CatFactory.OOP
 
         public String ParentInvoke { get; set; }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ILine> m_lines;
 
         public List<ILine> Lines

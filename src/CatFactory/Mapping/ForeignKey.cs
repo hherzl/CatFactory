@@ -2,7 +2,7 @@
 
 namespace CatFactory.Mapping
 {
-    public class ForeignKey : Constraint, IConstraint
+    public class ForeignKey : Constraint
     {
         public ForeignKey()
         {

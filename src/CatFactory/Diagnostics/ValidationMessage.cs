@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
 using Microsoft.Extensions.Logging;
 
 namespace CatFactory.Diagnostics
 {
+    [DebuggerDisplay("LogLevel={LogLevel}, Message={Message}")]
     public class ValidationMessage
     {
         public ValidationMessage()
@@ -18,5 +20,8 @@ namespace CatFactory.Diagnostics
         public LogLevel LogLevel { get; set; }
 
         public String Message { get; set; }
+
+        public override String ToString()
+            => String.Format("{0}: {1}", LogLevel, Message);
     }
 }

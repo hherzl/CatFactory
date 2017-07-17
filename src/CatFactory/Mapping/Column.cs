@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace CatFactory.Mapping
 {
-    [DebuggerDisplay("Name={Name}, Type={Type}")]
+    [DebuggerDisplay("Name={Name}, Type={Type}, Nullable={Nullable ? \"Yes\": \"No\"}")]
     public class Column
     {
         public Column()

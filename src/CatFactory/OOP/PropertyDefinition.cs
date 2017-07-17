@@ -29,6 +29,7 @@ namespace CatFactory.OOP
             Attributes.AddRange(attribs);
         }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private Documentation m_documentation;
 
         public Documentation Documentation
@@ -51,6 +52,7 @@ namespace CatFactory.OOP
 
         public Boolean IsReadOnly { get; set; }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<MetadataAttribute> m_attributes;
 
         public List<MetadataAttribute> Attributes
@@ -71,7 +73,10 @@ namespace CatFactory.OOP
 
         public String Name { get; set; }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ILine> m_getBody;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ILine> m_setBody;
 
         public List<ILine> GetBody

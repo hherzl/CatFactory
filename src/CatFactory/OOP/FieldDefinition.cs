@@ -26,7 +26,10 @@ namespace CatFactory.OOP
             Attributes.AddRange(attribs);
         }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private Documentation m_documentation;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<MetadataAttribute> m_attributes;
 
         public Documentation Documentation

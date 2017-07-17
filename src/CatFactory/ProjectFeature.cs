@@ -25,6 +25,7 @@ namespace CatFactory
 
         public Database Database { get; set; }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<DbObject> m_dbObjects;
 
         public List<DbObject> DbObjects

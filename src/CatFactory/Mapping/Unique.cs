@@ -2,7 +2,7 @@
 
 namespace CatFactory.Mapping
 {
-    public class Unique : Constraint, IConstraint
+    public class Unique : Constraint
     {
         public Unique()
         {

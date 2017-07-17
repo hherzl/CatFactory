@@ -11,6 +11,7 @@ namespace CatFactory.OOP
         {
         }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<String> m_namespaces;
 
         public List<String> Namespaces
@@ -27,6 +28,7 @@ namespace CatFactory.OOP
 
         public String Namespace { get; set; }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private Documentation m_documentation;
 
         public Documentation Documentation
@@ -47,20 +49,27 @@ namespace CatFactory.OOP
 
         public String Name { get; set; }
 
+        public virtual String FullName
+            => String.IsNullOrEmpty(Namespace) ? Name : String.Format("{0}.{1}", Namespace, Name);
+
         public String BaseClass { get; set; }
 
         public Boolean HasInheritance
-        {
-            get
-            {
-                return !String.IsNullOrEmpty(BaseClass) || Implements.Count > 0;
-            }
-        }
+            => !String.IsNullOrEmpty(BaseClass) || Implements.Count > 0;
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<String> m_implements;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<MetadataAttribute> m_attributes;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<EventDefinition> m_events;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<PropertyDefinition> m_properties;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<MethodDefinition> m_methods;
 
         public List<String> Implements
@@ -122,5 +131,23 @@ namespace CatFactory.OOP
                 m_methods = value;
             }
         }
+
+        public override Boolean Equals(Object obj)
+        {
+            var cast = obj as ObjectDefinition;
+
+            if (cast != null)
+            {
+                if (FullName == cast.FullName)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public override Int32 GetHashCode()
+            => base.GetHashCode();
     }
 }

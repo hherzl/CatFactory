@@ -5,7 +5,7 @@ using System.Diagnostics;
 namespace CatFactory.Mapping
 {
     [DebuggerDisplay("ConstraintName={ConstraintName}, Key={string.Join(\",\", Key)}")]
-    public class Constraint
+    public class Constraint : IConstraint
     {
         public Constraint()
         {

@@ -16,6 +16,7 @@ namespace CatFactory.OOP
             Name = name;
         }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private Documentation m_documentation;
 
         public Documentation Documentation

@@ -1,13 +1,21 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using Microsoft.Extensions.Logging;
 
 namespace CatFactory.CodeFactory
 {
     public class CodeBuilder
     {
+        protected ILogger Logger;
+
         public CodeBuilder()
         {
+        }
+
+        public CodeBuilder(ILogger logger)
+        {
+            Logger = logger;
         }
 
         public String Tab { get; set; } = "\t";
@@ -27,24 +35,29 @@ namespace CatFactory.CodeFactory
         public INamingConvention NamingConvention { get; set; }
 
         protected virtual String GetComment(String description)
-        {
-            return description;
-        }
+            => description;
 
-        public virtual String Code => String.Empty;
+        public virtual String Code
+            => String.Empty;
 
         public String OutputDirectory { get; set; }
 
         public virtual void CreateOutputDirectory()
         {
+            Logger?.LogDebug("'{0}' has been invoked", nameof(CreateOutputDirectory));
+
             if (!Directory.Exists(OutputDirectory))
             {
                 Directory.CreateDirectory(OutputDirectory);
+
+                Logger?.LogDebug("'{0}' directory has been created", OutputDirectory);
             }
         }
 
         public virtual void CreateFile(String subdirectory = "", String fileName = "")
         {
+            Logger?.LogDebug("'{0}' has been invoked", nameof(CreateFile));
+
             CreateOutputDirectory();
 
             if (!String.IsNullOrEmpty(subdirectory))
@@ -54,17 +67,16 @@ namespace CatFactory.CodeFactory
                 if (!Directory.Exists(subdirectoryPath))
                 {
                     Directory.CreateDirectory(subdirectoryPath);
+
+                    Logger?.LogInformation("'{0}' directory has been created", subdirectoryPath);
                 }
             }
 
-            if (String.IsNullOrEmpty(fileName))
-            {
-                TextFileHelper.CreateFile(Path.Combine(OutputDirectory, subdirectory, FullFileName), Code);
-            }
-            else
-            {
-                TextFileHelper.CreateFile(Path.Combine(OutputDirectory, subdirectory, fileName), Code);
-            }
+            var finalPath = String.IsNullOrEmpty(fileName) ? Path.Combine(OutputDirectory, subdirectory, FullFileName) : Path.Combine(OutputDirectory, subdirectory, fileName);
+
+            TextFileHelper.CreateFile(finalPath, Code);
+
+            Logger?.LogInformation("'{0}' file has been created", finalPath);
         }
     }
 }

@@ -24,7 +24,10 @@ namespace CatFactory.OOP
             Attributes.AddRange(attribs);
         }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private Documentation m_documentation;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<MetadataAttribute> m_attributes;
 
         public Documentation Documentation
@@ -55,6 +58,7 @@ namespace CatFactory.OOP
 
         public String Name { get; set; }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<INameValue> m_sets;
 
         public List<INameValue> Sets

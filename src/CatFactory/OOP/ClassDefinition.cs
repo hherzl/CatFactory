@@ -13,8 +13,13 @@ namespace CatFactory.OOP
 
         public Boolean IsStatic { get; set; }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ConstantDefinition> m_constants;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ClassConstructorDefinition> m_constructors;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<FieldDefinition> m_fields;
 
         public List<ConstantDefinition> Constants
@@ -30,6 +35,8 @@ namespace CatFactory.OOP
         }
 
         public ClassConstructorDefinition StaticConstructor { get; set; }
+
+        public FinalizerDefinition Finalizer { get; set; }
 
         public List<ClassConstructorDefinition> Constructors
         {

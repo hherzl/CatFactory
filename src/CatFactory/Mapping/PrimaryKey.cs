@@ -2,7 +2,7 @@
 
 namespace CatFactory.Mapping
 {
-    public class PrimaryKey : Constraint, IConstraint
+    public class PrimaryKey : Constraint
     {
         public PrimaryKey()
         {

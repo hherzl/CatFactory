@@ -26,6 +26,7 @@ namespace CatFactory.OOP
             Value = value;
         }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private Documentation m_documentation;
 
         public Documentation Documentation

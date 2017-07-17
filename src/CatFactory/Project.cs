@@ -7,7 +7,7 @@ using CatFactory.Mapping;
 namespace CatFactory
 {
     [DebuggerDisplay("Name={Name}, Features={Features.Count}")]
-    public class Project
+    public class Project : IProject
     {
         public Project()
         {
@@ -21,7 +21,10 @@ namespace CatFactory
 
         public String OutputDirectory { get; set; }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<String> m_addExclusions;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<String> m_updateExclusions;
 
         public List<String> AddExclusions

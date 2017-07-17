@@ -27,6 +27,7 @@ namespace CatFactory.OOP
             Parameters.AddRange(parameters);
         }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private Documentation m_documentation;
 
         public Documentation Documentation
@@ -41,6 +42,7 @@ namespace CatFactory.OOP
             }
         }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<MetadataAttribute> m_attributes;
 
         public List<MetadataAttribute> Attributes
@@ -75,8 +77,13 @@ namespace CatFactory.OOP
 
         public Boolean IsExtension { get; set; }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ParameterDefinition> m_parameters;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<String> m_whereConstraints;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ILine> m_lines;
 
         public List<ParameterDefinition> Parameters

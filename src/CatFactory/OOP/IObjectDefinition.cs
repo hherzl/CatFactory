@@ -19,6 +19,8 @@ namespace CatFactory.OOP
 
         String Name { get; set; }
 
+        String FullName { get; }
+
         List<String> Implements { get; set; }
 
         Boolean HasInheritance { get; }

@@ -13,6 +13,8 @@ namespace CatFactory.OOP
 
         ClassConstructorDefinition StaticConstructor { get; set; }
 
+        FinalizerDefinition Finalizer { get; set; }
+
         List<ClassConstructorDefinition> Constructors { get; set; }
 
         List<FieldDefinition> Fields { get; set; }
