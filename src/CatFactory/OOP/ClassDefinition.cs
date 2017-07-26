@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace CatFactory.OOP
 {
-    [DebuggerDisplay("AccessModifier={AccessModifier}, Type={Type}, Name={Name}, Value={Value}")]
+    [DebuggerDisplay("AccessModifier={AccessModifier}, Namespace={Namespace}, Name={Name}")]
     public class ClassDefinition : ObjectDefinition, IClassDefinition
     {
         public ClassDefinition()

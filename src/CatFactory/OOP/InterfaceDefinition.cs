@@ -2,7 +2,7 @@
 
 namespace CatFactory.OOP
 {
-    [DebuggerDisplay("Namespace={Namespace}, Name={Name}, Properties={Properties.Count}")]
+    [DebuggerDisplay("AccessModifier={AccessModifier}, Namespace={Namespace}, Name={Name}")]
     public class InterfaceDefinition : ObjectDefinition, IInterfaceDefinition
     {
         public InterfaceDefinition()
