@@ -93,7 +93,7 @@ namespace CatFactory.Tests
                     }
                 };
 
-                db.AddPrimaryKeyToTables();
+                db.SetPrimaryKeyToTables();
 
                 db.LinkTables();
 

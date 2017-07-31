@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace CatFactory.Mapping
@@ -14,14 +15,8 @@ namespace CatFactory.Mapping
 
         public String Name { get; set; }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private IDatabaseNamingConvention m_namingConvention;
-        private List<DbObject> m_dbObjects;
-        private List<Table> m_tables;
-        private List<View> m_views;
-        private List<StoredProcedure> m_storedProcedures;
-        private List<ScalarFunction> m_scalarFunctions;
-        private List<TableFunction> m_tableFunctions;
-        private List<DbType> m_dbTypes;
 
         [XmlIgnore]
         public IDatabaseNamingConvention NamingConvention
@@ -36,6 +31,9 @@ namespace CatFactory.Mapping
             }
         }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<DbObject> m_dbObjects;
+
         public List<DbObject> DbObjects
         {
             get
@@ -47,6 +45,9 @@ namespace CatFactory.Mapping
                 m_dbObjects = value;
             }
         }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<Table> m_tables;
 
         public List<Table> Tables
         {
@@ -60,6 +61,9 @@ namespace CatFactory.Mapping
             }
         }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<View> m_views;
+
         public List<View> Views
         {
             get
@@ -71,6 +75,9 @@ namespace CatFactory.Mapping
                 m_views = value;
             }
         }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<StoredProcedure> m_storedProcedures;
 
         public List<StoredProcedure> StoredProcedures
         {
@@ -84,6 +91,9 @@ namespace CatFactory.Mapping
             }
         }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ScalarFunction> m_scalarFunctions;
+
         public List<ScalarFunction> ScalarFunctions
         {
             get
@@ -95,6 +105,9 @@ namespace CatFactory.Mapping
                 m_scalarFunctions = value;
             }
         }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<TableFunction> m_tableFunctions;
 
         public List<TableFunction> TableFunctions
         {
@@ -108,6 +121,9 @@ namespace CatFactory.Mapping
             }
         }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<DbType> m_dbTypes;
+
         public List<DbType> DbTypes
         {
             get
@@ -119,5 +135,19 @@ namespace CatFactory.Mapping
                 m_dbTypes = value;
             }
         }
+
+        public virtual ITable FindTableByFullName(String fullName)
+            => Tables.FirstOrDefault(item => String.Join(".", new String[] { Name, item.Schema, item.Name }) == fullName);
+
+        public virtual ITable FindTableBySchemaAndName(String fullName)
+            => Tables.FirstOrDefault(item => item.FullName == fullName);
+
+
+        public virtual IEnumerable<ITable> FindTablesBySchema(String schema)
+            => Tables.Where(item => item.Schema == schema);
+
+
+        public virtual IEnumerable<ITable> FindTablesByName(String name)
+            => Tables.Where(item => item.Name == name);
     }
 }

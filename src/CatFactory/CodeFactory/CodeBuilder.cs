@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Microsoft.Extensions.Logging;
@@ -39,6 +40,8 @@ namespace CatFactory.CodeFactory
 
         public virtual String Code
             => String.Empty;
+
+        protected List<ILine> Lines = new List<ILine>();
 
         public String OutputDirectory { get; set; }
 

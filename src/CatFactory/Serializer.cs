@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace CatFactory
@@ -22,9 +23,12 @@ namespace CatFactory
         {
             var serializer = new XmlSerializer(typeof(T));
 
-            using (StringReader reader = new StringReader(source))
+            using (var stream = new FileStream(source, FileMode.Open))
             {
-                return (T)serializer.Deserialize(reader);
+                using (var reader = XmlReader.Create(stream))
+                {
+                    return (T)serializer.Deserialize(reader);
+                }
             }
         }
     }

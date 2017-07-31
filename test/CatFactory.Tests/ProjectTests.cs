@@ -7,14 +7,18 @@ namespace CatFactory.Tests
         [Fact]
         public void TestBuildFeaturesForProject()
         {
-            var db = StoreDatabase.Mock;
-
-            var project = new Project()
+            // Arrange
+            var project = new Project
             {
-                Database = db
+                Name = "Store",
+                Database = StoreDatabase.Mock
             };
 
+            // Act
             project.BuildFeatures();
+
+            // Assert
+            Assert.True(project.Features.Count == 4);
         }
     }
 }

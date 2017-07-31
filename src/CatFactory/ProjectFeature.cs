@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Xml.Serialization;
 using CatFactory.Mapping;
 
 namespace CatFactory
@@ -12,11 +13,10 @@ namespace CatFactory
         {
         }
 
-        public ProjectFeature(String name, IEnumerable<DbObject> dbObjects, Database database)
+        public ProjectFeature(String name, IEnumerable<DbObject> dbObjects)
         {
             Name = name;
             DbObjects.AddRange(dbObjects);
-            Database = database;
         }
 
         public String Name { get; set; }
@@ -24,6 +24,9 @@ namespace CatFactory
         public String Description { get; set; }
 
         public Database Database { get; set; }
+
+        [XmlIgnore]
+        public Project Project { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<DbObject> m_dbObjects;

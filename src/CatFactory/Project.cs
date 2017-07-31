@@ -17,15 +17,8 @@ namespace CatFactory
 
         public Database Database { get; set; }
 
-        public List<ProjectFeature> Features { get; set; }
-
-        public String OutputDirectory { get; set; }
-
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<String> m_addExclusions;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<String> m_updateExclusions;
 
         public List<String> AddExclusions
         {
@@ -39,6 +32,9 @@ namespace CatFactory
             }
         }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<String> m_updateExclusions;
+
         public List<String> UpdateExclusions
         {
             get
@@ -51,6 +47,27 @@ namespace CatFactory
             }
         }
 
+        private List<ProjectFeature> m_features;
+
+        public List<ProjectFeature> Features
+        {
+            get
+            {
+                return m_features ?? (m_features = new List<ProjectFeature>());
+            }
+            set
+            {
+                m_features = value;
+            }
+        }
+
+        public virtual void AddFeature(ProjectFeature projectFeature)
+        {
+            projectFeature.Project = this;
+
+            Features.Add(projectFeature);
+        }
+
         public virtual void BuildFeatures()
         {
             if (Database == null)
@@ -58,36 +75,35 @@ namespace CatFactory
                 return;
             }
 
-            Features = Database
-                .DbObjects
-                .Select(item => item.Schema)
-                .Distinct()
-                .Select(item => new ProjectFeature(item, Database.DbObjects.Where(db => db.Schema == item).ToList(), Database))
-                .ToList();
-        }
-
-        public virtual IDbObject FindObject(String fullName)
-        {
-            var dbObj = Database.DbObjects.FirstOrDefault(item => item.FullName == String.Format("{0}.{1}", Database.Name, fullName));
-
-            if (dbObj == null)
+            if (Database.DbObjects.Count > 0)
             {
-                dbObj = Database.DbObjects.FirstOrDefault(item => item.FullName == fullName);
+                Features.AddRange(Database
+                    .DbObjects
+                    .Select(item => item.Schema)
+                    .Distinct()
+                    .Select(item => new ProjectFeature(item, Database.DbObjects.Where(db => db.Schema == item).ToList()) { Project = this })
+                    .ToList());
             }
-
-            return dbObj;
-        }
-
-        public virtual ITable FindTable(String fullName)
-        {
-            var table = Database.Tables.FirstOrDefault(item => item.FullName == String.Format("{0}.{1}", Database.Name, fullName));
-
-            if (table == null)
+            else if (Database.Tables.Count > 0)
             {
-                table = Database.Tables.FirstOrDefault(item => item.FullName == fullName);
+                Features.AddRange(Database
+                    .Tables
+                    .Select(item => item.Schema)
+                    .Distinct()
+                    .Select(item => new ProjectFeature(item, Database.DbObjects.Where(db => db.Schema == item).ToList()) { Project = this })
+                    .ToList());
             }
-
-            return table;
+            else if (Database.Views.Count > 0)
+            {
+                Features.AddRange(Database
+                    .Views
+                    .Select(item => item.Schema)
+                    .Distinct()
+                    .Select(item => new ProjectFeature(item, Database.DbObjects.Where(db => db.Schema == item).ToList()) { Project = this })
+                    .ToList());
+            }
         }
+
+        public String OutputDirectory { get; set; }
     }
 }

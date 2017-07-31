@@ -60,18 +60,6 @@ namespace CatFactory.OOP
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<String> m_implements;
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<MetadataAttribute> m_attributes;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<EventDefinition> m_events;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<PropertyDefinition> m_properties;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<MethodDefinition> m_methods;
-
         public List<String> Implements
         {
             get
@@ -83,6 +71,9 @@ namespace CatFactory.OOP
                 m_implements = value;
             }
         }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<MetadataAttribute> m_attributes;
 
         public List<MetadataAttribute> Attributes
         {
@@ -96,6 +87,9 @@ namespace CatFactory.OOP
             }
         }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<EventDefinition> m_events;
+
         public List<EventDefinition> Events
         {
             get
@@ -107,6 +101,9 @@ namespace CatFactory.OOP
                 m_events = value;
             }
         }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<PropertyDefinition> m_properties;
 
         public List<PropertyDefinition> Properties
         {
@@ -120,6 +117,9 @@ namespace CatFactory.OOP
             }
         }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<MethodDefinition> m_methods;
+
         public List<MethodDefinition> Methods
         {
             get
@@ -130,6 +130,10 @@ namespace CatFactory.OOP
             {
                 m_methods = value;
             }
+        }
+
+        public virtual void Init()
+        {
         }
 
         public override Boolean Equals(Object obj)

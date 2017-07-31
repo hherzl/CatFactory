@@ -8,12 +8,15 @@ namespace CatFactory.Tests
         [Fact]
         public void ValidateContactDatabase()
         {
-            var db = ContactDatabase.Mock;
+            // Arrange
+            var database = ContactDatabase.Mock;
 
-            var contactTypeTable = db.Tables.First(item => item.FullName == "dbo.ContactType");
-            var contactTable = db.Tables.First(item => item.FullName == "dbo.Contact");
-            var contactEmailTable = db.Tables.First(item => item.FullName == "dbo.ContactEmail");
+            // Act
+            var contactTypeTable = database.FindTableBySchemaAndName("dbo.ContactType");
+            var contactTable = database.FindTableBySchemaAndName("dbo.Contact");
+            var contactEmailTable = database.FindTableBySchemaAndName("dbo.ContactEmail");
 
+            // Assert
             Assert.True(contactTypeTable.ForeignKeys.Count == 0);
             Assert.True(contactTable.ForeignKeys.Count == 1);
             Assert.True(contactEmailTable.ForeignKeys.Count == 2);

@@ -7,11 +7,13 @@ namespace CatFactory.Tests
         [Fact]
         public void CreateFile()
         {
+            // Arrange
             var codeBuilder = new MockCodeBuilder()
             {
                 OutputDirectory = "C:\\Temp\\CatFactory"
             };
 
+            // Act
             codeBuilder.CreateFile();
         }
     }

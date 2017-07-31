@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using CatFactory.Mapping;
+using Xunit;
 
 namespace CatFactory.Tests
 {
@@ -7,13 +8,20 @@ namespace CatFactory.Tests
         [Fact]
         public void SerializeMockDatabaseTest()
         {
-            var db = StoreDatabase.Mock;
-
+            // Arrange
+            var database = StoreDatabase.Mock;
             var serializer = new Serializer() as ISerializer;
+            var fileName = "C:\\Temp\\CatFactory\\Sales.xml";
 
-            var output = serializer.Serialize(db);
+            // Act
+            var xml = serializer.Serialize(database);
 
-            TextFileHelper.CreateFile("C:\\Temp\\CatFactory\\Sales.xml", output);
+            TextFileHelper.CreateFile(fileName, xml);
+
+            var value = serializer.Deserialze<Database>(fileName);
+
+            // Assert
+            Assert.True(database.Name == value.Name);
         }
     }
 }
