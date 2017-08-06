@@ -9,7 +9,7 @@ namespace CatFactory.OOP
     {
         public ObjectDefinition()
         {
-            Init();
+            TypeManager.Register(this);
         }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -133,10 +133,6 @@ namespace CatFactory.OOP
             }
         }
 
-        public virtual void Init()
-        {
-        }
-
         public override Boolean Equals(Object obj)
         {
             var cast = obj as ObjectDefinition;
@@ -154,5 +150,9 @@ namespace CatFactory.OOP
 
         public override Int32 GetHashCode()
             => base.GetHashCode();
+
+        public virtual void Init()
+        {
+        }
     }
 }
