@@ -9,6 +9,7 @@ namespace CatFactory.OOP
     {
         public ObjectDefinition()
         {
+            Init();
         }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]

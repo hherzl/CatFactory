@@ -22,6 +22,7 @@ namespace CatFactory.Mapping
 
         public String Description { get; set; }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<Column> m_columns;
 
         public List<Column> Columns
@@ -40,7 +41,7 @@ namespace CatFactory.Mapping
 
         public PrimaryKey PrimaryKey { get; set; }
 
-        private List<Unique> m_uniques;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ForeignKey> m_foreignKeys;
 
         public List<ForeignKey> ForeignKeys
@@ -55,6 +56,9 @@ namespace CatFactory.Mapping
             }
         }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<Unique> m_uniques;
+
         public List<Unique> Uniques
         {
             get
@@ -64,6 +68,21 @@ namespace CatFactory.Mapping
             set
             {
                 m_uniques = value;
+            }
+        }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<Check> m_checks;
+
+        public List<Check> Checks
+        {
+            get
+            {
+                return m_checks ?? (m_checks = new List<Check>());
+            }
+            set
+            {
+                m_checks = value;
             }
         }
     }

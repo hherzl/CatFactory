@@ -8,6 +8,7 @@ namespace CatFactory.OOP
     public class ClassDefinition : ObjectDefinition, IClassDefinition
     {
         public ClassDefinition()
+            : base()
         {
         }
 

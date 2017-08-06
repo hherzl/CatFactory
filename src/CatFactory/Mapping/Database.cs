@@ -142,10 +142,8 @@ namespace CatFactory.Mapping
         public virtual ITable FindTableBySchemaAndName(String fullName)
             => Tables.FirstOrDefault(item => item.FullName == fullName);
 
-
         public virtual IEnumerable<ITable> FindTablesBySchema(String schema)
             => Tables.Where(item => item.Schema == schema);
-
 
         public virtual IEnumerable<ITable> FindTablesByName(String name)
             => Tables.Where(item => item.Name == name);

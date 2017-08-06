@@ -18,6 +18,7 @@ namespace CatFactory.Mapping
 
         public String ConstraintName { get; set; }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<String> m_key;
 
         public List<String> Key

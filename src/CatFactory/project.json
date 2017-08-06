@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0-alpha-build02",
+  "version": "2.0.0-alpha-build03",
   "title": "CatFactory",
   "description": "CatFactory Core for code generation engine (code factory, mapping and OOP)",
   "packOptions": {

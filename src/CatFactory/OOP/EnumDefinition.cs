@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace CatFactory.OOP
 {
-    [DebuggerDisplay("AccessModifier={AccessModifier}, Name={Name}")]
+    [DebuggerDisplay("AccessModifier={AccessModifier}, Namespace={Namespace}, Name={Name}")]
     public class EnumDefinition
     {
         public EnumDefinition()
@@ -27,9 +27,6 @@ namespace CatFactory.OOP
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private Documentation m_documentation;
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<MetadataAttribute> m_attributes;
-
         public Documentation Documentation
         {
             get
@@ -41,6 +38,9 @@ namespace CatFactory.OOP
                 m_documentation = value;
             }
         }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<MetadataAttribute> m_attributes;
 
         public List<MetadataAttribute> Attributes
         {
@@ -55,6 +55,8 @@ namespace CatFactory.OOP
         }
 
         public AccessModifier AccessModifier { get; set; }
+
+        public String Namespace { get; set; }
 
         public String Name { get; set; }
 

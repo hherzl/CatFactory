@@ -6,6 +6,7 @@ namespace CatFactory.OOP
     public class InterfaceDefinition : ObjectDefinition, IInterfaceDefinition
     {
         public InterfaceDefinition()
+            : base()
         {
         }
     }
