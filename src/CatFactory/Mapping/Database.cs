@@ -147,5 +147,17 @@ namespace CatFactory.Mapping
 
         public virtual IEnumerable<ITable> FindTablesByName(String name)
             => Tables.Where(item => item.Name == name);
+
+        public virtual IView FindViewByFullName(String fullName)
+            => Views.FirstOrDefault(item => String.Join(".", new String[] { Name, item.Schema, item.Name }) == fullName);
+
+        public virtual IView FindViewBySchemaAndName(String fullName)
+            => Views.FirstOrDefault(item => item.FullName == fullName);
+
+        public virtual IEnumerable<IView> FindViewsBySchema(String schema)
+            => Views.Where(item => item.Schema == schema);
+
+        public virtual IEnumerable<IView> FindViewsByName(String name)
+            => Views.Where(item => item.Name == name);
     }
 }
