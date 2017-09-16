@@ -12,10 +12,12 @@ namespace CatFactory.CodeFactory
 
         public CodeBuilder()
         {
+            Lines = new List<ILine>();
         }
 
         public CodeBuilder(ILogger logger)
         {
+            Lines = new List<ILine>();
             Logger = logger;
         }
 
@@ -41,7 +43,7 @@ namespace CatFactory.CodeFactory
         public virtual String Code
             => String.Empty;
 
-        protected List<ILine> Lines = new List<ILine>();
+        protected List<ILine> Lines { get; set; }
 
         public String OutputDirectory { get; set; }
 

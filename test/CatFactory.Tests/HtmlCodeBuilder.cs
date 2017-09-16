@@ -7,9 +7,11 @@ namespace CatFactory.Tests
 {
     public class HtmlCodeBuilder : CodeBuilder
     {
-        public override String FileName => String.Format("Document");
+        public override String FileName
+            => String.Format("Document");
 
-        public override String FileExtension => "html";
+        public override String FileExtension
+            => "html";
 
         public override String Code
         {

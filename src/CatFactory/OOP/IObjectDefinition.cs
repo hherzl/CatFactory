@@ -30,7 +30,5 @@ namespace CatFactory.OOP
         List<PropertyDefinition> Properties { get; set; }
 
         List<MethodDefinition> Methods { get; set; }
-
-        void Init();
     }
 }

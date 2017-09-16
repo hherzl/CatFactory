@@ -150,9 +150,5 @@ namespace CatFactory.OOP
 
         public override Int32 GetHashCode()
             => base.GetHashCode();
-
-        public virtual void Init()
-        {
-        }
     }
 }
