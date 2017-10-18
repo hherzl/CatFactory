@@ -1,52 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using CatFactory.Mapping;
 
 namespace CatFactory
 {
-    [DebuggerDisplay("Name={Name}, Features={Features.Count}")]
+    [DebuggerDisplay("Name={Name}, Features={Features.Count}, OutputDirectory={OutputDirectory}")]
     public class Project : IProject
     {
         public Project()
         {
         }
 
-        public String Name { get; set; }
+        public string Name { get; set; }
 
         public Database Database { get; set; }
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<String> m_addExclusions;
+        public string OutputDirectory { get; set; }
 
-        public List<String> AddExclusions
+        public ProjectFeature this[int index]
         {
             get
             {
-                return m_addExclusions ?? (m_addExclusions = new List<String>());
+                return Features[index];
             }
             set
             {
-                m_addExclusions = value;
+                Features[index] = value;
             }
         }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<String> m_updateExclusions;
-
-        public List<String> UpdateExclusions
-        {
-            get
-            {
-                return m_updateExclusions ?? (m_updateExclusions = new List<String>());
-            }
-            set
-            {
-                m_updateExclusions = value;
-            }
-        }
-
         private List<ProjectFeature> m_features;
 
         public List<ProjectFeature> Features
@@ -77,33 +61,15 @@ namespace CatFactory
 
             if (Database.DbObjects.Count > 0)
             {
-                Features.AddRange(Database
+                var list = Database
                     .DbObjects
                     .Select(item => item.Schema)
                     .Distinct()
-                    .Select(item => new ProjectFeature(item, Database.DbObjects.Where(db => db.Schema == item).ToList()) { Project = this })
-                    .ToList());
-            }
-            else if (Database.Tables.Count > 0)
-            {
-                Features.AddRange(Database
-                    .Tables
-                    .Select(item => item.Schema)
-                    .Distinct()
-                    .Select(item => new ProjectFeature(item, Database.DbObjects.Where(db => db.Schema == item).ToList()) { Project = this })
-                    .ToList());
-            }
-            else if (Database.Views.Count > 0)
-            {
-                Features.AddRange(Database
-                    .Views
-                    .Select(item => item.Schema)
-                    .Distinct()
-                    .Select(item => new ProjectFeature(item, Database.DbObjects.Where(db => db.Schema == item).ToList()) { Project = this })
-                    .ToList());
+                    .Select(schema => new ProjectFeature { Name = schema, DbObjects = Database.GetDbObjectsBySchema(schema), Project = this })
+                    .ToList();
+
+                Features.AddRange(list);
             }
         }
-
-        public String OutputDirectory { get; set; }
     }
 }

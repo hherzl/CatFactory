@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.Extensions.Logging;
@@ -12,40 +12,53 @@ namespace CatFactory.CodeFactory
 
         public CodeBuilder()
         {
-            Lines = new List<ILine>();
         }
 
-        public CodeBuilder(ILogger logger)
+        public CodeBuilder(ILogger<CodeBuilder> logger)
         {
-            Lines = new List<ILine>();
             Logger = logger;
         }
 
-        public String Tab { get; set; } = "\t";
+        public string Tab { get; set; } = "\t";
 
-        public String Indent(Int32 count)
-            => String.Concat(Enumerable.Repeat(Tab, count));
+        public string Indent(int count)
+            => string.Concat(Enumerable.Repeat(Tab, count));
 
-        public virtual String FileName
-            => String.Empty;
+        public virtual string FileName
+            => string.Empty;
 
-        public virtual String FileExtension
-            => String.Empty;
+        public virtual string FileExtension
+            => string.Empty;
 
-        public virtual String FullFileName
-            => String.Format("{0}.{1}", FileName, FileExtension);
+        public virtual string FullFileName
+            => string.Format("{0}.{1}", FileName, FileExtension);
 
         public INamingConvention NamingConvention { get; set; }
 
-        protected virtual String GetComment(String description)
+        protected virtual string GetComment(string description)
             => description;
 
-        public virtual String Code
-            => String.Empty;
+        public virtual string Code
+            => string.Empty;
 
-        protected List<ILine> Lines { get; set; }
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ILine> m_lines;
 
-        public String OutputDirectory { get; set; }
+        public List<ILine> Lines
+        {
+            get
+            {
+                return m_lines ?? (m_lines = new List<ILine>());
+            }
+            set
+            {
+                m_lines = value;
+            }
+        }
+
+        public string OutputDirectory { get; set; }
+
+        public bool ForceOverwrite { get; set; }
 
         public virtual void CreateOutputDirectory()
         {
@@ -53,35 +66,40 @@ namespace CatFactory.CodeFactory
 
             if (!Directory.Exists(OutputDirectory))
             {
-                Directory.CreateDirectory(OutputDirectory);
+                Logger?.LogDebug("Creating '{0}' directory...", OutputDirectory);
 
-                Logger?.LogDebug("'{0}' directory has been created", OutputDirectory);
+                Directory.CreateDirectory(OutputDirectory);
             }
         }
 
-        public virtual void CreateFile(String subdirectory = "", String fileName = "")
+        public virtual void CreateFile(string subdirectory = "", string fileName = "")
         {
             Logger?.LogDebug("'{0}' has been invoked", nameof(CreateFile));
 
             CreateOutputDirectory();
 
-            if (!String.IsNullOrEmpty(subdirectory))
+            var filePath = string.IsNullOrEmpty(fileName) ? Path.Combine(OutputDirectory, subdirectory, FullFileName) : Path.Combine(OutputDirectory, subdirectory, fileName);
+
+            if (!ForceOverwrite && File.Exists(filePath))
+            {
+                throw new CodeFactoryException(string.Format("A file with path '{0}' alread exists, if you want to overwrite, set ForceOverwrite proerty to true", filePath));
+            }
+
+            if (!string.IsNullOrEmpty(subdirectory))
             {
                 var subdirectoryPath = Path.Combine(OutputDirectory, subdirectory);
 
                 if (!Directory.Exists(subdirectoryPath))
                 {
-                    Directory.CreateDirectory(subdirectoryPath);
+                    Logger?.LogInformation("Creating '{0}' directory...", subdirectoryPath);
 
-                    Logger?.LogInformation("'{0}' directory has been created", subdirectoryPath);
+                    Directory.CreateDirectory(subdirectoryPath);
                 }
             }
 
-            var finalPath = String.IsNullOrEmpty(fileName) ? Path.Combine(OutputDirectory, subdirectory, FullFileName) : Path.Combine(OutputDirectory, subdirectory, fileName);
+            Logger?.LogInformation("Creating '{0}' file...", filePath);
 
-            TextFileHelper.CreateFile(finalPath, Code);
-
-            Logger?.LogInformation("'{0}' file has been created", finalPath);
+            TextFileHelper.CreateFile(filePath, Code);
         }
     }
 }

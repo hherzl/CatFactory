@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace CatFactory.Mapping
@@ -11,21 +10,21 @@ namespace CatFactory.Mapping
         {
         }
 
-        public Constraint(params String[] key)
+        public Constraint(params string[] key)
         {
             Key.AddRange(key);
         }
 
-        public String ConstraintName { get; set; }
+        public string ConstraintName { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<String> m_key;
+        private List<string> m_key;
 
-        public List<String> Key
+        public List<string> Key
         {
             get
             {
-                return m_key ?? (m_key = new List<String>());
+                return m_key ?? (m_key = new List<string>());
             }
             set
             {

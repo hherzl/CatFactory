@@ -1,13 +1,15 @@
-﻿using System;
-
-namespace CatFactory.Mapping
+﻿namespace CatFactory.Mapping
 {
     public interface IDatabaseNamingConvention : INamingConvention
     {
-        String GetPrimaryKeyConstraintName(String table, String[] key);
+        string GetObjectName(params string[] names);
 
-        String GetForeignKeyConstraintName(String table, String[] key, String reference);
+        string GetParameterName(string name);
 
-        String GetUniqueConstraintName(String table, String[] key);
+        string GetPrimaryKeyConstraintName(ITable table, string[] key);
+
+        string GetForeignKeyConstraintName(ITable table, string[] key, ITable references);
+
+        string GetUniqueConstraintName(ITable table, string[] key);
     }
 }

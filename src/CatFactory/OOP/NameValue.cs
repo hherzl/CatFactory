@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CatFactory.OOP
+﻿namespace CatFactory.OOP
 {
     public class NameValue : INameValue
     {
@@ -8,14 +6,14 @@ namespace CatFactory.OOP
         {
         }
 
-        public NameValue(String name, String value)
+        public NameValue(string name, string value)
         {
             Name = name;
             Value = value;
         }
 
-        public String Name { get; set; }
+        public string Name { get; set; }
 
-        public String Value { get; set; }
+        public string Value { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace CatFactory.OOP
                 throw new ArgumentNullException(nameof(classDefinition));
             }
 
-            if (String.IsNullOrEmpty(classDefinition.Name))
+            if (string.IsNullOrEmpty(classDefinition.Name))
             {
                 yield return new ValidationMessage
                 {
@@ -31,7 +31,7 @@ namespace CatFactory.OOP
                     yield return new ValidationMessage
                     {
                         LogLevel = LogLevel.Error,
-                        Message = String.Format("There is more than one field with name '{0}'", field.Name)
+                        Message = string.Format("There is more than one field with name '{0}'", field.Name)
                     };
                 }
             }
@@ -43,7 +43,7 @@ namespace CatFactory.OOP
                     yield return new ValidationMessage
                     {
                         LogLevel = LogLevel.Error,
-                        Message = String.Format("There is more than one property with name '{0}'", property.Name)
+                        Message = string.Format("There is more than one property with name '{0}'", property.Name)
                     };
                 }
             }

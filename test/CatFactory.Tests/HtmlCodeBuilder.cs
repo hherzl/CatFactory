@@ -20,20 +20,28 @@ namespace CatFactory.Tests
                 var output = new StringBuilder();
 
                 output.OpenTag("html");
+                output.AppendLine();
 
                 output.OpenTag("head");
+                output.AppendLine();
 
-                output.AppendTag("title", content: "My title");
+                output.AppendTag("title", "My title");
+                output.AppendLine();
 
                 output.CloseTag("head");
+                output.AppendLine();
 
                 output.OpenTag("body");
+                output.AppendLine();
 
                 output.AppendTag("h1", "My title", new { style = "font-family: Verdana;" });
+                output.AppendLine();
 
                 output.CloseTag("body");
+                output.AppendLine();
 
                 output.CloseTag("html");
+                output.AppendLine();
 
                 return output.ToString();
             }

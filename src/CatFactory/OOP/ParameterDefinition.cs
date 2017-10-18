@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace CatFactory.OOP
@@ -11,14 +10,14 @@ namespace CatFactory.OOP
         {
         }
 
-        public ParameterDefinition(String type, String name, params MetadataAttribute[] attributes)
+        public ParameterDefinition(string type, string name, params MetadataAttribute[] attributes)
         {
             Type = type;
             Name = name;
             Attributes.AddRange(attributes);
         }
 
-        public ParameterDefinition(AccessModifier accessModifier, String type, String name, params MetadataAttribute[] attributes)
+        public ParameterDefinition(AccessModifier accessModifier, string type, string name, params MetadataAttribute[] attributes)
         {
             AccessModifier = accessModifier;
             Type = type;
@@ -26,7 +25,7 @@ namespace CatFactory.OOP
             Attributes.AddRange(attributes);
         }
 
-        public ParameterDefinition(String type, String name, String defaultValue, params MetadataAttribute[] attributes)
+        public ParameterDefinition(string type, string name, string defaultValue, params MetadataAttribute[] attributes)
         {
             Type = type;
             Name = name;
@@ -34,7 +33,7 @@ namespace CatFactory.OOP
             Attributes.AddRange(attributes);
         }
 
-        public ParameterDefinition(AccessModifier accessModifier, String type, String name, String defaultValue, params MetadataAttribute[] attributes)
+        public ParameterDefinition(AccessModifier accessModifier, string type, string name, string defaultValue, params MetadataAttribute[] attributes)
         {
             AccessModifier = accessModifier;
             Type = type;
@@ -45,9 +44,6 @@ namespace CatFactory.OOP
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private Documentation m_documentation;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<MetadataAttribute> m_attributes;
 
         public Documentation Documentation
         {
@@ -60,6 +56,9 @@ namespace CatFactory.OOP
                 m_documentation = value;
             }
         }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<MetadataAttribute> m_attributes;
 
         public List<MetadataAttribute> Attributes
         {
@@ -75,12 +74,12 @@ namespace CatFactory.OOP
 
         public AccessModifier AccessModifier { get; set; }
 
-        public Boolean IsParams { get; set; }
+        public bool IsParams { get; set; }
 
-        public String Type { get; set; }
+        public string Type { get; set; }
 
-        public String Name { get; set; }
+        public string Name { get; set; }
 
-        public String DefaultValue { get; set; }
+        public string DefaultValue { get; set; }
     }
 }

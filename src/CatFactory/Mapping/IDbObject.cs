@@ -1,15 +1,13 @@
-﻿using System;
-
-namespace CatFactory.Mapping
+﻿namespace CatFactory.Mapping
 {
     public interface IDbObject
     {
-        String Schema { get; set; }
+        string Schema { get; set; }
 
-        String Name { get; set; }
+        string Name { get; set; }
 
-        String FullName { get; }
+        string FullName { get; }
 
-        String Type { get; set; }
+        string Type { get; set; }
     }
 }

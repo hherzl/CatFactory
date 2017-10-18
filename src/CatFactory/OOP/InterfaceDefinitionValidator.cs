@@ -15,7 +15,7 @@ namespace CatFactory.OOP
                 throw new ArgumentNullException(nameof(interfaceDefinition));
             }
 
-            if (String.IsNullOrEmpty(interfaceDefinition.Name))
+            if (string.IsNullOrEmpty(interfaceDefinition.Name))
             {
                 yield return new ValidationMessage
                 {
@@ -31,7 +31,7 @@ namespace CatFactory.OOP
                     yield return new ValidationMessage
                     {
                         LogLevel = LogLevel.Error,
-                        Message = String.Format("There is more than one property with name '{0}'", property.Name)
+                        Message = string.Format("There is more than one property with name '{0}'", property.Name)
                     };
                 }
             }

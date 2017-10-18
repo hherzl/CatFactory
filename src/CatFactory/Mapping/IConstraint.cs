@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace CatFactory.Mapping
 {
     public interface IConstraint
     {
-        String ConstraintName { get; set; }
+        string ConstraintName { get; set; }
 
-        List<String> Key { get; set; }
+        List<string> Key { get; set; }
     }
 }

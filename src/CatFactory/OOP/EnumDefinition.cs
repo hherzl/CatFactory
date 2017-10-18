@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace CatFactory.OOP
@@ -11,13 +10,13 @@ namespace CatFactory.OOP
         {
         }
 
-        public EnumDefinition(String name, params MetadataAttribute[] attribs)
+        public EnumDefinition(string name, params MetadataAttribute[] attribs)
         {
             Name = name;
             Attributes.AddRange(attribs);
         }
 
-        public EnumDefinition(AccessModifier accessModifier, String name, params MetadataAttribute[] attribs)
+        public EnumDefinition(AccessModifier accessModifier, string name, params MetadataAttribute[] attribs)
         {
             AccessModifier = accessModifier;
             Name = name;
@@ -56,9 +55,9 @@ namespace CatFactory.OOP
 
         public AccessModifier AccessModifier { get; set; }
 
-        public String Namespace { get; set; }
+        public string Namespace { get; set; }
 
-        public String Name { get; set; }
+        public string Name { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<INameValue> m_sets;

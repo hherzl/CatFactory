@@ -1,25 +1,23 @@
-﻿using System;
-
-namespace CatFactory.CodeFactory
+﻿namespace CatFactory.CodeFactory
 {
-    public class WarningLine : Line, ILine
+    public class WarningLine : Line
     {
         public WarningLine()
             : base()
         {
         }
 
-        public WarningLine(Int32 indent, String content, params String[] values)
+        public WarningLine(int indent, string content, params string[] values)
             : base(indent, content, values)
         {
         }
 
-        public WarningLine(String content, params String[] values)
+        public WarningLine(string content, params string[] values)
             : base(content, values)
         {
         }
 
-        public override String ToString()
+        public override string ToString()
             => Content;
     }
 }

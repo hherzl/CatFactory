@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace CatFactory.OOP
 {
@@ -10,14 +9,14 @@ namespace CatFactory.OOP
         {
         }
 
-        public MetadataAttributeSet(String name, String value)
+        public MetadataAttributeSet(string name, string value)
         {
             Name = name;
             Value = value;
         }
 
-        public String Name { get; set; }
+        public string Name { get; set; }
 
-        public String Value { get; set; }
+        public string Value { get; set; }
     }
 }

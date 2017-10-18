@@ -1,11 +1,26 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 
 namespace CatFactory.Mapping
 {
     public static class DatabaseExtensions
     {
-        public static void AddColumnsForTables(this Database database, Column[] columns, params String[] exclusions)
+        public static void AddDbObjectsFromTables(this Database database)
+        {
+            foreach (var table in database.Tables)
+            {
+                database.DbObjects.Add(new DbObject { Schema = table.Schema, Name = table.Name, Type = "table" });
+            }
+        }
+
+        public static void AddDbObjectsFromViews(this Database database)
+        {
+            foreach (var view in database.Views)
+            {
+                database.DbObjects.Add(new DbObject { Schema = view.Schema, Name = view.Name, Type = "view" });
+            }
+        }
+
+        public static void AddColumnsForTables(this Database database, Column[] columns, params string[] exclusions)
         {
             foreach (var table in database.Tables)
             {
@@ -24,10 +39,10 @@ namespace CatFactory.Mapping
             }
         }
 
-        public static void AddColumnForTables(this Database database, Column column, params String[] exclusions)
+        public static void AddColumnForTables(this Database database, Column column, params string[] exclusions)
             => AddColumnsForTables(database, new Column[] { column }, exclusions);
 
-        public static void SetPrimaryKeyToTables(this Database database, params String[] exclusions)
+        public static void SetPrimaryKeyToTables(this Database database, params string[] exclusions)
         {
             foreach (var table in database.Tables)
             {
@@ -43,7 +58,7 @@ namespace CatFactory.Mapping
             }
         }
 
-        public static void SetIdentityForTables(this Database database, params String[] exclusions)
+        public static void SetIdentityForTables(this Database database, params string[] exclusions)
         {
             foreach (var table in database.Tables)
             {
@@ -81,35 +96,24 @@ namespace CatFactory.Mapping
                         {
                             table.ForeignKeys.Add(new ForeignKey(column.Name)
                             {
-                                ConstraintName = database.NamingConvention.GetForeignKeyConstraintName(table.Name, new String[] { column.Name }, parentTable.Name),
-                                References = String.Format("{0}.{1}", database.Name, parentTable.FullName),
+                                ConstraintName = database.NamingConvention.GetForeignKeyConstraintName(table, new string[] { column.Name }, parentTable),
+                                References = string.Format("{0}.{1}", database.Name, parentTable.FullName),
                                 Child = table.FullName
                             });
-
                         }
                     }
                 }
             }
         }
 
-        public static void AddRelation(this Database database, String source, String[] sourceKey, String target)
+        public static void AddRelation(this Database database, ITable target, string[] key, ITable source)
         {
-            var table = database.FindTableByFullName(source);
-
-            if (table == null)
+            target.ForeignKeys.Add(new ForeignKey(key)
             {
-                return;
-            }
-
-            table.ForeignKeys.Add(new ForeignKey(sourceKey)
-            {
-                ConstraintName = database.NamingConvention.GetForeignKeyConstraintName(source, sourceKey, target),
-                References = target,
-                Child = source
+                ConstraintName = database.NamingConvention.GetForeignKeyConstraintName(target, key, source),
+                References = source.FullName,
+                Child = target.FullName
             });
         }
-
-        public static void AddRelation(this Database db, String source, String sourceKey, String target)
-            => AddRelation(db, source, new String[] { sourceKey }, target);
     }
 }

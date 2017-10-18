@@ -71,11 +71,11 @@ namespace Tests
                 SetBody = new List<ILine>()
                 {
                     new CodeLine("if (m_firstName != value)"),
-                    new CodeLine("{{"),
+                    new CodeLine("{"),
                     new CodeLine("m_firstName = value;"),
                     new CodeLine(),
                     new CodeLine("PropertyChanged?Invoke(this, new PropertyChangedEventArgs(\"FirstName\"));"),
-                    new CodeLine("}}")
+                    new CodeLine("}")
                 }
             });
         }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CatFactory.Mapping
+﻿namespace CatFactory.Mapping
 {
     public class PrimaryKey : Constraint
     {
@@ -8,7 +6,7 @@ namespace CatFactory.Mapping
         {
         }
 
-        public PrimaryKey(params String[] key)
+        public PrimaryKey(params string[] key)
             : base(key)
         {
         }

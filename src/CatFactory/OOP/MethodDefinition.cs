@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using CatFactory.CodeFactory;
 
@@ -12,14 +11,14 @@ namespace CatFactory.OOP
         {
         }
 
-        public MethodDefinition(String type, String name, params ParameterDefinition[] parameters)
+        public MethodDefinition(string type, string name, params ParameterDefinition[] parameters)
         {
             Type = type;
             Name = name;
             Parameters.AddRange(parameters);
         }
 
-        public MethodDefinition(AccessModifier accessModifier, String type, String name, params ParameterDefinition[] parameters)
+        public MethodDefinition(AccessModifier accessModifier, string type, string name, params ParameterDefinition[] parameters)
         {
             AccessModifier = accessModifier;
             Type = type;
@@ -59,33 +58,27 @@ namespace CatFactory.OOP
 
         public AccessModifier AccessModifier { get; set; }
 
-        public Boolean IsStatic { get; set; }
+        public bool IsStatic { get; set; }
 
-        public Boolean IsAbstract { get; set; }
+        public bool IsAbstract { get; set; }
 
-        public Boolean IsVirtual { get; set; }
+        public bool IsVirtual { get; set; }
 
-        public Boolean IsOverride { get; set; }
+        public bool IsOverride { get; set; }
 
-        public Boolean IsAsync { get; set; }
+        public bool IsAsync { get; set; }
 
-        public String Type { get; set; }
+        public string Type { get; set; }
 
-        public String Name { get; set; }
+        public string Name { get; set; }
 
-        public String GenericType { get; set; }
+        public string GenericType { get; set; }
 
-        public Boolean IsExtension { get; set; }
+        public bool IsExtension { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ParameterDefinition> m_parameters;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<String> m_whereConstraints;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ILine> m_lines;
-
+        
         public List<ParameterDefinition> Parameters
         {
             get
@@ -98,17 +91,23 @@ namespace CatFactory.OOP
             }
         }
 
-        public List<String> WhereConstraints
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<string> m_whereConstraints;
+
+        public List<string> WhereConstraints
         {
             get
             {
-                return m_whereConstraints ?? (m_whereConstraints = new List<String>());
+                return m_whereConstraints ?? (m_whereConstraints = new List<string>());
             }
             set
             {
                 m_whereConstraints = value;
             }
         }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ILine> m_lines;
 
         public List<ILine> Lines
         {

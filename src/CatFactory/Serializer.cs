@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -7,7 +6,7 @@ namespace CatFactory
 {
     public class Serializer : ISerializer
     {
-        public String Serialize<T>(T obj)
+        public string Serialize<T>(T obj)
         {
             var serializer = new XmlSerializer(obj.GetType());
 
@@ -19,7 +18,7 @@ namespace CatFactory
             }
         }
 
-        public T Deserialze<T>(String source)
+        public T Deserialze<T>(string source)
         {
             var serializer = new XmlSerializer(typeof(T));
 

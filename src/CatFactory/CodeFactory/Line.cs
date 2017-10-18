@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace CatFactory.CodeFactory
 {
@@ -10,23 +9,23 @@ namespace CatFactory.CodeFactory
         {
         }
 
-        public Line(Int32 indent, String content, params String[] values)
+        public Line(int indent, string content, params string[] values)
         {
             Indent = indent;
-            Content = values == null || values.Length == 0 ? content : String.Format(content, values);
+            Content = values == null || values.Length == 0 ? content : string.Format(content, values);
         }
 
-        public Line(String content, params String[] values)
+        public Line(string content, params string[] values)
         {
             Content = content;
-            Content = values == null || values.Length == 0 ? content : String.Format(content, values);
+            Content = values == null || values.Length == 0 ? content : string.Format(content, values);
         }
 
-        public Int32 Indent { get; protected set; }
+        public int Indent { get; protected set; }
 
-        public String Content { get; protected set; }
+        public string Content { get; protected set; }
 
-        public Boolean IsNullOrEmpty
-            => String.IsNullOrEmpty(Content);
+        public bool IsNullOrEmpty
+            => string.IsNullOrEmpty(Content);
     }
 }

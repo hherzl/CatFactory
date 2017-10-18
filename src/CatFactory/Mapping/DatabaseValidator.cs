@@ -19,24 +19,24 @@ namespace CatFactory.Mapping
             {
                 if (table.Columns.Count == 0)
                 {
-                    yield return new ValidationMessage(LogLevel.Error, String.Format("The table '{0}' doesn't have columns", table.FullName));
+                    yield return new ValidationMessage(LogLevel.Error, string.Format("The table '{0}' doesn't have columns", table.FullName));
 
                     continue;
                 }
 
                 foreach (var column in table.Columns)
                 {
-                    if (String.IsNullOrEmpty(column.Name))
+                    if (string.IsNullOrEmpty(column.Name))
                     {
-                        yield return new ValidationMessage(LogLevel.Error, String.Format("The table '{0}' has one column without name", table.FullName));
+                        yield return new ValidationMessage(LogLevel.Error, string.Format("The table '{0}' has one column without name", table.FullName));
                     }
                     else if (column.Name.Trim().Length == 0)
                     {
-                        yield return new ValidationMessage(LogLevel.Error, String.Format("The table '{0}' has one column without name", table.FullName));
+                        yield return new ValidationMessage(LogLevel.Error, string.Format("The table '{0}' has one column without name", table.FullName));
                     }
                     else if (table.Columns.Where(item => item.Name == column.Name).Count() > 1)
                     {
-                        yield return new ValidationMessage(LogLevel.Error, String.Format("The table '{0}' has more than one column with name: '{1}'", table.FullName, column.Name));
+                        yield return new ValidationMessage(LogLevel.Error, string.Format("The table '{0}' has more than one column with name: '{1}'", table.FullName, column.Name));
                     }
                 }
 
@@ -44,13 +44,13 @@ namespace CatFactory.Mapping
                 {
                     if (table.Columns.Where(item => item.Name == table.Identity.Name).Count() == 0)
                     {
-                        yield return new ValidationMessage(LogLevel.Error, String.Format("The table '{0}' has a null reference on identity, column: '{1}'", table.FullName, table.Identity.Name));
+                        yield return new ValidationMessage(LogLevel.Error, string.Format("The table '{0}' has a null reference on identity, column: '{1}'", table.FullName, table.Identity.Name));
                     }
                 }
 
                 if (table.PrimaryKey == null)
                 {
-                    yield return new ValidationMessage(LogLevel.Warning, String.Format("The table '{0}' doesn't have definition for primary key", table.FullName));
+                    yield return new ValidationMessage(LogLevel.Warning, string.Format("The table '{0}' doesn't have definition for primary key", table.FullName));
                 }
                 else
                 {
@@ -67,7 +67,7 @@ namespace CatFactory.Mapping
 
                     if (!flag)
                     {
-                        yield return new ValidationMessage(LogLevel.Error, String.Format("The table '{0}' has a null reference on primary key, key: '{1}'", table.FullName, String.Join(",", table.PrimaryKey.Key.Select(item => item))));
+                        yield return new ValidationMessage(LogLevel.Error, string.Format("The table '{0}' has a null reference on primary key, key: '{1}'", table.FullName, string.Join(",", table.PrimaryKey.Key.Select(item => item))));
                     }
                 }
 
@@ -86,7 +86,7 @@ namespace CatFactory.Mapping
 
                     if (!flag)
                     {
-                        yield return new ValidationMessage(LogLevel.Error, String.Format("The table '{0}' has a null reference on unique, key: '{1}'", table.FullName, String.Join(",", unique.Key.Select(item => item))));
+                        yield return new ValidationMessage(LogLevel.Error, string.Format("The table '{0}' has a null reference on unique, key: '{1}'", table.FullName, string.Join(",", unique.Key.Select(item => item))));
                     }
                 }
 
@@ -105,7 +105,7 @@ namespace CatFactory.Mapping
 
                     if (!flag)
                     {
-                        yield return new ValidationMessage(LogLevel.Error, String.Format("The table '{0}' has a null reference on foreign, key: '{1}'", table.FullName, String.Join(",", foreignKey.Key.Select(item => item))));
+                        yield return new ValidationMessage(LogLevel.Error, string.Format("The table '{0}' has a null reference on foreign, key: '{1}'", table.FullName, string.Join(",", foreignKey.Key.Select(item => item))));
                     }
                 }
             }

@@ -9,12 +9,12 @@ namespace CatFactory.CodeFactory
         {
         }
 
-        public CodeFactoryException(String message)
+        public CodeFactoryException(string message)
             : base(message)
         {
         }
 
-        public CodeFactoryException(String message, Exception ex)
+        public CodeFactoryException(string message, Exception ex)
             : base(message, ex)
         {
         }

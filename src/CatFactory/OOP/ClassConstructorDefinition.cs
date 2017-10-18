@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using CatFactory.CodeFactory;
 
@@ -55,7 +54,7 @@ namespace CatFactory.OOP
             }
         }
 
-        public String ParentInvoke { get; set; }
+        public string Invocation { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ILine> m_lines;

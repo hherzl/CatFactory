@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace CatFactory.OOP
@@ -11,14 +10,14 @@ namespace CatFactory.OOP
         {
         }
 
-        public FieldDefinition(String type, String name, params MetadataAttribute[] attribs)
+        public FieldDefinition(string type, string name, params MetadataAttribute[] attribs)
         {
             Type = type;
             Name = name;
             Attributes.AddRange(attribs);
         }
 
-        public FieldDefinition(AccessModifier accessModifier, String type, String name, params MetadataAttribute[] attribs)
+        public FieldDefinition(AccessModifier accessModifier, string type, string name, params MetadataAttribute[] attribs)
         {
             AccessModifier = accessModifier;
             Type = type;
@@ -56,16 +55,16 @@ namespace CatFactory.OOP
             }
         }
 
-        public Boolean IsStatic { get; set; }
+        public bool IsStatic { get; set; }
 
-        public Boolean IsReadOnly { get; set; }
+        public bool IsReadOnly { get; set; }
 
         public AccessModifier AccessModifier { get; set; }
 
-        public String Type { get; set; }
+        public string Type { get; set; }
 
-        public String Name { get; set; }
+        public string Name { get; set; }
 
-        public String Value { get; set; }
+        public string Value { get; set; }
     }
 }

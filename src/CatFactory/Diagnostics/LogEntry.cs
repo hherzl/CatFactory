@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 
 namespace CatFactory.Diagnostics
 {
@@ -11,6 +10,6 @@ namespace CatFactory.Diagnostics
 
         public LogLevel LogLevel { get; set; }
 
-        public String Message { get; set; }
+        public string Message { get; set; }
     }
 }

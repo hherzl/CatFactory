@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CatFactory.Mapping
+﻿namespace CatFactory.Mapping
 {
     public class Check : Constraint
     {
@@ -8,7 +6,7 @@ namespace CatFactory.Mapping
         {
         }
 
-        public Check(params String[] key)
+        public Check(params string[] key)
             : base(key)
         {
         }

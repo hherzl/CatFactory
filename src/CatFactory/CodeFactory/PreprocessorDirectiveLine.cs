@@ -1,18 +1,18 @@
 ﻿namespace CatFactory.CodeFactory
 {
-    public class CommentLine : Line
+    public class PreprocessorDirectiveLine : Line
     {
-        public CommentLine()
+        public PreprocessorDirectiveLine()
             : base()
         {
         }
 
-        public CommentLine(int indent, string content, params string[] values)
+        public PreprocessorDirectiveLine(int indent, string content, params string[] values)
             : base(indent, content, values)
         {
         }
 
-        public CommentLine(string content, params string[] values)
+        public PreprocessorDirectiveLine(string content, params string[] values)
             : base(content, values)
         {
         }

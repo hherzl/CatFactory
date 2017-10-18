@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace CatFactory.OOP
 {
     public interface IObjectDefinition
     {
-        List<String> Namespaces { get; set; }
+        List<string> Namespaces { get; set; }
 
-        String Namespace { get; set; }
+        string Namespace { get; set; }
 
         Documentation Documentation { get; set; }
 
@@ -15,15 +14,15 @@ namespace CatFactory.OOP
 
         AccessModifier AccessModifier { get; set; }
 
-        Boolean IsPartial { get; set; }
+        bool IsPartial { get; set; }
 
-        String Name { get; set; }
+        string Name { get; set; }
 
-        String FullName { get; }
+        string FullName { get; }
 
-        List<String> Implements { get; set; }
+        List<string> Implements { get; set; }
 
-        Boolean HasInheritance { get; }
+        bool HasInheritance { get; }
 
         List<EventDefinition> Events { get; set; }
 

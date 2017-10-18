@@ -1,13 +1,11 @@
-﻿using System;
-
-namespace CatFactory.CodeFactory
+﻿namespace CatFactory.CodeFactory
 {
     public interface ILine
     {
-        Int32 Indent { get; }
+        int Indent { get; }
 
-        String Content { get; }
+        string Content { get; }
 
-        Boolean IsNullOrEmpty { get; }
+        bool IsNullOrEmpty { get; }
     }
 }

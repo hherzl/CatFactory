@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CatFactory.Mapping
+﻿namespace CatFactory.Mapping
 {
     public class ForeignKey : Constraint
     {
@@ -8,13 +6,13 @@ namespace CatFactory.Mapping
         {
         }
 
-        public ForeignKey(params String[] key)
+        public ForeignKey(params string[] key)
             : base(key)
         {
         }
 
-        public String References { get; set; }
+        public string References { get; set; }
 
-        public String Child { get; set; }
+        public string Child { get; set; }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using Microsoft.Extensions.Logging;
 
 namespace CatFactory.Diagnostics
@@ -11,7 +10,7 @@ namespace CatFactory.Diagnostics
         {
         }
 
-        public ValidationMessage(LogLevel logLevel, String message)
+        public ValidationMessage(LogLevel logLevel, string message)
         {
             LogLevel = logLevel;
             Message = message;
@@ -19,9 +18,9 @@ namespace CatFactory.Diagnostics
 
         public LogLevel LogLevel { get; set; }
 
-        public String Message { get; set; }
+        public string Message { get; set; }
 
-        public override String ToString()
-            => String.Format("{0}: {1}", LogLevel, Message);
+        public override string ToString()
+            => string.Format("{0}: {1}", LogLevel, Message);
     }
 }

@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace CatFactory.CodeFactory
+﻿namespace CatFactory.CodeFactory
 {
     public interface IObjectValue : IValue
     {
-        Object Value { get; set; }
+        object Value { get; set; }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace CatFactory.Mapping
 {
@@ -10,13 +9,13 @@ namespace CatFactory.Mapping
         {
         }
 
-        public String Schema { get; set; }
+        public string Schema { get; set; }
 
-        public String Name { get; set; }
+        public string Name { get; set; }
 
-        public String FullName
-            => String.IsNullOrEmpty(Schema) ? Name : String.Format("{0}.{1}", Schema, Name);
+        public string FullName
+            => string.IsNullOrEmpty(Schema) ? Name : string.Format("{0}.{1}", Schema, Name);
 
-        public String Type { get; set; }
+        public string Type { get; set; }
     }
 }

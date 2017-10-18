@@ -1,32 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Xml.Serialization;
 using CatFactory.Mapping;
 
 namespace CatFactory
 {
-    [DebuggerDisplay("Name={Name}, DbObjects={DbObjects.Count}")]
+    [DebuggerDisplay("Name={Name}, DbObjects={DbObjects.Count}, Description={Description}")]
     public class ProjectFeature
     {
         public ProjectFeature()
         {
         }
 
-        public ProjectFeature(String name, IEnumerable<DbObject> dbObjects)
+        public ProjectFeature(string name)
+        {
+            Name = name;
+        }
+
+        public ProjectFeature(string name, IEnumerable<DbObject> dbObjects)
         {
             Name = name;
             DbObjects.AddRange(dbObjects);
         }
 
-        public String Name { get; set; }
-
-        public String Description { get; set; }
-
-        public Database Database { get; set; }
-
-        [XmlIgnore]
-        public Project Project { get; set; }
+        public string Name { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<DbObject> m_dbObjects;
@@ -42,5 +39,10 @@ namespace CatFactory
                 m_dbObjects = value;
             }
         }
+
+        [XmlIgnore]
+        public Project Project { get; set; }
+
+        public string Description { get; set; }
     }
 }

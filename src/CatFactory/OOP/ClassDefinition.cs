@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace CatFactory.OOP
@@ -12,16 +11,32 @@ namespace CatFactory.OOP
         {
         }
 
-        public Boolean IsStatic { get; set; }
+        public bool IsStatic { get; set; }
+
+        public string BaseClass { get; set; }
+
+        public override bool HasInheritance
+            => !string.IsNullOrEmpty(BaseClass) || Implements.Count > 0;
+
+        public string GenericType { get; set; }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<string> m_whereConstraints;
+
+        public List<string> WhereConstraints
+        {
+            get
+            {
+                return m_whereConstraints ?? (m_whereConstraints = new List<string>());
+            }
+            set
+            {
+                m_whereConstraints = value;
+            }
+        }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ConstantDefinition> m_constants;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ClassConstructorDefinition> m_constructors;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<FieldDefinition> m_fields;
 
         public List<ConstantDefinition> Constants
         {
@@ -39,6 +54,9 @@ namespace CatFactory.OOP
 
         public FinalizerDefinition Finalizer { get; set; }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ClassConstructorDefinition> m_constructors;
+
         public List<ClassConstructorDefinition> Constructors
         {
             get
@@ -50,6 +68,24 @@ namespace CatFactory.OOP
                 m_constructors = value;
             }
         }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<Indexer> m_indexers;
+
+        public List<Indexer> Indexers
+        {
+            get
+            {
+                return m_indexers ?? (m_indexers = new List<Indexer>());
+            }
+            set
+            {
+                m_indexers = value;
+            }
+        }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<FieldDefinition> m_fields;
 
         public List<FieldDefinition> Fields
         {

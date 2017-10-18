@@ -1,11 +1,9 @@
-﻿using System;
-
-namespace CatFactory.OOP
+﻿namespace CatFactory.OOP
 {
     public interface INameValue
     {
-        String Name { get; set; }
+        string Name { get; set; }
 
-        String Value { get; set; }
+        string Value { get; set; }
     }
 }

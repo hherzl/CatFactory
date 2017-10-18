@@ -9,7 +9,7 @@ namespace CatFactory.Tests
         {
             get
             {
-                var db = new Database()
+                var database = new Database()
                 {
                     Name = "Store",
                     Tables = new List<Table>()
@@ -67,12 +67,13 @@ namespace CatFactory.Tests
                         }
                     }
                 };
-
-                db.SetPrimaryKeyToTables();
-
-                db.LinkTables();
                 
-                return db;
+                database.AddDbObjectsFromTables();
+                database.AddDbObjectsFromViews();
+                database.SetPrimaryKeyToTables();
+                database.LinkTables();
+
+                return database;
             }
         }
     }

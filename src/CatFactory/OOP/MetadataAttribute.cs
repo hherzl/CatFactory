@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace CatFactory.OOP
@@ -11,25 +10,25 @@ namespace CatFactory.OOP
         {
         }
 
-        public MetadataAttribute(String name, params String[] arguments)
+        public MetadataAttribute(string name, params string[] arguments)
         {
             Name = name;
             Arguments.AddRange(arguments);
         }
 
-        public String Name { get; set; }
+        public string Name { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<String> m_arguments;
+        private List<string> m_arguments;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<MetadataAttributeSet> m_sets;
 
-        public List<String> Arguments
+        public List<string> Arguments
         {
             get
             {
-                return m_arguments ?? (m_arguments = new List<String>());
+                return m_arguments ?? (m_arguments = new List<string>());
             }
             set
             {
@@ -49,13 +48,13 @@ namespace CatFactory.OOP
             }
         }
 
-        public Boolean HasArguments
+        public bool HasArguments
             => Arguments.Count > 0;
 
-        public Boolean HasSets
+        public bool HasSets
             => Sets.Count > 0;
 
-        public Boolean HasMembers
+        public bool HasMembers
             => HasArguments || HasSets;
     }
 }

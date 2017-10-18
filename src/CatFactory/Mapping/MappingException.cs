@@ -9,12 +9,12 @@ namespace CatFactory.Mapping
         {
         }
 
-        public MappingException(String message)
+        public MappingException(string message)
             : base(message)
         {
         }
 
-        public MappingException(String message, Exception ex)
+        public MappingException(string message, Exception ex)
             : base(message, ex)
         {
         }

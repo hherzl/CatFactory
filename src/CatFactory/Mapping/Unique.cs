@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CatFactory.Mapping
+﻿namespace CatFactory.Mapping
 {
     public class Unique : Constraint
     {
@@ -8,7 +6,7 @@ namespace CatFactory.Mapping
         {
         }
 
-        public Unique(params String[] key)
+        public Unique(params string[] key)
             : base(key)
         {
         }

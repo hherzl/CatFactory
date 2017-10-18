@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using CatFactory.CodeFactory;
 
@@ -13,7 +12,7 @@ namespace CatFactory.OOP
             IsAutomatic = true;
         }
 
-        public PropertyDefinition(String type, String name, params MetadataAttribute[] attribs)
+        public PropertyDefinition(string type, string name, params MetadataAttribute[] attribs)
         {
             IsAutomatic = true;
             Type = type;
@@ -21,7 +20,7 @@ namespace CatFactory.OOP
             Attributes.AddRange(attribs);
         }
 
-        public PropertyDefinition(AccessModifier accessModifier, String type, String name, params MetadataAttribute[] attribs)
+        public PropertyDefinition(AccessModifier accessModifier, string type, string name, params MetadataAttribute[] attribs)
         {
             AccessModifier = accessModifier;
             Type = type;
@@ -44,13 +43,13 @@ namespace CatFactory.OOP
             }
         }
 
-        public Boolean IsVirtual { get; set; }
+        public bool IsVirtual { get; set; }
 
-        public Boolean IsOverride { get; set; }
+        public bool IsOverride { get; set; }
 
-        public Boolean IsAutomatic { get; set; }
+        public bool IsAutomatic { get; set; }
 
-        public Boolean IsReadOnly { get; set; }
+        public bool IsReadOnly { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<MetadataAttribute> m_attributes;
@@ -69,15 +68,12 @@ namespace CatFactory.OOP
 
         public AccessModifier AccessModifier { get; set; }
 
-        public String Type { get; set; }
+        public string Type { get; set; }
 
-        public String Name { get; set; }
+        public string Name { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ILine> m_getBody;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ILine> m_setBody;
 
         public List<ILine> GetBody
         {
@@ -91,6 +87,9 @@ namespace CatFactory.OOP
             }
         }
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ILine> m_setBody;
+
         public List<ILine> SetBody
         {
             get
@@ -103,6 +102,6 @@ namespace CatFactory.OOP
             }
         }
 
-        public String InitializationValue { get; set; }
+        public string InitializationValue { get; set; }
     }
 }

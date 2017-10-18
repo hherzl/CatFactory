@@ -1,12 +1,13 @@
-﻿using System;
-using System.Linq;
-using CatFactory.Mapping;
+﻿using CatFactory.Mapping;
 
 namespace CatFactory
 {
     public static class ProjectFeatureExtensions
     {
-        public static Boolean IsView(this ProjectFeature projectFeature, DbObject dbObject)
-            => projectFeature.Database.Views.FirstOrDefault(item => item.FullName == dbObject.FullName) == null ? false : true;
+        public static bool IsTable(this ProjectFeature projectFeature, IDbObject dbObject)
+            => projectFeature.Project.Database.FindTableByFullName(dbObject.FullName) == null ? false : true;
+
+        public static bool IsView(this ProjectFeature projectFeature, IDbObject dbObject)
+            => projectFeature.Project.Database.FindViewByFullName(dbObject.FullName) == null ? false : true;
     }
 }

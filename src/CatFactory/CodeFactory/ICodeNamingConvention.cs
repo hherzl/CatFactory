@@ -1,21 +1,21 @@
-﻿using System;
-
-namespace CatFactory.CodeFactory
+﻿namespace CatFactory.CodeFactory
 {
     public interface ICodeNamingConvention : INamingConvention
     {
-        String GetInterfaceName(String value);
+        string GetNamespace(string value);
 
-        String GetClassName(String value);
+        string GetInterfaceName(string value);
 
-        String GetConstantName(String value);
+        string GetClassName(string value);
 
-        String GetFieldName(String value);
+        string GetConstantName(string value);
 
-        String GetPropertyName(String value);
+        string GetFieldName(string value);
 
-        String GetMethodName(String value);
+        string GetPropertyName(string value);
 
-        String GetParameterName(String value);
+        string GetMethodName(string value);
+
+        string GetParameterName(string value);
     }
 }

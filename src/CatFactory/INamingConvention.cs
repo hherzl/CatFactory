@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace CatFactory
+﻿namespace CatFactory
 {
     public interface INamingConvention
     {
-        String ValidName(String name);
+        string ValidName(string name);
     }
 }

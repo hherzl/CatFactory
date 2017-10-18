@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace CatFactory.Mapping
 {
@@ -10,8 +9,8 @@ namespace CatFactory.Mapping
         {
         }
 
-        public String Name { get; set; }
+        public string Name { get; set; }
 
-        public Boolean IsUserDefined { get; set; }
+        public bool IsUserDefined { get; set; }
     }
 }

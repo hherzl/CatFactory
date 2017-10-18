@@ -1,13 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace CatFactory.OOP
 {
     public interface IClassDefinition : IObjectDefinition
     {
-        Boolean IsStatic { get; set; }
+        bool IsStatic { get; set; }
 
-        String BaseClass { get; set; }
+        string GenericType { get; set; }
+
+        string BaseClass { get; set; }
+
+        List<string> WhereConstraints { get; set; }
 
         List<ConstantDefinition> Constants { get; set; }
 
@@ -16,6 +19,8 @@ namespace CatFactory.OOP
         FinalizerDefinition Finalizer { get; set; }
 
         List<ClassConstructorDefinition> Constructors { get; set; }
+
+        List<Indexer> Indexers { get; set; }
 
         List<FieldDefinition> Fields { get; set; }
     }

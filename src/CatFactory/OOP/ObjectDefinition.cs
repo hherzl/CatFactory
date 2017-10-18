@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace CatFactory.OOP
@@ -13,13 +12,13 @@ namespace CatFactory.OOP
         }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<String> m_namespaces;
+        private List<string> m_namespaces;
 
-        public List<String> Namespaces
+        public List<string> Namespaces
         {
             get
             {
-                return m_namespaces ?? (m_namespaces = new List<String>());
+                return m_namespaces ?? (m_namespaces = new List<string>());
             }
             set
             {
@@ -27,7 +26,7 @@ namespace CatFactory.OOP
             }
         }
 
-        public String Namespace { get; set; }
+        public string Namespace { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private Documentation m_documentation;
@@ -46,26 +45,24 @@ namespace CatFactory.OOP
 
         public AccessModifier AccessModifier { get; set; }
 
-        public Boolean IsPartial { get; set; }
+        public bool IsPartial { get; set; }
 
-        public String Name { get; set; }
+        public string Name { get; set; }
 
-        public virtual String FullName
-            => String.IsNullOrEmpty(Namespace) ? Name : String.Format("{0}.{1}", Namespace, Name);
+        public virtual string FullName
+            => string.IsNullOrEmpty(Namespace) ? Name : string.Format("{0}.{1}", Namespace, Name);
 
-        public String BaseClass { get; set; }
-
-        public Boolean HasInheritance
-            => !String.IsNullOrEmpty(BaseClass) || Implements.Count > 0;
+        public virtual bool HasInheritance
+            => Implements.Count > 0;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<String> m_implements;
+        private List<string> m_implements;
 
-        public List<String> Implements
+        public List<string> Implements
         {
             get
             {
-                return m_implements ?? (m_implements = new List<String>());
+                return m_implements ?? (m_implements = new List<string>());
             }
             set
             {
@@ -133,22 +130,19 @@ namespace CatFactory.OOP
             }
         }
 
-        public override Boolean Equals(Object obj)
+        public override bool Equals(object obj)
         {
             var cast = obj as ObjectDefinition;
 
-            if (cast != null)
+            if (cast != null && FullName == cast.FullName)
             {
-                if (FullName == cast.FullName)
-                {
-                    return true;
-                }
+                return true;
             }
 
             return false;
         }
 
-        public override Int32 GetHashCode()
+        public override int GetHashCode()
             => base.GetHashCode();
     }
 }

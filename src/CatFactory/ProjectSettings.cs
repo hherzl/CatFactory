@@ -6,8 +6,6 @@ namespace CatFactory
     public class ProjectSettings : IProjectSettings
     {
         public virtual IEnumerable<ValidationMessage> Validate()
-        {
-            return null;
-        }
+            => null;
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace CatFactory.OOP
 {
@@ -10,7 +9,7 @@ namespace CatFactory.OOP
         {
         }
 
-        public EventDefinition(String type, String name)
+        public EventDefinition(string type, string name)
         {
             Type = type;
             Name = name;
@@ -33,8 +32,8 @@ namespace CatFactory.OOP
 
         public AccessModifier AccessModifier { get; set; }
 
-        public String Type { get; set; }
+        public string Type { get; set; }
 
-        public String Name { get; set; }
+        public string Name { get; set; }
     }
 }

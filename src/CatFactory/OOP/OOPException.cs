@@ -9,12 +9,12 @@ namespace CatFactory.OOP
         {
         }
 
-        public OOPException(String message)
+        public OOPException(string message)
             : base(message)
         {
         }
 
-        public OOPException(String message, Exception ex)
+        public OOPException(string message, Exception ex)
             : base(message, ex)
         {
         }

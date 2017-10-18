@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace CatFactory
+﻿namespace CatFactory
 {
     public interface ITypeResolver
     {
-        String Resolve(String type);
+        string Resolve(string type);
     }
 }

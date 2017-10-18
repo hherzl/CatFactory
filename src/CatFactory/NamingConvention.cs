@@ -1,40 +1,87 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Text;
 
 namespace CatFactory
 {
     public static class NamingConvention
     {
-        private static Boolean IsFullUpper(String s)
-        {
-            var flag = true;
+        private static bool IsUpper(string source)
+            => source.ToUpper() == source;
 
-            for (var i = 0; i < s.Length; i++)
+        public static string GetCamelCase(string source)
+        {
+            if (source.Length == 0)
             {
-                if (!Char.IsUpper(s[i]))
-                {
-                    flag = false;
-                    break;
-                }
+                return string.Empty;
             }
 
-            return flag;
+            if (source.Contains(" "))
+            {
+                var pieces = source.Split(' ');
+
+                var name = new StringBuilder();
+
+                for (var i = 0; i < pieces.Length; i++)
+                {
+                    var item = pieces[i];
+
+                    if (item.Length == 0)
+                    {
+                        continue;
+                    }
+
+                    name.Append(i == 0 ? item[0].ToString().ToLower() : item[0].ToString().ToUpper());
+                    name.Append(item.Substring(1));
+                }
+
+                return name.ToString();
+            }
+            else if (source.Contains("_"))
+            {
+                var pieces = source.Split('_');
+
+                var name = new StringBuilder();
+
+                for (var i = 0; i < pieces.Length; i++)
+                {
+                    var item = pieces[i];
+
+                    if (item.Length == 0)
+                    {
+                        continue;
+                    }
+
+                    name.Append(i == 0 ? item[0].ToString().ToLower() : item[0].ToString().ToUpper());
+                    name.Append(item.Substring(1));
+                }
+
+                return name.ToString();
+            }
+            else
+            {
+                if (source.Length == 1 || IsUpper(source))
+                {
+                    return source.ToLower();
+                }
+
+                return string.Format("{0}{1}", source[0].ToString().ToLower(), source.Substring(1)).Replace("_", string.Empty).Replace(".", string.Empty);
+            }
         }
 
-        public static String GetPascalCase(String s)
+        public static string GetPascalCase(string source)
         {
-            if (s.Length == 0)
+            if (source.Length == 0)
             {
-                return String.Empty;
+                return string.Empty;
             }
 
-            s = s.Replace("  ", " ").Trim();
+            source = source.Replace("  ", " ").Trim();
 
             var name = new StringBuilder();
 
-            if (s.Contains("_"))
+            if (source.Contains("_"))
             {
-                var pieces = s.Split('_');
+                var pieces = source.Split('_');
 
                 for (var i = 0; i < pieces.Length; i++)
                 {
@@ -45,21 +92,13 @@ namespace CatFactory
                         continue;
                     }
 
-                    if (IsFullUpper(item))
-                    {
-                        name.Append(item[0].ToString().ToUpper());
-                        name.Append(item.Substring(1).ToLower());
-                    }
-                    else
-                    {
-                        name.Append(item[0].ToString().ToUpper());
-                        name.Append(item.Substring(1));
-                    }
+                    name.Append(item[0].ToString().ToUpper());
+                    name.Append(IsUpper(item) ? item.Substring(1).ToLower() : item.Substring(1));
                 }
             }
-            else if (s.Contains("."))
+            else if (source.Contains("."))
             {
-                var pieces = s.Split('_');
+                var pieces = source.Split('.');
 
                 for (var i = 0; i < pieces.Length; i++)
                 {
@@ -70,21 +109,13 @@ namespace CatFactory
                         continue;
                     }
 
-                    if (IsFullUpper(item))
-                    {
-                        name.Append(item[0].ToString().ToUpper());
-                        name.Append(item.Substring(1).ToLower());
-                    }
-                    else
-                    {
-                        name.Append(item[0].ToString().ToUpper());
-                        name.Append(item.Substring(1));
-                    }
+                    name.Append(item[0].ToString().ToUpper());
+                    name.Append(IsUpper(item) ? item.Substring(1).ToLower() : item.Substring(1));
                 }
             }
-            else if (s.Contains(" "))
+            else if (source.Contains(" "))
             {
-                var pieces = s.Split(' ');
+                var pieces = source.Split(' ');
 
                 for (var i = 0; i < pieces.Length; i++)
                 {
@@ -101,41 +132,74 @@ namespace CatFactory
             }
             else
             {
-                if (s.Length == 1)
+                if (source.Length == 1)
                 {
-                    name.Append(s.ToUpper());
+                    name.Append(source.ToUpper());
                 }
                 else
                 {
-                    if (IsFullUpper(s))
-                    {
-                        name.Append(s[0].ToString().ToUpper());
-                        name.Append(s.Substring(1).ToLower());
-                    }
-                    else
-                    {
-                        name.Append(s[0].ToString().ToUpper());
-                        name.Append(s.Substring(1));
-                    }
+                    name.Append(source[0].ToString().ToUpper());
+                    name.Append(IsUpper(source) ? source.Substring(1).ToLower() : source.Substring(1));
                 }
             }
 
             return name.ToString();
         }
 
-        public static String GetCamelCase(String s)
+        public static string GetSnakeCase(string source)
         {
-            if (s.Length == 0)
+            if (source.Length == 0)
             {
-                return String.Empty;
+                return string.Empty;
             }
 
-            if (s.Length == 1)
+            if (source.Contains("_"))
             {
-                return s.ToLower();
+                return source;
             }
 
-            return String.Format("{0}{1}", s[0].ToString().ToLower(), s.Substring(1)).Replace("_", String.Empty).Replace(".", String.Empty);
+            source = source.Replace("  ", " ").Trim();
+
+            var name = new List<string>();
+
+            if (source.Contains("."))
+            {
+                var pieces = source.Split('.');
+
+                for (var i = 0; i < pieces.Length; i++)
+                {
+                    var item = pieces[i];
+
+                    if (item.Length == 0)
+                    {
+                        continue;
+                    }
+
+                    name.Add(item);
+                }
+            }
+            else if (source.Contains(" "))
+            {
+                var pieces = source.Split(' ');
+
+                for (var i = 0; i < pieces.Length; i++)
+                {
+                    var item = pieces[i];
+
+                    if (item.Length == 0)
+                    {
+                        continue;
+                    }
+
+                    name.Add(item);
+                }
+            }
+            else
+            {
+                name.Add(source);
+            }
+
+            return string.Join("_", name);
         }
     }
 }

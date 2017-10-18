@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Xml.Serialization;
@@ -13,7 +12,7 @@ namespace CatFactory.Mapping
         {
         }
 
-        public String Name { get; set; }
+        public string Name { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private IDatabaseNamingConvention m_namingConvention;
@@ -136,28 +135,31 @@ namespace CatFactory.Mapping
             }
         }
 
-        public virtual ITable FindTableByFullName(String fullName)
-            => Tables.FirstOrDefault(item => String.Join(".", new String[] { Name, item.Schema, item.Name }) == fullName);
+        public virtual List<DbObject> GetDbObjectsBySchema(string schema)
+            => DbObjects.Where(db => db.Schema == schema).ToList();
 
-        public virtual ITable FindTableBySchemaAndName(String fullName)
+        public virtual ITable FindTableByFullName(string fullName)
+            => Tables.FirstOrDefault(item => string.Join(".", new string[] { Name, item.Schema, item.Name }) == fullName);
+
+        public virtual ITable FindTableBySchemaAndName(string fullName)
             => Tables.FirstOrDefault(item => item.FullName == fullName);
 
-        public virtual IEnumerable<ITable> FindTablesBySchema(String schema)
+        public virtual IEnumerable<ITable> FindTablesBySchema(string schema)
             => Tables.Where(item => item.Schema == schema);
 
-        public virtual IEnumerable<ITable> FindTablesByName(String name)
+        public virtual IEnumerable<ITable> FindTablesByName(string name)
             => Tables.Where(item => item.Name == name);
 
-        public virtual IView FindViewByFullName(String fullName)
-            => Views.FirstOrDefault(item => String.Join(".", new String[] { Name, item.Schema, item.Name }) == fullName);
+        public virtual IView FindViewByFullName(string fullName)
+            => Views.FirstOrDefault(item => string.Join(".", new string[] { Name, item.Schema, item.Name }) == fullName);
 
-        public virtual IView FindViewBySchemaAndName(String fullName)
+        public virtual IView FindViewBySchemaAndName(string fullName)
             => Views.FirstOrDefault(item => item.FullName == fullName);
 
-        public virtual IEnumerable<IView> FindViewsBySchema(String schema)
+        public virtual IEnumerable<IView> FindViewsBySchema(string schema)
             => Views.Where(item => item.Schema == schema);
 
-        public virtual IEnumerable<IView> FindViewsByName(String name)
+        public virtual IEnumerable<IView> FindViewsByName(string name)
             => Views.Where(item => item.Name == name);
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace CatFactory.OOP
 {
@@ -8,6 +9,23 @@ namespace CatFactory.OOP
         public InterfaceDefinition()
             : base()
         {
+        }
+
+        public string GenericType { get; set; }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<string> m_whereConstraints;
+
+        public List<string> WhereConstraints
+        {
+            get
+            {
+                return m_whereConstraints ?? (m_whereConstraints = new List<string>());
+            }
+            set
+            {
+                m_whereConstraints = value;
+            }
         }
     }
 }

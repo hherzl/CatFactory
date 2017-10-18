@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace CatFactory.Mapping
@@ -11,17 +10,30 @@ namespace CatFactory.Mapping
         {
         }
 
-        public String Schema { get; set; }
+        public string Schema { get; set; }
 
-        public String Name { get; set; }
+        public string Name { get; set; }
 
-        public String FullName
-            => String.IsNullOrEmpty(Schema) ? Name : String.Format("{0}.{1}", Schema, Name);
+        public string FullName
+            => string.IsNullOrEmpty(Schema) ? Name : string.Format("{0}.{1}", Schema, Name);
 
-        public String Type { get; set; }
+        public string Type { get; set; }
 
-        public String Description { get; set; }
+        public string Description { get; set; }
 
+        public Column this[int index]
+        {
+            get
+            {
+                return Columns[index];
+            }
+            set
+            {
+                Columns[index] = value;
+            }
+        }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<Column> m_columns;
 
         public List<Column> Columns

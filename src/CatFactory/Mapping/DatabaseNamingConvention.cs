@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CatFactory.Mapping
+﻿namespace CatFactory.Mapping
 {
     public class DatabaseNamingConvention : IDatabaseNamingConvention
     {
@@ -8,24 +6,22 @@ namespace CatFactory.Mapping
         {
         }
 
-        public virtual String ValidName(String name)
-        {
-            return name;
-        }
+        public virtual string ValidName(string name)
+            => name;
 
-        public virtual String GetPrimaryKeyConstraintName(String table, String[] key)
-        {
-            return String.Format("pk_{0}_{1}", table, String.Join("_", key));
-        }
+        public virtual string GetObjectName(params string[] names)
+            => string.Join(".", names);
 
-        public virtual String GetForeignKeyConstraintName(String table, String[] key, String reference)
-        {
-            return String.Format("fk_{0}_{1}_{2}", table, String.Join("_", key), reference);
-        }
+        public virtual string GetParameterName(string name)
+            => name;
 
-        public virtual String GetUniqueConstraintName(String table, String[] key)
-        {
-            return String.Format("u_{0}_{1}_{2}", table, String.Join("_", key));
-        }
+        public virtual string GetPrimaryKeyConstraintName(ITable table, string[] key)
+            => string.Join("_", "PK", table.Schema, table.Name);
+
+        public virtual string GetForeignKeyConstraintName(ITable table, string[] key, ITable references)
+            => string.Join("_", "FK", table.Schema, table.Name, string.Join("_", key), references.Schema, references.Name);
+
+        public virtual string GetUniqueConstraintName(ITable table, string[] key)
+            => string.Join("_", "U", table.Schema, table.Name, string.Join("_", key));
     }
 }

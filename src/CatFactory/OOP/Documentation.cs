@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CatFactory.OOP
+﻿namespace CatFactory.OOP
 {
     public class Documentation
     {
@@ -8,13 +6,13 @@ namespace CatFactory.OOP
         {
         }
 
-        public Documentation(String summary)
+        public Documentation(string summary)
         {
             Summary = summary;
         }
 
-        public String Summary { get; set; }
+        public string Summary { get; set; }
 
-        public String Remarks { get; set; }
+        public string Remarks { get; set; }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace CatFactory.Mapping
 {
@@ -10,17 +9,17 @@ namespace CatFactory.Mapping
         {
         }
 
-        public Identity(String name, Int32 seed, Int32 increment)
+        public Identity(string name, int seed, int increment)
         {
             Name = name;
             Seed = seed;
             Increment = increment;
         }
 
-        public String Name { get; set; }
+        public string Name { get; set; }
 
-        public Int32 Seed { get; set; }
+        public int Seed { get; set; }
 
-        public Int32 Increment { get; set; }
+        public int Increment { get; set; }
     }
 }

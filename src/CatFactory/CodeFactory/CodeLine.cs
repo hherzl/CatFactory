@@ -1,25 +1,23 @@
-﻿using System;
-
-namespace CatFactory.CodeFactory
+﻿namespace CatFactory.CodeFactory
 {
-    public class CodeLine : Line, ILine
+    public class CodeLine : Line
     {
         public CodeLine()
             : base()
         {
         }
 
-        public CodeLine(Int32 indent, String content, params String[] values)
+        public CodeLine(int indent, string content, params string[] values)
             : base(indent, content, values)
         {
         }
 
-        public CodeLine(String content, params String[] values)
+        public CodeLine(string content, params string[] values)
             : base(content, values)
         {
         }
 
-        public override String ToString()
+        public override string ToString()
             => Content;
     }
 }
