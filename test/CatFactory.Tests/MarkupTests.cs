@@ -41,13 +41,13 @@ namespace CatFactory.Tests
             html.AppendTag("h1", "CatFactory ==^^==");
             html.AppendLine();
 
-            html.AppendTag("p", "This is a test for append tag method", new { style = "text-align: center;" });
+            html.Append(Html.P("This is a test for append tag method", new { style = "text-align: center;" }));
             html.AppendLine();
 
             html.CloseTag("body");
             html.AppendLine();
 
-            html.AppendTag("script", string.Empty, new { src = "./foo.js" });
+            html.Append(Html.Script("./foo.js"));
             html.AppendLine();
 
             html.CloseTag("html");

@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using CatFactory.Collections;
 using Microsoft.Extensions.Logging;
 
 namespace CatFactory.CodeFactory
@@ -34,9 +35,6 @@ namespace CatFactory.CodeFactory
             => string.Format("{0}.{1}", FileName, FileExtension);
 
         public INamingConvention NamingConvention { get; set; }
-
-        protected virtual string GetComment(string description)
-            => description;
 
         public virtual string Code
             => string.Empty;
@@ -99,7 +97,14 @@ namespace CatFactory.CodeFactory
 
             Logger?.LogInformation("Creating '{0}' file...", filePath);
 
-            TextFileHelper.CreateFile(filePath, Code);
+            if (Lines.Count == 0)
+            {
+                TextFileHelper.CreateFile(filePath, Code);
+            }
+            else
+            {
+                TextFileHelper.CreateFile(filePath, Lines.ToStringBuilder().ToString());
+            }
         }
     }
 }

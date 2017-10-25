@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using CatFactory.CodeFactory;
 
 namespace CatFactory.Collections
 {
@@ -27,6 +28,18 @@ namespace CatFactory.Collections
             {
                 list.Add(item);
             }
+        }
+
+        public static StringBuilder ToStringBuilder(this List<ILine> list)
+        {
+            var stringBuilder = new StringBuilder();
+
+            foreach (var item in list)
+            {
+                stringBuilder.AppendLine(item.ToString());
+            }
+
+            return stringBuilder;
         }
 
         public static StringBuilder ToStringBuilder(this List<string> list)

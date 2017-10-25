@@ -20,7 +20,7 @@ namespace CatFactory.OOP
 
         List<ClassConstructorDefinition> Constructors { get; set; }
 
-        List<Indexer> Indexers { get; set; }
+        List<IndexerDefinition> Indexers { get; set; }
 
         List<FieldDefinition> Fields { get; set; }
     }

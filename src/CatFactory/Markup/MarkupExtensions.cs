@@ -7,16 +7,21 @@ namespace CatFactory.Markup
 {
     public static class MarkupExtensions
     {
-        private static string GetAttributes(this object attributes)
+        public static string GetAttributes(this object obj)
         {
-            var items = new List<string>();
-
-            foreach (var property in attributes.GetType().GetProperties().Where(item => item.CanRead))
+            if (obj == null)
             {
-                items.Add(string.Format("{0}=\"{1}\"", property.Name.Replace("-", "_"), property.GetValue(attributes, null)));
+                return string.Empty;
             }
 
-            return string.Join(" ", items);
+            var items = new List<string>();
+
+            foreach (var property in obj.GetType().GetProperties().Where(item => item.CanRead))
+            {
+                items.Add(string.Format("{0}=\"{1}\"", property.Name.Replace("_", "-"), property.GetValue(obj, null)));
+            }
+
+            return string.Format(" {0}", string.Join(" ", items));
         }
 
         public static void OpenTag(this StringBuilder stringBuilder, string name, object attributes)
@@ -32,14 +37,10 @@ namespace CatFactory.Markup
         }
 
         public static void OpenTag(this StringBuilder stringBuilder, string name)
-        {
-            stringBuilder.OpenTag(name, null);
-        }
+            => stringBuilder.OpenTag(name, null);
 
         public static void CloseTag(this StringBuilder stringBuilder, string name)
-        {
-            stringBuilder.AppendFormat("</{0}>", name);
-        }
+            => stringBuilder.AppendFormat("</{0}>", name);
 
         public static void AppendTag(this StringBuilder stringBuilder, string name, string content, object attributes)
         {
@@ -54,8 +55,6 @@ namespace CatFactory.Markup
         }
 
         public static void AppendTag(this StringBuilder stringBuilder, string name, string content)
-        {
-            stringBuilder.AppendTag(name, content, null);
-        }
+            => stringBuilder.AppendTag(name, content, null);
     }
 }

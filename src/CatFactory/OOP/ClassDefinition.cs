@@ -70,13 +70,13 @@ namespace CatFactory.OOP
         }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<Indexer> m_indexers;
+        private List<IndexerDefinition> m_indexers;
 
-        public List<Indexer> Indexers
+        public List<IndexerDefinition> Indexers
         {
             get
             {
-                return m_indexers ?? (m_indexers = new List<Indexer>());
+                return m_indexers ?? (m_indexers = new List<IndexerDefinition>());
             }
             set
             {

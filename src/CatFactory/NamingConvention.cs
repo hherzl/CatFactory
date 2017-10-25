@@ -5,6 +5,9 @@ namespace CatFactory
 {
     public static class NamingConvention
     {
+        private static bool IsLower(string source)
+            => source.ToLower() == source;
+
         private static bool IsUpper(string source)
             => source.ToUpper() == source;
 

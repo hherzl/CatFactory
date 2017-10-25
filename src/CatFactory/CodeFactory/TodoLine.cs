@@ -16,8 +16,5 @@
             : base(content, values)
         {
         }
-
-        public override string ToString()
-            => Content;
     }
 }

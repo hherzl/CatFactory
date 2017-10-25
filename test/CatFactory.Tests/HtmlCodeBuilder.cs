@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 using CatFactory.CodeFactory;
 using CatFactory.Markup;
 
@@ -7,13 +6,13 @@ namespace CatFactory.Tests
 {
     public class HtmlCodeBuilder : CodeBuilder
     {
-        public override String FileName
-            => String.Format("Document");
+        public override string FileName
+            => string.Format("Document");
 
-        public override String FileExtension
+        public override string FileExtension
             => "html";
 
-        public override String Code
+        public override string Code
         {
             get
             {
@@ -34,7 +33,7 @@ namespace CatFactory.Tests
                 output.OpenTag("body");
                 output.AppendLine();
 
-                output.AppendTag("h1", "My title", new { style = "font-family: Verdana;" });
+                output.Append(Html.H1("My title", new { style = "font-family: Verdana;" }));
                 output.AppendLine();
 
                 output.CloseTag("body");

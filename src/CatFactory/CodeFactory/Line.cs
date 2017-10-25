@@ -27,5 +27,8 @@ namespace CatFactory.CodeFactory
 
         public bool IsNullOrEmpty
             => string.IsNullOrEmpty(Content);
+
+        public override string ToString()
+            => Content;
     }
 }

@@ -4,9 +4,9 @@ using CatFactory.CodeFactory;
 
 namespace CatFactory.OOP
 {
-    public class Indexer : IMemberDefinition
+    public class IndexerDefinition : IMemberDefinition
     {
-        public Indexer()
+        public IndexerDefinition()
         {
         }
 
@@ -14,7 +14,7 @@ namespace CatFactory.OOP
 
         public string Type { get; set; }
 
-        public string Name { get; set; }
+        public string Name { get; set; } = "this";
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ParameterDefinition> m_parameters;
