@@ -13,13 +13,13 @@ namespace CatFactory.Mapping
 
         public string Type { get; set; }
 
-        public int Length { get; set; }
+        public short Length { get; set; }
 
-        public short Prec { get; set; }
+        public int Prec { get; set; }
 
-        public short Scale { get; set; }
+        public int Scale { get; set; }
 
-        public short ParamOrder { get; set; }
+        public int ParamOrder { get; set; }
 
         public string Collation { get; set; }
     }
