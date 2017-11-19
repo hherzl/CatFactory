@@ -1,9 +1,10 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace CatFactory.Mapping
 {
     [DebuggerDisplay("Name={Name}, Type={Type}, Nullable={Nullable ? \"Yes\": \"No\"}")]
-    public class Column
+    public class Column : IEqualityComparer<Column>
     {
         public Column()
         {
@@ -25,19 +26,14 @@ namespace CatFactory.Mapping
 
         public string Description { get; set; }
 
-        public override bool Equals(object obj)
+        public bool Equals(Column x, Column y)
         {
-            var cast = obj as Column;
-
-            if (cast != null)
-            {
-                return string.Compare(Name, cast.Name) == 0 ? true : false;
-            }
-
-            return false;
+            return x.Name.Equals(y.Name);
         }
 
-        public override int GetHashCode()
-            => Name == null ? 0 : Name.GetHashCode();
+        public int GetHashCode(Column obj)
+        {
+            return obj.Name.GetHashCode();
+        }
     }
 }

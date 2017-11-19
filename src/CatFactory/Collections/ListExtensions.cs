@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using CatFactory.CodeFactory;
+using System.Linq;
 
 namespace CatFactory.Collections
 {
     public static class ListExtensions
     {
-        public static void Add<T>(this List<T> list, bool flag, T item)
+        public static void Add<T>(this IList<T> list, bool flag, T item)
         {
             if (flag)
             {
@@ -14,42 +15,18 @@ namespace CatFactory.Collections
             }
         }
 
-        public static void AddUnique<T>(this List<T> list, T item)
+        public static StringBuilder ToStringBuilder(this IEnumerable<ILine> list)
         {
-            if (!list.Contains(item))
-            {
-                list.Add(item);
-            }
+            return ToStringBuilder(list.Select(item => item.ToString()));
         }
 
-        public static void AddUnique<T>(this List<T> list, bool flag, T item)
-        {
-            if (flag && !list.Contains(item))
-            {
-                list.Add(item);
-            }
-        }
-
-        public static StringBuilder ToStringBuilder(this List<ILine> list)
+        public static StringBuilder ToStringBuilder(this IEnumerable<string> list)
         {
             var stringBuilder = new StringBuilder();
 
-            foreach (var item in list)
-            {
-                stringBuilder.AppendLine(item.ToString());
-            }
+            var s = list.Aggregate((current, next) => current.ToString() + "\n" + next.ToString());
 
-            return stringBuilder;
-        }
-
-        public static StringBuilder ToStringBuilder(this List<string> list)
-        {
-            var stringBuilder = new StringBuilder();
-
-            foreach (var item in list)
-            {
-                stringBuilder.AppendLine(item);
-            }
+            stringBuilder.AppendLine(s);
 
             return stringBuilder;
         }

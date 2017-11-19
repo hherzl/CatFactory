@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace CatFactory.OOP
 {
     [DebuggerDisplay("Namespace={Namespace}, Name={Name}")]
-    public class ObjectDefinition : IObjectDefinition
+    public class ObjectDefinition : IObjectDefinition, IEqualityComparer<ObjectDefinition>
     {
         public ObjectDefinition()
         {
@@ -86,13 +87,13 @@ namespace CatFactory.OOP
         }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<EventDefinition> m_events;
+        private HashSet<EventDefinition> m_events;
 
-        public List<EventDefinition> Events
+        public HashSet<EventDefinition> Events
         {
             get
             {
-                return m_events ?? (m_events = new List<EventDefinition>());
+                return m_events ?? (m_events = new HashSet<EventDefinition>());
             }
             set
             {
@@ -101,13 +102,13 @@ namespace CatFactory.OOP
         }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<PropertyDefinition> m_properties;
+        private HashSet<PropertyDefinition> m_properties;
 
-        public List<PropertyDefinition> Properties
+        public HashSet<PropertyDefinition> Properties
         {
             get
             {
-                return m_properties ?? (m_properties = new List<PropertyDefinition>());
+                return m_properties ?? (m_properties = new HashSet<PropertyDefinition>());
             }
             set
             {
@@ -116,13 +117,13 @@ namespace CatFactory.OOP
         }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<MethodDefinition> m_methods;
+        private HashSet<MethodDefinition> m_methods;
 
-        public List<MethodDefinition> Methods
+        public HashSet<MethodDefinition> Methods
         {
             get
             {
-                return m_methods ?? (m_methods = new List<MethodDefinition>());
+                return m_methods ?? (m_methods = new HashSet<MethodDefinition>());
             }
             set
             {
@@ -130,19 +131,16 @@ namespace CatFactory.OOP
             }
         }
 
-        public override bool Equals(object obj)
+        #region IEqualityComparer
+        public bool Equals(ObjectDefinition x, ObjectDefinition y)
         {
-            var cast = obj as ObjectDefinition;
-
-            if (cast != null && FullName == cast.FullName)
-            {
-                return true;
-            }
-
-            return false;
+            return x.FullName.Equals(y.FullName);
         }
 
-        public override int GetHashCode()
-            => base.GetHashCode();
+        public int GetHashCode(ObjectDefinition obj)
+        {
+            return base.GetHashCode();
+        }
+        #endregion
     }
 }
