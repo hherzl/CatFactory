@@ -24,10 +24,10 @@ namespace CatFactory.OOP
 
         bool HasInheritance { get; }
 
-        List<EventDefinition> Events { get; set; }
+        HashSet<EventDefinition> Events { get; set; }
 
-        List<PropertyDefinition> Properties { get; set; }
+        HashSet<PropertyDefinition> Properties { get; set; }
 
-        List<MethodDefinition> Methods { get; set; }
+        HashSet<MethodDefinition> Methods { get; set; }
     }
 }

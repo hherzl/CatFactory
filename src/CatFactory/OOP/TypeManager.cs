@@ -5,19 +5,16 @@ namespace CatFactory.OOP
 {
     public static class TypeManager
     {
-        private static List<IObjectDefinition> ObjectDefinitions;
+        private static HashSet<IObjectDefinition> ObjectDefinitions;
 
         static TypeManager()
         {
-            ObjectDefinitions = new List<IObjectDefinition>();
+            ObjectDefinitions = new HashSet<IObjectDefinition>();
         }
 
         public static void Register(IObjectDefinition objectDefinition)
         {
-            if (!ObjectDefinitions.Contains(objectDefinition))
-            {
-                ObjectDefinitions.Add(objectDefinition);
-            }
+            ObjectDefinitions.Add(objectDefinition);
         }
 
         public static IObjectDefinition GetItemByFullName(string fullName)
