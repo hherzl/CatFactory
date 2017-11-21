@@ -17,25 +17,8 @@ namespace CatFactory.OOP
             Attributes.AddRange(attributes);
         }
 
-        public ParameterDefinition(AccessModifier accessModifier, string type, string name, params MetadataAttribute[] attributes)
-        {
-            AccessModifier = accessModifier;
-            Type = type;
-            Name = name;
-            Attributes.AddRange(attributes);
-        }
-
         public ParameterDefinition(string type, string name, string defaultValue, params MetadataAttribute[] attributes)
         {
-            Type = type;
-            Name = name;
-            DefaultValue = defaultValue;
-            Attributes.AddRange(attributes);
-        }
-
-        public ParameterDefinition(AccessModifier accessModifier, string type, string name, string defaultValue, params MetadataAttribute[] attributes)
-        {
-            AccessModifier = accessModifier;
             Type = type;
             Name = name;
             DefaultValue = defaultValue;
@@ -71,8 +54,6 @@ namespace CatFactory.OOP
                 m_attributes = value;
             }
         }
-
-        public AccessModifier AccessModifier { get; set; }
 
         public bool IsParams { get; set; }
 
