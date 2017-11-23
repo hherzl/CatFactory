@@ -6,7 +6,7 @@ namespace CatFactory.Collections
 {
     public static class ListExtensions
     {
-        public static void Add<T>(this List<T> list, bool flag, T item)
+        public static void Add<T>(this IList<T> list, bool flag, T item)
         {
             if (flag)
             {
@@ -14,7 +14,7 @@ namespace CatFactory.Collections
             }
         }
 
-        public static void AddUnique<T>(this List<T> list, T item)
+        public static void AddUnique<T>(this IList<T> list, T item)
         {
             if (!list.Contains(item))
             {
@@ -22,7 +22,7 @@ namespace CatFactory.Collections
             }
         }
 
-        public static void AddUnique<T>(this List<T> list, bool flag, T item)
+        public static void AddUnique<T>(this IList<T> list, bool flag, T item)
         {
             if (flag && !list.Contains(item))
             {
@@ -30,7 +30,7 @@ namespace CatFactory.Collections
             }
         }
 
-        public static StringBuilder ToStringBuilder(this List<ILine> list)
+        public static StringBuilder ToStringBuilder(this IList<ILine> list)
         {
             var stringBuilder = new StringBuilder();
 
@@ -42,11 +42,11 @@ namespace CatFactory.Collections
             return stringBuilder;
         }
 
-        public static StringBuilder ToStringBuilder(this List<string> list)
+        public static StringBuilder ToStringBuilder(this IEnumerable<string> enumerable)
         {
             var stringBuilder = new StringBuilder();
 
-            foreach (var item in list)
+            foreach (var item in enumerable)
             {
                 stringBuilder.AppendLine(item);
             }

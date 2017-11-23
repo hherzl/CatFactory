@@ -4,7 +4,7 @@ using System.Diagnostics;
 namespace CatFactory.Mapping
 {
     [DebuggerDisplay("FullName={FullName}, Parameters={Parameters.Count}")]
-    public class StoredProcedure
+    public class StoredProcedure : IDbObject
     {
         public StoredProcedure()
         {
@@ -16,6 +16,8 @@ namespace CatFactory.Mapping
 
         public string FullName
             => string.IsNullOrEmpty(Schema) ? Name : string.Format("{0}.{1}", Schema, Name);
+
+        public string Type { get; set; }
 
         public string Description { get; set; }
 
