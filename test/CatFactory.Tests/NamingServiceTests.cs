@@ -21,9 +21,11 @@ namespace CatFactory.Tests
             Assert.True("Enterprise" == service.Singularize("Enterprises"));
             Assert.True("Order" == service.Singularize("Orders"));
             Assert.True("Order Detail" == service.Singularize("Order Details"));
-            Assert.True("OrderStatus" == service.Singularize("OrderStatuses"));
+            Assert.True("OrderStatus" == service.Singularize("OrderStatus"));
             Assert.True("Product" == service.Singularize("Products"));
             Assert.True("Supplier" == service.Singularize("Suppliers"));
+
+            Assert.True("OrderStatus" == service.Singularize("OrderStatuses"));
         }
 
         [Fact]
@@ -45,6 +47,9 @@ namespace CatFactory.Tests
             Assert.True("OrderStatuses" == service.Pluralize("OrderStatus"));
             Assert.True("Products" == service.Pluralize("Product"));
             Assert.True("Suppliers" == service.Pluralize("Supplier"));
+
+            Assert.True("OrderStatuses" == service.Pluralize("OrderStatuses"));
+            Assert.True("Products" == service.Pluralize("Products"));
         }
     }
 }

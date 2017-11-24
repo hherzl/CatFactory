@@ -22,6 +22,10 @@
             {
                 return string.Format("{0}", value.Substring(0, value.Length - 1));
             }
+            else if (value.EndsWith("tus"))
+            {
+                return value;
+            }
             else if (value.EndsWith("s"))
             {
                 return string.Format("{0}", value.Substring(0, value.Length - 1));
@@ -44,9 +48,17 @@
             {
                 return string.Format("{0}ies", value.Substring(0, value.Length - 1));
             }
+            else if (value.EndsWith("tuses"))
+            {
+                return value;
+            }
             else if (value.EndsWith("tus"))
             {
                 return string.Format("{0}es", value);
+            }
+            else if (value.EndsWith("s"))
+            {
+                return value;
             }
             else
             {
