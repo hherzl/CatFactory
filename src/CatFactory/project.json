@@ -1,7 +1,7 @@
 {
-  "version": "3.0.0-alpha-build04",
+  "version": "3.0.0-alpha-build05",
   "title": "CatFactory",
-  "description": "CatFactory Core for code generation engine (code factory, mapping and OOP)",
+  "description": "CatFactory Core for scaffolding engine (Code factory, Mapping and OOP)",
   "packOptions": {
     "repository": {
       "url": "https://github.com/hherzl/CatFactory"

@@ -14,6 +14,10 @@
             {
                 return string.Format("{0}", value.Substring(0, value.Length - 2));
             }
+            else if (value.EndsWith("uses"))
+            {
+                return string.Format("{0}", value.Substring(0, value.Length - 2));
+            }
             else if (value.EndsWith("es"))
             {
                 return string.Format("{0}", value.Substring(0, value.Length - 1));
@@ -39,6 +43,10 @@
             else if (value.EndsWith("y"))
             {
                 return string.Format("{0}ies", value.Substring(0, value.Length - 1));
+            }
+            else if (value.EndsWith("tus"))
+            {
+                return string.Format("{0}es", value);
             }
             else
             {
