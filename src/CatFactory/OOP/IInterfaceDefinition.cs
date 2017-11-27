@@ -4,8 +4,6 @@ namespace CatFactory.OOP
 {
     public interface IInterfaceDefinition : IObjectDefinition
     {
-        string GenericType { get; set; }
-
-        List<string> WhereConstraints { get; set; }
+        List<GenericTypeDefinition> GenericTypes { get; set; }
     }
 }

@@ -6,11 +6,9 @@ namespace CatFactory.OOP
     {
         bool IsStatic { get; set; }
 
-        string GenericType { get; set; }
+        List<GenericTypeDefinition> GenericTypes { get; set; }
 
         string BaseClass { get; set; }
-
-        List<string> WhereConstraints { get; set; }
 
         List<ConstantDefinition> Constants { get; set; }
 

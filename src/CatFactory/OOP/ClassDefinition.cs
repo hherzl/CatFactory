@@ -18,20 +18,18 @@ namespace CatFactory.OOP
         public override bool HasInheritance
             => !string.IsNullOrEmpty(BaseClass) || Implements.Count > 0;
 
-        public string GenericType { get; set; }
-
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<string> m_whereConstraints;
+        private List<GenericTypeDefinition> m_genericTypes;
 
-        public List<string> WhereConstraints
+        public List<GenericTypeDefinition> GenericTypes
         {
             get
             {
-                return m_whereConstraints ?? (m_whereConstraints = new List<string>());
+                return m_genericTypes = new List<GenericTypeDefinition>();
             }
             set
             {
-                m_whereConstraints = value;
+                m_genericTypes = value;
             }
         }
 

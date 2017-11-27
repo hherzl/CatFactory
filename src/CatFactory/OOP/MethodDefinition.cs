@@ -72,7 +72,20 @@ namespace CatFactory.OOP
 
         public string Name { get; set; }
 
-        public string GenericType { get; set; }
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<GenericTypeDefinition> m_genericTypes;
+
+        public List<GenericTypeDefinition> GenericTypes
+        {
+            get
+            {
+                return m_genericTypes = new List<GenericTypeDefinition>();
+            }
+            set
+            {
+                m_genericTypes = value;
+            }
+        }
 
         public bool IsExtension { get; set; }
 
@@ -88,21 +101,6 @@ namespace CatFactory.OOP
             set
             {
                 m_parameters = value;
-            }
-        }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<string> m_whereConstraints;
-
-        public List<string> WhereConstraints
-        {
-            get
-            {
-                return m_whereConstraints ?? (m_whereConstraints = new List<string>());
-            }
-            set
-            {
-                m_whereConstraints = value;
             }
         }
 
