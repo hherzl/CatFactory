@@ -25,7 +25,7 @@ namespace CatFactory.OOP
         {
             get
             {
-                return m_genericTypes = new List<GenericTypeDefinition>();
+                return m_genericTypes ?? (m_genericTypes = new List<GenericTypeDefinition>());
             }
             set
             {

@@ -1,11 +1,11 @@
 {
-  "version": "3.0.0-alpha-build07",
+  "version": "3.0.0-alpha-build09",
   "title": "CatFactory",
   "description": "CatFactory Core Engine (Code factory, Mapping and OOP)",
   "packOptions": {
     "summary": "CatFactory Core Engine (Code factory, Mapping and OOP)",
     "tags": [ "Scaffold", "ORM", "OOP" ],
-    "releaseNotes": "3.0.0-alpha-build07 Version: Addition of GenericTypeDefinition",
+    "releaseNotes": "3.0.0-alpha-build09 Version: Code fix for generic types in object definition",
     "requireLicenseAcceptance": false,
     "repository": {
       "type": "git",
