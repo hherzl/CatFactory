@@ -1,11 +1,11 @@
 {
-  "version": "3.0.0-alpha-build09",
+  "version": "3.0.0-alpha-build10",
   "title": "CatFactory",
   "description": "CatFactory Core Engine (Code factory, Mapping and OOP)",
   "packOptions": {
     "summary": "CatFactory Core Engine (Code factory, Mapping and OOP)",
     "tags": [ "Scaffold", "ORM", "OOP" ],
-    "releaseNotes": "3.0.0-alpha-build09 Version: Code fix for generic types in object definition",
+    "releaseNotes": "3.0.0-alpha-build10 Version: Addition of namespaces and base type for enum definition",
     "requireLicenseAcceptance": false,
     "repository": {
       "type": "git",

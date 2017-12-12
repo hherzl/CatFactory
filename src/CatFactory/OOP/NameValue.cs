@@ -1,5 +1,8 @@
-﻿namespace CatFactory.OOP
+﻿using System.Diagnostics;
+
+namespace CatFactory.OOP
 {
+    [DebuggerDisplay("Name={Name}, Value={Value}")]
     public class NameValue : INameValue
     {
         public NameValue()

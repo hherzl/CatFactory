@@ -21,9 +21,6 @@ namespace CatFactory.OOP
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<string> m_arguments;
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<MetadataAttributeSet> m_sets;
-
         public List<string> Arguments
         {
             get
@@ -35,6 +32,9 @@ namespace CatFactory.OOP
                 m_arguments = value;
             }
         }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<MetadataAttributeSet> m_sets;
 
         public List<MetadataAttributeSet> Sets
         {

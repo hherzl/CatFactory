@@ -28,9 +28,6 @@ namespace CatFactory.OOP
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private Documentation m_documentation;
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<MetadataAttribute> m_attributes;
-
         public Documentation Documentation
         {
             get
@@ -42,6 +39,9 @@ namespace CatFactory.OOP
                 m_documentation = value;
             }
         }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<MetadataAttribute> m_attributes;
 
         public List<MetadataAttribute> Attributes
         {

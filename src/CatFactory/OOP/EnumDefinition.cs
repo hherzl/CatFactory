@@ -24,6 +24,21 @@ namespace CatFactory.OOP
         }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<string> m_namespaces;
+
+        public List<string> Namespaces
+        {
+            get
+            {
+                return m_namespaces ?? (m_namespaces = new List<string>());
+            }
+            set
+            {
+                m_namespaces = value;
+            }
+        }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private Documentation m_documentation;
 
         public Documentation Documentation
@@ -58,6 +73,11 @@ namespace CatFactory.OOP
         public string Namespace { get; set; }
 
         public string Name { get; set; }
+
+        public virtual string FullName
+            => string.IsNullOrEmpty(Namespace) ? Name : string.Format("{0}.{1}", Namespace, Name);
+
+        public string BaseType { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<INameValue> m_sets;
