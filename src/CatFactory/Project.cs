@@ -2,15 +2,23 @@
 using System.Diagnostics;
 using System.Linq;
 using CatFactory.Mapping;
+using Microsoft.Extensions.Logging;
 
 namespace CatFactory
 {
-    [DebuggerDisplay("Name={Name}, Features={Features.Count}, OutputDirectory={OutputDirectory}")]
-    public class Project : IProject
+    [DebuggerDisplay("Name={Name}, OutputDirectory={OutputDirectory}, Features={Features.Count}, Selections={Selections.Count}")]
+    public class Project<TProjectSettings> : IProject<TProjectSettings> where TProjectSettings : class, IProjectSettings, new()
     {
         public Project()
         {
         }
+
+        public Project(ILogger<Project<TProjectSettings>> logger)
+        {
+            Logger = logger;
+        }
+
+        public ILogger Logger { get; }
 
         public string Name { get; set; }
 
@@ -18,7 +26,7 @@ namespace CatFactory
 
         public string OutputDirectory { get; set; }
 
-        public ProjectFeature this[int index]
+        public ProjectFeature<TProjectSettings> this[int index]
         {
             get
             {
@@ -31,13 +39,13 @@ namespace CatFactory
         }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ProjectFeature> m_features;
+        private List<ProjectFeature<TProjectSettings>> m_features;
 
-        public List<ProjectFeature> Features
+        public List<ProjectFeature<TProjectSettings>> Features
         {
             get
             {
-                return m_features ?? (m_features = new List<ProjectFeature>());
+                return m_features ?? (m_features = new List<ProjectFeature<TProjectSettings>>());
             }
             set
             {
@@ -45,7 +53,22 @@ namespace CatFactory
             }
         }
 
-        public virtual void AddFeature(ProjectFeature projectFeature)
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ProjectSelection<TProjectSettings>> m_selections;
+
+        public List<ProjectSelection<TProjectSettings>> Selections
+        {
+            get
+            {
+                return m_selections ?? (m_selections = new List<ProjectSelection<TProjectSettings>>());
+            }
+            set
+            {
+                m_selections = value;
+            }
+        }
+
+        public virtual void AddFeature(ProjectFeature<TProjectSettings> projectFeature)
         {
             projectFeature.Project = this;
 
@@ -61,15 +84,30 @@ namespace CatFactory
 
             if (Database.DbObjects.Count > 0)
             {
-                var list = Database
+                Features.AddRange(Database
                     .DbObjects
                     .Select(item => item.Schema)
                     .Distinct()
-                    .Select(schema => new ProjectFeature { Name = schema, DbObjects = Database.GetDbObjectsBySchema(schema), Project = this })
-                    .ToList();
-
-                Features.AddRange(list);
+                    .Select(schema => new ProjectFeature<TProjectSettings>(schema, Database.GetDbObjectsBySchema(schema))
+                    {
+                        Project = this
+                    })
+                    .ToList());
             }
+        }
+
+        public event ScaffoldingDefinition ScaffoldingDefinition;
+
+        protected void OnScaffoldingDefinition(ScaffoldingDefinitionEventArgs args)
+        {
+            ScaffoldingDefinition?.Invoke(this, args);
+        }
+
+        public event ScaffoldedDefinition ScaffoldedDefinition;
+
+        protected void OnScaffoldedDefinition(ScaffoldedDefinitionEventArgs args)
+        {
+            ScaffoldedDefinition?.Invoke(this, args);
         }
     }
 }

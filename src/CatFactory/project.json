@@ -1,11 +1,11 @@
 {
-  "version": "3.0.0-alpha-build10",
+  "version": "3.0.0-alpha-build11",
   "title": "CatFactory",
   "description": "CatFactory Core Engine (Code factory, Mapping and OOP)",
   "packOptions": {
     "summary": "CatFactory Core Engine (Code factory, Mapping and OOP)",
     "tags": [ "Scaffold", "ORM", "OOP" ],
-    "releaseNotes": "3.0.0-alpha-build10 Version: Addition of namespaces and base type for enum definition",
+    "releaseNotes": "3.0.0-alpha-build11 Version: Addition of project selections, delegates to before and after of scaffolding, database type map; Addition of ICodeBuilder interface, Addition of ObjectDefinition in CodeBuilder, Addition of Logger in Project and change for Project to generic class",
     "requireLicenseAcceptance": false,
     "repository": {
       "type": "git",
@@ -20,7 +20,8 @@
     "NETStandard.Library": "1.6.1",
     "System.Reflection.TypeExtensions": "4.3.0",
     "System.Xml.XmlSerializer": "4.0.11",
-    "Microsoft.Extensions.Logging.Abstractions": "1.1.1"
+    "Microsoft.Extensions.Logging.Abstractions": "1.1.1",
+    "System.Data.Common": "4.3.0"
   },
 
   "frameworks": {

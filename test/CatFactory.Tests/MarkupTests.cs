@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using CatFactory.Markup;
+using CatFactory.Tests.CodeBuilders;
 using Xunit;
 
 namespace CatFactory.Tests

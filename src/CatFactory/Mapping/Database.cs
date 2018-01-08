@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 
 namespace CatFactory.Mapping
 {
-    [DebuggerDisplay("Name={Name}, DbObjects={DbObjects.Count}")]
+    [DebuggerDisplay("Name={Name}, DbObjects={DbObjects.Count}, Tables={Tables.Count}, Views={Views.Count}")]
     public class Database
     {
         public Database()
@@ -13,6 +13,21 @@ namespace CatFactory.Mapping
         }
 
         public string Name { get; set; }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<DbObject> m_dbObjects;
+
+        public List<DbObject> DbObjects
+        {
+            get
+            {
+                return m_dbObjects ?? (m_dbObjects = new List<DbObject>());
+            }
+            set
+            {
+                m_dbObjects = value;
+            }
+        }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private IDatabaseNamingConvention m_namingConvention;
@@ -27,21 +42,6 @@ namespace CatFactory.Mapping
             set
             {
                 m_namingConvention = value;
-            }
-        }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<DbObject> m_dbObjects;
-
-        public List<DbObject> DbObjects
-        {
-            get
-            {
-                return m_dbObjects ?? (m_dbObjects = new List<DbObject>());
-            }
-            set
-            {
-                m_dbObjects = value;
             }
         }
 
@@ -121,28 +121,34 @@ namespace CatFactory.Mapping
         }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<DbType> m_dbTypes;
+        private List<DatabaseTypeMap> m_mappings = new List<DatabaseTypeMap>();
 
-        public List<DbType> DbTypes
+        public List<DatabaseTypeMap> Mappings
         {
             get
             {
-                return m_dbTypes ?? (m_dbTypes = new List<DbType>());
+                return m_mappings ?? (m_mappings = new List<DatabaseTypeMap>());
             }
             set
             {
-                m_dbTypes = value;
+                m_mappings = value;
             }
         }
 
         public virtual List<DbObject> GetDbObjectsBySchema(string schema)
-            => DbObjects.Where(db => db.Schema == schema).ToList();
+            => DbObjects.Where(item => item.Schema == schema).ToList();
 
-        public virtual ITable FindTableByFullName(string fullName)
-            => Tables.FirstOrDefault(item => string.Join(".", new string[] { Name, item.Schema, item.Name }) == fullName);
+        public virtual ITable FindTable(string name)
+        {
+            var table = Tables.FirstOrDefault(item => string.Join(".", new string[] { item.Schema, item.Name }) == name);
 
-        public virtual ITable FindTableBySchemaAndName(string fullName)
-            => Tables.FirstOrDefault(item => item.FullName == fullName);
+            if (table == null)
+            {
+                table = Tables.FirstOrDefault(item => string.Join(".", new string[] { Name, item.Schema, item.Name }) == name);
+            }
+
+            return table;
+        }
 
         public virtual IEnumerable<ITable> FindTablesBySchema(string schema)
             => Tables.Where(item => item.Schema == schema);
@@ -150,11 +156,17 @@ namespace CatFactory.Mapping
         public virtual IEnumerable<ITable> FindTablesByName(string name)
             => Tables.Where(item => item.Name == name);
 
-        public virtual IView FindViewByFullName(string fullName)
-            => Views.FirstOrDefault(item => string.Join(".", new string[] { Name, item.Schema, item.Name }) == fullName);
+        public virtual IView FindView(string name)
+        {
+            var view = Views.FirstOrDefault(item => string.Join(".", new string[] { item.Schema, item.Name }) == name);
 
-        public virtual IView FindViewBySchemaAndName(string fullName)
-            => Views.FirstOrDefault(item => item.FullName == fullName);
+            if (view == null)
+            {
+                view = Views.FirstOrDefault(item => string.Join(".", new string[] { Name, item.Schema, item.Name }) == name);
+            }
+
+            return view;
+        }
 
         public virtual IEnumerable<IView> FindViewsBySchema(string schema)
             => Views.Where(item => item.Schema == schema);

@@ -2,12 +2,12 @@
 using CatFactory.CodeFactory;
 using CatFactory.Markup;
 
-namespace CatFactory.Tests
+namespace CatFactory.Tests.CodeBuilders
 {
     public class HtmlCodeBuilder : CodeBuilder
     {
         public override string FileName
-            => string.Format("Document");
+            => "Document";
 
         public override string FileExtension
             => "html";

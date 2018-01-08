@@ -5,8 +5,8 @@ using CatFactory.Mapping;
 
 namespace CatFactory
 {
-    [DebuggerDisplay("Name={Name}, DbObjects={DbObjects.Count}, Description={Description}")]
-    public class ProjectFeature
+    [DebuggerDisplay("Name={Name}, Description={Description}, DbObjects={DbObjects.Count}")]
+    public class ProjectFeature<TProjectSettings> where TProjectSettings : class, IProjectSettings, new()
     {
         public ProjectFeature()
         {
@@ -25,6 +25,8 @@ namespace CatFactory
 
         public string Name { get; set; }
 
+        public string Description { get; set; }
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<DbObject> m_dbObjects;
 
@@ -41,8 +43,6 @@ namespace CatFactory
         }
 
         [XmlIgnore]
-        public Project Project { get; set; }
-
-        public string Description { get; set; }
+        public Project<TProjectSettings> Project { get; set; }
     }
 }

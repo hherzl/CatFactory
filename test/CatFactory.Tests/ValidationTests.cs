@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using CatFactory.Mapping;
+using CatFactory.Tests.Models;
 using Xunit;
 
 namespace CatFactory.Tests

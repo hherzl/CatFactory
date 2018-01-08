@@ -5,10 +5,10 @@ namespace CatFactory.Mapping
 {
     public static class TableExtensions
     {
-        public static IEnumerable<Column> GetColumnsWithOutPrimaryKey(this ITable table)
+        public static IEnumerable<Column> GetColumnsWithNoPrimaryKey(this ITable table)
             => table.PrimaryKey == null ? table.Columns : table.Columns.Where(item => !table.PrimaryKey.Key.Contains(item.Name));
 
-        public static IEnumerable<Column> GetColumnsWithOutIdentity(this ITable table)
+        public static IEnumerable<Column> GetColumnsWithNoIdentity(this ITable table)
             => table.Identity == null ? table.Columns : table.Columns.Where(item => table.Identity.Name != item.Name);
 
         public static Column GetIdentityColumn(this ITable table)

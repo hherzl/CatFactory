@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using CatFactory.Tests.Models;
+using Xunit;
 
 namespace CatFactory.Tests
 {
@@ -8,7 +9,7 @@ namespace CatFactory.Tests
         public void TestBuildFeaturesForProject()
         {
             // Arrange
-            var project = new Project
+            var project = new Project<ProjectSettings>
             {
                 Name = "Store",
                 Database = StoreDatabase.Mock

@@ -1,26 +1,31 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace CatFactory.Mapping
 {
     public static class DatabaseExtensions
     {
-        public static void AddDbObjectsFromTables(this Database database)
+        public static Database AddDbObjectsFromTables(this Database database)
         {
             foreach (var table in database.Tables)
             {
                 database.DbObjects.Add(new DbObject { Schema = table.Schema, Name = table.Name, Type = "table" });
             }
+
+            return database;
         }
 
-        public static void AddDbObjectsFromViews(this Database database)
+        public static Database AddDbObjectsFromViews(this Database database)
         {
             foreach (var view in database.Views)
             {
                 database.DbObjects.Add(new DbObject { Schema = view.Schema, Name = view.Name, Type = "view" });
             }
+
+            return database;
         }
 
-        public static void AddColumnsForTables(this Database database, Column[] columns, params string[] exclusions)
+        public static Database AddColumnsForTables(this Database database, Column[] columns, params string[] exclusions)
         {
             foreach (var table in database.Tables)
             {
@@ -37,44 +42,26 @@ namespace CatFactory.Mapping
                     }
                 }
             }
+
+            return database;
         }
 
-        public static void AddColumnForTables(this Database database, Column column, params string[] exclusions)
+        public static Database AddColumnForTables(this Database database, Column column, params string[] exclusions)
             => AddColumnsForTables(database, new Column[] { column }, exclusions);
 
-        public static void SetPrimaryKeyToTables(this Database database, params string[] exclusions)
+        public static Database AddRelation(this Database database, ITable target, string[] key, ITable source)
         {
-            foreach (var table in database.Tables)
+            target.ForeignKeys.Add(new ForeignKey(key)
             {
-                if (exclusions != null && exclusions.Contains(table.FullName))
-                {
-                    continue;
-                }
+                ConstraintName = database.NamingConvention.GetForeignKeyConstraintName(target, key, source),
+                References = source.FullName,
+                Child = target.FullName
+            });
 
-                if (table.PrimaryKey == null && table.Columns.Count > 0)
-                {
-                    table.PrimaryKey = new PrimaryKey(table.Columns[0].Name);
-                }
-            }
+            return database;
         }
 
-        public static void SetIdentityForTables(this Database database, params string[] exclusions)
-        {
-            foreach (var table in database.Tables)
-            {
-                if (exclusions != null && exclusions.Contains(table.FullName))
-                {
-                    continue;
-                }
-
-                if (table.Identity == null && table.Columns.Count > 0)
-                {
-                    table.Identity = new Identity(table.Columns[0].Name, 1, 1);
-                }
-            }
-        }
-
-        public static void LinkTables(this Database database)
+        public static Database LinkTables(this Database database)
         {
             foreach (var table in database.Tables)
             {
@@ -104,16 +91,51 @@ namespace CatFactory.Mapping
                     }
                 }
             }
+
+            return database;
         }
 
-        public static void AddRelation(this Database database, ITable target, string[] key, ITable source)
+        public static Database SetIdentityForTables(this Database database, params string[] exclusions)
         {
-            target.ForeignKeys.Add(new ForeignKey(key)
+            foreach (var table in database.Tables)
             {
-                ConstraintName = database.NamingConvention.GetForeignKeyConstraintName(target, key, source),
-                References = source.FullName,
-                Child = target.FullName
-            });
+                if (exclusions != null && exclusions.Contains(table.FullName))
+                {
+                    continue;
+                }
+
+                if (table.Identity == null && table.Columns.Count > 0)
+                {
+                    table.Identity = new Identity(table.Columns[0].Name, 1, 1);
+                }
+            }
+
+            return database;
+        }
+
+        public static Database SetMappings(this Database database, IEnumerable<DatabaseTypeMap> mappings)
+        {
+            database.Mappings.AddRange(mappings);
+
+            return database;
+        }
+
+        public static Database SetPrimaryKeyToTables(this Database database, params string[] exclusions)
+        {
+            foreach (var table in database.Tables)
+            {
+                if (exclusions != null && exclusions.Contains(table.FullName))
+                {
+                    continue;
+                }
+
+                if (table.PrimaryKey == null && table.Columns.Count > 0)
+                {
+                    table.PrimaryKey = new PrimaryKey(table.Columns[0].Name);
+                }
+            }
+
+            return database;
         }
     }
 }

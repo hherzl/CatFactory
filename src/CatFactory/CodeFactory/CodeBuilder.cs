@@ -3,11 +3,12 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using CatFactory.Collections;
+using CatFactory.OOP;
 using Microsoft.Extensions.Logging;
 
 namespace CatFactory.CodeFactory
 {
-    public class CodeBuilder
+    public class CodeBuilder : ICodeBuilder
     {
         protected ILogger Logger;
 
@@ -15,7 +16,7 @@ namespace CatFactory.CodeFactory
         {
         }
 
-        public CodeBuilder(ILogger<CodeBuilder> logger)
+        public CodeBuilder(ILogger<ICodeBuilder> logger)
         {
             Logger = logger;
         }
@@ -31,10 +32,10 @@ namespace CatFactory.CodeFactory
         public virtual string FileExtension
             => string.Empty;
 
-        public virtual string FullFileName
+        public virtual string FilePath
             => string.Format("{0}.{1}", FileName, FileExtension);
 
-        public INamingConvention NamingConvention { get; set; }
+        public IObjectDefinition ObjectDefinition { get; set; }
 
         public virtual string Code
             => string.Empty;
@@ -76,7 +77,7 @@ namespace CatFactory.CodeFactory
 
             CreateOutputDirectory();
 
-            var filePath = string.IsNullOrEmpty(fileName) ? Path.Combine(OutputDirectory, subdirectory, FullFileName) : Path.Combine(OutputDirectory, subdirectory, fileName);
+            var filePath = string.IsNullOrEmpty(fileName) ? Path.Combine(OutputDirectory, subdirectory, FilePath) : Path.Combine(OutputDirectory, subdirectory, fileName);
 
             if (!ForceOverwrite && File.Exists(filePath))
             {

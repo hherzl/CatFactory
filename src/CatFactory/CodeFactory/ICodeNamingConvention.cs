@@ -2,7 +2,7 @@
 {
     public interface ICodeNamingConvention : INamingConvention
     {
-        string GetNamespace(string value);
+        string GetNamespace(params string[] values);
 
         string GetInterfaceName(string value);
 
