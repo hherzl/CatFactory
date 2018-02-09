@@ -1,11 +1,11 @@
 {
-  "version": "3.0.0-alpha-build11",
+  "version": "3.0.0-alpha-build12",
   "title": "CatFactory",
   "description": "CatFactory Core Engine (Code factory, Mapping and OOP)",
   "packOptions": {
     "summary": "CatFactory Core Engine (Code factory, Mapping and OOP)",
     "tags": [ "Scaffold", "ORM", "OOP" ],
-    "releaseNotes": "3.0.0-alpha-build11 Version: Addition of project selections, delegates to before and after of scaffolding, database type map; Addition of ICodeBuilder interface, Addition of ObjectDefinition in CodeBuilder, Addition of Logger in Project and change for Project to generic class",
+    "releaseNotes": "3.0.0-alpha-build12 Version: Code refactor for projects objects, move all to CodeFactory namespace; addition of debug metadata for projects objects, change for IObjectDefinition interface to allow inheritance for IEnumDefinition and changes for DatabaseTypeMap: remove of ClrType",
     "requireLicenseAcceptance": false,
     "repository": {
       "type": "git",

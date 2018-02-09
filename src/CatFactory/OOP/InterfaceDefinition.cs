@@ -25,5 +25,23 @@ namespace CatFactory.OOP
                 m_genericTypes = value;
             }
         }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<string> m_implements;
+
+        public List<string> Implements
+        {
+            get
+            {
+                return m_implements ?? (m_implements = new List<string>());
+            }
+            set
+            {
+                m_implements = value;
+            }
+        }
+
+        public override bool HasInheritance
+            => Implements.Count > 0;
     }
 }

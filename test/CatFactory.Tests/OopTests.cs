@@ -12,6 +12,10 @@ namespace Tests
         {
             var classDefinition = new ClassDefinition
             {
+                Namespaces = new List<string>
+                {
+                    "System"
+                },
                 Name = "Product"
             };
 
@@ -27,12 +31,16 @@ namespace Tests
         {
             var classDefinition = new ClassDefinition
             {
+                Namespaces = new List<string>
+                {
+                    "System"
+                },
                 Name = "Person"
             };
 
             classDefinition.Attributes.Add(new MetadataAttribute("Table", "\"Person\"")
             {
-                Sets = new List<MetadataAttributeSet>()
+                Sets = new List<MetadataAttributeSet>
                 {
                     new MetadataAttributeSet("Schema", "\"HumanResources\"")
                 }
@@ -51,6 +59,11 @@ namespace Tests
         {
             var classDefinition = new ClassDefinition
             {
+                Namespaces = new List<string>
+                {
+                    "System",
+                    "System.ComponentModel"
+                },
                 Name = "PersonViewModel"
             };
 
@@ -64,11 +77,11 @@ namespace Tests
 
             classDefinition.Properties.Add(new PropertyDefinition("String", "FirstName")
             {
-                GetBody = new List<ILine>()
+                GetBody = new List<ILine>
                 {
                     new CodeLine("return m_firstName;")
                 },
-                SetBody = new List<ILine>()
+                SetBody = new List<ILine>
                 {
                     new CodeLine("if (m_firstName != value)"),
                     new CodeLine("{"),
@@ -78,6 +91,40 @@ namespace Tests
                     new CodeLine("}")
                 }
             });
+        }
+
+        [Fact]
+        public void TestInheritance()
+        {
+            var dbContextClassDefinition = new ClassDefinition
+            {
+                Name = "StoreDbContext",
+                BaseClass = "Microsoft.EntityFrameworkCore.DbContext"
+            };
+
+            var repositoryInterfaceDefinition = new InterfaceDefinition
+            {
+                Name = "ISalesRepository",
+                Implements = new List<string>
+                {
+                    "IRepository"
+                }
+            };
+
+            var savingTypeEnum = new EnumDefinition
+            {
+                Name = "SavingType",
+                BaseType = "int"
+            };
+
+            Assert.True(dbContextClassDefinition.HasInheritance);
+            Assert.True(dbContextClassDefinition.BaseClass != null);
+            Assert.True(dbContextClassDefinition.Implements.Count == 0);
+
+            Assert.True(repositoryInterfaceDefinition.HasInheritance);
+            Assert.False(repositoryInterfaceDefinition.Implements.Count == 0);
+
+            Assert.True(savingTypeEnum.HasInheritance);
         }
     }
 }

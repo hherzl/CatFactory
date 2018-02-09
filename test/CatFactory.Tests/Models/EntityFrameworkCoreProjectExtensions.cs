@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using CatFactory.CodeFactory;
 using CatFactory.Mapping;
 using CatFactory.OOP;
 

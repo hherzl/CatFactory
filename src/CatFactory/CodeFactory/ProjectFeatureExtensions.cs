@@ -1,6 +1,6 @@
 ﻿using CatFactory.Mapping;
 
-namespace CatFactory
+namespace CatFactory.CodeFactory
 {
     public static class ProjectFeatureExtensions
     {

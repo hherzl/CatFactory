@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using CatFactory.Diagnostics;
 
-namespace CatFactory
+namespace CatFactory.CodeFactory
 {
     public interface IProjectSettings
     {

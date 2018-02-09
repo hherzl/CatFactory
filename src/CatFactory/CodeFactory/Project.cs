@@ -4,7 +4,7 @@ using System.Linq;
 using CatFactory.Mapping;
 using Microsoft.Extensions.Logging;
 
-namespace CatFactory
+namespace CatFactory.CodeFactory
 {
     [DebuggerDisplay("Name={Name}, OutputDirectory={OutputDirectory}, Features={Features.Count}, Selections={Selections.Count}")]
     public class Project<TProjectSettings> : IProject<TProjectSettings> where TProjectSettings : class, IProjectSettings, new()

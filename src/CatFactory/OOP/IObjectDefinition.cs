@@ -14,20 +14,8 @@ namespace CatFactory.OOP
 
         AccessModifier AccessModifier { get; set; }
 
-        bool IsPartial { get; set; }
-
         string Name { get; set; }
 
         string FullName { get; }
-
-        List<string> Implements { get; set; }
-
-        bool HasInheritance { get; }
-
-        List<EventDefinition> Events { get; set; }
-
-        List<PropertyDefinition> Properties { get; set; }
-
-        List<MethodDefinition> Methods { get; set; }
     }
 }

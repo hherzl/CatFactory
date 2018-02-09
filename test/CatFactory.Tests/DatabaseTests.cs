@@ -31,8 +31,8 @@ namespace CatFactory.Tests
             var mappings = DatabaseTypeMapList.Definition;
 
             // Act
-            var mapsForString = mappings.Where(item => item.ClrType == typeof(string)).ToList();
-            var mapsForDecimal = mappings.Where(item => item.ClrType == typeof(decimal)).ToList();
+            var mapsForString = mappings.Where(item => item.GetClrType() == typeof(string)).ToList();
+            var mapsForDecimal = mappings.Where(item => item.GetClrType() == typeof(decimal)).ToList();
 
             // Arrange
             Assert.True(mapsForString.Count() == 6);
@@ -51,7 +51,7 @@ namespace CatFactory.Tests
             var clrType = database.ResolveType(column);
 
             // Assert
-            Assert.True(clrType.ClrType == typeof(long));
+            Assert.True(clrType.GetClrType() == typeof(long));
         }
     }
 }

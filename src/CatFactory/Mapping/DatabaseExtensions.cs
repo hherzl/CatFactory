@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CatFactory.Mapping
@@ -30,16 +31,12 @@ namespace CatFactory.Mapping
             foreach (var table in database.Tables)
             {
                 if (exclusions != null && exclusions.Contains(table.FullName))
-                {
                     continue;
-                }
 
                 foreach (var column in columns)
                 {
                     if (!table.Columns.Contains(column))
-                    {
                         table.Columns.Add(column);
-                    }
                 }
             }
 
@@ -48,66 +45,16 @@ namespace CatFactory.Mapping
 
         public static Database AddColumnForTables(this Database database, Column column, params string[] exclusions)
             => AddColumnsForTables(database, new Column[] { column }, exclusions);
-
-        public static Database AddRelation(this Database database, ITable target, string[] key, ITable source)
-        {
-            target.ForeignKeys.Add(new ForeignKey(key)
-            {
-                ConstraintName = database.NamingConvention.GetForeignKeyConstraintName(target, key, source),
-                References = source.FullName,
-                Child = target.FullName
-            });
-
-            return database;
-        }
-
-        public static Database LinkTables(this Database database)
-        {
-            foreach (var table in database.Tables)
-            {
-                foreach (var column in table.Columns)
-                {
-                    if (table.PrimaryKey != null && table.PrimaryKey.Key.Count == 1 && table.PrimaryKey.Key.Contains(column.Name))
-                    {
-                        continue;
-                    }
-
-                    foreach (var parentTable in database.Tables)
-                    {
-                        if (table.FullName == parentTable.FullName)
-                        {
-                            continue;
-                        }
-
-                        if (parentTable.PrimaryKey != null && parentTable.PrimaryKey.Key.Contains(column.Name))
-                        {
-                            table.ForeignKeys.Add(new ForeignKey(column.Name)
-                            {
-                                ConstraintName = database.NamingConvention.GetForeignKeyConstraintName(table, new string[] { column.Name }, parentTable),
-                                References = string.Format("{0}.{1}", database.Name, parentTable.FullName),
-                                Child = table.FullName
-                            });
-                        }
-                    }
-                }
-            }
-
-            return database;
-        }
-
+        
         public static Database SetIdentityForTables(this Database database, params string[] exclusions)
         {
             foreach (var table in database.Tables)
             {
                 if (exclusions != null && exclusions.Contains(table.FullName))
-                {
                     continue;
-                }
 
                 if (table.Identity == null && table.Columns.Count > 0)
-                {
                     table.Identity = new Identity(table.Columns[0].Name, 1, 1);
-                }
             }
 
             return database;
@@ -120,19 +67,42 @@ namespace CatFactory.Mapping
             return database;
         }
 
+        public static bool IsPrimaryKeyGuid(this Database database, ITable table)
+            => table.PrimaryKey != null && table.PrimaryKey.Key.Count == 1 && database.ColumnIsGuid(table.Columns[0]) ? true : false;
+
+        public static bool ColumnIsDecimal(this Database database, Column column)
+            => database.Mappings.Where(item => item.DatabaseType == column.Type && item.ClrFullNameType == typeof(decimal).FullName).Count() == 0 ? false : true;
+
+        public static bool ColumnIsGuid(this Database database, Column column)
+            => database.Mappings.Where(item => item.DatabaseType == column.Type && item.ClrFullNameType == typeof(Guid).FullName).Count() == 0 ? false : true;
+
+        public static bool ColumnIsDouble(this Database database, Column column)
+            => database.Mappings.Where(item => item.DatabaseType == column.Type && item.ClrFullNameType == typeof(double).FullName).Count() == 0 ? false : true;
+
+        public static bool ColumnIsSingle(this Database database, Column column)
+            => database.Mappings.Where(item => item.DatabaseType == column.Type && item.ClrFullNameType == typeof(float).FullName).Count() == 0 ? false : true;
+
+        public static bool ColumnIsString(this Database database, Column column)
+            => database.Mappings.Where(item => item.DatabaseType == column.Type && item.ClrFullNameType == typeof(string).FullName).Count() == 0 ? false : true;
+
+        public static DatabaseTypeMap ResolveType(this Database database, Column column)
+            => database.Mappings.FirstOrDefault(item => item.DatabaseType == column.Type);
+
+        public static DatabaseTypeMap ResolveType(this Database database, string type)
+            => database.Mappings.FirstOrDefault(item => item.DatabaseType == type);
+
+        public static IEnumerable<DatabaseTypeMap> GetTypeMaps(this Database database, Type type)
+            => database.Mappings.Where(item => item.GetClrType() == type);
+
         public static Database SetPrimaryKeyToTables(this Database database, params string[] exclusions)
         {
             foreach (var table in database.Tables)
             {
                 if (exclusions != null && exclusions.Contains(table.FullName))
-                {
                     continue;
-                }
 
                 if (table.PrimaryKey == null && table.Columns.Count > 0)
-                {
                     table.PrimaryKey = new PrimaryKey(table.Columns[0].Name);
-                }
             }
 
             return database;

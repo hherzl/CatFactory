@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Xml.Serialization;
 using CatFactory.Mapping;
 
-namespace CatFactory
+namespace CatFactory.CodeFactory
 {
     [DebuggerDisplay("Name={Name}, Description={Description}, DbObjects={DbObjects.Count}")]
     public class ProjectFeature<TProjectSettings> where TProjectSettings : class, IProjectSettings, new()
@@ -17,7 +17,7 @@ namespace CatFactory
             Name = name;
         }
 
-        public ProjectFeature(string name, IEnumerable<DbObject> dbObjects)
+        public ProjectFeature(string name, IEnumerable<IDbObject> dbObjects)
         {
             Name = name;
             DbObjects.AddRange(dbObjects);
@@ -28,13 +28,13 @@ namespace CatFactory
         public string Description { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<DbObject> m_dbObjects;
+        private List<IDbObject> m_dbObjects;
 
-        public List<DbObject> DbObjects
+        public List<IDbObject> DbObjects
         {
             get
             {
-                return m_dbObjects ?? (m_dbObjects = new List<DbObject>());
+                return m_dbObjects ?? (m_dbObjects = new List<IDbObject>());
             }
             set
             {

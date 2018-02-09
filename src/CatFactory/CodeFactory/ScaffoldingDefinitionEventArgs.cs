@@ -1,12 +1,11 @@
 ﻿using System;
-using CatFactory.CodeFactory;
 using Microsoft.Extensions.Logging;
 
-namespace CatFactory
+namespace CatFactory.CodeFactory
 {
-    public class ScaffoldedDefinitionEventArgs : EventArgs
+    public class ScaffoldingDefinitionEventArgs : EventArgs
     {
-        public ScaffoldedDefinitionEventArgs(ILogger logger, ICodeBuilder codeBuilder)
+        public ScaffoldingDefinitionEventArgs(ILogger logger, ICodeBuilder codeBuilder)
         {
             Logger = logger;
             CodeBuilder = codeBuilder;

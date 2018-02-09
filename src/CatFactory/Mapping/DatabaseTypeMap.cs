@@ -1,7 +1,5 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 using System.Diagnostics;
-using System.Xml.Serialization;
 
 namespace CatFactory.Mapping
 {
@@ -24,10 +22,6 @@ namespace CatFactory.Mapping
 
         public bool HasClrFullNameType
             => !string.IsNullOrEmpty(ClrFullNameType);
-
-        [XmlIgnore]
-        public Type ClrType
-            => HasClrFullNameType ? Type.GetType(ClrFullNameType) : null;
 
         public string ClrAliasType { get; set; }
 

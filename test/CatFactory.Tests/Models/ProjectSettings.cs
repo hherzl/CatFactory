@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using CatFactory.CodeFactory;
 using CatFactory.Diagnostics;
 
 namespace CatFactory.Tests.Models

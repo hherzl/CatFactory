@@ -1,7 +1,8 @@
 ﻿using System.Diagnostics;
 
-namespace CatFactory
+namespace CatFactory.CodeFactory
 {
+    [DebuggerDisplay("Pattern={Pattern}, IsGlobal={IsGlobal}")]
     public class ProjectSelection<TProjectSettings> : IProjectSelection<TProjectSettings> where TProjectSettings : class, IProjectSettings, new()
     {
         public const string GlobalPattern = "*.*";

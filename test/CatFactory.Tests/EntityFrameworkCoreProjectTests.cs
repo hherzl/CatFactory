@@ -30,12 +30,10 @@ namespace CatFactory.Tests
 
             project.ScaffoldingDefinition += (source, args) =>
             {
-
             };
 
             project.ScaffoldedDefinition += (source, args) =>
             {
-
             };
 
             // Act

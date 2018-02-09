@@ -53,22 +53,7 @@ namespace CatFactory.OOP
             => string.IsNullOrEmpty(Namespace) ? Name : string.Format("{0}.{1}", Namespace, Name);
 
         public virtual bool HasInheritance
-            => Implements.Count > 0;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<string> m_implements;
-
-        public List<string> Implements
-        {
-            get
-            {
-                return m_implements ?? (m_implements = new List<string>());
-            }
-            set
-            {
-                m_implements = value;
-            }
-        }
+            => false;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<MetadataAttribute> m_attributes;

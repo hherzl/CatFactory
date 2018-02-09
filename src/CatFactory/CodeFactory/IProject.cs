@@ -2,7 +2,7 @@
 using CatFactory.Mapping;
 using Microsoft.Extensions.Logging;
 
-namespace CatFactory
+namespace CatFactory.CodeFactory
 {
     public interface IProject<TProjectSettings> where TProjectSettings : class, IProjectSettings, new()
     {

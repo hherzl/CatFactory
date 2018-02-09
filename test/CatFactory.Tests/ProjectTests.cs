@@ -1,4 +1,4 @@
-﻿using CatFactory.Tests.Models;
+﻿using CatFactory.CodeFactory;
 using Xunit;
 
 namespace CatFactory.Tests
@@ -12,7 +12,7 @@ namespace CatFactory.Tests
             var project = new Project<ProjectSettings>
             {
                 Name = "Store",
-                Database = StoreDatabase.Mock
+                Database = Models.StoreDatabase.Mock
             };
 
             // Act

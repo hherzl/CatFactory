@@ -173,5 +173,47 @@ namespace CatFactory.Mapping
 
         public virtual IEnumerable<IView> FindViewsByName(string name)
             => Views.Where(item => item.Name == name);
+
+        public virtual Database AddRelation(ITable target, string[] key, ITable source)
+        {
+            target.ForeignKeys.Add(new ForeignKey(key)
+            {
+                ConstraintName = NamingConvention.GetForeignKeyConstraintName(target, key, source),
+                References = source.FullName,
+                Child = target.FullName
+            });
+
+            return this;
+        }
+
+        public virtual Database LinkTables()
+        {
+            foreach (var table in Tables)
+            {
+                foreach (var column in table.Columns)
+                {
+                    if (table.PrimaryKey?.Key.Count == 1 && table.PrimaryKey.Key.Contains(column.Name))
+                        continue;
+
+                    foreach (var parentTable in Tables)
+                    {
+                        if (table.FullName == parentTable.FullName)
+                            continue;
+
+                        if (parentTable.PrimaryKey != null && parentTable.PrimaryKey.Key.Contains(column.Name))
+                        {
+                            table.ForeignKeys.Add(new ForeignKey(column.Name)
+                            {
+                                ConstraintName = NamingConvention.GetForeignKeyConstraintName(table, new string[] { column.Name }, parentTable),
+                                References = string.Format("{0}.{1}", Name, parentTable.FullName),
+                                Child = table.FullName
+                            });
+                        }
+                    }
+                }
+            }
+
+            return this;
+        }
     }
 }
