@@ -5,6 +5,6 @@ namespace CatFactory.CodeFactory
 {
     public interface IProjectSettings
     {
-        IEnumerable<ValidationMessage> Validate();
+        ValidationResult Validate();
     }
 }

@@ -29,12 +29,7 @@ namespace CatFactory.Mapping
         {
             var cast = obj as Column;
 
-            if (cast != null)
-            {
-                return string.Compare(Name, cast.Name) == 0 ? true : false;
-            }
-
-            return false;
+            return cast == null ? false : string.Compare(Name, cast.Name) == 0 ? true : false;
         }
 
         public override int GetHashCode()

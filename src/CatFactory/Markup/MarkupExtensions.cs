@@ -10,9 +10,7 @@ namespace CatFactory.Markup
         public static string GetAttributes(this object obj)
         {
             if (obj == null)
-            {
                 return string.Empty;
-            }
 
             var items = new List<string>();
 
@@ -27,13 +25,9 @@ namespace CatFactory.Markup
         public static void OpenTag(this StringBuilder stringBuilder, string name, object attributes)
         {
             if (attributes == null)
-            {
                 stringBuilder.AppendFormat("<{0}>", name);
-            }
             else
-            {
                 stringBuilder.AppendFormat("<{0} {1}>", name, attributes.GetAttributes());
-            }
         }
 
         public static void OpenTag(this StringBuilder stringBuilder, string name)
@@ -45,13 +39,9 @@ namespace CatFactory.Markup
         public static void AppendTag(this StringBuilder stringBuilder, string name, string content, object attributes)
         {
             if (attributes == null)
-            {
                 stringBuilder.AppendFormat("<{0}>{1}</{0}>", name, content);
-            }
             else
-            {
                 stringBuilder.AppendFormat("<{0} {2}>{1}</{0}>", name, content, attributes.GetAttributes());
-            }
         }
 
         public static void AppendTag(this StringBuilder stringBuilder, string name, string content)

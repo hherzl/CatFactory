@@ -78,9 +78,7 @@ namespace CatFactory.CodeFactory
         public virtual void BuildFeatures()
         {
             if (Database == null)
-            {
                 return;
-            }
 
             if (Database.DbObjects.Count > 0)
             {

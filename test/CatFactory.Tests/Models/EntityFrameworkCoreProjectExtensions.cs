@@ -34,16 +34,26 @@ namespace CatFactory.Tests.Models
             return project;
         }
 
+        public static ProjectSelection<EntityFrameworkCoreProjectSettings> GlobalSelection(this EntityFrameworkCoreProject project)
+            => project.Selections.FirstOrDefault(item => item.IsGlobal);
+
         public static EntityFrameworkCoreProject Select(this EntityFrameworkCoreProject project, string pattern, Action<EntityFrameworkCoreProjectSettings> action = null)
         {
             var selection = project.Selections.FirstOrDefault(item => item.Pattern == pattern);
 
             if (selection == null)
             {
+                var globalSettings = project.GlobalSelection().Settings;
+
                 selection = new ProjectSelection<EntityFrameworkCoreProjectSettings>
                 {
                     Pattern = pattern,
-                    Settings = new EntityFrameworkCoreProjectSettings()
+                    Settings = new EntityFrameworkCoreProjectSettings
+                    {
+                        UseDataAnnotations = globalSettings.UseDataAnnotations,
+                        AddDataBindings = globalSettings.AddDataBindings,
+                        EntitiesWithDataContracts = globalSettings.EntitiesWithDataContracts
+                    }
                 };
 
                 project.Selections.Add(selection);
@@ -54,15 +64,19 @@ namespace CatFactory.Tests.Models
             return project;
         }
 
-        public static ProjectSelection<EntityFrameworkCoreProjectSettings> GlobalSelection(this EntityFrameworkCoreProject project)
-            => project.Selections.FirstOrDefault(item => item.IsGlobal);
-
         public static ClassDefinition GetEntityClassDefinition(this EntityFrameworkCoreProject project, ITable table, ProjectSelection<EntityFrameworkCoreProjectSettings> projectSelection)
         {
-            return new ClassDefinition
+            var definition = new ClassDefinition
             {
                 Name = table.Name
             };
+
+            foreach (var column in table.Columns)
+            {
+                definition.Properties.Add(new PropertyDefinition(column.Type, column.Name));
+            }
+
+            return definition;
         }
     }
 }

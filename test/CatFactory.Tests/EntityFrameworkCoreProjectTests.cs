@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using CatFactory.CodeFactory;
 using CatFactory.Tests.CodeBuilders;
 using CatFactory.Tests.Models;
 using Xunit;
@@ -15,7 +16,12 @@ namespace CatFactory.Tests
             {
                 Name = "Store",
                 Database = StoreDatabase.Mock,
-                OutputDirectory = "C:\\Temp\\CatFactory\\EntityFrameworkCore"
+                OutputDirectory = "C:\\Temp\\CatFactory\\EntityFrameworkCore",
+                AuthorInfo = new AuthorInfo
+                {
+                    Name = "Hans H.",
+                    Email = "hansh@catfactory.org"
+                }
             };
 
             project.BuildFeatures();
@@ -39,18 +45,23 @@ namespace CatFactory.Tests
             // Act
             foreach (var table in project.Database.Tables)
             {
-                var selection = project.Selections.FirstOrDefault(item => item.Pattern == table.FullName);
-
-                if (selection == null)
-                {
-                    selection = project.GlobalSelection();
-                }
+                var selection = project.Selections.FirstOrDefault(item => item.Pattern == table.FullName) ?? project.GlobalSelection();
 
                 var codeBuilder = new CSharpClassCodeBuilder
                 {
                     ObjectDefinition = project.GetEntityClassDefinition(table, selection),
                     OutputDirectory = project.OutputDirectory,
                     ForceOverwrite = true
+                };
+
+                codeBuilder.TranslatedDefinition += (source, args) =>
+                {
+                    if (project.AuthorInfo != null)
+                    {
+                        codeBuilder.Lines.Insert(0, new CommentLine("// Author name: {0}", project.AuthorInfo.Name));
+                        codeBuilder.Lines.Insert(1, new CommentLine("// Email: {0}", project.AuthorInfo.Email));
+                        codeBuilder.Lines.Insert(2, new CodeLine());
+                    }
                 };
 
                 project.Scaffolding(codeBuilder);

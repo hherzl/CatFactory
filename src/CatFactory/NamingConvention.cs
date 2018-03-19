@@ -14,9 +14,7 @@ namespace CatFactory
         public static string GetCamelCase(string source)
         {
             if (source.Length == 0)
-            {
                 return string.Empty;
-            }
 
             if (source.Contains(" "))
             {
@@ -29,9 +27,7 @@ namespace CatFactory
                     var item = pieces[i];
 
                     if (item.Length == 0)
-                    {
                         continue;
-                    }
 
                     name.Append(i == 0 ? item[0].ToString().ToLower() : item[0].ToString().ToUpper());
                     name.Append(item.Substring(1));
@@ -50,9 +46,7 @@ namespace CatFactory
                     var item = pieces[i];
 
                     if (item.Length == 0)
-                    {
                         continue;
-                    }
 
                     name.Append(i == 0 ? item[0].ToString().ToLower() : item[0].ToString().ToUpper());
                     name.Append(item.Substring(1));
@@ -63,9 +57,7 @@ namespace CatFactory
             else
             {
                 if (source.Length == 1 || IsUpper(source))
-                {
                     return source.ToLower();
-                }
 
                 return string.Format("{0}{1}", source[0].ToString().ToLower(), source.Substring(1)).Replace("_", string.Empty).Replace(".", string.Empty);
             }
@@ -74,9 +66,7 @@ namespace CatFactory
         public static string GetPascalCase(string source)
         {
             if (source.Length == 0)
-            {
                 return string.Empty;
-            }
 
             source = source.Replace("  ", " ").Trim();
 
@@ -91,9 +81,7 @@ namespace CatFactory
                     var item = pieces[i];
 
                     if (item.Length == 0)
-                    {
                         continue;
-                    }
 
                     name.Append(item[0].ToString().ToUpper());
                     name.Append(IsUpper(item) ? item.Substring(1).ToLower() : item.Substring(1));
@@ -108,9 +96,7 @@ namespace CatFactory
                     var item = pieces[i];
 
                     if (item.Length == 0)
-                    {
                         continue;
-                    }
 
                     name.Append(item[0].ToString().ToUpper());
                     name.Append(IsUpper(item) ? item.Substring(1).ToLower() : item.Substring(1));
@@ -125,9 +111,7 @@ namespace CatFactory
                     var item = pieces[i];
 
                     if (item.Length == 0)
-                    {
                         continue;
-                    }
 
                     name.Append(item[0].ToString().ToUpper());
                     name.Append(item.Substring(1).ToLower());
@@ -152,14 +136,10 @@ namespace CatFactory
         public static string GetSnakeCase(string source)
         {
             if (source.Length == 0)
-            {
                 return string.Empty;
-            }
 
             if (source.Contains("_"))
-            {
                 return source;
-            }
 
             source = source.Replace("  ", " ").Trim();
 
@@ -174,9 +154,7 @@ namespace CatFactory
                     var item = pieces[i];
 
                     if (item.Length == 0)
-                    {
                         continue;
-                    }
 
                     name.Add(item);
                 }
@@ -190,9 +168,7 @@ namespace CatFactory
                     var item = pieces[i];
 
                     if (item.Length == 0)
-                    {
                         continue;
-                    }
 
                     name.Add(item);
                 }

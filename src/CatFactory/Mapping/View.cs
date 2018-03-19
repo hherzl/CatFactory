@@ -47,5 +47,9 @@ namespace CatFactory.Mapping
                 m_columns = value;
             }
         }
+
+        public Identity Identity { get; set; }
+
+        public RowGuidCol RowGuidCol { get; set; }
     }
 }

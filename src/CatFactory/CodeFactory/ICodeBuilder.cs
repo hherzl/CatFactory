@@ -19,7 +19,11 @@ namespace CatFactory.CodeFactory
 
         string Code { get; }
 
+        void Translating();
+
         List<ILine> Lines { get; set; }
+
+        event TranslatedDefinition TranslatedDefinition;
 
         string OutputDirectory { get; set; }
 

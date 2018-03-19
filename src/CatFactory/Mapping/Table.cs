@@ -50,22 +50,39 @@ namespace CatFactory.Mapping
 
         public Identity Identity { get; set; }
 
-        public PrimaryKey PrimaryKey { get; set; }
+        public RowGuidCol RowGuidCol { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ForeignKey> m_foreignKeys;
+        private List<Index> m_indexes;
 
-        public List<ForeignKey> ForeignKeys
+        public List<Index> Indexes
         {
             get
             {
-                return m_foreignKeys ?? (m_foreignKeys = new List<ForeignKey>());
+                return m_indexes ?? (m_indexes = new List<Index>());
             }
             set
             {
-                m_foreignKeys = value;
+                m_indexes = value;
             }
         }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ConstraintDetail> m_constraintDetails;
+
+        public List<ConstraintDetail> ConstraintDetails
+        {
+            get
+            {
+                return m_constraintDetails ?? (m_constraintDetails = new List<ConstraintDetail>());
+            }
+            set
+            {
+                m_constraintDetails = value;
+            }
+        }
+
+        public PrimaryKey PrimaryKey { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<Unique> m_uniques;
@@ -79,6 +96,21 @@ namespace CatFactory.Mapping
             set
             {
                 m_uniques = value;
+            }
+        }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ForeignKey> m_foreignKeys;
+
+        public List<ForeignKey> ForeignKeys
+        {
+            get
+            {
+                return m_foreignKeys ?? (m_foreignKeys = new List<ForeignKey>());
+            }
+            set
+            {
+                m_foreignKeys = value;
             }
         }
 

@@ -8,18 +8,6 @@ namespace CatFactory.Tests
     public class MarkupTests
     {
         [Fact]
-        public void TestHtmlCodeBuilder()
-        {
-            var codeBuilder = new HtmlCodeBuilder
-            {
-                OutputDirectory = "C:\\Temp\\CatFactory",
-                ForceOverwrite = true
-            };
-
-            codeBuilder.CreateFile();
-        }
-
-        [Fact]
         public void TestHtmlDocument()
         {
             var html = new StringBuilder();

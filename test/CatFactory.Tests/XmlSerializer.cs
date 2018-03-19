@@ -2,11 +2,11 @@
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace CatFactory
+namespace CatFactory.Tests
 {
-    public class Serializer : ISerializer
+    public class XmlSerializerHelper
     {
-        public string Serialize<T>(T obj)
+        public static string Serialize<T>(T obj)
         {
             var serializer = new XmlSerializer(obj.GetType());
 
@@ -18,7 +18,7 @@ namespace CatFactory
             }
         }
 
-        public T Deserialze<T>(string source)
+        public static T Deserialze<T>(string source)
         {
             var serializer = new XmlSerializer(typeof(T));
 

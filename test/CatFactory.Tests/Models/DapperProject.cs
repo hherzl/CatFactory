@@ -13,5 +13,7 @@ namespace CatFactory.Tests.Models
         {
             OnScaffoldedDefinition(new ScaffoldedDefinitionEventArgs(Logger, codeBuilder));
         }
+
+        public AuthorInfo AuthorInfo { get; set; }
     }
 }

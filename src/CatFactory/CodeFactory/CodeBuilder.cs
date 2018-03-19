@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -37,8 +38,13 @@ namespace CatFactory.CodeFactory
 
         public IObjectDefinition ObjectDefinition { get; set; }
 
+        [Obsolete("This property will replace with translating method")]
         public virtual string Code
             => string.Empty;
+
+        public virtual void Translating()
+        {
+        }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ILine> m_lines;
@@ -55,6 +61,13 @@ namespace CatFactory.CodeFactory
             }
         }
 
+        public event TranslatedDefinition TranslatedDefinition;
+
+        protected void OnTranslatedDefinition(TranslatedDefinitionEventArgs args)
+        {
+            TranslatedDefinition?.Invoke(this, args);
+        }
+
         public string OutputDirectory { get; set; }
 
         public bool ForceOverwrite { get; set; }
@@ -65,7 +78,7 @@ namespace CatFactory.CodeFactory
 
             if (!Directory.Exists(OutputDirectory))
             {
-                Logger?.LogDebug("Creating '{0}' directory...", OutputDirectory);
+                Logger?.LogInformation("Creating '{0}' directory...", OutputDirectory);
 
                 Directory.CreateDirectory(OutputDirectory);
             }
@@ -80,9 +93,7 @@ namespace CatFactory.CodeFactory
             var filePath = string.IsNullOrEmpty(fileName) ? Path.Combine(OutputDirectory, subdirectory, FilePath) : Path.Combine(OutputDirectory, subdirectory, fileName);
 
             if (!ForceOverwrite && File.Exists(filePath))
-            {
-                throw new CodeFactoryException(string.Format("A file with path '{0}' alread exists, if you want to overwrite, set ForceOverwrite proerty to true", filePath));
-            }
+                throw new CodeFactoryException(string.Format("The '{0}' file alread exists, if you want to overwrite set ForceOverwrite property as true", filePath));
 
             if (!string.IsNullOrEmpty(subdirectory))
             {
@@ -98,14 +109,11 @@ namespace CatFactory.CodeFactory
 
             Logger?.LogInformation("Creating '{0}' file...", filePath);
 
-            if (Lines.Count == 0)
-            {
-                TextFileHelper.CreateFile(filePath, Code);
-            }
-            else
-            {
-                TextFileHelper.CreateFile(filePath, Lines.ToStringBuilder().ToString());
-            }
+            Translating();
+
+            OnTranslatedDefinition(new TranslatedDefinitionEventArgs(Logger));
+
+            TextFileHelper.CreateFile(filePath, Lines.ToStringBuilder().ToString());
         }
     }
 }

@@ -14,6 +14,8 @@ namespace CatFactory.Mapping
 
         public string Name { get; set; }
 
+        public string DefaultSchema { get; set; }
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<DbObject> m_dbObjects;
 
@@ -143,9 +145,7 @@ namespace CatFactory.Mapping
             var table = Tables.FirstOrDefault(item => string.Join(".", new string[] { item.Schema, item.Name }) == name);
 
             if (table == null)
-            {
                 table = Tables.FirstOrDefault(item => string.Join(".", new string[] { Name, item.Schema, item.Name }) == name);
-            }
 
             return table;
         }
@@ -161,9 +161,7 @@ namespace CatFactory.Mapping
             var view = Views.FirstOrDefault(item => string.Join(".", new string[] { item.Schema, item.Name }) == name);
 
             if (view == null)
-            {
                 view = Views.FirstOrDefault(item => string.Join(".", new string[] { Name, item.Schema, item.Name }) == name);
-            }
 
             return view;
         }

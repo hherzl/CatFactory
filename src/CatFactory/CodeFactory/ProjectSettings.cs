@@ -5,7 +5,7 @@ namespace CatFactory.CodeFactory
 {
     public class ProjectSettings : IProjectSettings
     {
-        public virtual IEnumerable<ValidationMessage> Validate()
+        public virtual ValidationResult Validate()
             => null;
     }
 }

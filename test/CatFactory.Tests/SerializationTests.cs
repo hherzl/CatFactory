@@ -11,15 +11,14 @@ namespace CatFactory.Tests
         {
             // Arrange
             var database = StoreDatabase.Mock;
-            var serializer = new Serializer() as ISerializer;
             var fileName = "C:\\Temp\\CatFactory\\Sales.xml";
 
             // Act
-            var xml = serializer.Serialize(database);
+            var xml = XmlSerializerHelper.Serialize(database);
 
             TextFileHelper.CreateFile(fileName, xml);
 
-            var value = serializer.Deserialze<Database>(fileName);
+            var value = XmlSerializerHelper.Deserialze<Database>(fileName);
 
             // Assert
             Assert.True(database.Name == value.Name);

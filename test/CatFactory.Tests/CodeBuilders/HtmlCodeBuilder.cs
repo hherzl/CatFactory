@@ -1,49 +1,62 @@
-﻿using System.Text;
-using CatFactory.CodeFactory;
-using CatFactory.Markup;
+﻿//using System.Collections.Generic;
+//using System.Text;
+//using CatFactory.CodeFactory;
+//using CatFactory.Markup;
 
-namespace CatFactory.Tests.CodeBuilders
-{
-    public class HtmlCodeBuilder : CodeBuilder
-    {
-        public override string FileName
-            => "Document";
+//namespace CatFactory.Tests.CodeBuilders
+//{
+//    public class HtmlCodeBuilder : CodeBuilder
+//    {
+//        public override string FileName
+//            => "Document";
 
-        public override string FileExtension
-            => "html";
+//        public override string FileExtension
+//            => "html";
 
-        public override string Code
-        {
-            get
-            {
-                var output = new StringBuilder();
+//        public override void Translating()
+//        {
+//            Lines = new List<ILine>();
 
-                output.OpenTag("html");
-                output.AppendLine();
+//            Lines.Add(new CodeLine(Html.OpenTag("html")));
 
-                output.OpenTag("head");
-                output.AppendLine();
+//                    var output = new StringBuilder();
 
-                output.AppendTag("title", "My title");
-                output.AppendLine();
+//            output.OpenTag("html");
+//                    output.AppendLine();
+//        }
 
-                output.CloseTag("head");
-                output.AppendLine();
+//        //public override string Code
+//        //{
+//        //    get
+//        //    {
+//        //        var output = new StringBuilder();
 
-                output.OpenTag("body");
-                output.AppendLine();
+//        //        output.OpenTag("html");
+//        //        output.AppendLine();
 
-                output.Append(Html.H1("My title", new { style = "font-family: Verdana;" }));
-                output.AppendLine();
+//        //        output.OpenTag("head");
+//        //        output.AppendLine();
 
-                output.CloseTag("body");
-                output.AppendLine();
+//        //        output.AppendTag("title", "My title");
+//        //        output.AppendLine();
 
-                output.CloseTag("html");
-                output.AppendLine();
+//        //        output.CloseTag("head");
+//        //        output.AppendLine();
 
-                return output.ToString();
-            }
-        }
-    }
-}
+//        //        output.OpenTag("body");
+//        //        output.AppendLine();
+
+//        //        output.Append(Html.H1("My title", new { style = "font-family: Verdana;" }));
+//        //        output.AppendLine();
+
+//        //        output.CloseTag("body");
+//        //        output.AppendLine();
+
+//        //        output.CloseTag("html");
+//        //        output.AppendLine();
+
+//        //        return output.ToString();
+//        //    }
+//        //}
+//    }
+//}

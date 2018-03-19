@@ -1,11 +1,11 @@
 {
-  "version": "3.0.0-alpha-build12",
+  "version": "3.0.0-alpha-build13",
   "title": "CatFactory",
   "description": "CatFactory Core Engine (Code factory, Mapping and OOP)",
   "packOptions": {
     "summary": "CatFactory Core Engine (Code factory, Mapping and OOP)",
     "tags": [ "Scaffold", "ORM", "OOP" ],
-    "releaseNotes": "3.0.0-alpha-build12 Version: Code refactor for projects objects, move all to CodeFactory namespace; addition of debug metadata for projects objects, change for IObjectDefinition interface to allow inheritance for IEnumDefinition and changes for DatabaseTypeMap: remove of ClrType",
+    "releaseNotes": "3.0.0-alpha-build13 Version: Addition of ValidationResult in Diagnostics namespace. Addition of RowGuidCol, ConstraintDetails and Index for tables. Addition of RowGuidCol and Identity for views. Addition of LoggerHelper. Removing xml serialization class.",
     "requireLicenseAcceptance": false,
     "repository": {
       "type": "git",
@@ -21,7 +21,10 @@
     "System.Reflection.TypeExtensions": "4.3.0",
     "System.Xml.XmlSerializer": "4.0.11",
     "Microsoft.Extensions.Logging.Abstractions": "1.1.1",
-    "System.Data.Common": "4.3.0"
+    "System.Data.Common": "4.3.0",
+    "Microsoft.Extensions.DependencyInjection": "1.1.1",
+    "Microsoft.Extensions.Logging": "1.1.1",
+    "Microsoft.Extensions.Logging.Console": "1.1.1"
   },
 
   "frameworks": {

@@ -59,10 +59,17 @@ namespace CatFactory.Tests.Models
 
         public static ClassDefinition GetEntityClassDefinition(this DapperProject project, ITable table, ProjectSelection<DapperProjectSettings> projectSelection)
         {
-            return new ClassDefinition
+            var definition = new ClassDefinition
             {
                 Name = table.Name
             };
+
+            foreach (var column in table.Columns)
+            {
+                definition.Properties.Add(new PropertyDefinition(column.Type, column.Name));
+            }
+
+            return definition;
         }
     }
 }
