@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using CatFactory.CodeFactory;
+﻿using CatFactory.CodeFactory;
 using CatFactory.OOP;
 using Xunit;
 
@@ -12,7 +11,7 @@ namespace Tests
         {
             var classDefinition = new ClassDefinition
             {
-                Namespaces = new List<string>
+                Namespaces =
                 {
                     "System"
                 },
@@ -31,7 +30,7 @@ namespace Tests
         {
             var classDefinition = new ClassDefinition
             {
-                Namespaces = new List<string>
+                Namespaces =
                 {
                     "System"
                 },
@@ -40,7 +39,7 @@ namespace Tests
 
             classDefinition.Attributes.Add(new MetadataAttribute("Table", "\"Person\"")
             {
-                Sets = new List<MetadataAttributeSet>
+                Sets =
                 {
                     new MetadataAttributeSet("Schema", "\"HumanResources\"")
                 }
@@ -59,7 +58,7 @@ namespace Tests
         {
             var classDefinition = new ClassDefinition
             {
-                Namespaces = new List<string>
+                Namespaces =
                 {
                     "System",
                     "System.ComponentModel"
@@ -77,11 +76,11 @@ namespace Tests
 
             classDefinition.Properties.Add(new PropertyDefinition("String", "FirstName")
             {
-                GetBody = new List<ILine>
+                GetBody =
                 {
                     new CodeLine("return m_firstName;")
                 },
-                SetBody = new List<ILine>
+                SetBody =
                 {
                     new CodeLine("if (m_firstName != value)"),
                     new CodeLine("{"),
@@ -105,7 +104,7 @@ namespace Tests
             var repositoryInterfaceDefinition = new InterfaceDefinition
             {
                 Name = "ISalesRepository",
-                Implements = new List<string>
+                Implements =
                 {
                     "IRepository"
                 }

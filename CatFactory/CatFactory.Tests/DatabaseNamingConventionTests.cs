@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using CatFactory.Mapping;
+﻿using CatFactory.Mapping;
 using Xunit;
 
 namespace CatFactory.Tests
@@ -16,7 +15,7 @@ namespace CatFactory.Tests
             {
                 Schema = "dbo",
                 Name = "ProductCategory",
-                Columns = new List<Column>()
+                Columns =
                 {
                     new Column
                     {
@@ -40,7 +39,7 @@ namespace CatFactory.Tests
             {
                 Schema = "dbo",
                 Name = "Product",
-                Columns = new List<Column>()
+                Columns =
                 {
                     new Column
                     {

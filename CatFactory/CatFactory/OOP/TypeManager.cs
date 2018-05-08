@@ -15,9 +15,7 @@ namespace CatFactory.OOP
         public static void Register(IObjectDefinition objectDefinition)
         {
             if (!ObjectDefinitions.Contains(objectDefinition))
-            {
                 ObjectDefinitions.Add(objectDefinition);
-            }
         }
 
         public static IObjectDefinition GetItemByFullName(string fullName)

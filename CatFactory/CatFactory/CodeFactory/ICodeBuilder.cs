@@ -17,8 +17,6 @@ namespace CatFactory.CodeFactory
 
         IObjectDefinition ObjectDefinition { get; set; }
 
-        string Code { get; }
-
         void Translating();
 
         List<ILine> Lines { get; set; }

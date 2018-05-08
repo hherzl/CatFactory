@@ -5,20 +5,40 @@ using System.Xml.Serialization;
 
 namespace CatFactory.Mapping
 {
+    /// <summary>
+    /// Represents a database
+    /// </summary>
     [DebuggerDisplay("Name={Name}, DbObjects={DbObjects.Count}, Tables={Tables.Count}, Views={Views.Count}")]
     public class Database
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="CatFactory.Mapping.Database"/> class
+        /// </summary>
         public Database()
         {
         }
 
+        /// <summary>
+        /// Gets or sets the name for database
+        /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// Gets or sets the default schema for database
+        /// </summary>
         public string DefaultSchema { get; set; }
+
+        /// <summary>
+        /// Gets or sets if database supports transactions
+        /// </summary>
+        public bool SupportTransactions { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<DbObject> m_dbObjects;
 
+        /// <summary>
+        /// Gets or sets Db objects
+        /// </summary>
         public List<DbObject> DbObjects
         {
             get
@@ -34,6 +54,9 @@ namespace CatFactory.Mapping
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private IDatabaseNamingConvention m_namingConvention;
 
+        /// <summary>
+        /// Gets or sets naming convention for database
+        /// </summary>
         [XmlIgnore]
         public IDatabaseNamingConvention NamingConvention
         {
@@ -50,6 +73,9 @@ namespace CatFactory.Mapping
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<Table> m_tables;
 
+        /// <summary>
+        /// Gets or sets tables
+        /// </summary>
         public List<Table> Tables
         {
             get
@@ -65,6 +91,9 @@ namespace CatFactory.Mapping
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<View> m_views;
 
+        /// <summary>
+        /// Gets or sets views
+        /// </summary>
         public List<View> Views
         {
             get
@@ -80,6 +109,9 @@ namespace CatFactory.Mapping
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<StoredProcedure> m_storedProcedures;
 
+        /// <summary>
+        /// Gets or sets store procedures
+        /// </summary>
         public List<StoredProcedure> StoredProcedures
         {
             get
@@ -95,6 +127,9 @@ namespace CatFactory.Mapping
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ScalarFunction> m_scalarFunctions;
 
+        /// <summary>
+        /// Gets or sets scalar functions
+        /// </summary>
         public List<ScalarFunction> ScalarFunctions
         {
             get
@@ -110,6 +145,9 @@ namespace CatFactory.Mapping
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<TableFunction> m_tableFunctions;
 
+        /// <summary>
+        /// Gets or sets table functions
+        /// </summary>
         public List<TableFunction> TableFunctions
         {
             get
@@ -125,6 +163,9 @@ namespace CatFactory.Mapping
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<DatabaseTypeMap> m_mappings = new List<DatabaseTypeMap>();
 
+        /// <summary>
+        /// Gets or sets mappings (data type equivalents)
+        /// </summary>
         public List<DatabaseTypeMap> Mappings
         {
             get
@@ -137,9 +178,19 @@ namespace CatFactory.Mapping
             }
         }
 
+        /// <summary>
+        /// Gets Db objects by schema
+        /// </summary>
+        /// <param name="schema"></param>
+        /// <returns>A list of DbObject</returns>
         public virtual List<DbObject> GetDbObjectsBySchema(string schema)
             => DbObjects.Where(item => item.Schema == schema).ToList();
 
+        /// <summary>
+        /// Gets a table from table list by name
+        /// </summary>
+        /// <param name="name">Name for table</param>
+        /// <returns>A table</returns>
         public virtual ITable FindTable(string name)
         {
             var table = Tables.FirstOrDefault(item => string.Join(".", new string[] { item.Schema, item.Name }) == name);
@@ -150,12 +201,27 @@ namespace CatFactory.Mapping
             return table;
         }
 
+        /// <summary>
+        /// Gets tables from table list by schema
+        /// </summary>
+        /// <param name="schema">Schema name</param>
+        /// <returns>A sequence of tables</returns>
         public virtual IEnumerable<ITable> FindTablesBySchema(string schema)
             => Tables.Where(item => item.Schema == schema);
 
+        /// <summary>
+        /// Gets tables from table list by name
+        /// </summary>
+        /// <param name="name">Name for tables</param>
+        /// <returns>A sequence of tables</returns>
         public virtual IEnumerable<ITable> FindTablesByName(string name)
             => Tables.Where(item => item.Name == name);
 
+        /// <summary>
+        /// Gets view from view list by name
+        /// </summary>
+        /// <param name="name">Name for view</param>
+        /// <returns>A view</returns>
         public virtual IView FindView(string name)
         {
             var view = Views.FirstOrDefault(item => string.Join(".", new string[] { item.Schema, item.Name }) == name);
@@ -166,12 +232,29 @@ namespace CatFactory.Mapping
             return view;
         }
 
+        /// <summary>
+        /// Gets views from views list by name
+        /// </summary>
+        /// <param name="schema">Schema name</param>
+        /// <returns>A sequence of views</returns>
         public virtual IEnumerable<IView> FindViewsBySchema(string schema)
             => Views.Where(item => item.Schema == schema);
 
+        /// <summary>
+        /// Gets a view from view list by name
+        /// </summary>
+        /// <param name="name">Name for views</param>
+        /// <returns>A sequence of views</returns>
         public virtual IEnumerable<IView> FindViewsByName(string name)
             => Views.Where(item => item.Name == name);
 
+        /// <summary>
+        /// Adds a relation between two tables
+        /// </summary>
+        /// <param name="target">Target table</param>
+        /// <param name="key">Key for relation: columns that represent key</param>
+        /// <param name="source">Source table</param>
+        /// <returns>The same instance of database</returns>
         public virtual Database AddRelation(ITable target, string[] key, ITable source)
         {
             target.ForeignKeys.Add(new ForeignKey(key)
@@ -184,6 +267,10 @@ namespace CatFactory.Mapping
             return this;
         }
 
+        /// <summary>
+        /// Link all tables in database
+        /// </summary>
+        /// <returns>The same instance of database</returns>
         public virtual Database LinkTables()
         {
             foreach (var table in Tables)

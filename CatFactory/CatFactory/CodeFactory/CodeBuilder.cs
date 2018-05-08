@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -37,10 +36,6 @@ namespace CatFactory.CodeFactory
             => string.Format("{0}.{1}", FileName, FileExtension);
 
         public IObjectDefinition ObjectDefinition { get; set; }
-
-        [Obsolete("This property will replace with translating method")]
-        public virtual string Code
-            => string.Empty;
 
         public virtual void Translating()
         {
