@@ -2,15 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <Version>1.0.0-beta-sun-build02</Version>
+    <Version>1.0.0-beta-sun-build03</Version>
     <Authors>H. Herzl</Authors>
-    <Company />
-    <Description>CatFactory Core Engine (Code factory, Mapping and OOP)</Description>
+    <Company>Herzl Corp.</Company>
+    <Description>CatFactory Core Engine (Code Factory, Mapping and OOP)</Description>
     <PackageProjectUrl>https://github.com/hherzl/CatFactory</PackageProjectUrl>
     <RepositoryUrl>https://github.com/hherzl/CatFactory</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Scaffold, ORM, OOP</PackageTags>
-    <PackageReleaseNotes>1.0.0-beta-sun-build02 Version: Fix on documentation  for mapping namespace</PackageReleaseNotes>
+    <PackageReleaseNotes>1.0.0-beta-sun-build03 Version: Complete documentation for mapping namespace</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -18,9 +18,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.0.2" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.0.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.1.0" />
   </ItemGroup>
 
 </Project>

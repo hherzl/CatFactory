@@ -38,15 +38,10 @@ namespace CatFactory.Mapping
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets or sets the description
-        /// </summary>
-        public string Description { get; set; }
-
-        /// <summary>
         /// Gets or sets a column by index
         /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
+        /// <param name="index">Column's index</param>
+        /// <returns>A <see cref="CatFactory.Mapping.Column"/> from current table</returns>
         public Column this[int index]
         {
             get
@@ -59,12 +54,12 @@ namespace CatFactory.Mapping
             }
         }
 
-        /// <summary>
-        /// Gets or sets the columns list
-        /// </summary>
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<Column> m_columns;
 
+        /// <summary>
+        /// Gets or sets the columns list
+        /// </summary>
         public List<Column> Columns
         {
             get
@@ -76,11 +71,6 @@ namespace CatFactory.Mapping
                 m_columns = value;
             }
         }
-
-        /// <summary>
-        /// Gets or sets identity (auto incremental)
-        /// </summary>
-        public Identity Identity { get; set; }
 
         /// <summary>
         /// Gets or sets row Guid column
@@ -124,9 +114,37 @@ namespace CatFactory.Mapping
         }
 
         /// <summary>
+        /// Gets or sets the description
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or sets identity (auto increment)
+        /// </summary>
+        public Identity Identity { get; set; }
+
+        /// <summary>
         /// Gets or sets primary key
         /// </summary>
         public PrimaryKey PrimaryKey { get; set; }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ForeignKey> m_foreignKeys;
+
+        /// <summary>
+        /// Gets or sets foreign keys constraints
+        /// </summary>
+        public List<ForeignKey> ForeignKeys
+        {
+            get
+            {
+                return m_foreignKeys ?? (m_foreignKeys = new List<ForeignKey>());
+            }
+            set
+            {
+                m_foreignKeys = value;
+            }
+        }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<Unique> m_uniques;
@@ -143,24 +161,6 @@ namespace CatFactory.Mapping
             set
             {
                 m_uniques = value;
-            }
-        }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ForeignKey> m_foreignKeys;
-
-        /// <summary>
-        /// Gets or sets foreign key constraint
-        /// </summary>
-        public List<ForeignKey> ForeignKeys
-        {
-            get
-            {
-                return m_foreignKeys ?? (m_foreignKeys = new List<ForeignKey>());
-            }
-            set
-            {
-                m_foreignKeys = value;
             }
         }
 
