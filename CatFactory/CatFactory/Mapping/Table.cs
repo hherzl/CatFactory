@@ -7,35 +7,19 @@ namespace CatFactory.Mapping
     /// Represents an user table
     /// </summary>
     [DebuggerDisplay("FullName={FullName}, Columns={Columns.Count}")]
-    public class Table : ITable
+    public class Table : DbObject, ITable
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="CatFactory.Mapping.Table"/> class
+        /// Initializes a new instance of <see cref="Table"/> class
         /// </summary>
         public Table()
         {
         }
 
         /// <summary>
-        /// Gets or sets the schema
+        /// Gets or sets the description
         /// </summary>
-        public string Schema { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets full name
-        /// </summary>
-        public string FullName
-            => string.IsNullOrEmpty(Schema) ? Name : string.Format("{0}.{1}", Schema, Name);
-
-        /// <summary>
-        /// Gets or sets the type
-        /// </summary>
-        public string Type { get; set; }
+        public string Description { get; set; }
 
         /// <summary>
         /// Gets or sets a column by index
@@ -76,47 +60,6 @@ namespace CatFactory.Mapping
         /// Gets or sets row Guid column
         /// </summary>
         public RowGuidCol RowGuidCol { get; set; }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<Index> m_indexes;
-
-        /// <summary>
-        /// Gets or sets indexes list
-        /// </summary>
-        public List<Index> Indexes
-        {
-            get
-            {
-                return m_indexes ?? (m_indexes = new List<Index>());
-            }
-            set
-            {
-                m_indexes = value;
-            }
-        }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ConstraintDetail> m_constraintDetails;
-
-        /// <summary>
-        /// Gets or sets details for constraints
-        /// </summary>
-        public List<ConstraintDetail> ConstraintDetails
-        {
-            get
-            {
-                return m_constraintDetails ?? (m_constraintDetails = new List<ConstraintDetail>());
-            }
-            set
-            {
-                m_constraintDetails = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the description
-        /// </summary>
-        public string Description { get; set; }
 
         /// <summary>
         /// Gets or sets identity (auto increment)
@@ -179,6 +122,60 @@ namespace CatFactory.Mapping
             set
             {
                 m_checks = value;
+            }
+        }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<Index> m_indexes;
+
+        /// <summary>
+        /// Gets or sets indexes list
+        /// </summary>
+        public List<Index> Indexes
+        {
+            get
+            {
+                return m_indexes ?? (m_indexes = new List<Index>());
+            }
+            set
+            {
+                m_indexes = value;
+            }
+        }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ConstraintDetail> m_constraintDetails;
+
+        /// <summary>
+        /// Gets or sets details for constraints
+        /// </summary>
+        public List<ConstraintDetail> ConstraintDetails
+        {
+            get
+            {
+                return m_constraintDetails ?? (m_constraintDetails = new List<ConstraintDetail>());
+            }
+            set
+            {
+                m_constraintDetails = value;
+            }
+        }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<TableReference> m_tableReferences;
+
+        /// <summary>
+        /// Gets or sets references for table
+        /// </summary>
+        public List<TableReference> TableReferences
+        {
+            get
+            {
+                return m_tableReferences ?? (m_tableReferences = new List<TableReference>());
+            }
+            set
+            {
+                m_tableReferences = value;
             }
         }
     }

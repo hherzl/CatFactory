@@ -1,18 +1,17 @@
-﻿using System.Collections.Generic;
-using CatFactory.Diagnostics;
+﻿using CatFactory.Diagnostics;
 
 namespace CatFactory.Mapping
 {
     /// <summary>
-    /// Represents a validator for database's structure
+    /// Represents a validation result for database's structure
     /// </summary>
     public interface IDatabaseValidator
     {
         /// <summary>
-        /// Gets a sequence that contains all validation messages from validate feature
+        /// Gets a validation result that contains all validation messages from validate action
         /// </summary>
         /// <param name="database">A database instance</param>
-        /// <returns></returns>
-        IEnumerable<ValidationMessage> Validate(Database database);
+        /// <returns>A validation result that contains all validation messages (Log level and message) from validate action</returns>
+        ValidationResult Validate(Database database);
     }
 }

@@ -12,7 +12,7 @@ namespace CatFactory.Mapping
     public class Database
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="CatFactory.Mapping.Database"/> class
+        /// Initializes a new instance of <see cref="Database"/> class
         /// </summary>
         public Database()
         {
@@ -161,7 +161,7 @@ namespace CatFactory.Mapping
         }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<DatabaseTypeMap> m_mappings = new List<DatabaseTypeMap>();
+        private List<DatabaseTypeMap> m_mappings;
 
         /// <summary>
         /// Gets or sets mappings (data type equivalents)
@@ -181,7 +181,7 @@ namespace CatFactory.Mapping
         /// <summary>
         /// Gets Db objects by schema
         /// </summary>
-        /// <param name="schema"></param>
+        /// <param name="schema">Schema name</param>
         /// <returns>A list of DbObject</returns>
         public virtual List<DbObject> GetDbObjectsBySchema(string schema)
             => DbObjects.Where(item => item.Schema == schema).ToList();
@@ -247,58 +247,5 @@ namespace CatFactory.Mapping
         /// <returns>A sequence of views</returns>
         public virtual IEnumerable<IView> FindViewsByName(string name)
             => Views.Where(item => item.Name == name);
-
-        /// <summary>
-        /// Adds a relation between two tables
-        /// </summary>
-        /// <param name="target">Target table</param>
-        /// <param name="key">Key for relation: columns that represent key</param>
-        /// <param name="source">Source table</param>
-        /// <returns>The same instance of database</returns>
-        public virtual Database AddRelation(ITable target, string[] key, ITable source)
-        {
-            target.ForeignKeys.Add(new ForeignKey(key)
-            {
-                ConstraintName = NamingConvention.GetForeignKeyConstraintName(target, key, source),
-                References = source.FullName,
-                Child = target.FullName
-            });
-
-            return this;
-        }
-
-        /// <summary>
-        /// Link all tables in database
-        /// </summary>
-        /// <returns>The same instance of database</returns>
-        public virtual Database LinkTables()
-        {
-            foreach (var table in Tables)
-            {
-                foreach (var column in table.Columns)
-                {
-                    if (table.PrimaryKey?.Key.Count == 1 && table.PrimaryKey.Key.Contains(column.Name))
-                        continue;
-
-                    foreach (var parentTable in Tables)
-                    {
-                        if (table.FullName == parentTable.FullName)
-                            continue;
-
-                        if (parentTable.PrimaryKey != null && parentTable.PrimaryKey.Key.Contains(column.Name))
-                        {
-                            table.ForeignKeys.Add(new ForeignKey(column.Name)
-                            {
-                                ConstraintName = NamingConvention.GetForeignKeyConstraintName(table, new string[] { column.Name }, parentTable),
-                                References = string.Format("{0}.{1}", Name, parentTable.FullName),
-                                Child = table.FullName
-                            });
-                        }
-                    }
-                }
-            }
-
-            return this;
-        }
     }
 }

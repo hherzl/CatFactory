@@ -9,7 +9,7 @@ namespace CatFactory.Mapping
     public class Column
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="CatFactory.Mapping.Column"/> class
+        /// Initializes a new instance of <see cref="Column"/> class
         /// </summary>
         public Column()
         {

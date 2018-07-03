@@ -4,7 +4,7 @@ using System.Linq;
 namespace CatFactory.Mapping
 {
     /// <summary>
-    /// Contains extension methods for <see cref="CatFactory.Mapping.Table"/> class
+    /// Contains extension methods for <see cref="Table"/> class
     /// </summary>
     public static class TableExtensions
     {

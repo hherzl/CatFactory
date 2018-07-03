@@ -10,7 +10,7 @@ namespace CatFactory.Mapping
     public class DatabaseTypeMap
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="CatFactory.Mapping.DatabaseTypeMap"/> class
+        /// Initializes a new instance of <see cref="DatabaseTypeMap"/> class
         /// </summary>
         public DatabaseTypeMap()
         {
@@ -64,7 +64,7 @@ namespace CatFactory.Mapping
         public bool AllowClrNullable { get; set; }
 
         /// <summary>
-        /// Gets or sets value for <see cref="System.Data.DbType"/> enumeration
+        /// Gets or sets value for <see cref="DbType"/> enumeration
         /// </summary>
         public DbType DbTypeEnum { get; set; }
 

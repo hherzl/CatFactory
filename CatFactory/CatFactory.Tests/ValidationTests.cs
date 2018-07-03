@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using CatFactory.Mapping;
+﻿using CatFactory.Mapping;
 using CatFactory.Tests.Models;
 using Xunit;
 
@@ -10,25 +9,30 @@ namespace CatFactory.Tests
         [Fact]
         public void ValidateStoreDatabase()
         {
+            // Arrange
             var db = StoreDatabase.Mock;
-
             var dbValidator = new DatabaseValidator();
 
+            // Act
             var result = dbValidator.Validate(db);
 
-            Assert.True(result.Count() == 0);
+            // Assert
+            Assert.True(result.IsValid);
         }
 
         [Fact]
         public void ValidateSupermarketDatabase()
         {
+            // Arrange
             var db = SupermarketDatabase.Mock;
-
             var dbValidator = new DatabaseValidator();
 
-            var validationMessages = dbValidator.Validate(db);
+            // Act
+            var result = dbValidator.Validate(db);
 
-            Assert.True(validationMessages.Count() > 0);
+            // Assert
+            Assert.False(result.IsValid);
+            Assert.True(result.ValidationMessages.Count == 4);
         }
     }
 }

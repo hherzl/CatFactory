@@ -9,14 +9,14 @@ namespace CatFactory.Mapping
     public class Identity
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="CatFactory.Mapping.Identity"/> class
+        /// Initializes a new instance of <see cref="Identity"/> class
         /// </summary>
         public Identity()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="CatFactory.Mapping.Identity"/> class
+        /// Initializes a new instance of <see cref="Identity"/> class
         /// </summary>
         /// <param name="name">Column's name</param>
         /// <param name="seed">Seed</param>

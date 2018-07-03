@@ -6,14 +6,14 @@
     public class ForeignKey : Constraint
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="CatFactory.Mapping.ForeignKey"/> class
+        /// Initializes a new instance of <see cref="ForeignKey"/> class
         /// </summary>
         public ForeignKey()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="CatFactory.Mapping.ForeignKey"/> class
+        /// Initializes a new instance of <see cref="ForeignKey"/> class
         /// </summary>
         /// <param name="key">Key for constraint</param>
         public ForeignKey(params string[] key)

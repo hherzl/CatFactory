@@ -18,7 +18,7 @@ namespace CatFactory.Mapping
         Identity Identity { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets primary key
         /// </summary>
         PrimaryKey PrimaryKey { get; set; }
 
@@ -31,5 +31,10 @@ namespace CatFactory.Mapping
         /// Gets or sets unique constraints
         /// </summary>
         List<Unique> Uniques { get; set; }
+
+        /// <summary>
+        /// Gets or sets check constraints
+        /// </summary>
+        List<Check> Checks { get; set; }
     }
 }

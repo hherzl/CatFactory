@@ -6,14 +6,14 @@
     public class PrimaryKey : Constraint
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="CatFactory.Mapping.PrimaryKey"/> class
+        /// Initializes a new instance of <see cref="PrimaryKey"/> class
         /// </summary>
         public PrimaryKey()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="CatFactory.Mapping.PrimaryKey"/> class
+        /// Initializes a new instance of <see cref="PrimaryKey"/> class
         /// </summary>
         /// <param name="key">Key for constraint</param>
         public PrimaryKey(params string[] key)

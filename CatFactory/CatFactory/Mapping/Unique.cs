@@ -6,14 +6,14 @@
     public class Unique : Constraint
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="CatFactory.Mapping.Unique"/> class
+        /// Initializes a new instance of <see cref="Unique"/> class
         /// </summary>
         public Unique()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="CatFactory.Mapping.Unique"/> class
+        /// Initializes a new instance of <see cref="Unique"/> class
         /// </summary>
         /// <param name="key">Key for constraint</param>
         public Unique(params string[] key)

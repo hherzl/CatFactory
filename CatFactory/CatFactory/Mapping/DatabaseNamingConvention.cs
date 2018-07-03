@@ -6,7 +6,7 @@
     public class DatabaseNamingConvention : IDatabaseNamingConvention
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="CatFactory.Mapping.DatabaseNamingConvention"/> class
+        /// Initializes a new instance of <see cref="DatabaseNamingConvention"/> class
         /// </summary>
         public DatabaseNamingConvention()
         {
@@ -58,8 +58,8 @@
         /// <summary>
         /// Gets the name for unique constraint
         /// </summary>
-        /// <param name="table"></param>
-        /// <param name="key"></param>
+        /// <param name="table">Table</param>
+        /// <param name="key">Key for constraint</param>
         /// <returns>A string as constraint's name</returns>
         public virtual string GetUniqueConstraintName(ITable table, string[] key)
             => string.Join("_", "U", table.Schema, table.Name, string.Join("_", key));

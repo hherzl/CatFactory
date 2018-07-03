@@ -10,14 +10,14 @@ namespace CatFactory.Mapping
     public class Constraint : IConstraint
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="CatFactory.Mapping.Constraint"/> class
+        /// Initializes a new instance of <see cref="Constraint"/> class
         /// </summary>
         public Constraint()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="CatFactory.Mapping.Constraint"/> class
+        /// Initializes a new instance of <see cref="Constraint"/> class
         /// </summary>
         /// <param name="key">Key for constraint</param>
         public Constraint(params string[] key)

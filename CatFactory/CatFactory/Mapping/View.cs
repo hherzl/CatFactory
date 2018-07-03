@@ -7,35 +7,14 @@ namespace CatFactory.Mapping
     /// Represents a view
     /// </summary>
     [DebuggerDisplay("FullName={FullName}, Columns={Columns.Count}")]
-    public class View : IView
+    public class View : DbObject, IView
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="CatFactory.Mapping.View"/> class
+        /// Initializes a new instance of <see cref="View"/> class
         /// </summary>
         public View()
         {
         }
-
-        /// <summary>
-        /// Gets or sets the schema
-        /// </summary>
-        public string Schema { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets full name
-        /// </summary>
-        public string FullName
-            => string.IsNullOrEmpty(Schema) ? Name : string.Format("{0}.{1}", Schema, Name);
-
-        /// <summary>
-        /// Gets or sets the type
-        /// </summary>
-        public string Type { get; set; }
 
         /// <summary>
         /// Gets or sets the description
@@ -46,7 +25,7 @@ namespace CatFactory.Mapping
         /// Gets or sets a column by index
         /// </summary>
         /// <param name="index">Column's index</param>
-        /// <returns>A <see cref="CatFactory.Mapping.Column"/> from current table</returns>
+        /// <returns>A <see cref="Column"/> from current table</returns>
         public Column this[int index]
         {
             get

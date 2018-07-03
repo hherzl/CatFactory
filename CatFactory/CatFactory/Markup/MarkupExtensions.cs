@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 
 namespace CatFactory.Markup
@@ -15,9 +14,7 @@ namespace CatFactory.Markup
             var items = new List<string>();
 
             foreach (var property in obj.GetType().GetProperties().Where(item => item.CanRead))
-            {
                 items.Add(string.Format("{0}=\"{1}\"", property.Name.Replace("_", "-"), property.GetValue(obj, null)));
-            }
 
             return string.Format(" {0}", string.Join(" ", items));
         }

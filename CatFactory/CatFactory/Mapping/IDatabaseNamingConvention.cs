@@ -39,8 +39,8 @@
         /// <summary>
         /// Gets the name for unique constraint
         /// </summary>
-        /// <param name="table"></param>
-        /// <param name="key"></param>
+        /// <param name="table">Table</param>
+        /// <param name="key">Key for constraint</param>
         /// <returns>A string as constraint's name</returns>
         string GetUniqueConstraintName(ITable table, string[] key);
     }

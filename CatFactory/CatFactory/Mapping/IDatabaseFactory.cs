@@ -8,7 +8,7 @@
         /// <summary>
         /// Import an existing database
         /// </summary>
-        /// <returns>A <see cref="CatFactory.Mapping.Database"/> instance that represents an existing database in database server</returns>
+        /// <returns>A <see cref="Database"/> instance that represents an existing database in DBMS</returns>
         Database Import();
     }
 }

@@ -9,7 +9,7 @@ namespace CatFactory.Mapping
     public class DbObject : IDbObject
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="CatFactory.Mapping.DbObject"/> class
+        /// Initializes a new instance of <see cref="DbObject"/> class
         /// </summary>
         public DbObject()
         {

@@ -1,4 +1,5 @@
-﻿using CatFactory.Mapping;
+﻿using Newtonsoft.Json;
+using CatFactory.Mapping;
 using CatFactory.Tests.Models;
 using Xunit;
 
@@ -7,21 +8,45 @@ namespace CatFactory.Tests
     public class SerializationTests
     {
         [Fact]
-        public void SerializeMockDatabaseTest()
+        public void SerializeMockDatabaseToXmlTest()
         {
             // Arrange
             var database = StoreDatabase.Mock;
-            var fileName = "C:\\Temp\\CatFactory\\Sales.xml";
+            var fileName = "C:\\Temp\\CatFactory\\Store.xml";
 
             // Act
             var xml = XmlSerializerHelper.Serialize(database);
 
             TextFileHelper.CreateFile(fileName, xml);
 
-            var value = XmlSerializerHelper.Deserialze<Database>(fileName);
+            // Assert
+            var deserializedDatabase = XmlSerializerHelper.DeserializeFrom<Database>(fileName);
+
+            Assert.True(database.Name == deserializedDatabase.Name);
+            Assert.True(database.Tables.Count == deserializedDatabase.Tables.Count);
+            Assert.True(database.FindTable("Sales.Order").FullName == deserializedDatabase.FindTable("Sales.Order").FullName);
+            Assert.True(database.Views.Count == deserializedDatabase.Views.Count);
+        }
+
+        [Fact]
+        public void SerializeMockDatabaseToJsonTest()
+        {
+            // Arrange
+            var database = StoreDatabase.Mock;
+            var fileName = "C:\\Temp\\CatFactory\\Store.json";
+
+            // Act
+            var json = JsonConvert.SerializeObject(database);
+
+            TextFileHelper.CreateFile(fileName, json);
 
             // Assert
-            Assert.True(database.Name == value.Name);
+            var deserializedDatabase = JsonConvert.DeserializeObject<Database>(json);
+
+            Assert.True(database.Name == deserializedDatabase.Name);
+            Assert.True(database.Tables.Count == deserializedDatabase.Tables.Count);
+            Assert.True(database.FindTable("Sales.Order").FullName == deserializedDatabase.FindTable("Sales.Order").FullName);
+            Assert.True(database.Views.Count == deserializedDatabase.Views.Count);
         }
     }
 }

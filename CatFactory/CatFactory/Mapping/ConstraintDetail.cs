@@ -9,7 +9,7 @@ namespace CatFactory.Mapping
     public class ConstraintDetail
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="CatFactory.Mapping.ConstraintDetail"/> class
+        /// Initializes a new instance of <see cref="ConstraintDetail"/> class
         /// </summary>
         public ConstraintDetail()
         {

@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 namespace CatFactory.Tests
 {
-    public class XmlSerializerHelper
+    public static class XmlSerializerHelper
     {
         public static string Serialize<T>(T obj)
         {
@@ -18,11 +18,11 @@ namespace CatFactory.Tests
             }
         }
 
-        public static T Deserialze<T>(string source)
+        public static T DeserializeFrom<T>(string path)
         {
             var serializer = new XmlSerializer(typeof(T));
 
-            using (var stream = new FileStream(source, FileMode.Open))
+            using (var stream = new FileStream(path, FileMode.Open))
             {
                 using (var reader = XmlReader.Create(stream))
                 {

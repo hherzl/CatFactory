@@ -67,7 +67,6 @@ namespace CatFactory.Tests.Models
             .AddDbObjectsFromTables()
             .AddDbObjectsFromViews()
             .SetPrimaryKeyToTables()
-            .SetMappings(DatabaseTypeMapList.Definition)
             .LinkTables();
     }
 }

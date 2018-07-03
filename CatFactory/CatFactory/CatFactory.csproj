@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <Version>1.0.0-beta-sun-build03</Version>
+    <Version>1.0.0-beta-sun-build04</Version>
     <Authors>H. Herzl</Authors>
     <Company>Herzl Corp.</Company>
     <Description>CatFactory Core Engine (Code Factory, Mapping and OOP)</Description>
@@ -10,7 +10,7 @@
     <RepositoryUrl>https://github.com/hherzl/CatFactory</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Scaffold, ORM, OOP</PackageTags>
-    <PackageReleaseNotes>1.0.0-beta-sun-build03 Version: Complete documentation for mapping namespace</PackageReleaseNotes>
+    <PackageReleaseNotes>1.0.0-beta-sun-build04 Version: Addition of check constraints for ITable interface, table references for Table and ITableFunction interface. Addition of Tag and TagAttribute classes. Modification on Validators (Class, interface and database). Addition of XML comments for Diagnostics namespace. Refactoring of methods for database as extension methods.</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

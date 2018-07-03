@@ -9,13 +9,15 @@ namespace CatFactory.Tests.Models
             => new Database
             {
                 Name = "Store",
-                Tables = new List<Table>
+                DefaultSchema = "dbo",
+                Mappings = DatabaseTypeMapList.Definition,
+                Tables =
                 {
                     new Table
                     {
                         Schema = "dbo",
                         Name = "EventLog",
-                        Columns = new List<Column>
+                        Columns =
                         {
                             new Column { Name = "EventLogID", Type = "int" },
                             new Column { Name = "EventType", Type = "int" },
@@ -29,7 +31,7 @@ namespace CatFactory.Tests.Models
                     {
                         Schema = "HumanResources",
                         Name = "Employee",
-                        Columns = new List<Column>
+                        Columns =
                         {
                             new Column { Name = "EmployeeID", Type = "int" },
                             new Column { Name = "FirstName", Type = "varchar", Length = 25 },
@@ -43,7 +45,7 @@ namespace CatFactory.Tests.Models
                     {
                         Schema = "Production",
                         Name = "ProductCategory",
-                        Columns = new List<Column>
+                        Columns =
                         {
                             new Column { Name = "ProductCategoryID", Type = "int" },
                             new Column { Name = "ProductCategoryName", Type = "varchar", Length = 100 },
@@ -54,7 +56,7 @@ namespace CatFactory.Tests.Models
                     {
                         Schema = "Production",
                         Name = "Product",
-                        Columns = new List<Column>
+                        Columns =
                         {
                             new Column { Name = "ProductID", Type = "int" },
                             new Column { Name = "ProductName", Type = "varchar", Length = 100 },
@@ -67,7 +69,7 @@ namespace CatFactory.Tests.Models
                     {
                         Schema = "Production",
                         Name = "ProductInventory",
-                        Columns = new List<Column>
+                        Columns =
                         {
                             new Column { Name = "ProductInventoryID", Type = "int" },
                             new Column { Name = "ProductID", Type = "int" },
@@ -80,7 +82,7 @@ namespace CatFactory.Tests.Models
                     {
                         Schema = "Sales",
                         Name = "Customer",
-                        Columns = new List<Column>
+                        Columns =
                         {
                             new Column { Name = "CustomerID", Type = "int" },
                             new Column { Name = "CompanyName", Type = "varchar", Length = 100, Nullable = true },
@@ -92,7 +94,7 @@ namespace CatFactory.Tests.Models
                     {
                         Schema = "Sales",
                         Name = "Shipper",
-                        Columns = new List<Column>
+                        Columns =
                         {
                             new Column { Name = "ShipperID", Type = "int" },
                             new Column { Name = "CompanyName", Type = "varchar", Length = 100, Nullable = true },
@@ -104,7 +106,7 @@ namespace CatFactory.Tests.Models
                     {
                         Schema = "Sales",
                         Name = "Order",
-                        Columns = new List<Column>
+                        Columns =
                         {
                             new Column { Name = "OrderID", Type = "bigint" },
                             new Column { Name = "OrderDate", Type = "datetime" },
@@ -119,7 +121,7 @@ namespace CatFactory.Tests.Models
                     {
                         Schema = "Sales",
                         Name = "OrderDetail",
-                        Columns = new List<Column>
+                        Columns =
                         {
                             new Column { Name = "OrderID", Type = "bigint" },
                             new Column { Name = "ProductID", Type = "int" },
@@ -137,7 +139,7 @@ namespace CatFactory.Tests.Models
                     {
                         Schema = "Sales",
                         Name = "OrderSummary",
-                        Columns = new List<Column>
+                        Columns =
                         {
                             new Column { Name = "OrderID", Type = "int" },
                             new Column { Name = "OrderDate", Type = "datetime" },
@@ -152,7 +154,6 @@ namespace CatFactory.Tests.Models
             .AddDbObjectsFromTables()
             .AddDbObjectsFromViews()
             .SetPrimaryKeyToTables()
-            .SetMappings(DatabaseTypeMapList.Definition)
             .LinkTables();
     }
 }

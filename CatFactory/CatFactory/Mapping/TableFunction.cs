@@ -7,35 +7,14 @@ namespace CatFactory.Mapping
     /// Represents a table function
     /// </summary>
     [DebuggerDisplay("FullName={FullName}, Parameters={Parameters.Count}")]
-    public class TableFunction : IDbObject
+    public class TableFunction : DbObject, ITableFunction
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="CatFactory.Mapping.TableFunction"/> class
+        /// Initializes a new instance of <see cref="TableFunction"/> class
         /// </summary>
         public TableFunction()
         {
         }
-
-        /// <summary>
-        /// Gets or sets the schema
-        /// </summary>
-        public string Schema { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets full name
-        /// </summary>
-        public string FullName
-            => string.IsNullOrEmpty(Schema) ? Name : string.Format("{0}.{1}", Schema, Name);
-
-        /// <summary>
-        /// Gets or sets the type
-        /// </summary>
-        public string Type { get; set; }
 
         /// <summary>
         /// Gets or sets the description
