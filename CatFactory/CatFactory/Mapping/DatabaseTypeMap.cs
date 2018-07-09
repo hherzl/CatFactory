@@ -6,7 +6,7 @@ namespace CatFactory.Mapping
     /// <summary>
     /// Represents a mapping for database data type for CLR
     /// </summary>
-    [DebuggerDisplay("DatabaseType={DatabaseType}, ClrType={ClrType}")]
+    [DebuggerDisplay("DatabaseType={DatabaseType}, ClrType={ClrType}, IsUserDefined={IsUserDefined}")]
     public class DatabaseTypeMap
     {
         /// <summary>
@@ -69,7 +69,7 @@ namespace CatFactory.Mapping
         public DbType DbTypeEnum { get; set; }
 
         /// <summary>
-        /// Get or sets if database type is user defined
+        /// Get or sets if database type is defined by user
         /// </summary>
         public bool IsUserDefined { get; set; }
 
@@ -77,5 +77,10 @@ namespace CatFactory.Mapping
         /// Gets or sets the parent database type for current database type
         /// </summary>
         public string ParentDatabaseType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the collation
+        /// </summary>
+        public string Collation { get; set; }
     }
 }

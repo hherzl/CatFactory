@@ -33,6 +33,11 @@ namespace CatFactory.Mapping
         /// </summary>
         public bool SupportTransactions { get; set; }
 
+        /// <summary>
+        /// Gets or sets the description
+        /// </summary>
+        public string Description { get; set; }
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<DbObject> m_dbObjects;
 

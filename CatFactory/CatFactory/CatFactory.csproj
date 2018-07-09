@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <Version>1.0.0-beta-sun-build04</Version>
+    <Version>1.0.0-beta-sun-build05</Version>
     <Authors>H. Herzl</Authors>
     <Company>Herzl Corp.</Company>
     <Description>CatFactory Core Engine (Code Factory, Mapping and OOP)</Description>
@@ -10,7 +10,7 @@
     <RepositoryUrl>https://github.com/hherzl/CatFactory</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Scaffold, ORM, OOP</PackageTags>
-    <PackageReleaseNotes>1.0.0-beta-sun-build04 Version: Addition of check constraints for ITable interface, table references for Table and ITableFunction interface. Addition of Tag and TagAttribute classes. Modification on Validators (Class, interface and database). Addition of XML comments for Diagnostics namespace. Refactoring of methods for database as extension methods.</PackageReleaseNotes>
+    <PackageReleaseNotes>1.0.0-beta-sun-build05 Version: Addition of FindColumn method for table, view and table function, Addition of collation for database type map, Addition of GetParentDatabaseType method Addition of description for database class, Addition of Identity, RowGuidCol and Indexes for IView interface, Addition of RowGuidCol and Indexes for ITable interface and code clean up for xml comments</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

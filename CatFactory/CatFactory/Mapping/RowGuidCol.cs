@@ -9,7 +9,7 @@ namespace CatFactory.Mapping
     public class RowGuidCol
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="CatFactory.Mapping.RowGuidCol"/> class
+        /// Initializes a new instance of <see cref="RowGuidCol"/> class
         /// </summary>
         public RowGuidCol()
         {

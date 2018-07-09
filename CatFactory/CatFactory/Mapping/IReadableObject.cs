@@ -11,5 +11,12 @@ namespace CatFactory.Mapping
         /// Gets or sets the columns list
         /// </summary>
         List<Column> Columns { get; set; }
+
+        /// <summary>
+        /// Gets a column by name
+        /// </summary>
+        /// <param name="name">Name for column</param>
+        /// <returns>A column as selection result</returns>
+        Column GetColumn(string name);
     }
 }

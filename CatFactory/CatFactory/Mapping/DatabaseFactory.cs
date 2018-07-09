@@ -10,8 +10,8 @@ namespace CatFactory.Mapping
         /// <summary>
         /// Import an existing database
         /// </summary>
-        /// <returns>A <see cref="CatFactory.Mapping.Database"/> instance that represents an existing database in database server</returns>
-        public Database Import()
+        /// <returns>A <see cref="Database"/> instance that represents an existing database in database server</returns>
+        public virtual Database Import()
         {
             throw new NotImplementedException();
         }

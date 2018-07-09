@@ -18,6 +18,16 @@ namespace CatFactory.Mapping
         Identity Identity { get; set; }
 
         /// <summary>
+        /// Gets or sets row Guid column
+        /// </summary>
+        RowGuidCol RowGuidCol { get; set; }
+
+        /// <summary>
+        /// Gets or sets indexes
+        /// </summary>
+        List<Index> Indexes { get; set; }
+
+        /// <summary>
         /// Gets or sets primary key
         /// </summary>
         PrimaryKey PrimaryKey { get; set; }

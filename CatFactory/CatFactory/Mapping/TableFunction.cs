@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace CatFactory.Mapping
 {
@@ -38,6 +39,14 @@ namespace CatFactory.Mapping
                 m_columns = value;
             }
         }
+
+        /// <summary>
+        /// Gets a column by name
+        /// </summary>
+        /// <param name="name">Name for column</param>
+        /// <returns>A column as selection result</returns>
+        public Column GetColumn(string name)
+            => Columns.First(item => item.Name == name);
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<Parameter> m_parameters;

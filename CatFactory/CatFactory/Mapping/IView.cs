@@ -1,4 +1,6 @@
-﻿namespace CatFactory.Mapping
+﻿using System.Collections.Generic;
+
+namespace CatFactory.Mapping
 {
     /// <summary>
     /// Represents the model for user table
@@ -9,5 +11,20 @@
         /// Gets or sets the description
         /// </summary>
         string Description { get; set; }
+
+        /// <summary>
+        /// Gets or sets identity (auto increment)
+        /// </summary>
+        Identity Identity { get; set; }
+
+        /// <summary>
+        /// Gets or sets row Guid column
+        /// </summary>
+        RowGuidCol RowGuidCol { get; set; }
+
+        /// <summary>
+        /// Gets or sets indexes list
+        /// </summary>
+        List<Index> Indexes { get; set; }
     }
 }

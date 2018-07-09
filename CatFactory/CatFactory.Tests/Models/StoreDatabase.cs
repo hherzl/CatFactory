@@ -10,7 +10,7 @@ namespace CatFactory.Tests.Models
             {
                 Name = "Store",
                 DefaultSchema = "dbo",
-                Mappings = DatabaseTypeMapList.Definition,
+                Mappings = DatabaseTypeMapList.Default,
                 Tables =
                 {
                     new Table

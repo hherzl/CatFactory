@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CatFactory.Mapping
 {
@@ -8,11 +10,27 @@ namespace CatFactory.Mapping
     public static class DatabaseTypeMapExtensions
     {
         /// <summary>
-        /// Gets the CLR type for database type provided
+        /// Gets the CLR type for database type instance
         /// </summary>
-        /// <param name="dbTypeMap">Database type</param>
-        /// <returns>Returns a <see cref="Type"/> instance that represents an equivalence for <see cref="DatabaseTypeMap"/> provided</returns>
-        public static Type GetClrType(this DatabaseTypeMap dbTypeMap)
-            => dbTypeMap.HasClrFullNameType ? Type.GetType(dbTypeMap.ClrFullNameType) : null;
+        /// <param name="databaseTypeMap">Database type</param>
+        /// <returns>Returns a <see cref="Type"/> instance that represents an equivalence for <see cref="DatabaseTypeMap"/> instance</returns>
+        public static Type GetClrType(this DatabaseTypeMap databaseTypeMap)
+            => databaseTypeMap.HasClrFullNameType ? Type.GetType(databaseTypeMap.ClrFullNameType) : null;
+
+        /// <summary>
+        /// Gets the parent type for database type instance
+        /// </summary>
+        /// <param name="databaseTypeMap">Database type</param>
+        /// <param name="mappings">A sequence with database types</param>
+        /// <returns>Returns a <see cref="Type"/> instance that represents an equivalence for <see cref="DatabaseTypeMap"/> instance</returns>
+        public static DatabaseTypeMap GetParentType(this DatabaseTypeMap databaseTypeMap, IEnumerable<DatabaseTypeMap> mappings)
+        {
+            var result = mappings.FirstOrDefault(item => databaseTypeMap.ParentDatabaseType == item.DatabaseType);
+
+            if (!string.IsNullOrEmpty(result.ParentDatabaseType))
+                result = GetParentType(result, mappings);
+
+            return result;
+        }
     }
 }

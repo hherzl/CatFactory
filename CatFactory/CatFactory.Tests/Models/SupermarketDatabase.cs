@@ -8,7 +8,7 @@ namespace CatFactory.Tests.Models
             => new Database
             {
                 Name = "Supermarket",
-                Mappings = DatabaseTypeMapList.Definition,
+                Mappings = DatabaseTypeMapList.Default,
                 Tables =
                 {
                     new Table

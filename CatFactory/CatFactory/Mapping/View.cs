@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace CatFactory.Mapping
 {
@@ -57,6 +58,14 @@ namespace CatFactory.Mapping
         }
 
         /// <summary>
+        /// Gets a column by name
+        /// </summary>
+        /// <param name="name">Name for column</param>
+        /// <returns>A column as selection result</returns>
+        public Column GetColumn(string name)
+            => Columns.First(item => item.Name == name);
+
+        /// <summary>
         /// Gets or sets identity (auto increment)
         /// </summary>
         public Identity Identity { get; set; }
@@ -65,5 +74,23 @@ namespace CatFactory.Mapping
         /// Gets or sets row Guid column
         /// </summary>
         public RowGuidCol RowGuidCol { get; set; }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<Index> m_indexes;
+
+        /// <summary>
+        /// Gets or sets indexes list
+        /// </summary>
+        public List<Index> Indexes
+        {
+            get
+            {
+                return m_indexes ?? (m_indexes = new List<Index>());
+            }
+            set
+            {
+                m_indexes = value;
+            }
+        }
     }
 }

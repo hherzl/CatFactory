@@ -28,13 +28,13 @@ namespace CatFactory.Tests
         public void ValidateDatabaseTypeMaps()
         {
             // Arrange
-            var mappings = DatabaseTypeMapList.Definition;
+            var mappings = DatabaseTypeMapList.Default;
 
             // Act
             var mapsForString = mappings.Where(item => item.GetClrType() == typeof(string)).ToList();
             var mapsForDecimal = mappings.Where(item => item.GetClrType() == typeof(decimal)).ToList();
 
-            // Arrange
+            // Assert
             Assert.True(mapsForString.Count() == 6);
             Assert.True(mapsForDecimal.Count() == 4);
         }
@@ -52,6 +52,55 @@ namespace CatFactory.Tests
 
             // Assert
             Assert.True(clrType.GetClrType() == typeof(long));
+        }
+
+        [Fact]
+        public void ValidateIfNameIsNVarchar()
+        {
+            // Arrange
+            var mappings = DatabaseTypeMapList.DefinitionWithCustomTypes;
+
+            // Act
+            var nameType = mappings.First(item => item.DatabaseType == "Name");
+            var parentType = nameType.GetParentType(mappings);
+
+            // Assert
+            Assert.True(nameType.ParentDatabaseType == parentType.DatabaseType);
+            Assert.True(nameType.IsUserDefined);
+        }
+
+        [Fact]
+        public void ValidateIfSpecialNameIsNVarchar()
+        {
+            // Arrange
+            var mappings = DatabaseTypeMapList.DefinitionWithCustomTypes;
+
+            // Act
+            var specialNameType = mappings.First(item => item.DatabaseType == "SpecialName");
+            var parentType = specialNameType.GetParentType(mappings);
+
+            // Assert
+            Assert.True(specialNameType.IsUserDefined);
+            Assert.True(parentType.DatabaseType == "nvarchar");
+            Assert.True(parentType.ParentDatabaseType == null);
+            Assert.True(parentType.GetClrType() == typeof(string));
+        }
+
+        [Fact]
+        public void ValidateIfFlagIsBit()
+        {
+            // Arrange
+            var mappings = DatabaseTypeMapList.DefinitionWithCustomTypes;
+
+            // Act
+            var flagType = mappings.First(item => item.DatabaseType == "Flag");
+            var parentType = flagType.GetParentType(mappings);
+
+            // Assert
+            Assert.True(flagType.IsUserDefined);
+            Assert.True(parentType.DatabaseType == "bit");
+            Assert.True(parentType.ParentDatabaseType == null);
+            Assert.True(parentType.GetClrType() == typeof(bool));
         }
     }
 }

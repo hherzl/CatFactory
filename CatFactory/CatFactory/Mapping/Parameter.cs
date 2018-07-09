@@ -9,7 +9,7 @@ namespace CatFactory.Mapping
     public class Parameter
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="CatFactory.Mapping.Parameter"/> class
+        /// Initializes a new instance of <see cref="Parameter"/> class
         /// </summary>
         public Parameter()
         {
