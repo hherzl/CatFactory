@@ -24,13 +24,6 @@ namespace CatFactory.Mapping
         /// <param name="mappings">A sequence with database types</param>
         /// <returns>Returns a <see cref="Type"/> instance that represents an equivalence for <see cref="DatabaseTypeMap"/> instance</returns>
         public static DatabaseTypeMap GetParentType(this DatabaseTypeMap databaseTypeMap, IEnumerable<DatabaseTypeMap> mappings)
-        {
-            var result = mappings.FirstOrDefault(item => databaseTypeMap.ParentDatabaseType == item.DatabaseType);
-
-            if (!string.IsNullOrEmpty(result.ParentDatabaseType))
-                result = GetParentType(result, mappings);
-
-            return result;
-        }
+            => mappings.FirstOrDefault(item => databaseTypeMap.ParentDatabaseType == item.DatabaseType);
     }
 }

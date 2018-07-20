@@ -507,7 +507,7 @@ namespace CatFactory.Tests.Models
                 {
                     DatabaseType = "SpecialName",
                     IsUserDefined = true,
-                    ParentDatabaseType = "Name"
+                    ParentDatabaseType = "nvarchar"
                 },
                 new DatabaseTypeMap
                 {
