@@ -1,7 +1,7 @@
 cls
 set initialPath=%cd%
-set srcPath=%cd%\CatFactory\CatFactory
-set testPath=%cd%\CatFactory\CatFactory.Tests
+set srcPath=%cd%\CatFactory
+set testPath=%cd%\CatFactory.Tests
 cd %srcPath%
 dotnet build
 cd %testPath%
