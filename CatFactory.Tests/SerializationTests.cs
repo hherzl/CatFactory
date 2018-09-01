@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
-using CatFactory.Mapping;
+﻿using CatFactory.Mapping;
 using CatFactory.Tests.Models;
+using Newtonsoft.Json;
 using Xunit;
 
 namespace CatFactory.Tests
@@ -11,12 +11,11 @@ namespace CatFactory.Tests
         public void SerializeMockDatabaseToXmlTest()
         {
             // Arrange
-            var database = StoreDatabase.Mock;
             var fileName = "C:\\Temp\\CatFactory\\Store.xml";
-
-            // Act
+            var database = StoreDatabase.Mock;
             var xml = XmlSerializerHelper.Serialize(database);
 
+            // Act
             TextFileHelper.CreateFile(fileName, xml);
 
             // Assert
@@ -38,7 +37,7 @@ namespace CatFactory.Tests
             // Act
             var json = JsonConvert.SerializeObject(database);
 
-            TextFileHelper.CreateFile(fileName, json);
+            System.IO.File.WriteAllText(fileName, json);
 
             // Assert
             var deserializedDatabase = JsonConvert.DeserializeObject<Database>(json);

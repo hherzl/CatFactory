@@ -1,4 +1,5 @@
 ﻿using CatFactory.Markup;
+using System.IO;
 using System.Text;
 using Xunit;
 
@@ -41,7 +42,7 @@ namespace CatFactory.Tests
             html.CloseTag("html");
             html.AppendLine();
 
-            TextFileHelper.CreateFile("C:\\Temp\\CatFactory\\HtmlDocument.html", html.ToString());
+            File.WriteAllText("C:\\Temp\\CatFactory\\HtmlDocument.html", html.ToString());
         }
     }
 }

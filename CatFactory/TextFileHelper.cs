@@ -1,9 +1,11 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CatFactory
 {
+    [Obsolete("Use File.WriteAllText method")]
     public static class TextFileHelper
     {
         public static void WriteFile(string path, string data, FileMode mode, FileAccess access, Encoding encoding, bool addLine)

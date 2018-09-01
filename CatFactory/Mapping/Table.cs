@@ -39,6 +39,29 @@ namespace CatFactory.Mapping
             }
         }
 
+        /// <summary>
+        /// Gets or sets a column by name
+        /// </summary>
+        /// <param name="name">Column's name</param>
+        /// <returns>A <see cref="CatFactory.Mapping.Column"/> from current table</returns>
+        public Column this[string name]
+        {
+            get
+            {
+                return Columns.First(item => item.Name == name);
+            }
+            set
+            {
+                for (var i = 0; i < Columns.Count; i++)
+                {
+                    var column = Columns[i];
+
+                    if (column.Name == name)
+                        column = value;
+                }
+            }
+        }
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<Column> m_columns;
 
@@ -54,6 +77,24 @@ namespace CatFactory.Mapping
             set
             {
                 m_columns = value;
+            }
+        }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ExtendedProperty> m_extendedProperties;
+
+        /// <summary>
+        /// Gets or sets the extended properties
+        /// </summary>
+        public List<ExtendedProperty> ExtendedProperties
+        {
+            get
+            {
+                return m_extendedProperties ?? (m_extendedProperties = new List<ExtendedProperty>());
+            }
+            set
+            {
+                m_extendedProperties = value;
             }
         }
 

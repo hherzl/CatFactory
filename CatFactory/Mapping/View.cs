@@ -39,6 +39,29 @@ namespace CatFactory.Mapping
             }
         }
 
+        /// <summary>
+        /// Gets or sets a column by name
+        /// </summary>
+        /// <param name="name">Column's name</param>
+        /// <returns>A <see cref="CatFactory.Mapping.Column"/> from current view</returns>
+        public Column this[string name]
+        {
+            get
+            {
+                return Columns.First(item => item.Name == name);
+            }
+            set
+            {
+                for (var i = 0; i < Columns.Count; i++)
+                {
+                    var column = Columns[i];
+
+                    if (column.Name == name)
+                        column = value;
+                }
+            }
+        }
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<Column> m_columns;
 
@@ -54,6 +77,42 @@ namespace CatFactory.Mapping
             set
             {
                 m_columns = value;
+            }
+        }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<Index> m_indexes;
+
+        /// <summary>
+        /// Gets or sets indexes list
+        /// </summary>
+        public List<Index> Indexes
+        {
+            get
+            {
+                return m_indexes ?? (m_indexes = new List<Index>());
+            }
+            set
+            {
+                m_indexes = value;
+            }
+        }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ExtendedProperty> m_extendedProperties;
+
+        /// <summary>
+        /// Gets or sets the extended properties
+        /// </summary>
+        public List<ExtendedProperty> ExtendedProperties
+        {
+            get
+            {
+                return m_extendedProperties ?? (m_extendedProperties = new List<ExtendedProperty>());
+            }
+            set
+            {
+                m_extendedProperties = value;
             }
         }
 
@@ -74,23 +133,5 @@ namespace CatFactory.Mapping
         /// Gets or sets row Guid column
         /// </summary>
         public RowGuidCol RowGuidCol { get; set; }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<Index> m_indexes;
-
-        /// <summary>
-        /// Gets or sets indexes list
-        /// </summary>
-        public List<Index> Indexes
-        {
-            get
-            {
-                return m_indexes ?? (m_indexes = new List<Index>());
-            }
-            set
-            {
-                m_indexes = value;
-            }
-        }
     }
 }

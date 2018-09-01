@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace CatFactory.Mapping
 {
@@ -54,6 +55,24 @@ namespace CatFactory.Mapping
         /// Gets or sets description
         /// </summary>
         public string Description { get; set; }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ExtendedProperty> m_extendedProperties;
+
+        /// <summary>
+        /// Gets or sets the extended properties
+        /// </summary>
+        public List<ExtendedProperty> ExtendedProperties
+        {
+            get
+            {
+                return m_extendedProperties ?? (m_extendedProperties = new List<ExtendedProperty>());
+            }
+            set
+            {
+                m_extendedProperties = value;
+            }
+        }
 
         /// <summary>
         /// Determines whether the specified object is equal to the current object

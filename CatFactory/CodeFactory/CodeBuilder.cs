@@ -108,7 +108,7 @@ namespace CatFactory.CodeFactory
 
             OnTranslatedDefinition(new TranslatedDefinitionEventArgs(Logger));
 
-            TextFileHelper.CreateFile(filePath, Lines.ToStringBuilder().ToString());
+            File.WriteAllText(filePath, Lines.ToStringBuilder().ToString());
         }
     }
 }

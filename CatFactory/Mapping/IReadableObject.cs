@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace CatFactory.Mapping
 {
@@ -17,6 +18,7 @@ namespace CatFactory.Mapping
         /// </summary>
         /// <param name="name">Name for column</param>
         /// <returns>A column as selection result</returns>
+        [Obsolete("Use Indexer")]
         Column GetColumn(string name);
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Xml.Serialization;
@@ -166,20 +167,54 @@ namespace CatFactory.Mapping
         }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<DatabaseTypeMap> m_mappings;
+        private List<DatabaseTypeMap> m_databaseTypeMaps;
 
         /// <summary>
-        /// Gets or sets mappings (data type equivalents)
+        /// Gets or sets database type maps (data type equivalents)
         /// </summary>
+        public List<DatabaseTypeMap> DatabaseTypeMaps
+        {
+            get
+            {
+                return m_databaseTypeMaps ?? (m_databaseTypeMaps = new List<DatabaseTypeMap>());
+            }
+            set
+            {
+                m_databaseTypeMaps = value;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Obsolete("Use DatabaseTypeMaps property")]
         public List<DatabaseTypeMap> Mappings
         {
             get
             {
-                return m_mappings ?? (m_mappings = new List<DatabaseTypeMap>());
+                return DatabaseTypeMaps;
             }
             set
             {
-                m_mappings = value;
+                DatabaseTypeMaps = value;
+            }
+        }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ExtendedProperty> m_extendedProperties;
+
+        /// <summary>
+        /// Gets or sets the extended properties
+        /// </summary>
+        public List<ExtendedProperty> ExtendedProperties
+        {
+            get
+            {
+                return m_extendedProperties ?? (m_extendedProperties = new List<ExtendedProperty>());
+            }
+            set
+            {
+                m_extendedProperties = value;
             }
         }
 
