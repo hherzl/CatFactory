@@ -69,10 +69,10 @@ namespace CatFactory.Mapping
         }
 
         /// <summary>
-        /// 
+        /// Adds a <see cref="Column"/> instance in all tables for <see cref="Database"/> instance
         /// </summary>
         /// <param name="database"><see cref="Database"/> instance</param>
-        /// <param name="column"></param>
+        /// <param name="column"><see cref="Column"/> instance</param>
         /// <param name="exclusions">Exclusions for tables in <see cref="Database"/> instance</param>
         /// <returns><see cref="Database"/> instance</returns>
         public static Database AddColumnForTables(this Database database, Column column, params string[] exclusions)

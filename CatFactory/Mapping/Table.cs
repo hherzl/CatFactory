@@ -194,6 +194,24 @@ namespace CatFactory.Mapping
         }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<Default> m_defaults;
+
+        /// <summary>
+        /// Gets or sets default constraints
+        /// </summary>
+        public List<Default> Defaults
+        {
+            get
+            {
+                return m_defaults ?? (m_defaults = new List<Default>());
+            }
+            set
+            {
+                m_defaults = value;
+            }
+        }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ConstraintDetail> m_constraintDetails;
 
         /// <summary>

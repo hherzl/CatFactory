@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <Version>1.0.0-beta-sun-build06</Version>
+    <Version>1.0.0-beta-sun-build07</Version>
     <Authors>H. Herzl</Authors>
     <Company>Herzl Corp.</Company>
     <Description>CatFactory Core Engine (Code Factory, Mapping and OOP)</Description>
@@ -10,7 +10,7 @@
     <RepositoryUrl>https://github.com/hherzl/CatFactory</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Scaffold, ORM, OOP</PackageTags>
-    <PackageReleaseNotes>1.0.0-beta-sun-build06 Version: Addition of code code naming convention for project, addition of read only flags for documentation classes, addition of has default schema method for database, addition of columns in table and views and addition custom types for db type mapping</PackageReleaseNotes>
+    <PackageReleaseNotes>1.0.0-beta-sun-build07 Version: Addition of default constraints for table and code improvement for extended properties</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

@@ -46,5 +46,10 @@ namespace CatFactory.Mapping
         /// Gets or sets check constraints
         /// </summary>
         List<Check> Checks { get; set; }
+
+        /// <summary>
+        /// Gets or sets default constraints
+        /// </summary>
+        List<Default> Defaults { get; set; }
     }
 }

@@ -1,8 +1,11 @@
-﻿namespace CatFactory.Mapping
+﻿using System.Diagnostics;
+
+namespace CatFactory.Mapping
 {
     /// <summary>
     /// Represents an extended property for a database object
     /// </summary>
+    [DebuggerDisplay("Name={Name}, Value={Value}")]
     public class ExtendedProperty
     {
         /// <summary>
