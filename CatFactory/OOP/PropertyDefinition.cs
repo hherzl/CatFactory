@@ -4,14 +4,26 @@ using CatFactory.CodeFactory;
 
 namespace CatFactory.OOP
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [DebuggerDisplay("AccessModifier={AccessModifier}, Type={Type}, Name={Name}")]
     public class PropertyDefinition : IMemberDefinition
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public PropertyDefinition()
         {
             IsAutomatic = true;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="name"></param>
+        /// <param name="attribs"></param>
         public PropertyDefinition(string type, string name, params MetadataAttribute[] attribs)
         {
             IsAutomatic = true;
@@ -20,6 +32,13 @@ namespace CatFactory.OOP
             Attributes.AddRange(attribs);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="accessModifier"></param>
+        /// <param name="type"></param>
+        /// <param name="name"></param>
+        /// <param name="attribs"></param>
         public PropertyDefinition(AccessModifier accessModifier, string type, string name, params MetadataAttribute[] attribs)
         {
             AccessModifier = accessModifier;
@@ -31,6 +50,9 @@ namespace CatFactory.OOP
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private Documentation m_documentation;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Documentation Documentation
         {
             get
@@ -43,17 +65,32 @@ namespace CatFactory.OOP
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsVirtual { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsOverride { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsAutomatic { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsReadOnly { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<MetadataAttribute> m_attributes;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public List<MetadataAttribute> Attributes
         {
             get
@@ -66,15 +103,27 @@ namespace CatFactory.OOP
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public AccessModifier AccessModifier { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Type { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Name { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ILine> m_getBody;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public List<ILine> GetBody
         {
             get
@@ -90,6 +139,9 @@ namespace CatFactory.OOP
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ILine> m_setBody;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public List<ILine> SetBody
         {
             get
@@ -102,6 +154,9 @@ namespace CatFactory.OOP
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string InitializationValue { get; set; }
     }
 }

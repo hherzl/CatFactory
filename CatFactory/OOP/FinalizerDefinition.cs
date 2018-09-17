@@ -4,8 +4,14 @@ using CatFactory.CodeFactory;
 
 namespace CatFactory.OOP
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class FinalizerDefinition
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public FinalizerDefinition()
         {
         }
@@ -13,6 +19,9 @@ namespace CatFactory.OOP
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ILine> m_lines;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public List<ILine> Lines
         {
             get

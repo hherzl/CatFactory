@@ -3,13 +3,25 @@ using System.Diagnostics;
 
 namespace CatFactory.OOP
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [DebuggerDisplay("Type={Type}, Name={Name}, DefaultValue={DefaultValue}")]
     public class ParameterDefinition
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public ParameterDefinition()
         {
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="name"></param>
+        /// <param name="attributes"></param>
         public ParameterDefinition(string type, string name, params MetadataAttribute[] attributes)
         {
             Type = type;
@@ -17,6 +29,13 @@ namespace CatFactory.OOP
             Attributes.AddRange(attributes);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="name"></param>
+        /// <param name="defaultValue"></param>
+        /// <param name="attributes"></param>
         public ParameterDefinition(string type, string name, string defaultValue, params MetadataAttribute[] attributes)
         {
             Type = type;
@@ -28,6 +47,9 @@ namespace CatFactory.OOP
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private Documentation m_documentation;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Documentation Documentation
         {
             get
@@ -43,6 +65,9 @@ namespace CatFactory.OOP
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<MetadataAttribute> m_attributes;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public List<MetadataAttribute> Attributes
         {
             get
@@ -55,12 +80,24 @@ namespace CatFactory.OOP
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsParams { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Type { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string DefaultValue { get; set; }
     }
 }

@@ -143,7 +143,7 @@ namespace CatFactory.Mapping
         private List<ForeignKey> m_foreignKeys;
 
         /// <summary>
-        /// Gets or sets foreign keys constraints
+        /// Gets or sets foreign key constraints
         /// </summary>
         public List<ForeignKey> ForeignKeys
         {

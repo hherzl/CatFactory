@@ -4,13 +4,25 @@ using CatFactory.CodeFactory;
 
 namespace CatFactory.OOP
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [DebuggerDisplay("AccessModifier={AccessModifier}, Type={Type}, Name={Name}, Parameters={Parameters.Count}")]
     public class MethodDefinition : IMemberDefinition
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public MethodDefinition()
         {
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="name"></param>
+        /// <param name="parameters"></param>
         public MethodDefinition(string type, string name, params ParameterDefinition[] parameters)
         {
             Type = type;
@@ -18,6 +30,13 @@ namespace CatFactory.OOP
             Parameters.AddRange(parameters);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="accessModifier"></param>
+        /// <param name="type"></param>
+        /// <param name="name"></param>
+        /// <param name="parameters"></param>
         public MethodDefinition(AccessModifier accessModifier, string type, string name, params ParameterDefinition[] parameters)
         {
             AccessModifier = accessModifier;
@@ -29,6 +48,9 @@ namespace CatFactory.OOP
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private Documentation m_documentation;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Documentation Documentation
         {
             get
@@ -44,6 +66,9 @@ namespace CatFactory.OOP
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<MetadataAttribute> m_attributes;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public List<MetadataAttribute> Attributes
         {
             get
@@ -56,25 +81,52 @@ namespace CatFactory.OOP
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public AccessModifier AccessModifier { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsStatic { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsAbstract { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsVirtual { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsOverride { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsAsync { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Type { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Name { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<GenericTypeDefinition> m_genericTypes;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public List<GenericTypeDefinition> GenericTypes
         {
             get
@@ -87,11 +139,17 @@ namespace CatFactory.OOP
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsExtension { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ParameterDefinition> m_parameters;
         
+        /// <summary>
+        /// 
+        /// </summary>
         public List<ParameterDefinition> Parameters
         {
             get
@@ -107,6 +165,9 @@ namespace CatFactory.OOP
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ILine> m_lines;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public List<ILine> Lines
         {
             get

@@ -4,7 +4,7 @@ using System.Diagnostics;
 namespace CatFactory.Mapping
 {
     /// <summary>
-    /// Represents a column for table
+    /// Represents a column for table, view or table function
     /// </summary>
     [DebuggerDisplay("Name={Name}, Type={Type}, Nullable={Nullable ? \"Yes\": \"No\"}")]
     public class Column
@@ -80,11 +80,7 @@ namespace CatFactory.Mapping
         /// <param name="obj">The object to compare with the current object</param>
         /// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
         public override bool Equals(object obj)
-        {
-            var cast = obj as Column;
-
-            return cast == null ? false : string.Compare(Name, cast.Name) == 0 ? true : false;
-        }
+            => obj is Column cast ? string.Compare(Name, cast.Name) == 0 ? true : false : false;
 
         /// <summary>
         /// Returns the hash code for this column

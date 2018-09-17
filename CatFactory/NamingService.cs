@@ -1,7 +1,15 @@
 ﻿namespace CatFactory
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class NamingService : INamingService
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public virtual string Singularize(string value)
         {
             // todo: improve the way to singularize a name
@@ -22,6 +30,11 @@
                 return value;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public virtual string Pluralize(string value)
         {
             // todo: improve the way to pluralize a name

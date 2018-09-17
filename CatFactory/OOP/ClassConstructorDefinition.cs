@@ -4,18 +4,33 @@ using CatFactory.CodeFactory;
 
 namespace CatFactory.OOP
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [DebuggerDisplay("AccessModifier={AccessModifier}, ParentInvoke={ParentInvoke}")]
     public class ClassConstructorDefinition
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public ClassConstructorDefinition()
         {
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parameters"></param>
         public ClassConstructorDefinition(params ParameterDefinition[] parameters)
         {
             Parameters.AddRange(parameters);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="accessModifier"></param>
+        /// <param name="parameters"></param>
         public ClassConstructorDefinition(AccessModifier accessModifier, params ParameterDefinition[] parameters)
         {
             AccessModifier = accessModifier;
@@ -25,6 +40,9 @@ namespace CatFactory.OOP
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private Documentation m_documentation;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Documentation Documentation
         {
             get
@@ -37,11 +55,17 @@ namespace CatFactory.OOP
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public AccessModifier AccessModifier { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ParameterDefinition> m_parameters;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public List<ParameterDefinition> Parameters
         {
             get
@@ -54,11 +78,17 @@ namespace CatFactory.OOP
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Invocation { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ILine> m_lines;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public List<ILine> Lines
         {
             get

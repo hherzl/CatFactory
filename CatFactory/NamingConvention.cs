@@ -3,6 +3,9 @@ using System.Text;
 
 namespace CatFactory
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class NamingConvention
     {
         private static bool IsLower(string source)
@@ -11,6 +14,11 @@ namespace CatFactory
         private static bool IsUpper(string source)
             => source.ToUpper() == source;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
         public static string GetCamelCase(string source)
         {
             if (source.Length == 0)
@@ -63,6 +71,11 @@ namespace CatFactory
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
         public static string GetPascalCase(string source)
         {
             if (source.Length == 0)
@@ -133,6 +146,11 @@ namespace CatFactory
             return name.ToString();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
         public static string GetSnakeCase(string source)
         {
             if (source.Length == 0)

@@ -5,8 +5,16 @@ using Microsoft.Extensions.Logging;
 
 namespace CatFactory.OOP
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ClassDefinitionValidator : IClassDefinitionValidator
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="classDefinition"></param>
+        /// <returns></returns>
         public virtual ValidationResult Validate(IClassDefinition classDefinition)
         {
             if (classDefinition == null)

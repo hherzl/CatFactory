@@ -3,9 +3,15 @@ using System.Diagnostics;
 
 namespace CatFactory.OOP
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [DebuggerDisplay("AccessModifier={AccessModifier}, Namespace={Namespace}, Name={Name}")]
     public class InterfaceDefinition : ObjectDefinition, IInterfaceDefinition
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public InterfaceDefinition()
             : base()
         {
@@ -14,6 +20,9 @@ namespace CatFactory.OOP
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<GenericTypeDefinition> m_genericTypes;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public List<GenericTypeDefinition> GenericTypes
         {
             get
@@ -29,6 +38,9 @@ namespace CatFactory.OOP
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<string> m_implements;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public List<string> Implements
         {
             get
@@ -41,6 +53,9 @@ namespace CatFactory.OOP
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public override bool HasInheritance
             => Implements.Count > 0;
     }

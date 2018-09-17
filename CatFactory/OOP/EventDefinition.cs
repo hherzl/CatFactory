@@ -2,13 +2,24 @@
 
 namespace CatFactory.OOP
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [DebuggerDisplay("AccessModifier={AccessModifier}, Type={Type}, Name={Name}")]
     public class EventDefinition : IMemberDefinition
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public EventDefinition()
         {
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="name"></param>
         public EventDefinition(string type, string name)
         {
             Type = type;
@@ -18,6 +29,9 @@ namespace CatFactory.OOP
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private Documentation m_documentation;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Documentation Documentation
         {
             get
@@ -30,10 +44,19 @@ namespace CatFactory.OOP
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public AccessModifier AccessModifier { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Type { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Name { get; set; }
     }
 }

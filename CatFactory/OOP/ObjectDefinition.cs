@@ -3,9 +3,15 @@ using System.Diagnostics;
 
 namespace CatFactory.OOP
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [DebuggerDisplay("Namespace={Namespace}, Name={Name}")]
     public class ObjectDefinition : IObjectDefinition
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public ObjectDefinition()
         {
             TypeManager.Register(this);
@@ -14,6 +20,9 @@ namespace CatFactory.OOP
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<string> m_namespaces;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public List<string> Namespaces
         {
             get
@@ -26,11 +35,17 @@ namespace CatFactory.OOP
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Namespace { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private Documentation m_documentation;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Documentation Documentation
         {
             get
@@ -43,21 +58,39 @@ namespace CatFactory.OOP
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public AccessModifier AccessModifier { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsPartial { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public virtual string FullName
             => string.IsNullOrEmpty(Namespace) ? Name : string.Format("{0}.{1}", Namespace, Name);
 
+        /// <summary>
+        /// 
+        /// </summary>
         public virtual bool HasInheritance
             => false;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<MetadataAttribute> m_attributes;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public List<MetadataAttribute> Attributes
         {
             get
@@ -73,6 +106,9 @@ namespace CatFactory.OOP
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<EventDefinition> m_events;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public List<EventDefinition> Events
         {
             get
@@ -88,6 +124,9 @@ namespace CatFactory.OOP
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<PropertyDefinition> m_properties;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public List<PropertyDefinition> Properties
         {
             get
@@ -103,6 +142,9 @@ namespace CatFactory.OOP
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<MethodDefinition> m_methods;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public List<MethodDefinition> Methods
         {
             get
@@ -115,18 +157,23 @@ namespace CatFactory.OOP
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public override bool Equals(object obj)
         {
-            var cast = obj as ObjectDefinition;
-
-            if (cast != null && FullName == cast.FullName)
-            {
+            if (obj is ObjectDefinition cast && FullName == cast.FullName)
                 return true;
-            }
 
             return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
             => base.GetHashCode();
     }

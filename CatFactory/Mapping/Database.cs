@@ -231,7 +231,7 @@ namespace CatFactory.Mapping
         /// </summary>
         /// <param name="name">Name for table</param>
         /// <returns>A table</returns>
-        public virtual ITable FindTable(string name)
+        public virtual Table FindTable(string name)
         {
             var table = Tables.FirstOrDefault(item => string.Join(".", new string[] { item.Schema, item.Name }) == name);
 
@@ -246,7 +246,7 @@ namespace CatFactory.Mapping
         /// </summary>
         /// <param name="schema">Schema name</param>
         /// <returns>A sequence of tables</returns>
-        public virtual IEnumerable<ITable> FindTablesBySchema(string schema)
+        public virtual IEnumerable<Table> FindTablesBySchema(string schema)
             => Tables.Where(item => item.Schema == schema);
 
         /// <summary>
@@ -254,7 +254,7 @@ namespace CatFactory.Mapping
         /// </summary>
         /// <param name="name">Name for tables</param>
         /// <returns>A sequence of tables</returns>
-        public virtual IEnumerable<ITable> FindTablesByName(string name)
+        public virtual IEnumerable<Table> FindTablesByName(string name)
             => Tables.Where(item => item.Name == name);
 
         /// <summary>
@@ -262,7 +262,7 @@ namespace CatFactory.Mapping
         /// </summary>
         /// <param name="name">Name for view</param>
         /// <returns>A view</returns>
-        public virtual IView FindView(string name)
+        public virtual View FindView(string name)
         {
             var view = Views.FirstOrDefault(item => string.Join(".", new string[] { item.Schema, item.Name }) == name);
 
@@ -277,7 +277,7 @@ namespace CatFactory.Mapping
         /// </summary>
         /// <param name="schema">Schema name</param>
         /// <returns>A sequence of views</returns>
-        public virtual IEnumerable<IView> FindViewsBySchema(string schema)
+        public virtual IEnumerable<View> FindViewsBySchema(string schema)
             => Views.Where(item => item.Schema == schema);
 
         /// <summary>
@@ -285,7 +285,7 @@ namespace CatFactory.Mapping
         /// </summary>
         /// <param name="name">Name for views</param>
         /// <returns>A sequence of views</returns>
-        public virtual IEnumerable<IView> FindViewsByName(string name)
+        public virtual IEnumerable<View> FindViewsByName(string name)
             => Views.Where(item => item.Name == name);
     }
 }

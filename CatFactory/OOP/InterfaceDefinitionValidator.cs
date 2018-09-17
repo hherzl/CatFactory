@@ -5,8 +5,16 @@ using Microsoft.Extensions.Logging;
 
 namespace CatFactory.OOP
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class InterfaceDefinitionValidator : IInterfaceDefinitionValidator
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="interfaceDefinition"></param>
+        /// <returns></returns>
         public virtual ValidationResult Validate(IInterfaceDefinition interfaceDefinition)
         {
             if (interfaceDefinition == null)

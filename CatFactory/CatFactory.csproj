@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <Version>1.0.0-beta-sun-build07</Version>
+    <Version>1.0.0-beta-sun-build08</Version>
     <Authors>H. Herzl</Authors>
     <Company>Herzl Corp.</Company>
     <Description>CatFactory Core Engine (Code Factory, Mapping and OOP)</Description>
@@ -10,7 +10,7 @@
     <RepositoryUrl>https://github.com/hherzl/CatFactory</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Scaffold, ORM, OOP</PackageTags>
-    <PackageReleaseNotes>1.0.0-beta-sun-build07 Version: Addition of default constraints for table and code improvement for extended properties</PackageReleaseNotes>
+    <PackageReleaseNotes>1.0.0-beta-sun-build08 Version: Addition of properties for levels in extended properties and change find methods for database: user classes instead of interfaces</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

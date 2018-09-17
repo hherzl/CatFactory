@@ -3,21 +3,36 @@ using System.Diagnostics;
 
 namespace CatFactory.OOP
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [DebuggerDisplay("AccessModifier={AccessModifier}, Namespace={Namespace}, Name={Name}")]
     public class ClassDefinition : ObjectDefinition, IClassDefinition
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public ClassDefinition()
             : base()
         {
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsStatic { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string BaseClass { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<string> m_implements;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public List<string> Implements
         {
             get
@@ -30,12 +45,18 @@ namespace CatFactory.OOP
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public override bool HasInheritance
             => !string.IsNullOrEmpty(BaseClass) || Implements.Count > 0;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<GenericTypeDefinition> m_genericTypes;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public List<GenericTypeDefinition> GenericTypes
         {
             get
@@ -51,6 +72,9 @@ namespace CatFactory.OOP
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ConstantDefinition> m_constants;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public List<ConstantDefinition> Constants
         {
             get
@@ -63,13 +87,22 @@ namespace CatFactory.OOP
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public ClassConstructorDefinition StaticConstructor { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public FinalizerDefinition Finalizer { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ClassConstructorDefinition> m_constructors;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public List<ClassConstructorDefinition> Constructors
         {
             get
@@ -85,6 +118,9 @@ namespace CatFactory.OOP
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<IndexerDefinition> m_indexers;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public List<IndexerDefinition> Indexers
         {
             get
@@ -100,6 +136,9 @@ namespace CatFactory.OOP
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<FieldDefinition> m_fields;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public List<FieldDefinition> Fields
         {
             get
