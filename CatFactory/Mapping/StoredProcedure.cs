@@ -38,5 +38,23 @@ namespace CatFactory.Mapping
                 m_parameters = value;
             }
         }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<FirstResultSetForObject> m_firstResultSetsForObject;
+
+        /// <summary>
+        /// Gets or sets the sequence for first result sets for object
+        /// </summary>
+        public List<FirstResultSetForObject> FirstResultSetsForObject
+        {
+            get
+            {
+                return m_firstResultSetsForObject ?? (m_firstResultSetsForObject = new List<FirstResultSetForObject>());
+            }
+            set
+            {
+                m_firstResultSetsForObject = value;
+            }
+        }
     }
 }

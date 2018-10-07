@@ -2,9 +2,9 @@
 using CatFactory.OOP;
 using Xunit;
 
-namespace Tests
+namespace CatFactory.Tests
 {
-    public class Tests
+    public class OopTests
     {
         [Fact]
         public void TestClassDefinition()
