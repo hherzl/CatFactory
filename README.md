@@ -6,11 +6,12 @@ CatFactory it's a scaffolding engine for .NET Core built in C#.
 
 ## How it Works?
 
-The concept behind CatFactory is import an existing database from a SQL Server instance and with that representation in memory for database scaffold code
- for specific technology.
+The key thing in CatFactory it's import an existing database from a SQL Server instance, then scaffold code for specific technology.
 
-CatFactory 
- 
+In some cases we can replace the database from SQL Server instance with a in memory database.
+
+In this section, we'll use sample for Entity Framework Core.
+
 ```csharp
 // Create database factory
 var databaseFactory = new SqlServerDatabaseFactory
@@ -33,7 +34,7 @@ var project = new EntityFrameworkCoreProject
 {
 	Name = "Store",
 	Database = database,
-	OutputDirectory = "C:\\Temp\\CatFactory.EntityFrameworkCore\\Store"
+	OutputDirectory = "C:\\Projects\\Store"
 };
 
 // Apply settings for Entity Framework Core project
@@ -65,6 +66,148 @@ project.ScaffoldedDefinition += (source, args) =>
 project
 	.ScaffoldEntityLayer()
 	.ScaffoldDataLayer();
+```
+
+To understand the scope for CatFactory, in few words CatFactory is the core, to have more packages we can create them with this naming convention: CatFactory.PackageName.
+
+In the sample code, the basic flow for existing database is:
+
+* Create Database Factory
+* Import Database
+* Create instance of Project (Entity Framework Core, Dapper, etc)
+* Build Features (One feature per schema)
+* Scaffold objects, these methods read all objects from database and create instances for code builders
+
+## Concepts behind CatFactory
+
+### Database Type Map
+
+One of things I don't like to get equivalent between SQL data type for CLR is use magic strings, after of review the more "fancy" way to resolve a type equivalence is to have a class that allows to know the equivalence between SQL data type and CLR type.
+
+Using this table as reference, now CatFactory has a class with name DatabaseTypeMap. Database class contains a property with all mappings with name Mappings, so this property is filled by Import feature for SQL Server package.
+
+```csharp
+public class DatabaseTypeMap
+{
+        public string DatabaseType { get; set; }
+        
+        public bool AllowsLengthInDeclaration { get; set; }
+        
+        public bool AllowsPrecInDeclaration { get; set; }
+        
+        public bool AllowsScaleInDeclaration { get; set; }
+        
+        public string ClrFullNameType { get; set; }
+        
+        public bool HasClrFullNameType { get; }
+        
+        public string ClrAliasType { get; set; }
+        
+        public bool HasClrAliasType { get; }
+        
+        public bool AllowClrNullable { get; set; }
+        
+        public DbType DbTypeEnum { get; set; }
+        
+        public bool IsUserDefined { get; set; }
+        
+        public string ParentDatabaseType { get; set; }
+        
+        public string Collation { get; set; }
+}
+```
+
+DatabaseTypeMap is the class to represent database type definition, for database instance we need to create a collection of DatabaseTypeMap class to have a matrix to resolve data types.
+
+This concept was created from this link: [`SQL Server Data Type Mappings`](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql-server-data-type-mappings)
+
+Suppose there is a class with name DatabaseTypeMapList, this class has a property to get data types. Once we have imported an existing database we can resolve data types:
+
+Resolve without extension methods:
+
+```csharp
+// Get mappings
+var dataTypes = database.DatabaseTypeMaps;
+
+// Resolve CLR type
+var mapsForString = dataTypes.Where(item => item.ClrType == typeof(string)).ToList();
+
+// Resolve SQL Server type
+var mapForVarchar = dataTypes.FirstOrDefault(item => item.DatabaseType == "varchar");
+```
+
+Resolve with extension methods:
+
+```csharp
+// Get database type
+var varcharDataType = database.ResolveType("varchar");
+
+// Resolve CLR
+var mapForVarchar = varcharDataType.GetClrType();
+```
+
+SQL Server allows to define data types, suppose the database instance has a data type defined by user with name Flag, Flag data type is a bit, bool in C#. Import method retrieve user data types, so in DatabaseTypeMaps collection we can search the parent data type for Flag:
+
+```csharp
+// Get Flag data type
+var flagDataType = database.DatabaseTypeMaps.FirstOrDefault(item => item.DatabaseType == "Flag");
+
+// Get parent data type for Flag
+var flagParentDataType.GetParentType(database.DatabaseTypeMaps);
+```
+
+### Project Selection
+
+A project selection is a limit to apply settings for objects that match with pattern.
+
+GlobalSelection is the default selection for project, contains a default instance of settings.
+
+Patterns:
+
+|Pattern|Scope|
+|-------|-----|
+|Sales.Order|Applies for specific object with name Sales.Order|
+|Sales.\*|Applies for all objects inside of Sales schema|
+|\*.Order|Applies for all objects with name Order with no matter schema|
+|\*.\*|Applies for all objects, this is the global selection|
+
+Sample:
+
+```csharp
+// Apply settings for Project
+project.GlobalSelection(settings =>
+{
+    settings.ForceOverwrite = true;
+    settings.AuditEntity = new AuditEntity("CreationUser", "CreationDateTime", "LastUpdateUser", "LastUpdateDateTime");
+    settings.ConcurrencyToken = "Timestamp";
+});
+
+// Apply settings for specific object
+project.Select("Sales.Order", settings =>
+{
+    settings.ForceOverwrite = true;
+    settings.AuditEntity = new AuditEntity("CreationUser", "CreationDateTime", "LastUpdateUser", "LastUpdateDateTime");
+    settings.ConcurrencyToken = "Timestamp";
+    settings.EntitiesWithDataContracts = true;
+});
+```
+
+### Event Handlers to Scaffold
+
+In order to provide a more flexible way to scaffold, there are two delegates in CatFactory, one to perform an action before of scaffolding and another one to handle and action after of scaffolding.
+
+```csharp
+// Add event handlers to before and after of scaffold
+
+project.ScaffoldingDefinition += (source, args) =>
+{
+    // Add code to perform operations with code builder instance before to create code file
+};
+
+project.ScaffoldedDefinition += (source, args) =>
+{
+    // Add code to perform operations after of create code file
+};
 ```
 
 ## Packages
