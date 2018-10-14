@@ -9,6 +9,7 @@ namespace CatFactory.Tests
         [Fact]
         public void TestClassDefinition()
         {
+            // Arrange
             var classDefinition = new ClassDefinition
             {
                 Namespaces =
@@ -23,11 +24,15 @@ namespace CatFactory.Tests
             classDefinition.Properties.Add(new PropertyDefinition("Int32?", "ID"));
             classDefinition.Properties.Add(new PropertyDefinition("String", "Name"));
             classDefinition.Properties.Add(new PropertyDefinition("String", "Description"));
+
+            // Act
+            // Assert
         }
 
         [Fact]
         public void TestEntityWithDataAnnotationsDefinition()
         {
+            // Arrange
             var classDefinition = new ClassDefinition
             {
                 Namespaces =
@@ -51,11 +56,15 @@ namespace CatFactory.Tests
             classDefinition.Properties.Add(new PropertyDefinition("String", "LastName", new MetadataAttribute("Required"), new MetadataAttribute("StringLength", "25")));
             classDefinition.Properties.Add(new PropertyDefinition("String", "Gender", new MetadataAttribute("Required"), new MetadataAttribute("StringLength", "1")));
             classDefinition.Properties.Add(new PropertyDefinition("DateTime?", "BirthDate", new MetadataAttribute("Required")));
+
+            // Act
+            // Assert
         }
 
         [Fact]
         public void TestViewModelClassDefinition()
         {
+            // Arrange
             var classDefinition = new ClassDefinition
             {
                 Namespaces =
@@ -90,11 +99,15 @@ namespace CatFactory.Tests
                     new CodeLine("}")
                 }
             });
+
+            // Act
+            // Assert
         }
 
         [Fact]
         public void TestInheritance()
         {
+            // Arrange
             var dbContextClassDefinition = new ClassDefinition
             {
                 Name = "StoreDbContext",
@@ -116,6 +129,9 @@ namespace CatFactory.Tests
                 BaseType = "int"
             };
 
+            // Act
+
+            // Assert
             Assert.True(dbContextClassDefinition.HasInheritance);
             Assert.True(dbContextClassDefinition.BaseClass != null);
             Assert.True(dbContextClassDefinition.Implements.Count == 0);

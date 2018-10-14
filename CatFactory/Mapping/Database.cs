@@ -37,6 +37,7 @@ namespace CatFactory.Mapping
         /// <summary>
         /// Gets or sets the description
         /// </summary>
+        [Obsolete("Save description as extended property")]
         public string Description { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -77,96 +78,6 @@ namespace CatFactory.Mapping
         }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<Table> m_tables;
-
-        /// <summary>
-        /// Gets or sets tables
-        /// </summary>
-        public List<Table> Tables
-        {
-            get
-            {
-                return m_tables ?? (m_tables = new List<Table>());
-            }
-            set
-            {
-                m_tables = value;
-            }
-        }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<View> m_views;
-
-        /// <summary>
-        /// Gets or sets views
-        /// </summary>
-        public List<View> Views
-        {
-            get
-            {
-                return m_views ?? (m_views = new List<View>());
-            }
-            set
-            {
-                m_views = value;
-            }
-        }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<StoredProcedure> m_storedProcedures;
-
-        /// <summary>
-        /// Gets or sets store procedures
-        /// </summary>
-        public List<StoredProcedure> StoredProcedures
-        {
-            get
-            {
-                return m_storedProcedures ?? (m_storedProcedures = new List<StoredProcedure>());
-            }
-            set
-            {
-                m_storedProcedures = value;
-            }
-        }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ScalarFunction> m_scalarFunctions;
-
-        /// <summary>
-        /// Gets or sets scalar functions
-        /// </summary>
-        public List<ScalarFunction> ScalarFunctions
-        {
-            get
-            {
-                return m_scalarFunctions ?? (m_scalarFunctions = new List<ScalarFunction>());
-            }
-            set
-            {
-                m_scalarFunctions = value;
-            }
-        }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<TableFunction> m_tableFunctions;
-
-        /// <summary>
-        /// Gets or sets table functions
-        /// </summary>
-        public List<TableFunction> TableFunctions
-        {
-            get
-            {
-                return m_tableFunctions ?? (m_tableFunctions = new List<TableFunction>());
-            }
-            set
-            {
-                m_tableFunctions = value;
-            }
-        }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<DatabaseTypeMap> m_databaseTypeMaps;
 
         /// <summary>
@@ -185,7 +96,7 @@ namespace CatFactory.Mapping
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the mapping for database types
         /// </summary>
         [Obsolete("Use DatabaseTypeMaps property")]
         public List<DatabaseTypeMap> Mappings
@@ -215,6 +126,96 @@ namespace CatFactory.Mapping
             set
             {
                 m_extendedProperties = value;
+            }
+        }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<Table> m_tables;
+
+        /// <summary>
+        /// Gets or sets the tables
+        /// </summary>
+        public List<Table> Tables
+        {
+            get
+            {
+                return m_tables ?? (m_tables = new List<Table>());
+            }
+            set
+            {
+                m_tables = value;
+            }
+        }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<View> m_views;
+
+        /// <summary>
+        /// Gets or sets the views
+        /// </summary>
+        public List<View> Views
+        {
+            get
+            {
+                return m_views ?? (m_views = new List<View>());
+            }
+            set
+            {
+                m_views = value;
+            }
+        }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ScalarFunction> m_scalarFunctions;
+
+        /// <summary>
+        /// Gets or sets the scalar functions
+        /// </summary>
+        public List<ScalarFunction> ScalarFunctions
+        {
+            get
+            {
+                return m_scalarFunctions ?? (m_scalarFunctions = new List<ScalarFunction>());
+            }
+            set
+            {
+                m_scalarFunctions = value;
+            }
+        }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<TableFunction> m_tableFunctions;
+
+        /// <summary>
+        /// Gets or sets the table functions
+        /// </summary>
+        public List<TableFunction> TableFunctions
+        {
+            get
+            {
+                return m_tableFunctions ?? (m_tableFunctions = new List<TableFunction>());
+            }
+            set
+            {
+                m_tableFunctions = value;
+            }
+        }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<StoredProcedure> m_storedProcedures;
+
+        /// <summary>
+        /// Gets or sets the store procedures
+        /// </summary>
+        public List<StoredProcedure> StoredProcedures
+        {
+            get
+            {
+                return m_storedProcedures ?? (m_storedProcedures = new List<StoredProcedure>());
+            }
+            set
+            {
+                m_storedProcedures = value;
             }
         }
 

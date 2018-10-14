@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <Version>1.0.0-beta-sun-build09</Version>
+    <Version>1.0.0-beta-sun-build10</Version>
     <Authors>H. Herzl</Authors>
     <Company>Herzl Corp.</Company>
     <Description>CatFactory Core Engine (Code Factory, Mapping and OOP)</Description>
@@ -10,7 +10,10 @@
     <RepositoryUrl>https://github.com/hherzl/CatFactory</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Scaffold, ORM, OOP</PackageTags>
-    <PackageReleaseNotes>1.0.0-beta-sun-build09 Version: Addition of FirstResultSetForObject class in stored procedures</PackageReleaseNotes>
+    <PackageReleaseNotes>1.0.0-beta-sun-build10 Version: Changes:
+
+* Addition of constructors for ExtendedProperty class.
+* Addition of Computed, TrimTrailingBlanks and FixedLenNullInSource properties for Column class.</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

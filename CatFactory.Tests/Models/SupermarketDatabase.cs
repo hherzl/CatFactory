@@ -8,6 +8,7 @@ namespace CatFactory.Tests.Models
             => new Database
             {
                 Name = "Supermarket",
+                DefaultSchema = "dbo",
                 DatabaseTypeMaps = DatabaseTypeMapList.Default,
                 Tables =
                 {
@@ -23,7 +24,7 @@ namespace CatFactory.Tests.Models
                             new Column { Name = "LastName", Type = "varchar", Length = 25 },
                             new Column { Name = "BirthDate", Type = "datetime" }
                         },
-                        Identity = new Identity { Name = "EmployeeID", Seed = 1, Increment = 1 }
+                        Identity = new Identity("EmployeeID", 1, 1)
                     },
                     new Table
                     {
@@ -34,7 +35,7 @@ namespace CatFactory.Tests.Models
                             new Column { Name = "ProductCategoryID", Type = "int" },
                             new Column { Name = "ProductCategoryName", Type = "varchar", Length = 100 },
                         },
-                        Identity = new Identity { Name = "ProductCategoryID", Seed = 1, Increment = 1 }
+                        Identity = new Identity("ProductCategoryID", 1, 1)
                     },
                     new Table
                     {
@@ -47,7 +48,7 @@ namespace CatFactory.Tests.Models
                             new Column { Name = "ProductCategoryID", Type = "int" },
                             new Column { Name = "", Type = "varchar", Length = 255, Nullable = true }
                         },
-                        Identity = new Identity { Name = "ProductID", Seed = 1, Increment = 1 }
+                        Identity = new Identity("ProductID", 1, 1)
                     },
                     new Table
                     {
@@ -61,7 +62,7 @@ namespace CatFactory.Tests.Models
                             new Column { Name = "EntryDate", Type = "datetime" },
                             new Column { Name = "Quantity", Type = "int" }
                         },
-                        Identity = new Identity { Name = "ProductInventoryID", Seed = 1, Increment = 1 }
+                        Identity = new Identity("ProductInventoryID", 1, 1)
                     },
                     new Table
                     {
@@ -73,7 +74,7 @@ namespace CatFactory.Tests.Models
                             new Column { Name = "CompanyName", Type = "varchar", Length = 100, Nullable = true },
                             new Column { Name = "ContactName", Type = "varchar", Length = 100, Nullable = true }
                         },
-                        Identity = new Identity { Name = "CustomerID", Seed = 1, Increment = 1 }
+                        Identity = new Identity("CustomerID", 1, 1)
                     },
                     new Table
                     {
@@ -85,12 +86,11 @@ namespace CatFactory.Tests.Models
                             new Column { Name = "CompanyName", Type = "varchar", Length = 100, Nullable = true },
                             new Column { Name = "ContactName", Type = "varchar", Length = 100, Nullable = true }
                         },
-                        Identity = new Identity { Name = "Shipper ID", Seed = 1, Increment = 1 }
+                        Identity = new Identity("Shipper ID", 1, 1)
                     }
                 }
             }
             .AddDbObjectsFromTables()
-            .AddDbObjectsFromViews()
             .SetPrimaryKeyToTables()
             .LinkTables();
     }

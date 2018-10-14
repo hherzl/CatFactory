@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
@@ -20,6 +21,7 @@ namespace CatFactory.Mapping
         /// <summary>
         /// Gets or sets the description
         /// </summary>
+        [Obsolete("Save description as extended property")]
         public string Description { get; set; }
 
         /// <summary>
@@ -43,7 +45,7 @@ namespace CatFactory.Mapping
         /// Gets or sets a column by name
         /// </summary>
         /// <param name="name">Column's name</param>
-        /// <returns>A <see cref="CatFactory.Mapping.Column"/> from current view</returns>
+        /// <returns>A <see cref="Column"/> from current view</returns>
         public Column this[string name]
         {
             get
@@ -80,6 +82,24 @@ namespace CatFactory.Mapping
             }
         }
 
+        /// <summary>
+        /// Gets a column by name
+        /// </summary>
+        /// <param name="name">Name for column</param>
+        /// <returns>A column as selection result</returns>
+        public Column GetColumn(string name)
+            => Columns.First(item => item.Name == name);
+
+        /// <summary>
+        /// Gets or sets identity (auto increment)
+        /// </summary>
+        public Identity Identity { get; set; }
+
+        /// <summary>
+        /// Gets or sets row Guid column
+        /// </summary>
+        public RowGuidCol RowGuidCol { get; set; }
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<Index> m_indexes;
 
@@ -115,23 +135,5 @@ namespace CatFactory.Mapping
                 m_extendedProperties = value;
             }
         }
-
-        /// <summary>
-        /// Gets a column by name
-        /// </summary>
-        /// <param name="name">Name for column</param>
-        /// <returns>A column as selection result</returns>
-        public Column GetColumn(string name)
-            => Columns.First(item => item.Name == name);
-
-        /// <summary>
-        /// Gets or sets identity (auto increment)
-        /// </summary>
-        public Identity Identity { get; set; }
-
-        /// <summary>
-        /// Gets or sets row Guid column
-        /// </summary>
-        public RowGuidCol RowGuidCol { get; set; }
     }
 }

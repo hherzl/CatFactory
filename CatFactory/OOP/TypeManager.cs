@@ -8,12 +8,15 @@ namespace CatFactory.OOP
     /// </summary>
     public static class TypeManager
     {
-        private static List<IObjectDefinition> ObjectDefinitions;
-
         static TypeManager()
         {
             ObjectDefinitions = new List<IObjectDefinition>();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static List<IObjectDefinition> ObjectDefinitions { get; }
 
         /// <summary>
         /// 

@@ -13,6 +13,7 @@ namespace CatFactory.OOP
         /// 
         /// </summary>
         public EnumDefinition()
+            : base()
         {
         }
 
@@ -22,6 +23,7 @@ namespace CatFactory.OOP
         /// <param name="name"></param>
         /// <param name="attribs"></param>
         public EnumDefinition(string name, params MetadataAttribute[] attribs)
+            : base()
         {
             Name = name;
             Attributes.AddRange(attribs);
@@ -34,6 +36,7 @@ namespace CatFactory.OOP
         /// <param name="name"></param>
         /// <param name="attribs"></param>
         public EnumDefinition(AccessModifier accessModifier, string name, params MetadataAttribute[] attribs)
+            : base()
         {
             AccessModifier = accessModifier;
             Name = name;

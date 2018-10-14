@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace CatFactory.Mapping
@@ -27,6 +28,11 @@ namespace CatFactory.Mapping
         public string Type { get; set; }
 
         /// <summary>
+        /// Gets or sets if column is computed
+        /// </summary>
+        public string Computed { get; set; }
+
+        /// <summary>
         /// Gets or sets length
         /// </summary>
         public int Length { get; set; }
@@ -47,6 +53,16 @@ namespace CatFactory.Mapping
         public bool Nullable { get; set; }
 
         /// <summary>
+        /// Gets or sets if column trim trailing blanks 
+        /// </summary>
+        public string TrimTrailingBlanks { get; set; }
+
+        /// <summary>
+        /// Gets or sets if column has fixed len null in source
+        /// </summary>
+        public string FixedLenNullInSource { get; set; }
+
+        /// <summary>
         /// Gets or sets collation for column
         /// </summary>
         public string Collation { get; set; }
@@ -54,6 +70,7 @@ namespace CatFactory.Mapping
         /// <summary>
         /// Gets or sets description
         /// </summary>
+        [Obsolete("Save description as extended property")]
         public string Description { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]

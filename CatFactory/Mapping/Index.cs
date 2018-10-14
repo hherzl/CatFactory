@@ -9,7 +9,7 @@ namespace CatFactory.Mapping
     public class Index
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="CatFactory.Mapping.Index"/> class
+        /// Initializes a new instance of <see cref="Index"/> class
         /// </summary>
         public Index()
         {

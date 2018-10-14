@@ -16,6 +16,66 @@ namespace CatFactory.Mapping
         }
 
         /// <summary>
+        /// Initializes a new instance of <see cref="ExtendedProperty"/> class
+        /// </summary>
+        /// <param name="name">Name for extended property</param>
+        public ExtendedProperty(string name)
+        {
+            Name = name;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="ExtendedProperty"/> class
+        /// </summary>
+        /// <param name="name">Name for extended property</param>
+        /// <param name="level0Type">Level 0 type</param>
+        /// <param name="level0Name">Level 0 name</param>
+        public ExtendedProperty(string name, string level0Type, string level0Name)
+        {
+            Name = name;
+            Level0Type = level0Type;
+            Level0Name = level0Name;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="ExtendedProperty"/> class
+        /// </summary>
+        /// <param name="name">Name for extended property</param>
+        /// <param name="level0Type">Level 0 type</param>
+        /// <param name="level0Name">Level 0 name</param>
+        /// <param name="level1Type">Level 1 type</param>
+        /// <param name="level1Name">Level 1 name</param>
+        public ExtendedProperty(string name, string level0Type, string level0Name, string level1Type, string level1Name)
+        {
+            Name = name;
+            Level0Type = level0Type;
+            Level0Name = level0Name;
+            Level1Type = level1Type;
+            Level1Name = level1Name;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="ExtendedProperty"/> class
+        /// </summary>
+        /// <param name="name">Name for extended property</param>
+        /// <param name="level0Type">Level 0 type</param>
+        /// <param name="level0Name">Level 0 name</param>
+        /// <param name="level1Type">Level 1 type</param>
+        /// <param name="level1Name">Level 1 name</param>
+        /// <param name="level2Type">Level 2 type</param>
+        /// <param name="level2Name">Level 2 name</param>
+        public ExtendedProperty(string name, string level0Type, string level0Name, string level1Type, string level1Name, string level2Type, string level2Name)
+        {
+            Name = name;
+            Level0Type = level0Type;
+            Level0Name = level0Name;
+            Level1Type = level1Type;
+            Level1Name = level1Name;
+            Level2Type = level2Type;
+            Level2Name = level2Name;
+        }
+
+        /// <summary>
         /// Gets or sets the name for extended property
         /// </summary>
         public string Name { get; set; }

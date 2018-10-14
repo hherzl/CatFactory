@@ -10,7 +10,7 @@ namespace CatFactory.Mapping
     public static class DatabaseExtensions
     {
         /// <summary>
-        /// Validates if a Db object has the default schema
+        /// Validates if a database object has the default schema
         /// </summary>
         /// <param name="database"><see cref="Database"/> instance</param>
         /// <param name="dbObj"><see cref="IDbObject"/> instance</param>
@@ -19,7 +19,7 @@ namespace CatFactory.Mapping
             => string.IsNullOrEmpty(dbObj.Schema) || string.Compare(dbObj.Schema, database.DefaultSchema, true) == 0;
 
         /// <summary>
-        /// Adds all tables as db objects in database
+        /// Adds all tables as database objects in database
         /// </summary>
         /// <param name="database"><see cref="Database"/> instance</param>
         /// <returns><see cref="Database"/> instance</returns>
@@ -32,7 +32,7 @@ namespace CatFactory.Mapping
         }
 
         /// <summary>
-        /// Adds all views as db objects in database
+        /// Adds all views as database objects in database
         /// </summary>
         /// <param name="database"><see cref="Database"/> instance</param>
         /// <returns><see cref="Database"/> instance</returns>

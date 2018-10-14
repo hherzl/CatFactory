@@ -8,7 +8,7 @@ namespace CatFactory.Mapping
     public class MappingException : Exception
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="CatFactory.Mapping.MappingException"/> class
+        /// Initializes a new instance of <see cref="MappingException"/> class
         /// </summary>
         public MappingException()
             : base()
@@ -16,7 +16,7 @@ namespace CatFactory.Mapping
         }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="CatFactory.Mapping.MappingException"/> class
+        /// Initializes a new instance of <see cref="MappingException"/> class
         /// </summary>
         /// <param name="message">The message that describes the error</param>
         public MappingException(string message)
@@ -25,7 +25,7 @@ namespace CatFactory.Mapping
         }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="CatFactory.Mapping.MappingException"/> class
+        /// Initializes a new instance of <see cref="MappingException"/> class
         /// </summary>
         /// <param name="message">The message that describes the error</param>
         /// <param name="ex">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified</param>

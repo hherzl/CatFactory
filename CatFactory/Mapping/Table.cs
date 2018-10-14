@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
@@ -20,13 +21,14 @@ namespace CatFactory.Mapping
         /// <summary>
         /// Gets or sets the description
         /// </summary>
+        [Obsolete("Save description as extended property")]
         public string Description { get; set; }
 
         /// <summary>
         /// Gets or sets a column by index
         /// </summary>
         /// <param name="index">Column's index</param>
-        /// <returns>A <see cref="CatFactory.Mapping.Column"/> from current table</returns>
+        /// <returns>A <see cref="Column"/> from current table</returns>
         public Column this[int index]
         {
             get
@@ -43,7 +45,7 @@ namespace CatFactory.Mapping
         /// Gets or sets a column by name
         /// </summary>
         /// <param name="name">Column's name</param>
-        /// <returns>A <see cref="CatFactory.Mapping.Column"/> from current table</returns>
+        /// <returns>A <see cref="Column"/> from current table</returns>
         public Column this[string name]
         {
             get
@@ -77,24 +79,6 @@ namespace CatFactory.Mapping
             set
             {
                 m_columns = value;
-            }
-        }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ExtendedProperty> m_extendedProperties;
-
-        /// <summary>
-        /// Gets or sets the extended properties
-        /// </summary>
-        public List<ExtendedProperty> ExtendedProperties
-        {
-            get
-            {
-                return m_extendedProperties ?? (m_extendedProperties = new List<ExtendedProperty>());
-            }
-            set
-            {
-                m_extendedProperties = value;
             }
         }
 
@@ -208,6 +192,24 @@ namespace CatFactory.Mapping
             set
             {
                 m_defaults = value;
+            }
+        }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ExtendedProperty> m_extendedProperties;
+
+        /// <summary>
+        /// Gets or sets the extended properties
+        /// </summary>
+        public List<ExtendedProperty> ExtendedProperties
+        {
+            get
+            {
+                return m_extendedProperties ?? (m_extendedProperties = new List<ExtendedProperty>());
+            }
+            set
+            {
+                m_extendedProperties = value;
             }
         }
 
