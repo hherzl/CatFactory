@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using CatFactory.Collections;
-using CatFactory.OOP;
+using CatFactory.ObjectOrientedProgramming;
 using Microsoft.Extensions.Logging;
 
 namespace CatFactory.CodeFactory

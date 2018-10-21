@@ -1,4 +1,5 @@
-﻿using CatFactory.Mapping;
+﻿using CatFactory.ObjectRelationalMapping;
+using CatFactory.Tests.Helpers;
 using CatFactory.Tests.Models;
 using Newtonsoft.Json;
 using Xunit;

@@ -15,14 +15,14 @@ namespace CatFactory.Collections
         /// <returns></returns>
         public static StringBuilder ToStringBuilder(this IEnumerable<string> enumerable)
         {
-            var stringBuilder = new StringBuilder();
+            var output = new StringBuilder();
 
             foreach (var item in enumerable)
             {
-                stringBuilder.AppendLine(item);
+                output.AppendLine(item);
             }
 
-            return stringBuilder;
+            return output;
         }
     }
 }

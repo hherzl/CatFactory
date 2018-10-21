@@ -1,4 +1,4 @@
-﻿using CatFactory.Mapping;
+﻿using CatFactory.ObjectRelationalMapping;
 
 namespace CatFactory.Tests.Models
 {

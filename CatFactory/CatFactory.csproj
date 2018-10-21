@@ -2,18 +2,30 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <Version>1.0.0-beta-sun-build10</Version>
+    <Version>1.0.0-beta-sun-build11</Version>
     <Authors>H. Herzl</Authors>
     <Company>Herzl Corp.</Company>
-    <Description>CatFactory Core Engine (Code Factory, Mapping and OOP)</Description>
+    <Description>CatFactory Core Engine:
+
+* Code Factory
+* Object Relational Mapping,
+* Object Oriented Programming
+</Description>
     <PackageProjectUrl>https://github.com/hherzl/CatFactory</PackageProjectUrl>
     <RepositoryUrl>https://github.com/hherzl/CatFactory</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>Scaffold, ORM, OOP</PackageTags>
-    <PackageReleaseNotes>1.0.0-beta-sun-build10 Version: Changes:
+    <PackageTags>Scaffolding, Object Relational Mapping, ORM, Object Oriented Programming, OOP</PackageTags>
+    <PackageReleaseNotes>1.0.0-beta-sun-build11 Version:
 
-* Addition of constructors for ExtendedProperty class.
-* Addition of Computed, TrimTrailingBlanks and FixedLenNullInSource properties for Column class.</PackageReleaseNotes>
+* Refactor for OOP namespace: change to ObjectOrientedProgramming
+* Refactor for Mapping namespace: change to ObjectRelationalMapping
+* Addition of IsAbstract property for ClassDefinition
+* Addition of metadata for NameValue class
+* Addition of CodeFactory.Scaffolding namespace
+* Addition of ObjectOrientedProgramming.Validation namespace
+* Addition of ObjectRelationalMapping.Programmability namespace
+* Addition of ObjectRelationalMapping.Validation namespace
+</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

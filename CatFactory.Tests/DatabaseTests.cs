@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using CatFactory.Mapping;
+using CatFactory.ObjectRelationalMapping;
 using CatFactory.Tests.Models;
 using Xunit;
 

@@ -1,4 +1,4 @@
-﻿using CatFactory.Mapping;
+﻿using CatFactory.ObjectRelationalMapping.Validation;
 using CatFactory.Tests.Models;
 using Xunit;
 

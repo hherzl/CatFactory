@@ -1,4 +1,4 @@
-﻿using CatFactory.OOP;
+﻿using CatFactory.ObjectOrientedProgramming;
 using Xunit;
 
 namespace CatFactory.Tests

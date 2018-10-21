@@ -1,4 +1,4 @@
-﻿using CatFactory.CodeFactory;
+﻿using CatFactory.CodeFactory.Scaffolding;
 using Xunit;
 
 namespace CatFactory.Tests

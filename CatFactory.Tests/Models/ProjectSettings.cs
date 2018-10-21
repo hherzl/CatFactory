@@ -1,4 +1,4 @@
-﻿using CatFactory.CodeFactory;
+﻿using CatFactory.CodeFactory.Scaffolding;
 using CatFactory.Diagnostics;
 
 namespace CatFactory.Tests.Models
