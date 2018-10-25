@@ -373,7 +373,7 @@ Why I named CatFactory? It was I had a cat, her name was Mindy and that cat had 
 
 [`Scaffolding View Models with CatFactory`](https://www.codeproject.com/Tips/1164636/Scaffolding-View-Models-with-CatFactory)
 
-[`Scaffolding Entity Framework Core with CatFactory`](https://www.codeproject.com/Articles/1160615/Scaffolding-Entity-Framework-Core-with-CatFactory)
+[`Scaffolding Entity Framework Core 2 with CatFactory`](https://www.codeproject.com/Articles/1160615/Scaffolding-Entity-Framework-Core-with-CatFactory)
 
 [`Scaffolding Dapper with CatFactory`](https://www.codeproject.com/Articles/1213355/Scaffolding-Dapper-with-CatFactory)
 
