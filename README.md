@@ -70,7 +70,7 @@ project
 
 To understand the scope for CatFactory, in few words CatFactory is the core, to have more packages we can create them with this naming convention: CatFactory.PackageName.
 
-In the sample code, the basic flow for existing database is:
+The flow to import an existing database is:
 
 * Create Database Factory
 * Import Database
@@ -222,11 +222,11 @@ CodeFactory: Contains objects to perform code generation.
 
 Diagnostics: Contains objects for diagnostics.
 
-Mapping: Contains objects for ORM.
-
 Markup: Contains objects for markup languages.
 
-OOP: Contains objects to modeling definitions.
+ObjectOrientedProgramming: Contains objects to modeling definitions: classes, interfaces and enums.
+
+ObjectRelationalMapping: Contains objects for ORM: database, tables, views, scalar functions, table functions and stored procedures.
 
 ### CatFactory.SqlServer
 
@@ -266,6 +266,23 @@ This package contains code builders and definitions for .NET Core (C#).
 
 This package provides scaffolding for Entity Framework Core.
 
+|Object|Supported|
+|------|---------|
+|Class for entity|Yes|
+|Class for view|Yes|
+|Class for table function|Not yet|
+|Class for stored procedure result|Not yet|
+|Class for DbContext|Yes|
+|Class for entity configuration (table)|Yes|
+|Class for entity configuration (view)|Yes|
+|Interface for Repository|Yes|
+|Class for Repository|Yes|
+|Method for scalar function invocation|Yes|
+|Method for table function invocation|Not yet|
+|Method for stored procedure invocation|Not yet|
+
+#### Entity Framework Core 2 Feature Chart
+
 |Category|Compatibility Chart|Supported|
 |--------|-------------------|---------|
 |Modeling|Table splitting|Not yet|
@@ -288,6 +305,7 @@ This package provides scaffolding for Asp .NET Core.
 |Requests|Yes|
 |Responses|Yes|
 |Scaffold Client|Not yet|
+|Help Page for Web API|Not yet|
 |Unit Tests|Not yet|
 |Integration Tests|Not yet|
 
@@ -353,8 +371,10 @@ Why I named CatFactory? It was I had a cat, her name was Mindy and that cat had 
 
 ## Quick starts
 
+[`Scaffolding View Models with CatFactory`](https://www.codeproject.com/Tips/1164636/Scaffolding-View-Models-with-CatFactory)
+
 [`Scaffolding Entity Framework Core with CatFactory`](https://www.codeproject.com/Articles/1160615/Scaffolding-Entity-Framework-Core-with-CatFactory)
 
 [`Scaffolding Dapper with CatFactory`](https://www.codeproject.com/Articles/1213355/Scaffolding-Dapper-with-CatFactory)
 
-[`Scaffolding View Models with CatFactory`](https://www.codeproject.com/Tips/1164636/Scaffolding-View-Models-with-CatFactory)
+[`Scaffolding ASP.NET Core 2 with CatFactory`](https://www.codeproject.com/Tips/1229909/Scaffolding-ASP-NET-Core-with-CatFactory)
