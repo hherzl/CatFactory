@@ -25,6 +25,7 @@
 * Addition of ObjectOrientedProgramming.Validation namespace
 * Addition of ObjectRelationalMapping.Programmability namespace
 * Addition of ObjectRelationalMapping.Validation namespace
+* Addition of Returns property for Documentation class
 </PackageReleaseNotes>
   </PropertyGroup>
 
