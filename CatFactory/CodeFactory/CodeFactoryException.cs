@@ -28,9 +28,9 @@ namespace CatFactory.CodeFactory
         /// 
         /// </summary>
         /// <param name="message"></param>
-        /// <param name="ex"></param>
-        public CodeFactoryException(string message, Exception ex)
-            : base(message, ex)
+        /// <param name="innerException"></param>
+        public CodeFactoryException(string message, Exception innerException)
+            : base(message, innerException)
         {
         }
     }

@@ -15,6 +15,11 @@ namespace CatFactory.ObjectOrientedProgramming
         /// <summary>
         /// 
         /// </summary>
+        bool IsAbstract { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         bool IsPartial { get; set; }
 
         /// <summary>

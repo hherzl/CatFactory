@@ -5,7 +5,7 @@ using System.Linq;
 namespace CatFactory.ObjectRelationalMapping
 {
     /// <summary>
-    /// Provides extensions methods to reflect CLR
+    /// Provides extensions methods for <see cref="DatabaseTypeMap"/> class
     /// </summary>
     public static class DatabaseTypeMapExtensions
     {

@@ -1,8 +1,12 @@
-﻿namespace CatFactory.ObjectOrientedProgramming
+﻿using System.Collections.Generic;
+using System.Diagnostics;
+
+namespace CatFactory.ObjectOrientedProgramming
 {
     /// <summary>
     /// 
     /// </summary>
+    [DebuggerDisplay("Remarks={Remarks}")]
     public class Documentation
     {
         /// <summary>
@@ -44,5 +48,23 @@
         /// </summary>
         public bool HasSummary
             => !string.IsNullOrEmpty(Summary);
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<dynamic> m_customTags;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<dynamic> CustomTags
+        {
+            get
+            {
+                return m_customTags ?? (m_customTags = new List<dynamic>());
+            }
+            set
+            {
+                m_customTags = value;
+            }
+        }
     }
 }

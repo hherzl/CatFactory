@@ -163,12 +163,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
-        {
-            if (obj is ObjectDefinition cast && FullName == cast.FullName)
-                return true;
-
-            return false;
-        }
+            => (obj is ObjectDefinition cast && FullName == cast.FullName) ? true : false;
 
         /// <summary>
         /// 

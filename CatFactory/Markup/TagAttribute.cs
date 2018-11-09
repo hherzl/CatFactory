@@ -11,6 +11,24 @@ namespace CatFactory.Markup
         /// <summary>
         /// 
         /// </summary>
+        public TagAttribute()
+        {
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="value"></param>
+        public TagAttribute(string name, string value)
+        {
+            Name = name;
+            Value = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public string Name { get; set; }
 
         /// <summary>
