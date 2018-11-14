@@ -8,158 +8,140 @@
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="tag"></param>
         /// <param name="content"></param>
-        /// <param name="attributes"></param>
+        /// <param name="attribs"></param>
         /// <returns></returns>
-        public static string GetTag(string tag, object content, object attributes = null)
-            => attributes == null ? string.Format("<{0}>{1}</{0}>", tag, content) : string.Format("<{0} {1}>{2}</{0}>", tag, attributes.GetAttributes(), content);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="tag"></param>
-        /// <returns></returns>
-        public static string GetSelfCloseTag(string tag)
-            => string.Format("<{0} />", tag);
+        public static Tag A(object content, object attribs = null)
+            => new Tag { Name = "a", Content = content.ToString(), TagAttributes = attribs.GetTagAttributes() };
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="content"></param>
-        /// <param name="attributes"></param>
+        /// <param name="attribs"></param>
         /// <returns></returns>
-        public static string A(object content, object attributes = null)
-            => GetTag("a", content, attributes);
+        public static Tag B(object content, object attribs = null)
+            => new Tag { Name = "b", Content = content.ToString(), TagAttributes = attribs.GetTagAttributes() };
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static Tag Br()
+            => new Tag { Name = "br", IsSelfClosed = true };
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="content"></param>
-        /// <param name="attributes"></param>
+        /// <param name="attribs"></param>
         /// <returns></returns>
-        public static string B(object content, object attributes = null)
-            => GetTag("b", content, attributes);
+        public static Tag Div(object content, object attribs = null)
+            => new Tag { Name = "div", Content = content.ToString(), TagAttributes = attribs.GetTagAttributes() };
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public static string Br()
-            => GetSelfCloseTag("br");
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="content"></param>
-        /// <param name="attributes"></param>
-        /// <returns></returns>
-        public static string Div(object content, object attributes = null)
-            => GetTag("div", content, attributes);
+        public static Tag Hr()
+            => new Tag { Name = "hr", IsSelfClosed = true };
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="content"></param>
-        /// <param name="attributes"></param>
+        /// <param name="attribs"></param>
         /// <returns></returns>
-        public static string H1(object content, object attributes = null)
-            => GetTag("h1", content, attributes);
+        public static Tag I(object content, object attribs = null)
+            => new Tag { Name = "i", Content = content.ToString(), TagAttributes = attribs.GetTagAttributes() };
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="content"></param>
-        /// <param name="attributes"></param>
+        /// <param name="attribs"></param>
         /// <returns></returns>
-        public static string H2(object content, object attributes = null)
-            => GetTag("h2", content, attributes);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="content"></param>
-        /// <param name="attributes"></param>
-        /// <returns></returns>
-        public static string H3(object content, object attributes = null)
-            => GetTag("h3", content, attributes);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="content"></param>
-        /// <param name="attributes"></param>
-        /// <returns></returns>
-        public static string H4(object content, object attributes = null)
-            => GetTag("h4", content, attributes);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="content"></param>
-        /// <param name="attributes"></param>
-        /// <returns></returns>
-        public static string H5(object content, object attributes = null)
-            => GetTag("h5", content, attributes);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="content"></param>
-        /// <param name="attributes"></param>
-        /// <returns></returns>
-        public static string H6(object content, object attributes = null)
-            => GetTag("h6", content, attributes);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public static string Hr()
-            => GetSelfCloseTag("hr");
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="content"></param>
-        /// <param name="attributes"></param>
-        /// <returns></returns>
-        public static string I(object content, object attributes = null)
-            => GetTag("i", content, attributes);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="content"></param>
-        /// <param name="attributes"></param>
-        /// <returns></returns>
-        public static string P(object content, object attributes = null)
-            => GetTag("p", content, attributes);
+        public static Tag P(object content, object attribs = null)
+            => new Tag { Name = "p", Content = content.ToString(), TagAttributes = attribs.GetTagAttributes() };
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="src"></param>
         /// <returns></returns>
-        public static string Script(string src)
-            => GetTag("script", null, new { src = src });
+        public static Tag Script(string src)
+            => new Tag { Name = "script", TagAttributes = new { src }.GetTagAttributes() };
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="content"></param>
-        /// <param name="attributes"></param>
+        /// <param name="attribs"></param>
         /// <returns></returns>
-        public static string Span(object content, object attributes = null)
-            => GetTag("span", content, attributes);
+        public static Tag Span(object content, object attribs = null)
+            => new Tag { Name = "span", Content = content.ToString(), TagAttributes = attribs.GetTagAttributes() };
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="content"></param>
-        /// <param name="attributes"></param>
+        /// <param name="attribs"></param>
         /// <returns></returns>
-        public static string Strong(object content, object attributes = null)
-            => GetTag("strong", content, attributes);
+        public static Tag Strong(object content, object attribs = null)
+            => new Tag { Name = "strong", Content = content.ToString(), TagAttributes = attribs.GetTagAttributes() };
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="attribs"></param>
+        /// <returns></returns>
+        public static Tag H1(object content, object attribs = null)
+            => new Tag { Name = "h1", Content = content.ToString(), TagAttributes = attribs.GetTagAttributes() };
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="attribs"></param>
+        /// <returns></returns>
+        public static Tag H2(object content, object attribs = null)
+            => new Tag { Name = "h2", Content = content.ToString(), TagAttributes = attribs.GetTagAttributes() };
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="attribs"></param>
+        /// <returns></returns>
+        public static Tag H3(object content, object attribs = null)
+            => new Tag { Name = "h3", Content = content.ToString(), TagAttributes = attribs.GetTagAttributes() };
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="attribs"></param>
+        /// <returns></returns>
+        public static Tag H4(object content, object attribs = null)
+            => new Tag { Name = "h4", Content = content.ToString(), TagAttributes = attribs.GetTagAttributes() };
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="attribs"></param>
+        /// <returns></returns>
+        public static Tag H5(object content, object attribs = null)
+            => new Tag { Name = "h5", Content = content.ToString(), TagAttributes = attribs.GetTagAttributes() };
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="attribs"></param>
+        /// <returns></returns>
+        public static Tag H6(object content, object attribs = null)
+            => new Tag { Name = "h5", Content = content.ToString(), TagAttributes = attribs.GetTagAttributes() };
     }
 }

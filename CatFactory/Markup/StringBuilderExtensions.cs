@@ -18,7 +18,7 @@ namespace CatFactory.Markup
             if (attributes == null)
                 stringBuilder.AppendFormat("<{0}>", name);
             else
-                stringBuilder.AppendFormat("<{0} {1}>", name, attributes.GetAttributes());
+                stringBuilder.AppendFormat("<{0} {1}>", name, attributes.GetTagAttributes());
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace CatFactory.Markup
             if (attributes == null)
                 stringBuilder.AppendFormat("<{0}>{1}</{0}>", name, content);
             else
-                stringBuilder.AppendFormat("<{0} {2}>{1}</{0}>", name, content, attributes.GetAttributes());
+                stringBuilder.AppendFormat("<{0} {2}>{1}</{0}>", name, content, attributes.GetTagAttributes());
         }
 
         /// <summary>

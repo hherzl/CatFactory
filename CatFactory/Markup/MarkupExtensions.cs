@@ -13,17 +13,14 @@ namespace CatFactory.Markup
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public static string GetAttributes(this object obj)
+        public static List<TagAttribute> GetTagAttributes(this object obj)
         {
-            if (obj == null)
-                return string.Empty;
-
-            var items = new List<string>();
+            var items = new List<TagAttribute>();
 
             foreach (var property in obj.GetType().GetProperties().Where(item => item.CanRead))
-                items.Add(string.Format("{0}=\"{1}\"", property.Name.Replace("_", "-"), property.GetValue(obj, null)));
+                items.Add(new TagAttribute(property.Name.Replace("_", "-"), property.GetValue(obj, null)?.ToString()));
 
-            return string.Format(" {0}", string.Join(" ", items));
+            return items;
         }
     }
 }
