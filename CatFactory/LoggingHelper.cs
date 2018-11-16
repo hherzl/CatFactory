@@ -6,7 +6,7 @@ namespace CatFactory
     /// <summary>
     /// 
     /// </summary>
-    public static class LoggerHelper
+    public static class LoggingHelper
     {
         /// <summary>
         /// 

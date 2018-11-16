@@ -27,7 +27,7 @@ namespace CatFactory.ObjectOrientedProgramming.Validation
 
             foreach (var property in interfaceDefinition.Properties)
             {
-                if (interfaceDefinition.Properties.Where(p => p.Name == property.Name).Count() > 1)
+                if (interfaceDefinition.Properties.Count(p => p.Name == property.Name) > 1)
                     result.ValidationMessages.Add(new ValidationMessage(LogLevel.Error, string.Format("There is more than one property with name '{0}'", property.Name)));
             }
 

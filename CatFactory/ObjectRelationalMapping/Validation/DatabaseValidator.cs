@@ -40,21 +40,19 @@ namespace CatFactory.ObjectRelationalMapping.Validation
                         result.ValidationMessages.Add(new ValidationMessage(LogLevel.Error, string.Format("The table '{0}' has one column without name", table.FullName)));
                     else if (column.Name.Trim().Length == 0)
                         result.ValidationMessages.Add(new ValidationMessage(LogLevel.Error, string.Format("The table '{0}' has one column without name", table.FullName)));
-                    else if (table.Columns.Where(item => item.Name == column.Name).Count() > 1)
+                    else if (table.Columns.Count(item => item.Name == column.Name) > 1)
                         result.ValidationMessages.Add(new ValidationMessage(LogLevel.Error, string.Format("The table '{0}' has more than one column with name: '{1}'", table.FullName, column.Name)));
                 }
 
                 if (table.Identity != null)
                 {
-                    if (table.Columns.Where(item => item.Name == table.Identity.Name).Count() == 0)
-                        result.ValidationMessages
-                            .Add(new ValidationMessage(LogLevel.Error, string.Format("The table '{0}' has a null reference on identity, column: '{1}'", table.FullName, table.Identity.Name)));
+                    if (table.Columns.Count(item => item.Name == table.Identity.Name) == 0)
+                        result.ValidationMessages.Add(new ValidationMessage(LogLevel.Error, string.Format("The table '{0}' has a null reference on identity, column: '{1}'", table.FullName, table.Identity.Name)));
                 }
 
                 if (table.PrimaryKey == null)
                 {
-                    result.ValidationMessages
-                        .Add(new ValidationMessage(LogLevel.Warning, string.Format("The table '{0}' doesn't have definition for primary key", table.FullName)));
+                    result.ValidationMessages.Add(new ValidationMessage(LogLevel.Warning, string.Format("The table '{0}' doesn't have definition for primary key", table.FullName)));
                 }
                 else
                 {
@@ -68,8 +66,7 @@ namespace CatFactory.ObjectRelationalMapping.Validation
                         }
 
                     if (!flag)
-                        result.ValidationMessages
-                            .Add(new ValidationMessage(LogLevel.Error, string.Format("The table '{0}' has a null reference on primary key, key: '{1}'", table.FullName, string.Join(",", table.PrimaryKey.Key.Select(item => item)))));
+                        result.ValidationMessages.Add(new ValidationMessage(LogLevel.Error, string.Format("The table '{0}' has a null reference on primary key, key: '{1}'", table.FullName, string.Join(",", table.PrimaryKey.Key.Select(item => item)))));
                 }
 
                 foreach (var unique in table.Uniques)
@@ -77,31 +74,33 @@ namespace CatFactory.ObjectRelationalMapping.Validation
                     var flag = false;
 
                     foreach (var column in table.Columns)
+                    {
                         if (unique.Key.Contains(column.Name))
                         {
                             flag = true;
                             break;
                         }
+                    }
 
                     if (!flag)
-                        result.ValidationMessages
-                            .Add(new ValidationMessage(LogLevel.Error, string.Format("The table '{0}' has a null reference on unique, key: '{1}'", table.FullName, string.Join(",", unique.Key.Select(item => item)))));
+                        result.ValidationMessages.Add(new ValidationMessage(LogLevel.Error, string.Format("The table '{0}' has a null reference on unique, key: '{1}'", table.FullName, string.Join(",", unique.Key.Select(item => item)))));
                 }
 
-                foreach (var foreignKey in table.ForeignKeys)
+                foreach (var fk in table.ForeignKeys)
                 {
                     var flag = false;
 
                     foreach (var column in table.Columns)
-                        if (foreignKey.Key.Contains(column.Name))
+                    {
+                        if (fk.Key.Contains(column.Name))
                         {
                             flag = true;
                             break;
                         }
+                    }
 
                     if (!flag)
-                        result.ValidationMessages
-                            .Add(new ValidationMessage(LogLevel.Error, string.Format("The table '{0}' has a null reference on foreign key, key: '{1}'", table.FullName, string.Join(",", foreignKey.Key.Select(item => item)))));
+                        result.ValidationMessages.Add(new ValidationMessage(LogLevel.Error, string.Format("The table '{0}' has a null reference on foreign key, key: '{1}'", table.FullName, string.Join(",", fk.Key.Select(item => item)))));
                 }
             }
 

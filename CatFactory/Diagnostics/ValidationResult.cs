@@ -22,7 +22,7 @@ namespace CatFactory.Diagnostics
         /// Indicates if the current validation result is valid
         /// </summary>
         public virtual bool IsValid
-            => ValidationMessages.Where(item => item.LogLevel == LogLevel.Error || item.LogLevel == LogLevel.Critical).Count() == 0 ? true : false;
+            => ValidationMessages.Count(item => item.LogLevel == LogLevel.Error || item.LogLevel == LogLevel.Critical) == 0 ? true : false;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ValidationMessage> m_validationMessages;

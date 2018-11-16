@@ -23,6 +23,7 @@
 * Refactor for StringBuilder extensions
 * Refactor MappingException class: change name to ObjectRelationMappingException
 * Refactor for Html helper class
+* Refactor for LoggerHelper: Change name to LoggingHelper
 </PackageReleaseNotes>
   </PropertyGroup>
 

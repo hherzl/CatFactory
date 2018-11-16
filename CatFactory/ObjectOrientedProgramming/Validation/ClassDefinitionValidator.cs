@@ -27,13 +27,13 @@ namespace CatFactory.ObjectOrientedProgramming.Validation
 
             foreach (var field in classDefinition.Fields)
             {
-                if (classDefinition.Fields.Where(p => p.Name == field.Name).Count() > 1)
+                if (classDefinition.Fields.Count(p => p.Name == field.Name) > 1)
                     result.ValidationMessages.Add(new ValidationMessage(LogLevel.Error, string.Format("There is more than one field with name '{0}'", field.Name)));
             }
 
             foreach (var property in classDefinition.Properties)
             {
-                if (classDefinition.Properties.Where(p => p.Name == property.Name).Count() > 1)
+                if (classDefinition.Properties.Count(p => p.Name == property.Name) > 1)
                     result.ValidationMessages.Add(new ValidationMessage(LogLevel.Error, string.Format("There is more than one property with name '{0}'", property.Name)));
             }
 
