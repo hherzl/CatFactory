@@ -92,6 +92,11 @@ namespace CatFactory.ObjectRelationalMapping
         }
 
         /// <summary>
+        /// Gets or sets the computed expression
+        /// </summary>
+        public string ComputedExpression { get; set; }
+
+        /// <summary>
         /// Determines whether the specified object is equal to the current object
         /// </summary>
         /// <param name="obj">The object to compare with the current object</param>

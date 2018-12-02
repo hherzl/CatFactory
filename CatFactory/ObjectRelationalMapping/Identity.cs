@@ -29,6 +29,17 @@ namespace CatFactory.ObjectRelationalMapping
         }
 
         /// <summary>
+        /// Initializes a new instance of <see cref="Identity"/> class
+        /// </summary>
+        /// <param name="name">Column's name</param>
+        public Identity(string name)
+        {
+            Name = name;
+            Seed = 1;
+            Increment = 1;
+        }
+
+        /// <summary>
         /// Gets or sets the column's name
         /// </summary>
         public string Name { get; set; }
