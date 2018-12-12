@@ -19,23 +19,23 @@ namespace CatFactory.CodeFactory
         /// 
         /// </summary>
         /// <param name="indent"></param>
-        /// <param name="content"></param>
-        /// <param name="values"></param>
-        public Line(int indent, string content, params string[] values)
+        /// <param name="value"></param>
+        /// <param name="args"></param>
+        public Line(int indent, string value, params string[] args)
         {
             Indent = indent;
-            Content = values == null || values.Length == 0 ? content : string.Format(content, values);
+            Content = args == null || args.Length == 0 ? value : string.Format(value, args);
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="content"></param>
-        /// <param name="values"></param>
-        public Line(string content, params string[] values)
+        /// <param name="value"></param>
+        /// <param name="args"></param>
+        public Line(string value, params string[] args)
         {
-            Content = content;
-            Content = values == null || values.Length == 0 ? content : string.Format(content, values);
+            Content = value;
+            Content = args == null || args.Length == 0 ? value : string.Format(value, args);
         }
 
         /// <summary>
