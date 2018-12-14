@@ -18,6 +18,7 @@
     <PackageReleaseNotes>1.0.0-beta-sun-build14 Version:
 
 * Addition of MD support
+* Addition of Markdown namespace
 </PackageReleaseNotes>
   </PropertyGroup>
 

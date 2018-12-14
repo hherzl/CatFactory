@@ -1,4 +1,4 @@
-﻿namespace CatFactory.Markup
+﻿namespace CatFactory.Markdown
 {
     /// <summary>
     /// 

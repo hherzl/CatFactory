@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Text;
 using CatFactory.CodeFactory;
 
-namespace CatFactory.Markup
+namespace CatFactory.Markdown
 {
     /// <summary>
     /// 

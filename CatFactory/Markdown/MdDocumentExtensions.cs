@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using CatFactory.CodeFactory;
 
-namespace CatFactory.Markup
+namespace CatFactory.Markdown
 {
     /// <summary>
     /// 
