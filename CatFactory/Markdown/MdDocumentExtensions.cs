@@ -126,12 +126,14 @@ namespace CatFactory.Markdown
             document.Lines.Add(new Line());
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="document"></param>
+        /// <param name="table"></param>
         public static void Write(this MdDocument document, MdTable table)
         {
             document.Lines.Add(new Line("|{0}|", string.Join("|", table.Headers.Select(item => item.Text))));
-
-
-
             document.Lines.Add(new Line("|{0}|", string.Join("|", table.Headers.Select(item => string.Join("", Enumerable.Repeat("-", item.Text.Length))))));
 
             foreach (var row in table.Rows)
