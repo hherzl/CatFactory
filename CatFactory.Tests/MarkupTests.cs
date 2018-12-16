@@ -126,5 +126,19 @@ namespace CatFactory.Tests
 
             File.WriteAllText("C:\\Temp\\CatFactory\\UlDrinks.html", drinks.ToString());
         }
+
+        [Fact]
+        public void TestTable()
+        {
+            var table = Html.Table(new { style = "border: 1px solid Black;" })
+                .WithHeaders("First name", "Middle name", "Last name")
+                .AddRow("Erick", "T", "Cartman")
+                .AddRow("Kyle", "", "Broflovski")
+                .AddRow("Stan", "", "Marsh")
+                .AddRow("Kenny", "", "McCormick")
+                ;
+
+            File.WriteAllText("C:\\Temp\\CatFactory\\Table.html", table.ToString());
+        }
     }
 }

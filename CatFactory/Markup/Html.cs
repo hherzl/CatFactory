@@ -146,6 +146,14 @@
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="attribs"></param>
+        /// <returns></returns>
+        public static TableTag Table(object attribs = null)
+            => new TableTag { Name = "table", Attributes = attribs.GetAttributes() };
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="content"></param>
         /// <param name="attribs"></param>
         /// <returns></returns>

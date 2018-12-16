@@ -19,7 +19,7 @@
 
 * Addition of MD support
 * Addition of Markdown namespace
-</PackageReleaseNotes>
+* Addition of table for Html</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
