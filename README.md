@@ -6,77 +6,25 @@ CatFactory it's a scaffolding engine for .NET Core built in C#.
 
 ## How it Works?
 
-The key thing in CatFactory it's import an existing database from a SQL Server instance, then scaffold code for specific technology.
+The concept behind CatFactory is import an existing database from SQL Server instance, then scaffolding a target technology.
 
-In some cases we can replace the database from SQL Server instance with a in memory database.
+Also, We can replace the database from SQL Server instance with an in memory database.
 
-In this section, we'll use sample for Entity Framework Core.
+Currently, the following technologies are supported:
 
-```csharp
-// Create database factory
-var databaseFactory = new SqlServerDatabaseFactory
-{
-	DatabaseImportSettings = new DatabaseImportSettings
-	{
-		ConnectionString = "server=(local);database=Store;integrated security=yes;",
-		Exclusions =
-		{
-			"dbo.sysdiagrams"
-		}
-	}
-};
-
-// Import database
-var database = databaseFactory.Import();
-
-// Create instance of Entity Framework Core project
-var project = new EntityFrameworkCoreProject
-{
-	Name = "Store",
-	Database = database,
-	OutputDirectory = "C:\\Projects\\Store"
-};
-
-// Apply settings for Entity Framework Core project
-project.GlobalSelection(settings =>
-{
-	settings.ForceOverwrite = true;
-	settings.AuditEntity = new AuditEntity("CreationUser", "CreationDateTime", "LastUpdateUser", "LastUpdateDateTime");
-	settings.ConcurrencyToken = "Timestamp";
-});
-
-project.Select("Sales.Order", settings => settings.EntitiesWithDataContracts = true);
-
-// Build features for project, group all entities by schema into a feature
-project.BuildFeatures();
-
-// Add event handlers to before and after of scaffold
-
-project.ScaffoldingDefinition += (source, args) =>
-{
-	// Add code to perform operations with code builder instance before to create code file
-};
-
-project.ScaffoldedDefinition += (source, args) =>
-{
-	// Add code to perform operations after of create code file
-};
-
-// Scaffolding =^^=
-project
-	.ScaffoldEntityLayer()
-	.ScaffoldDataLayer();
-```
++ [`Entity Framework Core`](https://github.com/hherzl/CatFactory.EntityFrameworkCore)
++ [`ASP.NET Core`](https://github.com/hherzl/CatFactory.AspNetCore)
++ [`Dapper`](https://github.com/hherzl/CatFactory.Dapper)
 
 To understand the scope for CatFactory, in few words CatFactory is the core, to have more packages we can create them with this naming convention: CatFactory.PackageName.
 
 The flow to import an existing database is:
 
-* Create Database Factory
-* Import Database
-* Create instance of Project (Entity Framework Core, Dapper, etc)
-* Build Features (One feature per schema)
-* Scaffold objects, these methods read all objects from database and create instances for code builders
+1. Create Database Factory
+2. Import Database
+3. Create instance of Project (Entity Framework Core, Dapper, etc)
+4. Build Features (One feature per schema)
+5. Scaffold objects, these methods read all objects from database and create instances for code builders
 
 ## Concepts behind CatFactory
 
@@ -84,42 +32,42 @@ The flow to import an existing database is:
 
 One of things I don't like to get equivalent between SQL data type for CLR is use magic strings, after of review the more "fancy" way to resolve a type equivalence is to have a class that allows to know the equivalence between SQL data type and CLR type.
 
-Using this table as reference, now CatFactory has a class with name DatabaseTypeMap. Database class contains a property with all mappings with name Mappings, so this property is filled by Import feature for SQL Server package.
+This concept was created from this matrix: [`SQL Server Data Type Mappings`](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql-server-data-type-mappings).
+
+Using this matrix as reference, now CatFactory has a class named DatabaseTypeMap. Database class contains a property with all mappings named DatebaseTypeMaps, so this property is filled by Import feature for SQL Server package.
 
 ```csharp
 public class DatabaseTypeMap
 {
-        public string DatabaseType { get; set; }
-        
-        public bool AllowsLengthInDeclaration { get; set; }
-        
-        public bool AllowsPrecInDeclaration { get; set; }
-        
-        public bool AllowsScaleInDeclaration { get; set; }
-        
-        public string ClrFullNameType { get; set; }
-        
-        public bool HasClrFullNameType { get; }
-        
-        public string ClrAliasType { get; set; }
-        
-        public bool HasClrAliasType { get; }
-        
-        public bool AllowClrNullable { get; set; }
-        
-        public DbType DbTypeEnum { get; set; }
-        
-        public bool IsUserDefined { get; set; }
-        
-        public string ParentDatabaseType { get; set; }
-        
-        public string Collation { get; set; }
+    public string DatabaseType { get; set; }
+
+    public bool AllowsLengthInDeclaration { get; set; }
+
+    public bool AllowsPrecInDeclaration { get; set; }
+
+    public bool AllowsScaleInDeclaration { get; set; }
+
+    public string ClrFullNameType { get; set; }
+
+    public bool HasClrFullNameType { get; }
+
+    public string ClrAliasType { get; set; }
+
+    public bool HasClrAliasType { get; }
+
+    public bool AllowClrNullable { get; set; }
+
+    public DbType DbTypeEnum { get; set; }
+
+    public bool IsUserDefined { get; set; }
+
+    public string ParentDatabaseType { get; set; }
+
+    public string Collation { get; set; }
 }
 ```
 
 DatabaseTypeMap is the class to represent database type definition, for database instance we need to create a collection of DatabaseTypeMap class to have a matrix to resolve data types.
-
-This concept was created from this link: [`SQL Server Data Type Mappings`](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql-server-data-type-mappings)
 
 Suppose there is a class with name DatabaseTypeMapList, this class has a property to get data types. Once we have imported an existing database we can resolve data types:
 
@@ -148,14 +96,6 @@ var mapForVarchar = varcharDataType.GetClrType();
 
 SQL Server allows to define data types, suppose the database instance has a data type defined by user with name Flag, Flag data type is a bit, bool in C#. Import method retrieve user data types, so in DatabaseTypeMaps collection we can search the parent data type for Flag:
 
-```csharp
-// Get Flag data type
-var flagDataType = database.DatabaseTypeMaps.FirstOrDefault(item => item.DatabaseType == "Flag");
-
-// Get parent data type for Flag
-var flagParentDataType.GetParentType(database.DatabaseTypeMaps);
-```
-
 ### Project Selection
 
 A project selection is a limit to apply settings for objects that match with pattern.
@@ -166,9 +106,9 @@ Patterns:
 
 |Pattern|Scope|
 |-------|-----|
-|Sales.Order|Applies for specific object with name Sales.Order|
+|Sales.OrderHeader|Applies for specific object with name Sales.OrderHeader|
 |Sales.\*|Applies for all objects inside of Sales schema|
-|\*.Order|Applies for all objects with name Order with no matter schema|
+|\*.OrderHeader|Applies for all objects with name Order with no matter schema|
 |\*.\*|Applies for all objects, this is the global selection|
 
 Sample:
@@ -183,11 +123,8 @@ project.GlobalSelection(settings =>
 });
 
 // Apply settings for specific object
-project.Select("Sales.Order", settings =>
+project.Select("Sales.OrderHeader", settings =>
 {
-    settings.ForceOverwrite = true;
-    settings.AuditEntity = new AuditEntity("CreationUser", "CreationDateTime", "LastUpdateUser", "LastUpdateDateTime");
-    settings.ConcurrencyToken = "Timestamp";
     settings.EntitiesWithDataContracts = true;
 });
 ```
@@ -218,15 +155,15 @@ This package provides all definitions for CatFactory engine, this is the core fo
 
 #### Namespaces
 
-CodeFactory: Contains objects to perform code generation.
+**CodeFactory**: Contains objects to perform code generation.
 
-Diagnostics: Contains objects for diagnostics.
+**Diagnostics**: Contains objects for diagnostics.
 
-Markup: Contains objects for markup languages.
+**Markup**: Contains objects for markup languages.
 
-ObjectOrientedProgramming: Contains objects to modeling definitions: classes, interfaces and enums.
+**ObjectOrientedProgramming**: Contains objects to modeling definitions: classes, interfaces and enums.
 
-ObjectRelationalMapping: Contains objects for ORM: database, tables, views, scalar functions, table functions and stored procedures.
+**ObjectRelationalMapping**: Contains objects for ORM: database, tables, views, scalar functions, table functions and stored procedures.
 
 ### CatFactory.SqlServer
 
@@ -239,16 +176,17 @@ This packages contains logic to import existing databases from SQL Server instan
 |Scalar Functions|Yes|
 |Table Functions|Yes|
 |Stored Procedures|Yes|
-|Sequences|Not yet|
+|Sequences|Yes|
 |Extended Properties|Yes|
-|Data types|Yes|
+|Data Types|Yes|
 
 ### CatFactory.NetCore
 
 This package contains code builders and definitions for .NET Core (C#).
 
-|Object|Feature|Supported|
+|Object|Members|Supported|
 |------|-------|---------|
+|Struct|All|Not yet|
 |Interface|Inheritance|Yes|
 |Interface|Events|Yes|
 |Interface|Properties|Yes|
@@ -256,11 +194,9 @@ This package contains code builders and definitions for .NET Core (C#).
 |Class|Inheritance|Yes|
 |Class|Events|Yes|
 |Class|Fields|Yes|
-|Class|Constructors|Yes|
 |Class|Properties|Yes|
 |Class|Methods|Yes|
 |Enum|Options|Yes|
-|Struct|All|Not yet|
 
 ### CatFactory.EntityFrameworkCore
 
@@ -268,9 +204,9 @@ This package provides scaffolding for Entity Framework Core.
 
 |Object|Supported|
 |------|---------|
-|Class for entity|Yes|
+|Class for table|Yes|
 |Class for view|Yes|
-|Class for table function|Not yet|
+|Class for table function|Yes|
 |Class for stored procedure result|Not yet|
 |Class for DbContext|Yes|
 |Class for entity configuration (table)|Yes|
@@ -278,13 +214,13 @@ This package provides scaffolding for Entity Framework Core.
 |Interface for Repository|Yes|
 |Class for Repository|Yes|
 |Method for scalar function invocation|Yes|
-|Method for table function invocation|Not yet|
+|Method for table function invocation|Yes|
 |Method for stored procedure invocation|Not yet|
 
 #### Entity Framework Core 2 Feature Chart
 
-|Category|Compatibility Chart|Supported|
-|--------|-------------------|---------|
+|Category|Feature|Supported|
+|--------|-------|---------|
 |Modeling|Table splitting|Not yet|
 |Modeling|Owned types|Not yet|
 |Modeling|Model-level query filters|Not yet|
@@ -315,10 +251,10 @@ This package provides scaffolding for Dapper.
 
 |Object|Supported|
 |------|---------|
-|Tables|Yes|
-|Views|Yes|
-|Scalar Functions|Yes|
-|Table Functions|Yes|
+|Table|Yes|
+|View|Yes|
+|Scalar Function|Yes|
+|Table Function|Yes|
 |Stored Procedures|Yes|
 |Sequences|Yes|
 
@@ -334,7 +270,7 @@ This package provides scaffolding for Type Script.
 |Interface|Methods|Yes|
 |Class|Inheritance|Yes|
 |Class|Fields|Yes|
-|Class|Constructor|Yes|
+|Class|Constructors|Yes|
 |Class|Properties|Yes|
 |Class|Methods|Yes|
 |Module|Methods|Yes|
@@ -361,15 +297,15 @@ Why I named CatFactory? It was I had a cat, her name was Mindy and that cat had 
 
 ## Trivia
 
-* The name for this framework it was F4N1 before than CatFactory
-* Framework's name is related to kitties
-* Import logic uses sp_help stored procedure to retrieve the database object's definition, I learned that in my database course at college
-* Load mapping for entities with MEF, it's inspired in "OdeToCode" (Scott Allen) article for Entity Framework 6.x
-* Expose all settings in one class inside of project's definition is inspired on DevExpress settings for Web controls (Web Forms)
-* There are three alpha versions for CatFactory as reference for Street Fighter Alpha fighting game.
-* There will be two beta versions for CatFactory, the first with name Sun and second one with name Moon as reference for characters from The King of Fighters fighting game: Kusanagi Kyo and Yagami Iori.
++ The name for this framework it was F4N1 before than CatFactory
++ Framework's name is related to kitties
++ Import logic uses sp_help stored procedure to retrieve the database object's definition, I learned that in my database course at college
++ Load mapping for entities with MEF, it's inspired in "OdeToCode" (Scott Allen) article for Entity Framework 6.x
++ Expose all settings in one class inside of project's definition is inspired on DevExpress settings for Web controls (Web Forms)
++ There are three alpha versions for CatFactory as reference for Street Fighter Alpha fighting game.
++ There will be two beta versions for CatFactory: Sun and Moon as reference for characters from The King of Fighters game: Kusanagi Kyo and Yagami Iori.
 
-## Quick starts
+## Quick Starts
 
 [`Scaffolding View Models with CatFactory`](https://www.codeproject.com/Tips/1164636/Scaffolding-View-Models-with-CatFactory)
 
