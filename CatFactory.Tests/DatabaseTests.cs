@@ -96,8 +96,6 @@ namespace CatFactory.Tests
             // Assert
             Assert.True(specialNameType.IsUserDefined);
             Assert.True(parentType.DatabaseType == "nvarchar");
-            //Assert.True(parentType.ParentDatabaseType == null);
-            //Assert.True(parentType.GetClrType() == typeof(string));
         }
 
         [Fact]

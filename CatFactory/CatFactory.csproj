@@ -17,9 +17,11 @@
     <PackageTags>Scaffolding, Object Relational Mapping, ORM, Object Oriented Programming, OOP</PackageTags>
     <PackageReleaseNotes>1.0.0-beta-sun-build14 Version:
 
-* Addition of MD support
 * Addition of Markdown namespace
-* Addition of table for Html</PackageReleaseNotes>
+* Addition of MD support for headings, lists, tables, links, images and text
+* Fix support for table for Html
+* Fixes in html tags
+</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

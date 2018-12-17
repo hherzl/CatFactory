@@ -19,9 +19,9 @@ namespace CatFactory.Tests
             // Act
             TextFileHelper.CreateFile(fileName, xml);
 
-            // Assert
             var deserializedDatabase = XmlSerializerHelper.DeserializeFrom<Database>(fileName);
 
+            // Assert
             Assert.True(database.Name == deserializedDatabase.Name);
             Assert.True(database.Tables.Count == deserializedDatabase.Tables.Count);
             Assert.True(database.FindTable("Sales.Order").FullName == deserializedDatabase.FindTable("Sales.Order").FullName);
@@ -40,9 +40,9 @@ namespace CatFactory.Tests
 
             System.IO.File.WriteAllText(fileName, json);
 
-            // Assert
             var deserializedDatabase = JsonConvert.DeserializeObject<Database>(json);
 
+            // Assert
             Assert.True(database.Name == deserializedDatabase.Name);
             Assert.True(database.Tables.Count == deserializedDatabase.Tables.Count);
             Assert.True(database.FindTable("Sales.Order").FullName == deserializedDatabase.FindTable("Sales.Order").FullName);
