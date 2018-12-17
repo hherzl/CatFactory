@@ -1,4 +1,7 @@
-﻿namespace CatFactory.Markdown
+﻿using System.Collections.Generic;
+using System.Diagnostics;
+
+namespace CatFactory.Markdown
 {
     /// <summary>
     /// 
@@ -15,15 +18,28 @@
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="text"></param>
-        public MdTableHeader(string text)
+        /// <param name="cells"></param>
+        public MdTableHeader(params string[] cells)
         {
-            Text = text;
+            Cells.AddRange(cells);
         }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<string> m_cells;
 
         /// <summary>
         /// 
         /// </summary>
-        public string Text { get; set; }
+        public List<string> Cells
+        {
+            get
+            {
+                return m_cells ?? (m_cells = new List<string>());
+            }
+            set
+            {
+                m_cells = value;
+            }
+        }
     }
 }

@@ -111,7 +111,7 @@
         /// <param name="url"></param>
         /// <returns></returns>
         public static string Link(string text, string url)
-            => string.Format("[{0}]({1})", text, url);
+            => string.Format("[`{0}`]({1})", text, url);
 
         /// <summary>
         /// 

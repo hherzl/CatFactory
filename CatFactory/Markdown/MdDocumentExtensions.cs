@@ -12,6 +12,25 @@ namespace CatFactory.Markdown
         /// 
         /// </summary>
         /// <param name="document"></param>
+        /// <param name="highlighting"></param>
+        /// <param name="lines"></param>
+        public static void CodeBlock(this MdDocument document, string highlighting, params string[] lines)
+        {
+            document.Lines.Add(new Line("```{0}", highlighting));
+
+            foreach (var line in lines)
+            {
+                document.Lines.Add(new Line(line));
+            }
+
+            document.Lines.Add(new Line("```"));
+            document.Lines.Add(new Line());
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="document"></param>
         /// <param name="value"></param>
         /// <param name="args"></param>
         public static void H1(this MdDocument document, string value, params string[] args)
@@ -133,13 +152,15 @@ namespace CatFactory.Markdown
         /// <param name="table"></param>
         public static void Write(this MdDocument document, MdTable table)
         {
-            document.Lines.Add(new Line("|{0}|", string.Join("|", table.Headers.Select(item => item.Text))));
-            document.Lines.Add(new Line("|{0}|", string.Join("|", table.Headers.Select(item => string.Join("", Enumerable.Repeat("-", item.Text.Length))))));
+            document.Lines.Add(new Line("|{0}|", string.Join("|", table.Header.Cells.Select(item => item))));
+            document.Lines.Add(new Line("|{0}|", string.Join("|", table.Header.Cells.Select(item => string.Join("", Enumerable.Repeat("-", item.Length))))));
 
             foreach (var row in table.Rows)
             {
                 document.Lines.Add(new Line("|{0}|", string.Join("|", row.Cells.Select(item => item))));
             }
+
+            document.Lines.Add(new Line());
         }
     }
 }

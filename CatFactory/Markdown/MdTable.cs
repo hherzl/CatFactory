@@ -25,16 +25,16 @@ namespace CatFactory.Markdown
         }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<MdTableHeader> m_headers;
+        private MdTableHeader m_headers;
 
         /// <summary>
         /// 
         /// </summary>
-        public List<MdTableHeader> Headers
+        public MdTableHeader Header
         {
             get
             {
-                return m_headers ?? (m_headers = new List<MdTableHeader>());
+                return m_headers ?? (m_headers = new MdTableHeader());
             }
             set
             {
