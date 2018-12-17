@@ -26,6 +26,18 @@ The flow to import an existing database is:
 4. Build Features (One feature per schema)
 5. Scaffold objects, these methods read all objects from database and create instances for code builders
 
+## Roadmap
+
+There will be a lot of improvements for CatFactory on road:
+
+* Scaffolding Services Layer
+* Dapper Integration for ASP.NET Core
+* MD files
+* Scaffolding C# Client for ASP.NET Web API
+* Scaffolding Unit Tests for ASP.NET Core
+* Scaffolding Integration Tests for ASP.NET Core
+* Scaffolding Angular
+
 ## Concepts behind CatFactory
 
 ### Database Type Map
