@@ -43,6 +43,20 @@ namespace CatFactory.Tests
                 "Scaffold objects, these methods read all objects from database and create instances for code builders"
                 );
 
+            readme.H2("Roadmap");
+
+            readme.WriteLine("There are improvements for CatFactory on road:");
+
+            readme.UnorderedList(
+                "Scaffolding Services Layer",
+                "Dapper Integration for ASP.NET Core",
+                "MD files",
+                "Scaffolding C# Client for ASP.NET Web API",
+                "Scaffolding Unit Tests for ASP.NET Core",
+                "Scaffolding Integration Tests for ASP.NET Core",
+                "Scaffolding Angular"
+            );
+
             readme.H2("Concepts behind CatFactory");
 
             readme.H3("Database Type Map");
