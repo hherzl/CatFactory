@@ -48,7 +48,7 @@ namespace CatFactory.Tests
             // Act
             var table = database.FindTable("Sales.Order");
             var column = table.Columns[0];
-            var clrType = database.ResolveType(column);
+            var clrType = database.DatabaseTypeMaps.FirstOrDefault(item => item.DatabaseType == column.Type);
 
             // Assert
             Assert.True(clrType.GetClrType() == typeof(long));

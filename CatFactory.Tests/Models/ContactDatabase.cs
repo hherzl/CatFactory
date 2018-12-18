@@ -66,7 +66,7 @@ namespace CatFactory.Tests.Models
                 }
             }
             .AddDbObjectsFromTables()
-            .SetPrimaryKeyToTables()
+            .SetPrimaryKeyForTables()
             .LinkTables();
     }
 }

@@ -152,7 +152,7 @@ namespace CatFactory.Tests.Models
             }
             .AddDbObjectsFromTables()
             .AddDbObjectsFromViews()
-            .SetPrimaryKeyToTables()
+            .SetPrimaryKeyForTables()
             .LinkTables();
     }
 }

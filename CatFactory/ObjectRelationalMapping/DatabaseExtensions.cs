@@ -239,7 +239,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// <param name="table"><see cref="Table"/> instance</param>
         /// <returns>True if <see cref="Table"/> instance has <see cref="PrimaryKey"/>, otherwise false</returns>
         public static bool PrimaryKeyIsGuid(this Database database, ITable table)
-            => table?.PrimaryKey.Key.Count == 1 && database.ColumnIsGuid(table.GetColumnsFromConstraint(table.PrimaryKey).First()) ? true : false;
+            => table?.PrimaryKey?.Key?.Count == 1 && database.ColumnIsGuid(table.GetColumnsFromConstraint(table.PrimaryKey).First()) ? true : false;
 
         /// <summary>
         /// Link all tables in database
@@ -252,7 +252,7 @@ namespace CatFactory.ObjectRelationalMapping
             {
                 foreach (var column in table.Columns)
                 {
-                    if (table.PrimaryKey?.Key.Count == 1 && table.PrimaryKey.Key.Contains(column.Name))
+                    if (table.PrimaryKey?.Key?.Count == 1 && table.PrimaryKey.Key.Contains(column.Name))
                         continue;
 
                     foreach (var parentTable in database.Tables)
@@ -304,7 +304,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// <param name="database"><see cref="Database"/> instance</param>
         /// <param name="exclusions">Exclusions for tables in <see cref="Database"/> instance</param>
         /// <returns><see cref="Database"/> instance</returns>
-        public static Database SetPrimaryKeyToTables(this Database database, params string[] exclusions)
+        public static Database SetPrimaryKeyForTables(this Database database, params string[] exclusions)
         {
             foreach (var table in database.Tables)
             {
@@ -317,23 +317,5 @@ namespace CatFactory.ObjectRelationalMapping
 
             return database;
         }
-
-        /// <summary>
-        /// Resolves a type for <see cref="Column"/> instance
-        /// </summary>
-        /// <param name="database"><see cref="Database"/> instance</param>
-        /// <param name="column"><see cref="Column"/> database</param>
-        /// <returns>A <see cref="DatabaseTypeMap"/> instance from database type maps collection in <see cref="Database"/> instance</returns>
-        public static DatabaseTypeMap ResolveType(this Database database, Column column)
-            => database.DatabaseTypeMaps.FirstOrDefault(item => item.DatabaseType == column.Type);
-
-        /// <summary>
-        /// Resolves a type for <see cref="Column"/> instance
-        /// </summary>
-        /// <param name="database"><see cref="Database"/> instance</param>
-        /// <param name="type">Database type name</param>
-        /// <returns>A <see cref="DatabaseTypeMap"/> instance from database type maps collection in <see cref="Database"/> instance</returns>
-        public static DatabaseTypeMap ResolveDatabaseTypeMap(this Database database, string type)
-            => database.DatabaseTypeMaps.FirstOrDefault(item => item.DatabaseType == type);
     }
 }
