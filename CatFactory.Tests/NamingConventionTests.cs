@@ -30,9 +30,16 @@ namespace CatFactory.Tests
         [Fact]
         public void TestSnakeCase()
         {
-            Assert.True(NamingConvention.GetSnakeCase("schema_id") == "schema_id");
-            Assert.True(NamingConvention.GetSnakeCase("schema.id") == "schema_id");
-            Assert.True(NamingConvention.GetSnakeCase("schema id") == "schema_id");
+            Assert.Equal("schema_id", NamingConvention.GetSnakeCase("schema_id"));
+            Assert.Equal("schema_id", NamingConvention.GetSnakeCase("schema.id") );
+            Assert.Equal("schema_id", NamingConvention.GetSnakeCase("schema id") );
+            Assert.Equal("FOO", NamingConvention.GetSnakeCase("FOO") );
+            Assert.Equal("Bar", NamingConvention.GetSnakeCase("Bar") );
+            Assert.Equal("zaz", NamingConvention.GetSnakeCase("zaz") );
+            Assert.Equal("fooBarZaz",NamingConvention.GetSnakeCase("fooBarZaz")  );
+            Assert.Equal("foo_bar_zaz",NamingConvention.GetSnakeCase("foo.bar.zaz") );
+            Assert.Equal("foo_bar_zaz",NamingConvention.GetSnakeCase("foo_bar_zaz") );
+            Assert.Equal("foo_bar_zaz",NamingConvention.GetSnakeCase("foo bar zaz") );
         }
     }
 }
