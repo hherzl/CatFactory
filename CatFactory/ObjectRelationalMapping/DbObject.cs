@@ -29,7 +29,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// Gets the full name for current database object
         /// </summary>
         public string FullName
-            => string.IsNullOrEmpty(Schema) ? Name : string.Format("{0}.{1}", Schema, Name);
+            => string.IsNullOrEmpty(Schema) ? Name : string.Format("[{0}].[{1}]", Schema, Name);
 
         /// <summary>
         /// Gets or sets the type for current database object
