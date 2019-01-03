@@ -28,6 +28,17 @@ namespace CatFactory.ObjectRelationalMapping
         /// Initializes a new instance of <see cref="ExtendedProperty"/> class
         /// </summary>
         /// <param name="name">Name for extended property</param>
+        /// <param name="value"></param>
+        public ExtendedProperty(string name, string value)
+        {
+            Name = name;
+            Value = value;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="ExtendedProperty"/> class
+        /// </summary>
+        /// <param name="name">Name for extended property</param>
         /// <param name="level0Type">Level 0 type</param>
         /// <param name="level0Name">Level 0 name</param>
         public ExtendedProperty(string name, string level0Type, string level0Name)

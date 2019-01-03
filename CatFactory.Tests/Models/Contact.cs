@@ -2,9 +2,9 @@
 
 namespace CatFactory.Tests.Models
 {
-    public static class ContactDatabase
+    public static partial class Databases
     {
-        public static Database Mock
+        public static Database Contact
             => new Database
             {
                 Name = "Store",
@@ -31,13 +31,13 @@ namespace CatFactory.Tests.Models
                         {
                             new Column { Name = "ContactID", Type = "int" },
                             new Column { Name = "ContactTypeID", Type = "int" },
-                            new Column { Name = "FirstName", Type = "varchar", Length = 25 },
-                            new Column { Name = "MiddleName", Type = "varchar", Length = 25, Nullable = true },
-                            new Column { Name = "LastName", Type = "varchar", Length = 25 },
+                            new Column { Name = "FirstName", Type = "varchar", Length = 10 },
+                            new Column { Name = "MiddleName", Type = "varchar", Length = 10, Nullable = true },
+                            new Column { Name = "LastName", Type = "varchar", Length = 10 },
                             new Column { Name = "Gender", Type = "varchar", Length = 1 },
                             new Column { Name = "BirthDate", Type = "datetime" }
                         },
-                        Identity = new Identity("ContactID", 1, 1)
+                        Identity = new Identity("ContactID")
                     },
                     new Table
                     {
@@ -61,7 +61,7 @@ namespace CatFactory.Tests.Models
                             new Column { Name = "EmailTypeID", Type = "int" },
                             new Column { Name = "Email", Type = "varchar", Length = 100 }
                         },
-                        Identity = new Identity("ContactEmailID", 1, 1)
+                        Identity = new Identity("ContactEmailID")
                     }
                 }
             }

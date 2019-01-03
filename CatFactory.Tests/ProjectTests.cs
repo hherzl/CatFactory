@@ -1,4 +1,5 @@
 ﻿using CatFactory.CodeFactory.Scaffolding;
+using CatFactory.Tests.Models;
 using Xunit;
 
 namespace CatFactory.Tests
@@ -11,8 +12,8 @@ namespace CatFactory.Tests
             // Arrange
             var project = new Project<ProjectSettings>
             {
-                Name = "Store",
-                Database = Models.StoreDatabase.Mock
+                Name = "OnLineStore",
+                Database = Databases.OnLineStore
             };
 
             // Act

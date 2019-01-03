@@ -6,7 +6,7 @@ namespace CatFactory.ObjectOrientedProgramming
     /// <summary>
     /// 
     /// </summary>
-    [DebuggerDisplay("Remarks={Remarks}")]
+    [DebuggerDisplay("Summary={Summary}, Returns={Returns}")]
     public class Documentation
     {
         /// <summary>
@@ -15,6 +15,28 @@ namespace CatFactory.ObjectOrientedProgramming
         public Documentation()
         {
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="summary"></param>
+        /// <param name="remarks"></param>
+        /// <param name="returns"></param>
+        public Documentation(string summary, string remarks = "", string returns = "")
+        {
+            Summary = summary;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Summary { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool HasSummary
+            => !string.IsNullOrEmpty(Summary);
 
         /// <summary>
         /// 
@@ -37,17 +59,6 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public bool HasReturns
             => !string.IsNullOrEmpty(Returns);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public string Summary { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public bool HasSummary
-            => !string.IsNullOrEmpty(Summary);
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<dynamic> m_customTags;

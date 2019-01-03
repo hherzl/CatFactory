@@ -14,8 +14,8 @@ namespace CatFactory.Tests
             // Arrange
             var project = new EntityFrameworkCoreProject
             {
-                Name = "Store",
-                Database = StoreDatabase.Mock,
+                Name = "OnLineStore",
+                Database = Databases.OnLineStore,
                 OutputDirectory = "C:\\Temp\\CatFactory\\EntityFrameworkCore",
                 AuthorInfo = new AuthorInfo
                 {
@@ -32,7 +32,7 @@ namespace CatFactory.Tests
                 settings.AddDataBindings = true;
             });
 
-            project.Select("Sales.Order", settings => settings.EntitiesWithDataContracts = true);
+            project.Selection("Sales.Order", settings => settings.EntitiesWithDataContracts = true);
 
             project.ScaffoldingDefinition += (source, args) =>
             {

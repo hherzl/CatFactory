@@ -12,8 +12,8 @@ namespace CatFactory.Tests
         public void SerializeMockDatabaseToXmlTest()
         {
             // Arrange
-            var fileName = "C:\\Temp\\CatFactory\\Store.xml";
-            var database = StoreDatabase.Mock;
+            var fileName = "C:\\Temp\\CatFactory\\OnLineStore.xml";
+            var database = Databases.OnLineStore;
             var xml = XmlSerializerHelper.Serialize(database);
 
             // Act
@@ -32,8 +32,8 @@ namespace CatFactory.Tests
         public void SerializeMockDatabaseToJsonTest()
         {
             // Arrange
-            var database = StoreDatabase.Mock;
-            var fileName = "C:\\Temp\\CatFactory\\Store.json";
+            var database = Databases.OnLineStore;
+            var fileName = "C:\\Temp\\CatFactory\\OnLineStore.json";
 
             // Act
             var json = JsonConvert.SerializeObject(database);

@@ -2,12 +2,12 @@
 
 namespace CatFactory.Tests.Models
 {
-    public static class StoreDatabase
+    public static partial class Databases
     {
-        public static Database Mock
+        public static Database OnLineStore
             => new Database
             {
-                Name = "Store",
+                Name = "OnlineStore",
                 DefaultSchema = "dbo",
                 DatabaseTypeMaps = DatabaseTypeMapList.Default,
                 Tables =
@@ -24,7 +24,7 @@ namespace CatFactory.Tests.Models
                             new Column { Name = "Message", Type = "varchar" },
                             new Column { Name = "EntryDate", Type = "datetime" }
                         },
-                        Identity = new Identity("EventLogID", 1, 1)
+                        Identity = new Identity("EventLogID")
                     },
                     new Table
                     {
@@ -38,35 +38,36 @@ namespace CatFactory.Tests.Models
                             new Column { Name = "LastName", Type = "varchar", Length = 25 },
                             new Column { Name = "BirthDate", Type = "datetime" }
                         },
-                        Identity = new Identity("EmployeeID", 1, 1)
+                        Identity = new Identity("EmployeeID")
                     },
                     new Table
                     {
-                        Schema = "Production",
+                        Schema = "Warehouse",
                         Name = "ProductCategory",
                         Columns =
                         {
                             new Column { Name = "ProductCategoryID", Type = "int" },
                             new Column { Name = "ProductCategoryName", Type = "varchar", Length = 100 },
                         },
-                        Identity = new Identity("ProductCategoryID", 1, 1)
+                        Identity = new Identity("ProductCategoryID")
                     },
                     new Table
                     {
-                        Schema = "Production",
+                        Schema = "Warehouse",
                         Name = "Product",
                         Columns =
                         {
                             new Column { Name = "ProductID", Type = "int" },
                             new Column { Name = "ProductName", Type = "varchar", Length = 100 },
                             new Column { Name = "ProductCategoryID", Type = "int" },
+                            new Column { Name = "UnitPrice", Type = "decimal", Prec = 8, Scale = 4 },
                             new Column { Name = "Description", Type = "varchar", Length = 255, Nullable = true }
                         },
-                        Identity = new Identity("ProductID", 1, 1)
+                        Identity = new Identity("ProductID")
                     },
                     new Table
                     {
-                        Schema = "Production",
+                        Schema = "Warehouse",
                         Name = "ProductInventory",
                         Columns =
                         {
@@ -75,7 +76,7 @@ namespace CatFactory.Tests.Models
                             new Column { Name = "EntryDate", Type = "datetime" },
                             new Column { Name = "Quantity", Type = "int" }
                         },
-                        Identity = new Identity("ProductInventoryID", 1, 1)
+                        Identity = new Identity("ProductInventoryID")
                     },
                     new Table
                     {
@@ -99,7 +100,7 @@ namespace CatFactory.Tests.Models
                             new Column { Name = "CompanyName", Type = "varchar", Length = 100, Nullable = true },
                             new Column { Name = "ContactName", Type = "varchar", Length = 100, Nullable = true }
                         },
-                        Identity = new Identity("ShipperID", 1, 1)
+                        Identity = new Identity("ShipperID")
                     },
                     new Table
                     {
@@ -114,7 +115,7 @@ namespace CatFactory.Tests.Models
                             new Column { Name = "ShipperID", Type = "datetime" },
                             new Column { Name = "Comments", Type = "varchar", Length = 255, Nullable = true }
                         },
-                        Identity = new Identity("OrderID", 1, 1)
+                        Identity = new Identity("OrderID")
                     },
                     new Table
                     {
@@ -125,9 +126,9 @@ namespace CatFactory.Tests.Models
                             new Column { Name = "OrderID", Type = "bigint" },
                             new Column { Name = "ProductID", Type = "int" },
                             new Column { Name = "ProductName", Type = "varchar", Length = 255 },
-                            new Column { Name = "UnitPrice", Type = "decimal", Length = 8, Prec = 4 },
+                            new Column { Name = "UnitPrice", Type = "decimal", Prec = 8, Scale = 4 },
                             new Column { Name = "Quantity", Type = "int" },
-                            new Column { Name = "Total", Type = "decimal", Length = 8, Prec = 4 }
+                            new Column { Name = "Total", Type = "decimal", Prec = 8, Scale = 4 }
                         },
                         PrimaryKey = new PrimaryKey("OrderID", "ProductID")
                     }

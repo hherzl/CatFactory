@@ -11,7 +11,7 @@ namespace CatFactory.Tests
         public void ValidateContactDatabase()
         {
             // Arrange
-            var database = ContactDatabase.Mock;
+            var database = Databases.Contact;
 
             // Act
             var contactTypeTable = database.FindTable("dbo.ContactType");
@@ -43,7 +43,7 @@ namespace CatFactory.Tests
         public void TestDatabaseTypeMaps()
         {
             // Arrange
-            var database = StoreDatabase.Mock;
+            var database = Databases.OnLineStore;
 
             // Act
             var table = database.FindTable("Sales.Order");

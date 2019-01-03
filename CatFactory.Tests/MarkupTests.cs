@@ -10,14 +10,7 @@ namespace CatFactory.Tests
         [Fact]
         public void TestHtmlTag()
         {
-            var tag = new Tag
-            {
-                Name = "p",
-                Attributes =
-                {
-                    new TagAttribute("style", "font-weight: bold;")
-                }
-            };
+            var tag = Tag.Create("p", new { style = "font-weight: bold;" });
 
             Assert.True(tag.ToString() == "<p style=\"font-weight: bold;\"></p>");
         }
@@ -25,11 +18,7 @@ namespace CatFactory.Tests
         [Fact]
         public void TestSelfCloseHtmlTag()
         {
-            var tag = new Tag
-            {
-                Name = "hr",
-                IsSelfClosed = true
-            };
+            var tag = Tag.Create("hr", isSelfClosed: true);
 
             Assert.True(tag.ToString() == "<hr />");
         }
@@ -37,16 +26,7 @@ namespace CatFactory.Tests
         [Fact]
         public void TestWebFormTag()
         {
-            var tag = new Tag
-            {
-                Namespace = "asp",
-                Name = "TextBox",
-                Attributes =
-                {
-                    new TagAttribute("runat", "server"),
-                    new TagAttribute("Text", "Hello from CatFactory uni tests!")
-                }
-            };
+            var tag = Tag.Create("TextBox", new { runat = "server", Text = "Hello from CatFactory uni tests!" }, ns: "asp");
 
             Assert.True(tag.ToString() == "<asp:TextBox runat=\"server\" Text=\"Hello from CatFactory uni tests!\"></asp:TextBox>");
         }
@@ -54,15 +34,7 @@ namespace CatFactory.Tests
         [Fact]
         public void TestResponseTag()
         {
-            var tag = new Tag
-            {
-                Name = "response",
-                Attributes =
-                {
-                    new TagAttribute("code", "200")
-                },
-                Content = "A success response"
-            };
+            var tag = Tag.Create("response", new { code = "200" }, content: "A success response");
 
             Assert.True(tag.ToString() == "<response code=\"200\">A success response</response>");
         }
@@ -135,8 +107,7 @@ namespace CatFactory.Tests
                 .AddRow("Erick", "T", "Cartman")
                 .AddRow("Kyle", "", "Broflovski")
                 .AddRow("Stan", "", "Marsh")
-                .AddRow("Kenny", "", "McCormick")
-                ;
+                .AddRow("Kenny", "", "McCormick");
 
             File.WriteAllText("C:\\Temp\\CatFactory\\Table.html", table.ToString());
         }
