@@ -2,25 +2,26 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <Version>1.0.0-beta-sun-build14</Version>
+    <Version>1.0.0-beta-sun-build15</Version>
     <Authors>H. Herzl</Authors>
     <Company>Herzl Corp.</Company>
-    <Description>CatFactory Core Engine:
+    <Description>This is the core for CatFactory packages.
 
-* Code Factory
-* Object Relational Mapping,
-* Object Oriented Programming
+This package allows to define CLR objects and database objects.
 </Description>
     <PackageProjectUrl>https://github.com/hherzl/CatFactory</PackageProjectUrl>
     <RepositoryUrl>https://github.com/hherzl/CatFactory</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>Scaffolding, Object Relational Mapping, ORM, Object Oriented Programming, OOP</PackageTags>
-    <PackageReleaseNotes>1.0.0-beta-sun-build14 Version:
+    <PackageTags>Markdown Markup OOP ORM Scaffolding</PackageTags>
+    <PackageReleaseNotes>1.0.0-beta-sun-build15 Version:
 
-* Addition of Markdown namespace
-* Addition of MD support for headings, lists, tables, links, images and text
-* Fix support for table for Html
-* Fixes in html tags
+* Addition of DatabaseTypeMaps property in IDatabaseFactory interface
+* Addition of constructor for schema and name in DbObject class
+* Addition of INamingService property in IProject interface
+* Addition of static method in Tag class to create a new instance of Tag
+* Addition of constructor for name in NameValue class
+* Addition of Documentation property in NameValue class
+* Addition of optional parameters for remarks and returns in Documentation class constructor
 </PackageReleaseNotes>
   </PropertyGroup>
 

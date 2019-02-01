@@ -2,9 +2,9 @@
 
 namespace CatFactory.Tests.Models
 {
-    public static class SupermarketDatabase
+    public static partial class Databases
     {
-        public static Database Mock
+        public static Database Supermarket
             => new Database
             {
                 Name = "Supermarket",

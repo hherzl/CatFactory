@@ -34,7 +34,7 @@ namespace CatFactory.Tests.Models
             return project;
         }
 
-        public static DapperProject Select(this DapperProject project, string pattern, Action<DapperProjectSettings> action = null)
+        public static DapperProject Selection(this DapperProject project, string pattern, Action<DapperProjectSettings> action = null)
         {
             var selection = project.Selections.FirstOrDefault(item => item.Pattern == pattern);
 

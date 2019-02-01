@@ -52,6 +52,11 @@ namespace CatFactory.CodeFactory.Scaffolding
         /// <summary>
         /// 
         /// </summary>
+        public INamingService NamingService { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public string OutputDirectory { get; set; }
 
         /// <summary>

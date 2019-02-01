@@ -20,6 +20,15 @@ namespace CatFactory.ObjectOrientedProgramming
         /// 
         /// </summary>
         /// <param name="name"></param>
+        public NameValue(string name)
+        {
+            Name = name;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
         /// <param name="value"></param>
         public NameValue(string name, string value)
         {
@@ -36,6 +45,24 @@ namespace CatFactory.ObjectOrientedProgramming
         /// 
         /// </summary>
         public string Value { get; set; }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private Documentation m_documentation;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Documentation Documentation
+        {
+            get
+            {
+                return m_documentation ?? (m_documentation = new Documentation());
+            }
+            set
+            {
+                m_documentation = value;
+            }
+        }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<MetadataAttribute> m_attributes;

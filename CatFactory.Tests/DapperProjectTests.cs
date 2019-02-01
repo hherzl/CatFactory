@@ -15,7 +15,7 @@ namespace CatFactory.Tests
             var project = new DapperProject
             {
                 Name = "Store",
-                Database = StoreDatabase.Mock,
+                Database = Databases.OnLineStore,
                 OutputDirectory = "C:\\Temp\\CatFactory\\Dapper",
                 AuthorInfo = new AuthorInfo
                 {
@@ -33,7 +33,8 @@ namespace CatFactory.Tests
             };
 
             project.GlobalSelection(settings => settings.UseStringBuilderForQueries = false);
-            project.Select("Sales.Order", settings => settings.UseQueryBuilder = true);
+
+            project.Selection("Sales.Order", settings => settings.UseQueryBuilder = true);
 
             // Act
             foreach (var table in project.Database.Tables)

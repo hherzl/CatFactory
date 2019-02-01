@@ -14,6 +14,25 @@ namespace CatFactory.Markup
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="name"></param>
+        /// <param name="attribs"></param>
+        /// <param name="ns"></param>
+        /// <param name="isSelfClosed"></param>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        public static Tag Create(string name, object attribs = null, string ns = "", bool isSelfClosed = false, string content = "")
+            => new Tag
+            {
+                Name = name,
+                Namespace = ns,
+                Attributes = attribs?.GetAttributes(),
+                Content = content,
+                IsSelfClosed = isSelfClosed
+            };
+
+        /// <summary>
+        /// 
+        /// </summary>
         public Tag()
         {
         }
