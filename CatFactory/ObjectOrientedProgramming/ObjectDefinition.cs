@@ -4,13 +4,13 @@ using System.Diagnostics;
 namespace CatFactory.ObjectOrientedProgramming
 {
     /// <summary>
-    /// 
+    /// Represents a definition for Object in Object Oriented Programming context
     /// </summary>
     [DebuggerDisplay("Namespace={Namespace}, Name={Name}")]
     public class ObjectDefinition : IObjectDefinition
     {
         /// <summary>
-        /// 
+        /// Initializes a new instance of <see cref="ObjectDefinition"/> class
         /// </summary>
         public ObjectDefinition()
         {
@@ -21,7 +21,7 @@ namespace CatFactory.ObjectOrientedProgramming
         private List<string> m_namespaces;
 
         /// <summary>
-        /// 
+        /// Gets or sets the namespaces for current object definition
         /// </summary>
         public List<string> Namespaces
         {
@@ -36,7 +36,7 @@ namespace CatFactory.ObjectOrientedProgramming
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the namespace for current object definition
         /// </summary>
         public string Namespace { get; set; }
 
@@ -44,7 +44,7 @@ namespace CatFactory.ObjectOrientedProgramming
         private Documentation m_documentation;
 
         /// <summary>
-        /// 
+        /// Gets or sets the XML documentation comments for current object definition
         /// </summary>
         public Documentation Documentation
         {
@@ -59,28 +59,28 @@ namespace CatFactory.ObjectOrientedProgramming
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the access modifier for current object definition
         /// </summary>
         public AccessModifier AccessModifier { get; set; }
 
         /// <summary>
-        /// 
+        /// Indicates if current object definition is partial
         /// </summary>
         public bool IsPartial { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets the name for current object definition
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets the full name (Namespace.Name) for current object definition
         /// </summary>
         public virtual string FullName
             => string.IsNullOrEmpty(Namespace) ? Name : string.Format("{0}.{1}", Namespace, Name);
 
         /// <summary>
-        /// 
+        /// Indicates if current object definition has inheritance
         /// </summary>
         public virtual bool HasInheritance
             => false;
@@ -89,7 +89,7 @@ namespace CatFactory.ObjectOrientedProgramming
         private List<MetadataAttribute> m_attributes;
 
         /// <summary>
-        /// 
+        /// Gets or sets the metadata attributes for current object definition
         /// </summary>
         public List<MetadataAttribute> Attributes
         {
@@ -107,7 +107,7 @@ namespace CatFactory.ObjectOrientedProgramming
         private List<EventDefinition> m_events;
 
         /// <summary>
-        /// 
+        /// Gets or sets the events for current object definition
         /// </summary>
         public List<EventDefinition> Events
         {
@@ -125,7 +125,7 @@ namespace CatFactory.ObjectOrientedProgramming
         private List<PropertyDefinition> m_properties;
 
         /// <summary>
-        /// 
+        /// Gets or sets the properties for current object definition
         /// </summary>
         public List<PropertyDefinition> Properties
         {
@@ -143,7 +143,7 @@ namespace CatFactory.ObjectOrientedProgramming
         private List<MethodDefinition> m_methods;
 
         /// <summary>
-        /// 
+        /// Gets or sets the methods for current object definition
         /// </summary>
         public List<MethodDefinition> Methods
         {
@@ -158,17 +158,17 @@ namespace CatFactory.ObjectOrientedProgramming
         }
 
         /// <summary>
-        /// 
+        /// Determines whether the specified object is equal to the current object.
         /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
+        /// <param name="obj">The object to compare with the current object</param>
+        /// <returns>true if the specified object is equal to the current object; otherwise, false</returns>
         public override bool Equals(object obj)
             => (obj is ObjectDefinition cast && FullName == cast.FullName) ? true : false;
 
         /// <summary>
-        /// 
+        /// Gets the hash code for current object.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A hash code for the current object</returns>
         public override int GetHashCode()
             => base.GetHashCode();
     }

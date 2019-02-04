@@ -5,13 +5,13 @@ using CatFactory.CodeFactory;
 namespace CatFactory.ObjectOrientedProgramming
 {
     /// <summary>
-    /// 
+    /// Represents a definition for Property in Object Oriented Programming context
     /// </summary>
     [DebuggerDisplay("AccessModifier={AccessModifier}, Type={Type}, Name={Name}")]
     public class PropertyDefinition : IMemberDefinition
     {
         /// <summary>
-        /// 
+        /// Initializes a new instance of <see cref="PropertyDefinition"/> class
         /// </summary>
         public PropertyDefinition()
         {
@@ -19,11 +19,11 @@ namespace CatFactory.ObjectOrientedProgramming
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of <see cref="PropertyDefinition"/> class
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="name"></param>
-        /// <param name="attribs"></param>
+        /// <param name="type">Type</param>
+        /// <param name="name">Name</param>
+        /// <param name="attribs">Metadata attributes</param>
         public PropertyDefinition(string type, string name, params MetadataAttribute[] attribs)
         {
             IsAutomatic = true;
@@ -33,12 +33,12 @@ namespace CatFactory.ObjectOrientedProgramming
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of <see cref="PropertyDefinition"/> class
         /// </summary>
-        /// <param name="accessModifier"></param>
-        /// <param name="type"></param>
-        /// <param name="name"></param>
-        /// <param name="attribs"></param>
+        /// <param name="accessModifier">Access modifier</param>
+        /// <param name="type">Type</param>
+        /// <param name="name">Name</param>
+        /// <param name="attribs">Metadata attributes</param>
         public PropertyDefinition(AccessModifier accessModifier, string type, string name, params MetadataAttribute[] attribs)
         {
             AccessModifier = accessModifier;
@@ -51,7 +51,7 @@ namespace CatFactory.ObjectOrientedProgramming
         private Documentation m_documentation;
 
         /// <summary>
-        /// 
+        /// Gets or sets the XML documentation comments for current property definition
         /// </summary>
         public Documentation Documentation
         {
@@ -66,22 +66,22 @@ namespace CatFactory.ObjectOrientedProgramming
         }
 
         /// <summary>
-        /// 
+        /// Indicates if current property definition is virtual
         /// </summary>
         public bool IsVirtual { get; set; }
 
         /// <summary>
-        /// 
+        /// Indicates if current property definition is override
         /// </summary>
         public bool IsOverride { get; set; }
 
         /// <summary>
-        /// 
+        /// Indicates if current property definition is automatic (with no get and set bodies)
         /// </summary>
         public bool IsAutomatic { get; set; }
 
         /// <summary>
-        /// 
+        /// Indicates if current property definition is readonly
         /// </summary>
         public bool IsReadOnly { get; set; }
 
@@ -89,7 +89,7 @@ namespace CatFactory.ObjectOrientedProgramming
         private List<MetadataAttribute> m_attributes;
 
         /// <summary>
-        /// 
+        /// Gets or sets the attributes for current property definition
         /// </summary>
         public List<MetadataAttribute> Attributes
         {
@@ -104,17 +104,17 @@ namespace CatFactory.ObjectOrientedProgramming
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the access modifier for current property definition
         /// </summary>
         public AccessModifier AccessModifier { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets the type for current property definition
         /// </summary>
         public string Type { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets the name for current property definition
         /// </summary>
         public string Name { get; set; }
 
@@ -122,7 +122,7 @@ namespace CatFactory.ObjectOrientedProgramming
         private List<ILine> m_getBody;
 
         /// <summary>
-        /// 
+        /// Gets or sets the get body for current property definition
         /// </summary>
         public List<ILine> GetBody
         {
@@ -140,7 +140,7 @@ namespace CatFactory.ObjectOrientedProgramming
         private List<ILine> m_setBody;
 
         /// <summary>
-        /// 
+        /// Gets or sets the set body for current property definition
         /// </summary>
         public List<ILine> SetBody
         {
@@ -155,7 +155,7 @@ namespace CatFactory.ObjectOrientedProgramming
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the initialization value for current property definition
         /// </summary>
         public string InitializationValue { get; set; }
     }

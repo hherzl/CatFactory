@@ -5,12 +5,12 @@ using CatFactory.CodeFactory;
 namespace CatFactory.ObjectOrientedProgramming
 {
     /// <summary>
-    /// 
+    /// Represents a definition for Finalizer in Object Oriented Programming context
     /// </summary>
     public class FinalizerDefinition
     {
         /// <summary>
-        /// 
+        /// Initializes a new instance of <see cref="FinalizerDefinition"/> class
         /// </summary>
         public FinalizerDefinition()
         {
@@ -20,7 +20,7 @@ namespace CatFactory.ObjectOrientedProgramming
         private List<ILine> m_lines;
 
         /// <summary>
-        /// 
+        /// Gets or sets the method body
         /// </summary>
         public List<ILine> Lines
         {

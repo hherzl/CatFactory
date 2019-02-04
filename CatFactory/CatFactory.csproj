@@ -2,10 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <Version>1.0.0-beta-sun-build15</Version>
+    <Version>1.0.0-beta-sun-build16</Version>
     <Authors>H. Herzl</Authors>
     <Company>Herzl Corp.</Company>
-    <Description>This is the core for CatFactory packages.
+    <Description>This is the core for CatFactory engine and the base for child packages.
 
 This package allows to define CLR objects and database objects.
 </Description>
@@ -13,15 +13,12 @@ This package allows to define CLR objects and database objects.
     <RepositoryUrl>https://github.com/hherzl/CatFactory</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Markdown Markup OOP ORM Scaffolding</PackageTags>
-    <PackageReleaseNotes>1.0.0-beta-sun-build15 Version:
+    <PackageReleaseNotes>1.0.0-beta-sun-build16 Version:
 
-* Addition of DatabaseTypeMaps property in IDatabaseFactory interface
-* Addition of constructor for schema and name in DbObject class
-* Addition of INamingService property in IProject interface
-* Addition of static method in Tag class to create a new instance of Tag
-* Addition of constructor for name in NameValue class
-* Addition of Documentation property in NameValue class
-* Addition of optional parameters for remarks and returns in Documentation class constructor
+* Addition of XML documentation comments for root namespace
+* Addition of XML documentation comments for ObjectOrientedProgramming namespace
+* Addition of PrivateProtected and ProtectedInternal in AccessModifier enum
+* Set Private as default access modifier in AccessModifier enum
 </PackageReleaseNotes>
   </PropertyGroup>
 

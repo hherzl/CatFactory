@@ -11,12 +11,12 @@ namespace CatFactory.Tests
             // Arrange
             var definition = new ClassDefinition
             {
-                Namespace = "Store",
+                Namespace = "OnlineStore",
                 Name = "Product"
             };
 
             // Act
-            var obj = TypeManager.GetItemByFullName("Store.Product");
+            var obj = TypeManager.GetItemByFullName("OnlineStore.Product");
 
             // Assert
             Assert.False(obj == null);
@@ -29,7 +29,7 @@ namespace CatFactory.Tests
             // Arrange
 
             // Act
-            var obj = TypeManager.GetItemByFullName("Store.Foo");
+            var obj = TypeManager.GetItemByFullName("OnlineStore.Foo");
 
             // Assert
             Assert.True(obj == null);
@@ -41,12 +41,12 @@ namespace CatFactory.Tests
             // Arrange
             var definition = new InterfaceDefinition
             {
-                Namespace = "Store",
+                Namespace = "OnlineStore",
                 Name = "ISalesRepository"
             };
 
             // Act
-            var obj = TypeManager.GetItemByFullName("Store.ISalesRepository");
+            var obj = TypeManager.GetItemByFullName("OnlineStore.ISalesRepository");
 
             // Assert
             Assert.False(obj == null);
@@ -59,7 +59,7 @@ namespace CatFactory.Tests
             // Arrange
 
             // Act
-            var obj = TypeManager.GetItemByFullName("Store.IRepository");
+            var obj = TypeManager.GetItemByFullName("OnlineStore.IRepository");
 
             // Assert
             Assert.True(obj == null);

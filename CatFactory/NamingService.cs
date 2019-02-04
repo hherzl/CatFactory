@@ -1,15 +1,15 @@
 ﻿namespace CatFactory
 {
     /// <summary>
-    /// 
+    /// Allows to singularize or pluralize words
     /// </summary>
     public class NamingService : INamingService
     {
         /// <summary>
-        /// 
+        /// Singularizes an input string
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="value">A word that represents an object</param>
+        /// <returns>A <see cref="string"/> that represents the singular form for input word</returns>
         public virtual string Singularize(string value)
         {
             // todo: improve the way to singularize a name
@@ -31,10 +31,10 @@
         }
 
         /// <summary>
-        /// 
+        /// Pluralizes an input string
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="value">A word that represents an object</param>
+        /// <returns>A <see cref="string"/> that represents the plural form for input word</returns>
         public virtual string Pluralize(string value)
         {
             // todo: improve the way to pluralize a name

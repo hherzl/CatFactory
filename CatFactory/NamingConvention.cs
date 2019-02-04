@@ -4,7 +4,7 @@ using System.Text;
 namespace CatFactory
 {
     /// <summary>
-    /// 
+    /// Provides helper methods for naming conventions
     /// </summary>
     public static class NamingConvention
     {
@@ -15,10 +15,10 @@ namespace CatFactory
             => source.ToUpper() == source;
 
         /// <summary>
-        /// 
+        /// Gets a camelCase style string
         /// </summary>
-        /// <param name="source"></param>
-        /// <returns></returns>
+        /// <param name="source">Source string</param>
+        /// <returns>A <see cref="string"/> that represents camelString for source string</returns>
         public static string GetCamelCase(string source)
         {
             if (source.Length == 0)
@@ -72,10 +72,10 @@ namespace CatFactory
         }
 
         /// <summary>
-        /// 
+        /// Gets a PamelCase style string
         /// </summary>
-        /// <param name="source"></param>
-        /// <returns></returns>
+        /// <param name="source">Source string</param>
+        /// <returns>A <see cref="string"/> that represents PascalString for source string</returns>
         public static string GetPascalCase(string source)
         {
             if (source.Length == 0)
@@ -147,10 +147,10 @@ namespace CatFactory
         }
 
         /// <summary>
-        /// 
+        /// Gets a Snake_Case style string
         /// </summary>
-        /// <param name="source"></param>
-        /// <returns></returns>
+        /// <param name="source">Source string</param>
+        /// <returns>A <see cref="string"/> that represents Snake_Case for source string</returns>
         public static string GetSnakeCase(string source)
         {
             if (source.Length == 0)
