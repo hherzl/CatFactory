@@ -19,6 +19,7 @@ This package allows to define CLR objects and database objects.
 * Addition of XML documentation comments for ObjectOrientedProgramming namespace
 * Addition of PrivateProtected and ProtectedInternal in AccessModifier enum
 * Set Private as default access modifier in AccessModifier enum
+* Add TaskList in Markdown namespace
 </PackageReleaseNotes>
   </PropertyGroup>
 

@@ -137,6 +137,23 @@ namespace CatFactory.Markdown
         /// 
         /// </summary>
         /// <param name="document"></param>
+        /// <param name="args"></param>
+        public static void TaskList(this MdDocument document, params MdTask[] args)
+        {
+            for (var i = 0; i < args.Length; i++)
+            {
+                var item = args[i];
+
+                document.Lines.Add(new Line("- [{0}] {1}", item.Completed ? "x" : " ", item.Text));
+            }
+
+            document.Lines.Add(new Line());
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="document"></param>
         /// <param name="value"></param>
         /// <param name="args"></param>
         public static void WriteLine(this MdDocument document, string value, params string[] args)
