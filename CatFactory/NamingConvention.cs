@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace CatFactory
 {
@@ -8,11 +10,18 @@ namespace CatFactory
     /// </summary>
     public static class NamingConvention
     {
+        // ReSharper disable once UnusedMember.Local
         private static bool IsLower(string source)
             => source.ToLower() == source;
 
         private static bool IsUpper(string source)
             => source.ToUpper() == source;
+
+        private static bool HasUpper(string source)
+            => source.Any(char.IsUpper);
+
+        private static bool HasLower(string source)
+            => source.Any(char.IsLower);
 
         /// <summary>
         /// Gets a camelCase style string
@@ -89,10 +98,8 @@ namespace CatFactory
             {
                 var pieces = source.Split('_');
 
-                for (var i = 0; i < pieces.Length; i++)
+                foreach (var item in pieces)
                 {
-                    var item = pieces[i];
-
                     if (item.Length == 0)
                         continue;
 
@@ -104,10 +111,8 @@ namespace CatFactory
             {
                 var pieces = source.Split('.');
 
-                for (var i = 0; i < pieces.Length; i++)
+                foreach (var item in pieces)
                 {
-                    var item = pieces[i];
-
                     if (item.Length == 0)
                         continue;
 
@@ -119,10 +124,8 @@ namespace CatFactory
             {
                 var pieces = source.Split(' ');
 
-                for (var i = 0; i < pieces.Length; i++)
+                foreach (var item in pieces)
                 {
-                    var item = pieces[i];
-
                     if (item.Length == 0)
                         continue;
 
@@ -167,29 +170,17 @@ namespace CatFactory
             {
                 var pieces = source.Split('.');
 
-                for (var i = 0; i < pieces.Length; i++)
-                {
-                    var item = pieces[i];
-
-                    if (item.Length == 0)
-                        continue;
-
-                    name.Add(item);
-                }
+                name.AddRange(pieces.Where(item => item.Length != 0));
             }
             else if (source.Contains(" "))
             {
                 var pieces = source.Split(' ');
 
-                for (var i = 0; i < pieces.Length; i++)
-                {
-                    var item = pieces[i];
-
-                    if (item.Length == 0)
-                        continue;
-
-                    name.Add(item);
-                }
+                name.AddRange(pieces.Where(item => item.Length != 0));
+            }
+            else if (HasUpper(source) & !IsUpper(source))
+            {
+                name.AddRange(Regex.Split(source, @"(?<!^)(?=[A-Z])"));
             }
             else
             {
@@ -198,5 +189,54 @@ namespace CatFactory
 
             return string.Join("_", name);
         }
+
+        /// <summary>
+        /// Gets a kebab-case style string
+        /// </summary>
+        /// <param name="source">Source string</param>
+        /// <returns>A <see cref="string"/> that represents kebab-case for source string</returns>
+        public static string GetKebabCase(string source)
+        {
+            if (source.Length == 0)
+                return string.Empty;
+
+            if (source.Contains("-"))
+                return source;
+
+            source = source.Replace("  ", " ").Trim();
+
+            var name = new List<string>();
+
+            if (source.Contains("."))
+            {
+                var pieces = source.Split('.');
+
+                name.AddRange(pieces.Where(item => item.Length != 0));
+            }
+            else if (source.Contains(" "))
+            {
+                var pieces = source.Split(' ');
+
+                name.AddRange(pieces.Where(item => item.Length != 0));
+            }
+            else if (source.Contains("_"))
+            {
+                var pieces = source.Split('_');
+
+                name.AddRange(pieces.Where(item => item.Length != 0));
+            }
+            else if (HasUpper(source) &! IsUpper(source))
+            {
+                name.AddRange(Regex.Split(source, @"(?<!^)(?=[A-Z])"));
+            }
+            else
+            {
+                name.Add(source);
+            }
+
+            var retValue = string.Join("-", name).ToLower();
+            return retValue;
+        }
+
     }
 }
