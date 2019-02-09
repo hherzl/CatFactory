@@ -33,21 +33,6 @@ namespace CatFactory.Tests
             Assert.True(NamingConvention.GetSnakeCase("schema_id") == "schema_id");
             Assert.True(NamingConvention.GetSnakeCase("schema.id") == "schema_id");
             Assert.True(NamingConvention.GetSnakeCase("schema id") == "schema_id");
-            Assert.True(NamingConvention.GetSnakeCase("FooBarZaz") == "Foo_Bar_Zaz");
-            Assert.True(NamingConvention.GetSnakeCase("foo bar zaz") == "foo_bar_zaz");
-            Assert.True(NamingConvention.GetSnakeCase("foo_bar_zaz") == "foo_bar_zaz");
-        }
-
-        [Fact]
-        public void TestKebabCase()
-        {
-            Assert.True(NamingConvention.GetKebabCase("FOO") == "foo");
-            Assert.True(NamingConvention.GetKebabCase("Bar") == "bar");
-            Assert.True(NamingConvention.GetKebabCase("zaz") == "zaz");
-            Assert.True(NamingConvention.GetKebabCase("FooBarZaz") == "foo-bar-zaz");
-            Assert.True(NamingConvention.GetKebabCase("foo bar zaz") == "foo-bar-zaz");
-            Assert.True(NamingConvention.GetKebabCase("foo-bar-zaz") == "foo-bar-zaz");
-            Assert.True(NamingConvention.GetKebabCase("foo_bar_zaz") == "foo-bar-zaz");
         }
     }
 }
