@@ -81,7 +81,7 @@ namespace CatFactory
         }
 
         /// <summary>
-        /// Gets a PamelCase style string
+        /// Gets a CamelCase style string
         /// </summary>
         /// <param name="source">Source string</param>
         /// <returns>A <see cref="string"/> that represents PascalString for source string</returns>
@@ -191,7 +191,7 @@ namespace CatFactory
         }
 
         /// <summary>
-        /// Gets a kebab-case style string
+        /// Creates  a kebab-case style string
         /// </summary>
         /// <param name="source">Source string</param>
         /// <returns>A <see cref="string"/> that represents kebab-case for source string</returns>
