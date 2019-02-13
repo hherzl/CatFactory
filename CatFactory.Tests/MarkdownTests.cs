@@ -482,5 +482,21 @@ namespace CatFactory.Tests
 
             File.WriteAllText("C:\\Temp\\CatFactory\\tests.README.md", readme.ToString());
         }
+
+        [Fact]
+        public void TestToDoMd()
+        {
+            var readme = new MdDocument();
+
+            readme.H1("To Do");
+
+            readme.TaskList(
+                new MdTask(true, "First"),
+                new MdTask(false, "Second"),
+                new MdTask(true, "Third")
+            );
+
+            File.WriteAllText("C:\\Temp\\CatFactory\\tasks.README.md", readme.ToString());
+        }
     }
 }

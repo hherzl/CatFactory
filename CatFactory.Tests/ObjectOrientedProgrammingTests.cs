@@ -30,7 +30,12 @@ namespace CatFactory.Tests
             };
 
             // Act
+
             // Assert
+            Assert.True(definition.AccessModifier == AccessModifier.Private);
+            Assert.True(definition.Properties[0].AccessModifier == AccessModifier.Private);
+            Assert.True(definition.Properties[1].AccessModifier == AccessModifier.Private);
+            Assert.True(definition.Properties[2].AccessModifier == AccessModifier.Private);
         }
 
         [Fact]
@@ -66,7 +71,10 @@ namespace CatFactory.Tests
             };
 
             // Act
+
             // Assert
+            Assert.True(definition.AccessModifier == AccessModifier.Private);
+            Assert.True(definition.Properties[0].AccessModifier == AccessModifier.Private);
         }
 
         [Fact]
@@ -78,7 +86,6 @@ namespace CatFactory.Tests
                 Namespaces =
                 {
                     "System",
-                    "System.ComponentModel",
                     "System.ComponentModel"
                 },
                 Name = "PersonViewModel",
@@ -92,11 +99,11 @@ namespace CatFactory.Tests
                 },
                 Fields =
                 {
-                    new FieldDefinition(AccessModifier.Private, "String", "m_firstName")
+                    new FieldDefinition("String", "m_firstName")
                 }
             };
 
-            definition.Properties.Add(new PropertyDefinition("String", "FirstName")
+            definition.Properties.Add(new PropertyDefinition(AccessModifier.Public, "String", "FirstName")
             {
                 GetBody =
                 {
@@ -114,45 +121,55 @@ namespace CatFactory.Tests
             });
 
             // Act
+
             // Assert
+            Assert.True(definition.AccessModifier == AccessModifier.Private);
+            Assert.True(definition.Events[0].AccessModifier == AccessModifier.Private);
+            Assert.True(definition.Fields[0].AccessModifier == AccessModifier.Private);
+            Assert.True(definition.Properties[0].AccessModifier == AccessModifier.Public);
         }
 
         [Fact]
         public void TestInheritance()
         {
             // Arrange
-            var dbContextClassDefinition = new ClassDefinition
+            var classDefinition = new ClassDefinition
             {
-                Name = "StoreDbContext",
+                Name = "OnlineStoreDbContext",
                 BaseClass = "Microsoft.EntityFrameworkCore.DbContext"
             };
 
-            var repositoryInterfaceDefinition = new InterfaceDefinition
+            var interfaceDefinition = new InterfaceDefinition
             {
-                Name = "ISalesRepository",
+                Name = "ISalesService",
                 Implements =
                 {
-                    "IRepository"
+                    "IService"
                 }
             };
 
-            var savingTypeEnum = new EnumDefinition
+            var enumDefinition = new EnumDefinition
             {
-                Name = "SavingType",
-                BaseType = "int"
+                Name = "FlowStatus",
+                BaseType = "int",
+                Sets =
+                {
+                    new NameValue("Created", "0"),
+                    new NameValue("Started", "10")
+                }
             };
 
             // Act
 
             // Assert
-            Assert.True(dbContextClassDefinition.HasInheritance);
-            Assert.True(dbContextClassDefinition.BaseClass != null);
-            Assert.True(dbContextClassDefinition.Implements.Count == 0);
+            Assert.True(classDefinition.HasInheritance);
+            Assert.True(classDefinition.BaseClass != null);
+            Assert.True(classDefinition.Implements.Count == 0);
 
-            Assert.True(repositoryInterfaceDefinition.HasInheritance);
-            Assert.False(repositoryInterfaceDefinition.Implements.Count == 0);
+            Assert.True(interfaceDefinition.HasInheritance);
+            Assert.False(interfaceDefinition.Implements.Count == 0);
 
-            Assert.True(savingTypeEnum.HasInheritance);
+            Assert.True(enumDefinition.HasInheritance);
         }
     }
 }

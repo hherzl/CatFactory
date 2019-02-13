@@ -5,29 +5,29 @@ using CatFactory.CodeFactory;
 namespace CatFactory.ObjectOrientedProgramming
 {
     /// <summary>
-    /// 
+    /// Represents a definition for Indexer in Object Oriented Programming context
     /// </summary>
     public class IndexerDefinition : IMemberDefinition
     {
         /// <summary>
-        /// 
+        /// Initializes a new instance of <see cref="IndexerDefinition"/> class
         /// </summary>
         public IndexerDefinition()
         {
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the access modifier for current indexer definition
         /// </summary>
         public AccessModifier AccessModifier { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets the type for current indexer definition
         /// </summary>
         public string Type { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets the name for current indexer definition
         /// </summary>
         public string Name { get; set; } = "this";
 
@@ -35,7 +35,7 @@ namespace CatFactory.ObjectOrientedProgramming
         private List<ParameterDefinition> m_parameters;
 
         /// <summary>
-        /// 
+        /// Gets or sets the parameters for current indexer definition
         /// </summary>
         public List<ParameterDefinition> Parameters
         {
@@ -53,7 +53,7 @@ namespace CatFactory.ObjectOrientedProgramming
         private List<ILine> m_getBody;
 
         /// <summary>
-        /// 
+        /// Gets or sets the get body for current indexer definition
         /// </summary>
         public List<ILine> GetBody
         {
@@ -71,7 +71,7 @@ namespace CatFactory.ObjectOrientedProgramming
         private List<ILine> m_setBody;
 
         /// <summary>
-        /// 
+        /// Gets or sets the set body for current indexer definition
         /// </summary>
         public List<ILine> SetBody
         {

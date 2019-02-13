@@ -4,32 +4,32 @@ using System.Diagnostics;
 namespace CatFactory.ObjectOrientedProgramming
 {
     /// <summary>
-    /// 
+    /// Represents a name and value value
     /// </summary>
     [DebuggerDisplay("Name={Name}, Value={Value}")]
     public class NameValue : INameValue
     {
         /// <summary>
-        /// 
+        /// Initializes a new instance of <see cref="NameValue"/> class
         /// </summary>
         public NameValue()
         {
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of <see cref="NameValue"/> class
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="name">Name</param>
         public NameValue(string name)
         {
             Name = name;
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of <see cref="NameValue"/> class
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="value"></param>
+        /// <param name="name">Name</param>
+        /// <param name="value">Value</param>
         public NameValue(string name, string value)
         {
             Name = name;
@@ -37,12 +37,12 @@ namespace CatFactory.ObjectOrientedProgramming
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the name
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets the value
         /// </summary>
         public string Value { get; set; }
 
@@ -50,7 +50,7 @@ namespace CatFactory.ObjectOrientedProgramming
         private Documentation m_documentation;
 
         /// <summary>
-        /// 
+        /// Gets or sets the XML documentation comments
         /// </summary>
         public Documentation Documentation
         {
@@ -68,7 +68,7 @@ namespace CatFactory.ObjectOrientedProgramming
         private List<MetadataAttribute> m_attributes;
 
         /// <summary>
-        /// 
+        /// Gets or sets the metadata attributes
         /// </summary>
         public List<MetadataAttribute> Attributes
         {
