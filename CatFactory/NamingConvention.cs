@@ -21,6 +21,7 @@ namespace CatFactory
         private static bool HasUpper(string source)
             => source.Any(char.IsUpper);
 
+        // ReSharper disable once UnusedMember.Local
         private static bool HasLower(string source)
             => source.Any(char.IsLower);
 
@@ -207,7 +208,7 @@ namespace CatFactory
         /// separated with one underscore character (_) and no spaces, with each element's initial letter usually
         /// lowercased within the compound and the first letter either upper- or lowercase—as in "foo_bar" and
         /// "Hello_world". It is commonly used in computer code for variable names, and function names, and sometimes
-        /// computer filenames.[1] At least one study found that readers can recognize snake case values more quickly
+        /// computer file names.[1] At least one study found that readers can recognize snake case values more quickly
         /// than camelCase.[2]
         /// </remarks>
         public static string GetSnakeCase(string source)
@@ -248,6 +249,13 @@ namespace CatFactory
 
         /// <summary>
         /// Creates  a kebab-case style string
+        /// <!-- https://en.wikipedia.org/wiki/Letter_case#Special_case_styles -->
+        /// "the-quick-brown-fox-jumps-over-the-lazy-dog"
+        /// Similar to snake case, above, except hyphens rather than underscores are used to replace spaces.
+        /// It is also known as spinal case, param case, Lisp case, and dash case (or illustratively as kebab-case) 
+        /// If every word is capitalized, the style is known as train case (TRAIN-CASE).[citation needed] 
+        /// Perl6 supports kebab case style. remark addition: It is also common for use in angular file names.
+        /// which off course is relevant for a like generator like this one.
         /// </summary>
         /// <param name="source">Source string</param>
         /// <returns>A <see cref="string"/> that represents kebab-case for source string</returns>
