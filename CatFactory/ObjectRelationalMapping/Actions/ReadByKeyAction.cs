@@ -1,4 +1,4 @@
-﻿namespace CatFactory.ObjectRelationalMapping
+﻿namespace CatFactory.ObjectRelationalMapping.Actions
 {
     /// <summary>
     /// Represents a read by key operation for entity

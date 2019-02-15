@@ -1,4 +1,4 @@
-﻿namespace CatFactory.ObjectRelationalMapping
+﻿namespace CatFactory.ObjectRelationalMapping.Actions
 {
     /// <summary>
     /// Represents a remove operation for entity

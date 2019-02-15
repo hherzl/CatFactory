@@ -1,4 +1,4 @@
-﻿namespace CatFactory.ObjectRelationalMapping
+﻿namespace CatFactory.ObjectRelationalMapping.Actions
 {
     /// <summary>
     /// Represents an action for entity in object relational mapping context

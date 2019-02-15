@@ -11,7 +11,6 @@ namespace CatFactory
     /// <remarks>Thanks to ewmccarty <!-- https://github.com/ewmccarty --> by adding XML comments for GetCamelCase, GetPascalCase and GetSnakeCase methods.</remarks>
     public static class NamingConvention
     {
-        // ReSharper disable once UnusedMember.Local
         private static bool IsLower(string source)
             => source.ToLower() == source;
 
@@ -21,7 +20,6 @@ namespace CatFactory
         private static bool HasUpper(string source)
             => source.Any(char.IsUpper);
 
-        // ReSharper disable once UnusedMember.Local
         private static bool HasLower(string source)
             => source.Any(char.IsLower);
 
@@ -298,9 +296,7 @@ namespace CatFactory
                 name.Add(source);
             }
 
-            var retValue = string.Join("-", name).ToLower();
-            return retValue;
+            return string.Join("-", name).ToLower();
         }
-
     }
 }

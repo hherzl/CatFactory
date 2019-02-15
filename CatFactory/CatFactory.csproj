@@ -16,6 +16,8 @@ This package allows to define CLR objects and database objects.
     <PackageReleaseNotes>1.0.0-beta-sun-build17 Version:
 
 * Addition of actions for Entity in ObjectRelationalMapping namespace
+* Addition of XML comments for GetCamelCase, GetPascalCase and GetSnakeCase methods, courtesy of ewmccarty
+* Addition of GetKebabCase method in NamingConvention, courtesy of Christian-Schiffer
 </PackageReleaseNotes>
   </PropertyGroup>
 
