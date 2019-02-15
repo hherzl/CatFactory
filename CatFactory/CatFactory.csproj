@@ -18,6 +18,7 @@ This package allows to define CLR objects and database objects.
 * Addition of actions for Entity in ObjectRelationalMapping namespace
 * Addition of XML comments for GetCamelCase, GetPascalCase and GetSnakeCase methods, courtesy of ewmccarty
 * Addition of GetKebabCase method in NamingConvention, courtesy of Christian-Schiffer
+* Add Xml documentation for Collections namespace
 </PackageReleaseNotes>
   </PropertyGroup>
 
