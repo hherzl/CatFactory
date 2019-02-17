@@ -26,6 +26,19 @@ namespace CatFactory.ObjectOrientedProgramming
             Name = name;
         }
 
+        /// <summary>
+        /// Initializes a new instance of <see cref="EventDefinition"/> class
+        /// </summary>
+        /// <param name="accessModifier">Access modifier</param>
+        /// <param name="type">Type</param>
+        /// <param name="name">Name</param>
+        public EventDefinition(AccessModifier accessModifier, string type, string name)
+        {
+            AccessModifier = accessModifier;
+            Type = type;
+            Name = name;
+        }
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private Documentation m_documentation;
 
