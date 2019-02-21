@@ -42,12 +42,20 @@ namespace CatFactory.CodeFactory.Scaffolding
         /// <summary>
         /// 
         /// </summary>
-        public string Name { get; set; }
+        /// <param name="name"></param>
+        /// <param name="dbObjects"></param>
+        /// <param name="project"></param>
+        public ProjectFeature(string name, IEnumerable<IDbObject> dbObjects, IProject<TProjectSettings> project)
+        {
+            Name = name;
+            DbObjects.AddRange(dbObjects);
+            Project = project;
+        }
 
         /// <summary>
         /// 
         /// </summary>
-        public string Description { get; set; }
+        public string Name { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<IDbObject> m_dbObjects;
@@ -71,6 +79,11 @@ namespace CatFactory.CodeFactory.Scaffolding
         /// 
         /// </summary>
         [XmlIgnore]
-        public Project<TProjectSettings> Project { get; set; }
+        public IProject<TProjectSettings> Project { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Description { get; set; }
     }
 }

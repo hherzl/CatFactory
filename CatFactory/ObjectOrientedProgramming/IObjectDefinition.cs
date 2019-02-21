@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using CatFactory.ObjectRelationalMapping;
 
 namespace CatFactory.ObjectOrientedProgramming
 {
@@ -41,5 +42,10 @@ namespace CatFactory.ObjectOrientedProgramming
         /// Gets the full name (Namespace.Name) for object definition
         /// </summary>
         string FullName { get; }
+
+        /// <summary>
+        /// Gets or sets the DB object
+        /// </summary>
+        IDbObject DbObject { get; set; }
     }
 }

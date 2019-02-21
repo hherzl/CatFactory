@@ -12,8 +12,8 @@ namespace CatFactory.Tests
         public void SerializeMockDatabaseToXmlTest()
         {
             // Arrange
-            var fileName = "C:\\Temp\\CatFactory\\OnLineStore.xml";
-            var database = Databases.OnLineStore;
+            var fileName = "C:\\Temp\\CatFactory\\OnlineStore.xml";
+            var database = Databases.OnlineStore;
             var xml = XmlSerializerHelper.Serialize(database);
 
             // Act
@@ -24,7 +24,7 @@ namespace CatFactory.Tests
             // Assert
             Assert.True(database.Name == deserializedDatabase.Name);
             Assert.True(database.Tables.Count == deserializedDatabase.Tables.Count);
-            Assert.True(database.FindTable("Sales.Order").FullName == deserializedDatabase.FindTable("Sales.Order").FullName);
+            Assert.True(database.FindTable("Sales.OrderHeader").FullName == deserializedDatabase.FindTable("Sales.OrderHeader").FullName);
             Assert.True(database.Views.Count == deserializedDatabase.Views.Count);
         }
 
@@ -32,8 +32,8 @@ namespace CatFactory.Tests
         public void SerializeMockDatabaseToJsonTest()
         {
             // Arrange
-            var database = Databases.OnLineStore;
-            var fileName = "C:\\Temp\\CatFactory\\OnLineStore.json";
+            var database = Databases.OnlineStore;
+            var fileName = "C:\\Temp\\CatFactory\\OnlineStore.json";
 
             // Act
             var json = JsonConvert.SerializeObject(database);
@@ -45,7 +45,7 @@ namespace CatFactory.Tests
             // Assert
             Assert.True(database.Name == deserializedDatabase.Name);
             Assert.True(database.Tables.Count == deserializedDatabase.Tables.Count);
-            Assert.True(database.FindTable("Sales.Order").FullName == deserializedDatabase.FindTable("Sales.Order").FullName);
+            Assert.True(database.FindTable("Sales.OrderHeader").FullName == deserializedDatabase.FindTable("Sales.OrderHeader").FullName);
             Assert.True(database.Views.Count == deserializedDatabase.Views.Count);
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using CatFactory.ObjectOrientedProgramming;
 using CatFactory.ObjectRelationalMapping;
 using Microsoft.Extensions.Logging;
 
@@ -13,6 +14,16 @@ namespace CatFactory.CodeFactory.Scaffolding
     [DebuggerDisplay("Name={Name}, OutputDirectory={OutputDirectory}, Features={Features.Count}, Selections={Selections.Count}")]
     public class Project<TProjectSettings> : IProject<TProjectSettings> where TProjectSettings : class, IProjectSettings, new()
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        public event ScaffoldingDefinition ScaffoldingDefinition;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public event ScaffoldedDefinition ScaffoldedDefinition;
+
         /// <summary>
         /// 
         /// </summary>
@@ -149,11 +160,6 @@ namespace CatFactory.CodeFactory.Scaffolding
         /// <summary>
         /// 
         /// </summary>
-        public event ScaffoldingDefinition ScaffoldingDefinition;
-
-        /// <summary>
-        /// 
-        /// </summary>
         /// <param name="args"></param>
         protected void OnScaffoldingDefinition(ScaffoldingDefinitionEventArgs args)
         {
@@ -163,15 +169,35 @@ namespace CatFactory.CodeFactory.Scaffolding
         /// <summary>
         /// 
         /// </summary>
-        public event ScaffoldedDefinition ScaffoldedDefinition;
-
-        /// <summary>
-        /// 
-        /// </summary>
         /// <param name="args"></param>
         protected void OnScaffoldedDefinition(ScaffoldedDefinitionEventArgs args)
         {
             ScaffoldedDefinition?.Invoke(this, args);
+        }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<IObjectDefinition> m_objectDefinitions;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<IObjectDefinition> ObjectDefinitions
+        {
+            get
+            {
+                return m_objectDefinitions;
+            }
+            set
+            {
+                m_objectDefinitions = value;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual void Scaffold()
+        {
         }
     }
 }

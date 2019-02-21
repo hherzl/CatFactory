@@ -7,10 +7,10 @@ namespace CatFactory.Tests
     public class ValidationTests
     {
         [Fact]
-        public void ValidateStoreDatabase()
+        public void ValidateOnlineStoreDatabase()
         {
             // Arrange
-            var db = Databases.OnLineStore;
+            var db = Databases.OnlineStore;
             var dbValidator = new DatabaseValidator();
 
             // Act

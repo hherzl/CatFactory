@@ -4,7 +4,7 @@ namespace CatFactory.Tests.Models
 {
     public static partial class Databases
     {
-        public static Database OnLineStore
+        public static Database OnlineStore
             => new Database
             {
                 Name = "OnlineStore",
@@ -105,17 +105,17 @@ namespace CatFactory.Tests.Models
                     new Table
                     {
                         Schema = "Sales",
-                        Name = "Order",
+                        Name = "OrderHeader",
                         Columns =
                         {
-                            new Column { Name = "OrderID", Type = "bigint" },
+                            new Column { Name = "OrderHeaderID", Type = "bigint" },
                             new Column { Name = "OrderDate", Type = "datetime" },
                             new Column { Name = "CustomerID", Type = "int" },
                             new Column { Name = "EmployeeID", Type = "int" },
                             new Column { Name = "ShipperID", Type = "datetime" },
                             new Column { Name = "Comments", Type = "varchar", Length = 255, Nullable = true }
                         },
-                        Identity = new Identity("OrderID")
+                        Identity = new Identity("OrderHeaderID")
                     },
                     new Table
                     {
@@ -123,14 +123,14 @@ namespace CatFactory.Tests.Models
                         Name = "OrderDetail",
                         Columns =
                         {
-                            new Column { Name = "OrderID", Type = "bigint" },
+                            new Column { Name = "OrderHeaderID", Type = "bigint" },
                             new Column { Name = "ProductID", Type = "int" },
                             new Column { Name = "ProductName", Type = "varchar", Length = 255 },
                             new Column { Name = "UnitPrice", Type = "decimal", Prec = 8, Scale = 4 },
                             new Column { Name = "Quantity", Type = "int" },
                             new Column { Name = "Total", Type = "decimal", Prec = 8, Scale = 4 }
                         },
-                        PrimaryKey = new PrimaryKey("OrderID", "ProductID")
+                        PrimaryKey = new PrimaryKey("OrderHeaderID", "ProductID")
                     }
                 },
                 Views =
@@ -141,7 +141,7 @@ namespace CatFactory.Tests.Models
                         Name = "OrderSummary",
                         Columns =
                         {
-                            new Column { Name = "OrderID", Type = "int" },
+                            new Column { Name = "OrderHeaderID", Type = "bigint" },
                             new Column { Name = "OrderDate", Type = "datetime" },
                             new Column { Name = "CustomerName", Type = "varchar", Length = 100 },
                             new Column { Name = "EmployeeName", Type = "varchar", Length = 100 },
