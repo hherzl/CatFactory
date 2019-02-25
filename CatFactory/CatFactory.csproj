@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <Version>1.0.0-beta-sun-build18</Version>
+    <Version>1.0.0-beta-sun-build19</Version>
     <Authors>H. Herzl</Authors>
     <Company>Herzl Corp.</Company>
     <Description>This is the core for CatFactory engine and the base for child packages.
@@ -13,10 +13,10 @@ This package allows to define CLR objects and database objects.
     <RepositoryUrl>https://github.com/hherzl/CatFactory</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Markdown Markup OOP ORM Scaffolding</PackageTags>
-    <PackageReleaseNotes>1.0.0-beta-sun-build18 Version:
+    <PackageReleaseNotes>1.0.0-beta-sun-build19 Version:
 
-* Addition of IDbObject property in IObjectDefinition interface
-* Addition of ObjectDefinitions property and Scaffold method in Project class
+* Remove of Scaffold method with no parameters in Project class
+* Remove ObjectDefinitions property in Project class
 </PackageReleaseNotes>
   </PropertyGroup>
 

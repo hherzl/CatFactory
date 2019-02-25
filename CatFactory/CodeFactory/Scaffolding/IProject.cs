@@ -75,11 +75,9 @@ namespace CatFactory.CodeFactory.Scaffolding
         /// <summary>
         /// 
         /// </summary>
-        List<IObjectDefinition> ObjectDefinitions { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        void Scaffold();
+        /// <param name="objectDefinition"></param>
+        /// <param name="outputDirectory"></param>
+        /// <param name="subdirectory"></param>
+        void Scaffold(IObjectDefinition objectDefinition, string outputDirectory, string subdirectory = "");
     }
 }

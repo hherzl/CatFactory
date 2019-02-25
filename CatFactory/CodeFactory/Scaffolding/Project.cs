@@ -148,13 +148,20 @@ namespace CatFactory.CodeFactory.Scaffolding
                     .DbObjects
                     .Select(item => item.Schema)
                     .Distinct()
-                    .Select(schema => new ProjectFeature<TProjectSettings>(schema, Database.GetDbObjectsBySchema(schema))
-                    {
-                        Project = this
-                    })
+                    .Select(schema => new ProjectFeature<TProjectSettings>(schema, Database.GetDbObjectsBySchema(schema), this))
                     .ToList()
                     );
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="objectDefinition"></param>
+        /// <param name="outputDirectory"></param>
+        /// <param name="subdirectory"></param>
+        public virtual void Scaffold(IObjectDefinition objectDefinition, string outputDirectory, string subdirectory = "")
+        {
         }
 
         /// <summary>
@@ -173,31 +180,6 @@ namespace CatFactory.CodeFactory.Scaffolding
         protected void OnScaffoldedDefinition(ScaffoldedDefinitionEventArgs args)
         {
             ScaffoldedDefinition?.Invoke(this, args);
-        }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<IObjectDefinition> m_objectDefinitions;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public List<IObjectDefinition> ObjectDefinitions
-        {
-            get
-            {
-                return m_objectDefinitions;
-            }
-            set
-            {
-                m_objectDefinitions = value;
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public virtual void Scaffold()
-        {
         }
     }
 }
