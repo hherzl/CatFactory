@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using CatFactory.ObjectOrientedProgramming;
 using CatFactory.ObjectRelationalMapping;
 using Microsoft.Extensions.Logging;
 
@@ -13,6 +14,16 @@ namespace CatFactory.CodeFactory.Scaffolding
     [DebuggerDisplay("Name={Name}, OutputDirectory={OutputDirectory}, Features={Features.Count}, Selections={Selections.Count}")]
     public class Project<TProjectSettings> : IProject<TProjectSettings> where TProjectSettings : class, IProjectSettings, new()
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        public event ScaffoldingDefinition ScaffoldingDefinition;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public event ScaffoldedDefinition ScaffoldedDefinition;
+
         /// <summary>
         /// 
         /// </summary>
@@ -137,10 +148,7 @@ namespace CatFactory.CodeFactory.Scaffolding
                     .DbObjects
                     .Select(item => item.Schema)
                     .Distinct()
-                    .Select(schema => new ProjectFeature<TProjectSettings>(schema, Database.GetDbObjectsBySchema(schema))
-                    {
-                        Project = this
-                    })
+                    .Select(schema => new ProjectFeature<TProjectSettings>(schema, Database.GetDbObjectsBySchema(schema), this))
                     .ToList()
                     );
             }
@@ -149,7 +157,12 @@ namespace CatFactory.CodeFactory.Scaffolding
         /// <summary>
         /// 
         /// </summary>
-        public event ScaffoldingDefinition ScaffoldingDefinition;
+        /// <param name="objectDefinition"></param>
+        /// <param name="outputDirectory"></param>
+        /// <param name="subdirectory"></param>
+        public virtual void Scaffold(IObjectDefinition objectDefinition, string outputDirectory, string subdirectory = "")
+        {
+        }
 
         /// <summary>
         /// 
@@ -159,11 +172,6 @@ namespace CatFactory.CodeFactory.Scaffolding
         {
             ScaffoldingDefinition?.Invoke(this, args);
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public event ScaffoldedDefinition ScaffoldedDefinition;
 
         /// <summary>
         /// 

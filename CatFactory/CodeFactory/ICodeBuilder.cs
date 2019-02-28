@@ -11,6 +11,11 @@ namespace CatFactory.CodeFactory
         /// <summary>
         /// 
         /// </summary>
+        event TranslatedDefinition TranslatedDefinition;
+
+        /// <summary>
+        /// 
+        /// </summary>
         string Tab { get; set; }
 
         /// <summary>
@@ -49,11 +54,6 @@ namespace CatFactory.CodeFactory
         /// 
         /// </summary>
         List<ILine> Lines { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        event TranslatedDefinition TranslatedDefinition;
 
         /// <summary>
         /// 

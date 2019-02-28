@@ -12,8 +12,8 @@ namespace CatFactory.Tests
             // Arrange
             var project = new Project<ProjectSettings>
             {
-                Name = "OnLineStore",
-                Database = Databases.OnLineStore
+                Name = "OnlineStore",
+                Database = Databases.OnlineStore
             };
 
             // Act

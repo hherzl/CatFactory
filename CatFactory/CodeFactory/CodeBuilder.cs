@@ -14,6 +14,11 @@ namespace CatFactory.CodeFactory
     public class CodeBuilder : ICodeBuilder
     {
         /// <summary>
+        /// Occurs when the object definition has been translated
+        /// </summary>
+        public event TranslatedDefinition TranslatedDefinition;
+
+        /// <summary>
         /// Initializes a new instance of <see cref="CodeBuilder"/> class
         /// </summary>
         public CodeBuilder()
@@ -71,7 +76,7 @@ namespace CatFactory.CodeFactory
         public IObjectDefinition ObjectDefinition { get; set; }
 
         /// <summary>
-        /// Translate object definition to code lines
+        /// Translates object definition to code lines
         /// </summary>
         public virtual void Translating()
         {
@@ -96,9 +101,14 @@ namespace CatFactory.CodeFactory
         }
 
         /// <summary>
-        /// Occurs when the object definition has been translated
+        /// Gets or sets the output directory
         /// </summary>
-        public event TranslatedDefinition TranslatedDefinition;
+        public string OutputDirectory { get; set; }
+
+        /// <summary>
+        /// Gets or sets a flag that indicates if code builder must to force overwrite
+        /// </summary>
+        public bool ForceOverwrite { get; set; }
 
         /// <summary>
         /// Raises the <see cref="TranslatedDefinition"/> event
@@ -108,16 +118,6 @@ namespace CatFactory.CodeFactory
         {
             TranslatedDefinition?.Invoke(this, args);
         }
-
-        /// <summary>
-        /// Gets or sets the output directory
-        /// </summary>
-        public string OutputDirectory { get; set; }
-
-        /// <summary>
-        /// Gets or sets a flag that indicates if code builder must to force overwrite
-        /// </summary>
-        public bool ForceOverwrite { get; set; }
 
         /// <summary>
         /// Creates the output directory for code file
@@ -148,7 +148,7 @@ namespace CatFactory.CodeFactory
             var filePath = string.IsNullOrEmpty(fileName) ? Path.Combine(OutputDirectory, subdirectory, FilePath) : Path.Combine(OutputDirectory, subdirectory, fileName);
 
             if (!ForceOverwrite && File.Exists(filePath))
-                throw new CodeFactoryException(string.Format("The '{0}' file alread exists, if you want to overwrite set ForceOverwrite property as true", filePath));
+                throw new CodeFactoryException(string.Format("The '{0}' file already exists, if you want to overwrite it, set ForceOverwrite property as true", filePath));
 
             if (!string.IsNullOrEmpty(subdirectory))
             {

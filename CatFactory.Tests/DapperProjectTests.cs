@@ -14,8 +14,8 @@ namespace CatFactory.Tests
             // Arrange
             var project = new DapperProject
             {
-                Name = "Store",
-                Database = Databases.OnLineStore,
+                Name = "OnlineStore",
+                Database = Databases.OnlineStore,
                 OutputDirectory = "C:\\Temp\\CatFactory\\Dapper",
                 AuthorInfo = new AuthorInfo
                 {

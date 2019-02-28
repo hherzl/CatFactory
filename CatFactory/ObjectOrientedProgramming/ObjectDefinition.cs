@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using CatFactory.ObjectRelationalMapping;
 
 namespace CatFactory.ObjectOrientedProgramming
 {
@@ -78,6 +79,11 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public virtual string FullName
             => string.IsNullOrEmpty(Namespace) ? Name : string.Format("{0}.{1}", Namespace, Name);
+
+        /// <summary>
+        /// Gets or sets the DB object
+        /// </summary>
+        public IDbObject DbObject { get; set; }
 
         /// <summary>
         /// Indicates if current object definition has inheritance

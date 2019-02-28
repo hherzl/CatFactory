@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <Version>1.0.0-beta-sun-build17</Version>
+    <Version>1.0.0-beta-sun-build19</Version>
     <Authors>H. Herzl</Authors>
     <Company>Herzl Corp.</Company>
     <Description>This is the core for CatFactory engine and the base for child packages.
@@ -13,13 +13,10 @@ This package allows to define CLR objects and database objects.
     <RepositoryUrl>https://github.com/hherzl/CatFactory</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Markdown Markup OOP ORM Scaffolding</PackageTags>
-    <PackageReleaseNotes>1.0.0-beta-sun-build17 Version:
+    <PackageReleaseNotes>1.0.0-beta-sun-build19 Version:
 
-* Addition of actions for Entity in ObjectRelationalMapping namespace
-* Addition of XML comments for GetCamelCase, GetPascalCase and GetSnakeCase methods, courtesy of ewmccarty
-* Addition of GetKebabCase method in NamingConvention, courtesy of Christian-Schiffer
-* Add Xml documentation for Collections namespace
-* Addition of constructor for EventDefinition class with Access Modifier
+* Remove of Scaffold method with no parameters in Project class
+* Remove ObjectDefinitions property in Project class
 </PackageReleaseNotes>
   </PropertyGroup>
 

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using CatFactory.ObjectOrientedProgramming;
 using CatFactory.ObjectRelationalMapping;
 using Microsoft.Extensions.Logging;
 
@@ -10,6 +11,16 @@ namespace CatFactory.CodeFactory.Scaffolding
     /// <typeparam name="TProjectSettings"></typeparam>
     public interface IProject<TProjectSettings> where TProjectSettings : class, IProjectSettings, new()
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        event ScaffoldingDefinition ScaffoldingDefinition;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        event ScaffoldedDefinition ScaffoldedDefinition;
+
         /// <summary>
         /// 
         /// </summary>
@@ -64,11 +75,9 @@ namespace CatFactory.CodeFactory.Scaffolding
         /// <summary>
         /// 
         /// </summary>
-        event ScaffoldingDefinition ScaffoldingDefinition;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        event ScaffoldedDefinition ScaffoldedDefinition;
+        /// <param name="objectDefinition"></param>
+        /// <param name="outputDirectory"></param>
+        /// <param name="subdirectory"></param>
+        void Scaffold(IObjectDefinition objectDefinition, string outputDirectory, string subdirectory = "");
     }
 }

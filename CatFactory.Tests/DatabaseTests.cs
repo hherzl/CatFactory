@@ -43,10 +43,10 @@ namespace CatFactory.Tests
         public void TestDatabaseTypeMaps()
         {
             // Arrange
-            var database = Databases.OnLineStore;
+            var database = Databases.OnlineStore;
 
             // Act
-            var table = database.FindTable("Sales.Order");
+            var table = database.FindTable("Sales.OrderHeader");
             var column = table.Columns[0];
             var clrType = database.DatabaseTypeMaps.FirstOrDefault(item => item.DatabaseType == column.Type);
 
