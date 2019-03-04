@@ -8,73 +8,73 @@ using Microsoft.Extensions.Logging;
 namespace CatFactory.CodeFactory.Scaffolding
 {
     /// <summary>
-    /// 
+    /// Represents a scaffolding project
     /// </summary>
-    /// <typeparam name="TProjectSettings"></typeparam>
+    /// <typeparam name="TProjectSettings">Settings for project</typeparam>
     [DebuggerDisplay("Name={Name}, OutputDirectory={OutputDirectory}, Features={Features.Count}, Selections={Selections.Count}")]
     public class Project<TProjectSettings> : IProject<TProjectSettings> where TProjectSettings : class, IProjectSettings, new()
     {
         /// <summary>
-        /// 
+        /// Occurs before of create the output file
         /// </summary>
         public event ScaffoldingDefinition ScaffoldingDefinition;
 
         /// <summary>
-        /// 
+        /// Occurs after of create the output file
         /// </summary>
         public event ScaffoldedDefinition ScaffoldedDefinition;
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of <see cref="Project{TProjectSettings}"/> class
         /// </summary>
         public Project()
         {
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of <see cref="Project{TProjectSettings}"/> class
         /// </summary>
-        /// <param name="logger"></param>
+        /// <param name="logger">Instance of <see cref="Logger{T}"/> class</param>
         public Project(ILogger<Project<TProjectSettings>> logger)
         {
             Logger = logger;
         }
 
         /// <summary>
-        /// 
+        /// Gets the instance of <see cref="Logger"/>
         /// </summary>
         public ILogger Logger { get; }
 
         /// <summary>
-        /// 
+        /// Gets or sets the name
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets the <see cref="Database"/> instance
         /// </summary>
         public Database Database { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets the implementation for <see cref="ICodeNamingConvention"/> interface
         /// </summary>
         public ICodeNamingConvention CodeNamingConvention { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets the implementation for <see cref="INamingConvention"/> interface
         /// </summary>
         public INamingService NamingService { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets the output directory
         /// </summary>
         public string OutputDirectory { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets a project feature by index
         /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
+        /// <param name="index">Project feature index</param>
+        /// <returns>A <see cref="Project{TProjectSettings}"/> from features list</returns>
         public ProjectFeature<TProjectSettings> this[int index]
         {
             get
@@ -91,7 +91,7 @@ namespace CatFactory.CodeFactory.Scaffolding
         private List<ProjectFeature<TProjectSettings>> m_features;
 
         /// <summary>
-        /// 
+        /// Gets or sets the features
         /// </summary>
         public List<ProjectFeature<TProjectSettings>> Features
         {
@@ -109,7 +109,7 @@ namespace CatFactory.CodeFactory.Scaffolding
         private List<ProjectSelection<TProjectSettings>> m_selections;
 
         /// <summary>
-        /// 
+        /// Gets or sets the selections
         /// </summary>
         public List<ProjectSelection<TProjectSettings>> Selections
         {
@@ -124,9 +124,9 @@ namespace CatFactory.CodeFactory.Scaffolding
         }
 
         /// <summary>
-        /// 
+        /// Adds an instance of <see cref="Project{TProjectSettings}"/> in features list
         /// </summary>
-        /// <param name="projectFeature"></param>
+        /// <param name="projectFeature">Instance of <see cref="Project{TProjectSettings}"/> class</param>
         public virtual void AddFeature(ProjectFeature<TProjectSettings> projectFeature)
         {
             projectFeature.Project = this;
@@ -135,7 +135,7 @@ namespace CatFactory.CodeFactory.Scaffolding
         }
 
         /// <summary>
-        /// 
+        /// Builds the features for project using <see cref="Database"/> representation
         /// </summary>
         public virtual void BuildFeatures()
         {
@@ -155,11 +155,11 @@ namespace CatFactory.CodeFactory.Scaffolding
         }
 
         /// <summary>
-        /// 
+        /// Scaffolds output files
         /// </summary>
-        /// <param name="objectDefinition"></param>
-        /// <param name="outputDirectory"></param>
-        /// <param name="subdirectory"></param>
+        /// <param name="objectDefinition">Implementation of <see cref="IObjectDefinition"/> interface</param>
+        /// <param name="outputDirectory">Output directory path</param>
+        /// <param name="subdirectory">Subdirectory name</param>
         public virtual void Scaffold(IObjectDefinition objectDefinition, string outputDirectory, string subdirectory = "")
         {
         }

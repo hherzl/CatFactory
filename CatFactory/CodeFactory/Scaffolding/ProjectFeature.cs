@@ -6,33 +6,33 @@ using CatFactory.ObjectRelationalMapping;
 namespace CatFactory.CodeFactory.Scaffolding
 {
     /// <summary>
-    /// 
+    /// Represents a feature for project
     /// </summary>
-    /// <typeparam name="TProjectSettings"></typeparam>
+    /// <typeparam name="TProjectSettings">Settings for project</typeparam>
     [DebuggerDisplay("Name={Name}, Description={Description}, DbObjects={DbObjects.Count}")]
     public class ProjectFeature<TProjectSettings> where TProjectSettings : class, IProjectSettings, new()
     {
         /// <summary>
-        /// 
+        /// Initializes a new instance of <see cref="ProjectFeature{TProjectSettings}"/> class
         /// </summary>
         public ProjectFeature()
         {
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of <see cref="ProjectFeature{TProjectSettings}"/> class
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="name">Feature name</param>
         public ProjectFeature(string name)
         {
             Name = name;
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of <see cref="ProjectFeature{TProjectSettings}"/> class
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="dbObjects"></param>
+        /// <param name="name">Feature name</param>
+        /// <param name="dbObjects">Sequence of <see cref="IDbObject"/> for the feature</param>
         public ProjectFeature(string name, IEnumerable<IDbObject> dbObjects)
         {
             Name = name;
@@ -40,11 +40,11 @@ namespace CatFactory.CodeFactory.Scaffolding
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of <see cref="ProjectFeature{TProjectSettings}"/> class
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="dbObjects"></param>
-        /// <param name="project"></param>
+        /// <param name="name">Feature name</param>
+        /// <param name="dbObjects">Sequence of <see cref="IDbObject"/> for the feature</param>
+        /// <param name="project">Project to which it belongs</param>
         public ProjectFeature(string name, IEnumerable<IDbObject> dbObjects, IProject<TProjectSettings> project)
         {
             Name = name;
@@ -53,7 +53,7 @@ namespace CatFactory.CodeFactory.Scaffolding
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the name
         /// </summary>
         public string Name { get; set; }
 
@@ -61,7 +61,7 @@ namespace CatFactory.CodeFactory.Scaffolding
         private List<IDbObject> m_dbObjects;
 
         /// <summary>
-        /// 
+        /// Gets or sets the database objects
         /// </summary>
         public List<IDbObject> DbObjects
         {
@@ -76,13 +76,13 @@ namespace CatFactory.CodeFactory.Scaffolding
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the project
         /// </summary>
         [XmlIgnore]
         public IProject<TProjectSettings> Project { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets the description
         /// </summary>
         public string Description { get; set; }
     }

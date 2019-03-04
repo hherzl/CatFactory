@@ -1,6 +1,4 @@
-﻿using CatFactory.CodeFactory.Scaffolding;
-
-namespace CatFactory.Tests.Models
+﻿namespace CatFactory.Tests.Models
 {
     public class EntityFrameworkCoreProjectSettings : ProjectSettings
     {

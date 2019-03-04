@@ -179,5 +179,23 @@ namespace CatFactory.ObjectOrientedProgramming
                 m_lines = value;
             }
         }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<string> m_namespacesForDependencies;
+
+        /// <summary>
+        /// Gets or sets the namespaces for dependencies
+        /// </summary>
+        public List<string> NamespacesForDependencies
+        {
+            get
+            {
+                return m_namespacesForDependencies ?? (m_namespacesForDependencies = new List<string>());
+            }
+            set
+            {
+                m_namespacesForDependencies = value;
+            }
+        }
     }
 }
