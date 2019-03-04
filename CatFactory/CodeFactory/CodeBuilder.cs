@@ -28,14 +28,14 @@ namespace CatFactory.CodeFactory
         /// <summary>
         /// Initializes a new instance of <see cref="CodeBuilder"/> class
         /// </summary>
-        /// <param name="logger"></param>
+        /// <param name="logger">Instance of <see cref="Logger"/> class</param>
         public CodeBuilder(ILogger<ICodeBuilder> logger)
         {
             Logger = logger;
         }
 
         /// <summary>
-        /// Gets the <see cref="Logger"/> instance for current code builder
+        /// Gets the <see cref="Logger"/> instance for current <see cref="CodeBuilder"/> instance
         /// </summary>
         protected ILogger Logger { get; }
 
@@ -45,10 +45,10 @@ namespace CatFactory.CodeFactory
         public string Tab { get; set; } = "\t";
 
         /// <summary>
-        /// Gets a string that contains tab according to count
+        /// Gets a <see cref="string"/> that contains indentation character
         /// </summary>
         /// <param name="count">Quantity of sequence</param>
-        /// <returns>A <see cref="string"/> that contains tab according to quantity</returns>
+        /// <returns>A <see cref="string"/> that contains indentation character</returns>
         public string Indent(int count)
             => string.Concat(Enumerable.Repeat(Tab, count));
 
