@@ -27,6 +27,29 @@ namespace CatFactory.ObjectRelationalMapping
         }
 
         /// <summary>
+        /// Initializes a new instance of <see cref="DbObject"/> class
+        /// </summary>
+        /// <param name="schema">Schema name</param>
+        /// <param name="name">Name</param>
+        public DbObject(string dataSource, string catalog, string schema, string name)
+        {
+            DataSource = dataSource;
+            Catalog = catalog;
+            Schema = schema;
+            Name = name;
+        }
+
+        /// <summary>
+        /// Data Source or Server
+        /// </summary>
+        public string DataSource { get; set; }
+
+        /// <summary>
+        /// Catalog or Database Name
+        /// </summary>
+        public string Catalog { get; set; }
+
+        /// <summary>
         /// Gets or sets the schema for current database object
         /// </summary>
         public string Schema { get; set; }

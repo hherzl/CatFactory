@@ -230,7 +230,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// <param name="dbObj"><see cref="IDbObject"/> instance</param>
         /// <returns>True if <see cref="IDbObject"/> has database's default schema, otherwise false</returns>
         public static bool HasDefaultSchema(this Database database, IDbObject dbObj)
-            => string.IsNullOrEmpty(dbObj.Schema) || string.Compare(dbObj.Schema, database.DefaultSchema, true) == 0;
+            => string.IsNullOrEmpty(dbObj?.Schema) || string.Compare(dbObj?.Schema, database.DefaultSchema, true) == 0;
 
         /// <summary>
         /// Validates if <see cref="Table"/> instance has a <see cref="Guid"/> as <see cref="PrimaryKey"/>
