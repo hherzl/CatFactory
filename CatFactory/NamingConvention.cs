@@ -107,6 +107,7 @@ namespace CatFactory
 
         /// <summary>
         /// Gets a CamelCase style string
+        ///
         /// </summary>
         /// <param name="source">Source string</param>
         /// <returns>A <see cref="string"/> that represents PascalString for source string</returns>
@@ -133,6 +134,8 @@ namespace CatFactory
         /// programming but is named after Charles Darwin because of the way it has "evolved" from more traditional
         /// conventions.[citation needed]
         /// </remarks>
+        /// <param name="source"></param>
+        /// <returns></returns>
         public static string GetPascalCase(string source)
         {
             if ((string.IsNullOrEmpty(source?.Trim())) || (source.Length == 0))
@@ -199,6 +202,7 @@ namespace CatFactory
 
         /// <summary>
         /// Gets a Snake_Case style string. Words are separated by underscore
+        ///
         /// </summary>
         /// <param name="source">Source string</param>
         /// <returns>A <see cref="string"/> that represents Snake_Case for source string</returns>
@@ -211,6 +215,8 @@ namespace CatFactory
         /// computer file names.[1] At least one study found that readers can recognize snake case values more quickly
         /// than camelCase.[2]
         /// </remarks>
+        /// <param name="source"></param>
+        /// <returns></returns>
         public static string GetSnakeCase(string source)
         {
             if (source.Length == 0)
