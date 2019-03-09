@@ -9,6 +9,8 @@ namespace CatFactory.ObjectRelationalMapping
 {
     /// <summary>
     /// Represents a database
+    /// TODO refactor to work with case sensitive database and/or collations as indicated by the data
+    /// <![CDATA[  https://www.webucator.com/how-to/how-check-case-sensitivity-sql-server.cfm  ]]>
     /// </summary>
     [DebuggerDisplay("Name={Name}, DbObjects={DbObjects.Count}, Tables={Tables.Count}, Views={Views.Count}")]
     public class Database
@@ -23,7 +25,12 @@ namespace CatFactory.ObjectRelationalMapping
         /// <summary>
         /// Gets or sets the name for database
         /// </summary>
-        public string Name { get; set; }
+        [System.Obsolete("Prefer Catalog over Name")]
+        public string Name
+        {
+            get => this.m_catalog;
+            set => this.m_catalog = value;
+        }
 
         /// <summary>
         /// Gets or sets the default schema for database
@@ -49,14 +56,8 @@ namespace CatFactory.ObjectRelationalMapping
         /// </summary>
         public List<DbObject> DbObjects
         {
-            get
-            {
-                return m_dbObjects ?? (m_dbObjects = new List<DbObject>());
-            }
-            set
-            {
-                m_dbObjects = value;
-            }
+            get { return m_dbObjects ?? (m_dbObjects = new List<DbObject>()); }
+            set { m_dbObjects = value; }
         }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -68,14 +69,8 @@ namespace CatFactory.ObjectRelationalMapping
         [XmlIgnore]
         public IDatabaseNamingConvention NamingConvention
         {
-            get
-            {
-                return m_namingConvention ?? (m_namingConvention = new DatabaseNamingConvention());
-            }
-            set
-            {
-                m_namingConvention = value;
-            }
+            get { return m_namingConvention ?? (m_namingConvention = new DatabaseNamingConvention()); }
+            set { m_namingConvention = value; }
         }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -86,14 +81,8 @@ namespace CatFactory.ObjectRelationalMapping
         /// </summary>
         public List<DatabaseTypeMap> DatabaseTypeMaps
         {
-            get
-            {
-                return m_databaseTypeMaps ?? (m_databaseTypeMaps = new List<DatabaseTypeMap>());
-            }
-            set
-            {
-                m_databaseTypeMaps = value;
-            }
+            get { return m_databaseTypeMaps ?? (m_databaseTypeMaps = new List<DatabaseTypeMap>()); }
+            set { m_databaseTypeMaps = value; }
         }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -104,14 +93,8 @@ namespace CatFactory.ObjectRelationalMapping
         /// </summary>
         public List<ExtendedProperty> ExtendedProperties
         {
-            get
-            {
-                return m_extendedProperties ?? (m_extendedProperties = new List<ExtendedProperty>());
-            }
-            set
-            {
-                m_extendedProperties = value;
-            }
+            get { return m_extendedProperties ?? (m_extendedProperties = new List<ExtendedProperty>()); }
+            set { m_extendedProperties = value; }
         }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -122,14 +105,8 @@ namespace CatFactory.ObjectRelationalMapping
         /// </summary>
         public List<Table> Tables
         {
-            get
-            {
-                return m_tables ?? (m_tables = new List<Table>());
-            }
-            set
-            {
-                m_tables = value;
-            }
+            get { return m_tables ?? (m_tables = new List<Table>()); }
+            set { m_tables = value; }
         }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -140,14 +117,8 @@ namespace CatFactory.ObjectRelationalMapping
         /// </summary>
         public List<View> Views
         {
-            get
-            {
-                return m_views ?? (m_views = new List<View>());
-            }
-            set
-            {
-                m_views = value;
-            }
+            get { return m_views ?? (m_views = new List<View>()); }
+            set { m_views = value; }
         }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -158,14 +129,8 @@ namespace CatFactory.ObjectRelationalMapping
         /// </summary>
         public List<ScalarFunction> ScalarFunctions
         {
-            get
-            {
-                return m_scalarFunctions ?? (m_scalarFunctions = new List<ScalarFunction>());
-            }
-            set
-            {
-                m_scalarFunctions = value;
-            }
+            get { return m_scalarFunctions ?? (m_scalarFunctions = new List<ScalarFunction>()); }
+            set { m_scalarFunctions = value; }
         }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -176,32 +141,36 @@ namespace CatFactory.ObjectRelationalMapping
         /// </summary>
         public List<TableFunction> TableFunctions
         {
-            get
-            {
-                return m_tableFunctions ?? (m_tableFunctions = new List<TableFunction>());
-            }
-            set
-            {
-                m_tableFunctions = value;
-            }
+            get { return m_tableFunctions ?? (m_tableFunctions = new List<TableFunction>()); }
+            set { m_tableFunctions = value; }
         }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<StoredProcedure> m_storedProcedures;
+
+        private String m_catalog;
 
         /// <summary>
         /// Gets or sets the store procedures
         /// </summary>
         public List<StoredProcedure> StoredProcedures
         {
-            get
-            {
-                return m_storedProcedures ?? (m_storedProcedures = new List<StoredProcedure>());
-            }
-            set
-            {
-                m_storedProcedures = value;
-            }
+            get { return m_storedProcedures ?? (m_storedProcedures = new List<StoredProcedure>()); }
+            set { m_storedProcedures = value; }
+        }
+
+        /// <summary>
+        /// Connection.DataSource or Server
+        /// </summary>
+        public String DataSource { get; set; }
+
+        /// <summary>
+        /// Database Name
+        /// </summary>
+        public String Catalog
+        {
+            get => this.m_catalog;
+            set => this.m_catalog = value;
         }
 
         /// <summary>
@@ -217,12 +186,26 @@ namespace CatFactory.ObjectRelationalMapping
         /// </summary>
         /// <param name="name">Name for table</param>
         /// <returns>A table</returns>
+        /// <remarks>
+        /// TODO refactor to work with case sensitive database and/or collations as indicated by the data
+        /// <![CDATA[  https://www.webucator.com/how-to/how-check-case-sensitivity-sql-server.cfm  ]]>
+        /// </remarks>
         public virtual Table FindTable(string name)
         {
-            var table = Tables.FirstOrDefault(item => string.Join(".", new string[] { item.Schema, item.Name }) == name);
+            String Join4(Table item) => string.Join
+                (".", new string[] {item.DataSource, item.Catalog, item.Schema, item.Name});
+
+            String Join3(Table item) => string.Join(".", new string[] {item.Catalog, item.Schema, item.Name});
+            String Join2(Table item) => string.Join(".", new string[] {item.Schema, item.Name});
+
+            var table = Tables.FirstOrDefault
+            (item => string.Equals(Join4(item: item), name, StringComparison.OrdinalIgnoreCase)
+                     || string.Equals(Join3(item: item), name, StringComparison.OrdinalIgnoreCase) || string.Equals
+                         (Join2(item: item), name, StringComparison.OrdinalIgnoreCase));
 
             if (table == null)
-                table = Tables.FirstOrDefault(item => string.Join(".", new string[] { Name, item.Schema, item.Name }) == name);
+                table = Tables.FirstOrDefault
+                    (item => string.Join(".", new string[] {Name, item.Schema, item.Name}) == name);
 
             return table;
         }
@@ -250,10 +233,11 @@ namespace CatFactory.ObjectRelationalMapping
         /// <returns>A view</returns>
         public virtual View FindView(string name)
         {
-            var view = Views.FirstOrDefault(item => string.Join(".", new string[] { item.Schema, item.Name }) == name);
+            var view = Views.FirstOrDefault(item => string.Join(".", new string[] {item.Schema, item.Name}) == name);
 
             if (view == null)
-                view = Views.FirstOrDefault(item => string.Join(".", new string[] { Name, item.Schema, item.Name }) == name);
+                view = Views.FirstOrDefault
+                    (item => string.Join(".", new string[] {Name, item.Schema, item.Name}) == name);
 
             return view;
         }

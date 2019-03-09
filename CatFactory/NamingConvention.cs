@@ -35,13 +35,13 @@ namespace CatFactory
         /// capital letter, with no intervening spaces or punctuation. Common examples include "iPhone" and "eBay".
         /// It is also sometimes used in online usernames such as "johnSmith", and to make multi-word domain names more
         /// legible, for example in advertisements.
-        /// 
+        ///
         /// Camel case is often used for variable names in computer programming. Some programming styles prefer camel
         /// case with the first letter capitalised, others not.[1][2][3] For clarity, this article calls the two
         /// alternatives upper camel case (initial uppercase letter, also known as Pascal case) and lower camel case
         /// (initial lowercase letter). Some people and organizations, notably Microsoft,[2] use the term camel case
         /// only for lower camel case. Pascal case means only upper camel case.
-        /// 
+        ///
         /// Camel case is distinct from Title Case, which capitalises all words but retains the spaces between them,
         /// and from Tall Man lettering, which uses capitals to emphasize the differences between similar-looking words
         /// such as "predniSONE" and "predniSOLONE". Camel case is also distinct from snake case, which uses underscores
@@ -96,15 +96,18 @@ namespace CatFactory
             }
             else
             {
-                if (source.Length == 1 || IsUpper(source))
+                if ((source.Length == 1) || IsUpper(source))
                     return source.ToLower();
 
-                return string.Format("{0}{1}", source[0].ToString().ToLower(), source.Substring(1)).Replace("_", string.Empty).Replace(".", string.Empty);
+                var lower = source[0].ToString().ToLower();
+                var substring = source.Substring(1);
+                return $"{lower}{substring}".Replace("_", string.Empty).Replace(".", string.Empty);
             }
         }
 
         /// <summary>
         /// Gets a CamelCase style string
+        ///
         /// </summary>
         /// <param name="source">Source string</param>
         /// <returns>A <see cref="string"/> that represents PascalString for source string</returns>
@@ -115,13 +118,13 @@ namespace CatFactory
         /// capital letter, with no intervening spaces or punctuation. Common examples include "iPhone" and "eBay".
         /// It is also sometimes used in online usernames such as "johnSmith", and to make multi-word domain names more
         /// legible, for example in advertisements.
-        /// 
+        ///
         /// Camel case is often used for variable names in computer programming. Some programming styles prefer camel
         /// case with the first letter capitalised, others not.[1][2][3] For clarity, this article calls the two
         /// alternatives upper camel case (initial uppercase letter, also known as Pascal case) and lower camel case
         /// (initial lowercase letter). Some people and organizations, notably Microsoft,[2] use the term camel case
         /// only for lower camel case. Pascal case means only upper camel case.
-        /// 
+        ///
         /// Camel case is distinct from Title Case, which capitalises all words but retains the spaces between them,
         /// and from Tall Man lettering, which uses capitals to emphasize the differences between similar-looking words
         /// such as "predniSONE" and "predniSOLONE". Camel case is also distinct from snake case, which uses underscores
@@ -131,9 +134,11 @@ namespace CatFactory
         /// programming but is named after Charles Darwin because of the way it has "evolved" from more traditional
         /// conventions.[citation needed]
         /// </remarks>
+        /// <param name="source"></param>
+        /// <returns></returns>
         public static string GetPascalCase(string source)
         {
-            if (source.Length == 0)
+            if ((string.IsNullOrEmpty(source?.Trim())) || (source.Length == 0))
                 return string.Empty;
 
             source = source.Replace("  ", " ").Trim();
@@ -197,6 +202,7 @@ namespace CatFactory
 
         /// <summary>
         /// Gets a Snake_Case style string. Words are separated by underscore
+        ///
         /// </summary>
         /// <param name="source">Source string</param>
         /// <returns>A <see cref="string"/> that represents Snake_Case for source string</returns>
@@ -209,6 +215,8 @@ namespace CatFactory
         /// computer file names.[1] At least one study found that readers can recognize snake case values more quickly
         /// than camelCase.[2]
         /// </remarks>
+        /// <param name="source"></param>
+        /// <returns></returns>
         public static string GetSnakeCase(string source)
         {
             if (source.Length == 0)
@@ -250,8 +258,8 @@ namespace CatFactory
         /// <!-- https://en.wikipedia.org/wiki/Letter_case#Special_case_styles -->
         /// "the-quick-brown-fox-jumps-over-the-lazy-dog"
         /// Similar to snake case, above, except hyphens rather than underscores are used to replace spaces.
-        /// It is also known as spinal case, param case, Lisp case, and dash case (or illustratively as kebab-case) 
-        /// If every word is capitalized, the style is known as train case (TRAIN-CASE).[citation needed] 
+        /// It is also known as spinal case, param case, Lisp case, and dash case (or illustratively as kebab-case)
+        /// If every word is capitalized, the style is known as train case (TRAIN-CASE).[citation needed]
         /// Perl6 supports kebab case style. remark addition: It is also common for use in angular file names.
         /// which off course is relevant for a like generator like this one.
         /// </summary>
