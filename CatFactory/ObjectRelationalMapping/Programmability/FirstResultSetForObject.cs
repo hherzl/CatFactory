@@ -8,12 +8,18 @@ namespace CatFactory.ObjectRelationalMapping.Programmability
     [DebuggerDisplay("ColumnOrdinal={ColumnOrdinal}, Name={Name}, IsNullable={IsNullable}, SystemTypeName={SystemTypeName}")]
     public class FirstResultSetForObject
     {
+        #region [ Constructors ]
+
         /// <summary>
         /// Initializes a new instance of <see cref="FirstResultSetForObject"/> class
         /// </summary>
         public FirstResultSetForObject()
         {
         }
+
+        #endregion
+
+        #region [ Properties ]
 
         /// <summary>
         /// Gets or sets the column ordinal
@@ -34,5 +40,7 @@ namespace CatFactory.ObjectRelationalMapping.Programmability
         /// Gets or sets the system type (database type) name
         /// </summary>
         public string SystemTypeName { get; set; }
+
+        #endregion
     }
 }

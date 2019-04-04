@@ -8,12 +8,18 @@ namespace CatFactory.ObjectRelationalMapping.Programmability
     [DebuggerDisplay("Name={Name}, Type={Type}, Length={Length}")]
     public class Parameter
     {
+        #region [ Constructors ]
+
         /// <summary>
         /// Initializes a new instance of <see cref="Parameter"/> class
         /// </summary>
         public Parameter()
         {
         }
+
+        #endregion
+
+        #region [ Properties ]
 
         /// <summary>
         /// Gets or sets the parameter's name
@@ -49,5 +55,7 @@ namespace CatFactory.ObjectRelationalMapping.Programmability
         /// Gets or sets the parameter's collation
         /// </summary>
         public string Collation { get; set; }
+
+        #endregion
     }
 }

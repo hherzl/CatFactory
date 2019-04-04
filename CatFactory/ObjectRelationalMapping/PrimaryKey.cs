@@ -5,6 +5,8 @@
     /// </summary>
     public class PrimaryKey : Constraint
     {
+        #region [ Constructors ]
+
         /// <summary>
         /// Initializes a new instance of <see cref="PrimaryKey"/> class
         /// </summary>
@@ -20,5 +22,7 @@
             : base(key)
         {
         }
+
+        #endregion
     }
 }

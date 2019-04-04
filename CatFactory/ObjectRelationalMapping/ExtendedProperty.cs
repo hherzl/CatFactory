@@ -8,6 +8,8 @@ namespace CatFactory.ObjectRelationalMapping
     [DebuggerDisplay("Name={Name}, Value={Value}")]
     public class ExtendedProperty
     {
+        #region [ Constructors ]
+
         /// <summary>
         /// Initializes a new instance of <see cref="ExtendedProperty"/> class
         /// </summary>
@@ -28,7 +30,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// Initializes a new instance of <see cref="ExtendedProperty"/> class
         /// </summary>
         /// <param name="name">Name for extended property</param>
-        /// <param name="value"></param>
+        /// <param name="value">Value for extended property</param>
         public ExtendedProperty(string name, string value)
         {
             Name = name;
@@ -86,6 +88,10 @@ namespace CatFactory.ObjectRelationalMapping
             Level2Name = level2Name;
         }
 
+        #endregion
+
+        #region [ Properties ]
+
         /// <summary>
         /// Gets or sets the name for extended property
         /// </summary>
@@ -125,5 +131,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// Gets or sets the level 2 name
         /// </summary>
         public string Level2Name { get; set; }
+
+        #endregion
     }
 }

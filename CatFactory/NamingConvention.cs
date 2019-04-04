@@ -101,6 +101,7 @@ namespace CatFactory
 
                 var lower = source[0].ToString().ToLower();
                 var substring = source.Substring(1);
+
                 return $"{lower}{substring}".Replace("_", string.Empty).Replace(".", string.Empty);
             }
         }
@@ -134,8 +135,7 @@ namespace CatFactory
         /// programming but is named after Charles Darwin because of the way it has "evolved" from more traditional
         /// conventions.[citation needed]
         /// </remarks>
-        /// <param name="source"></param>
-        /// <returns></returns>
+        /// <returns>A <see cref="string"/> that represents PascalString for source string</returns>
         public static string GetPascalCase(string source)
         {
             if ((string.IsNullOrEmpty(source?.Trim())) || (source.Length == 0))
@@ -147,9 +147,7 @@ namespace CatFactory
 
             if (source.Contains("_"))
             {
-                var pieces = source.Split('_');
-
-                foreach (var item in pieces)
+                foreach (var item in source.Split('_'))
                 {
                     if (item.Length == 0)
                         continue;
@@ -160,9 +158,7 @@ namespace CatFactory
             }
             else if (source.Contains("."))
             {
-                var pieces = source.Split('.');
-
-                foreach (var item in pieces)
+                foreach (var item in source.Split('.'))
                 {
                     if (item.Length == 0)
                         continue;
@@ -173,9 +169,7 @@ namespace CatFactory
             }
             else if (source.Contains(" "))
             {
-                var pieces = source.Split(' ');
-
-                foreach (var item in pieces)
+                foreach (var item in source.Split(' '))
                 {
                     if (item.Length == 0)
                         continue;
@@ -215,8 +209,6 @@ namespace CatFactory
         /// computer file names.[1] At least one study found that readers can recognize snake case values more quickly
         /// than camelCase.[2]
         /// </remarks>
-        /// <param name="source"></param>
-        /// <returns></returns>
         public static string GetSnakeCase(string source)
         {
             if (source.Length == 0)
@@ -233,17 +225,29 @@ namespace CatFactory
             {
                 var pieces = source.Split('.');
 
-                name.AddRange(pieces.Where(item => item.Length != 0));
+                for (var i = 0; i < pieces.Length; i++)
+                {
+                    var item = pieces[i];
+
+                    if (item.Length == 0)
+                        continue;
+
+                    name.Add(item);
+                }
             }
             else if (source.Contains(" "))
             {
                 var pieces = source.Split(' ');
 
-                name.AddRange(pieces.Where(item => item.Length != 0));
-            }
-            else if (HasUpper(source) & !IsUpper(source))
-            {
-                name.AddRange(Regex.Split(source, @"(?<!^)(?=[A-Z])"));
+                for (var i = 0; i < pieces.Length; i++)
+                {
+                    var item = pieces[i];
+
+                    if (item.Length == 0)
+                        continue;
+
+                    name.Add(item);
+                }
             }
             else
             {
@@ -278,31 +282,15 @@ namespace CatFactory
             var name = new List<string>();
 
             if (source.Contains("."))
-            {
-                var pieces = source.Split('.');
-
-                name.AddRange(pieces.Where(item => item.Length != 0));
-            }
+                name.AddRange(source.Split('.').Where(item => item.Length != 0));
             else if (source.Contains(" "))
-            {
-                var pieces = source.Split(' ');
-
-                name.AddRange(pieces.Where(item => item.Length != 0));
-            }
+                name.AddRange(source.Split(' ').Where(item => item.Length != 0));
             else if (source.Contains("_"))
-            {
-                var pieces = source.Split('_');
-
-                name.AddRange(pieces.Where(item => item.Length != 0));
-            }
+                name.AddRange(source.Split('_').Where(item => item.Length != 0));
             else if (HasUpper(source) & !IsUpper(source))
-            {
                 name.AddRange(Regex.Split(source, @"(?<!^)(?=[A-Z])"));
-            }
             else
-            {
                 name.Add(source);
-            }
 
             return string.Join("-", name).ToLower();
         }

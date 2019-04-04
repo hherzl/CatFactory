@@ -7,6 +7,8 @@ namespace CatFactory.ObjectRelationalMapping
     /// </summary>
     public class ObjectRelationMappingException : Exception
     {
+        #region [ Constructors ]
+
         /// <summary>
         /// Initializes a new instance of <see cref="ObjectRelationMappingException"/> class
         /// </summary>
@@ -33,5 +35,7 @@ namespace CatFactory.ObjectRelationalMapping
             : base(message, innerException)
         {
         }
+
+        #endregion
     }
 }

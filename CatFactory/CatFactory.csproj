@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netcoreapp2.2</TargetFramework>
         <LangVersion>latest</LangVersion>
-        <Version>1.0.0-beta-sun-build20</Version>
+        <Version>1.0.0-beta-sun-build21</Version>
         <Authors>H. Herzl</Authors>
         <Company>Herzl Corp.</Company>
         <Description>This is the core for CatFactory engine and the base for child packages.
@@ -14,13 +14,11 @@
         <RepositoryUrl>https://github.com/hherzl/CatFactory</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>Markdown Markup OOP ORM Scaffolding</PackageTags>
-        <PackageReleaseNotes>1.0.0-beta-sun-build20 Version:
+        <PackageReleaseNotes>1.0.0-beta-sun-build21 Version:
 
-            * Addition of XML comments for CodeFactory namespace
-            * Addition of EmptyLine in CodeFactory namespace
-            * Addition of properties in IProjectSelection&lt;TProjectSettings&gt; interface
-            * Addition of NamespacesForDependencies property in MethodDefinition class
-        </PackageReleaseNotes>
+* Addition of support for database sequences
+* Code review
+</PackageReleaseNotes>
         <PackageLicenseUrl>https://github.com/hherzl/CatFactory/blob/master/LICENSE</PackageLicenseUrl>
     </PropertyGroup>
 
@@ -30,9 +28,9 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.App" />
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0"/>
-        <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0"/>
-        <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.2.0"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.2.0" />
     </ItemGroup>
 
 </Project>

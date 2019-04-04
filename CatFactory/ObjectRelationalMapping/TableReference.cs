@@ -5,6 +5,8 @@
     /// </summary>
     public class TableReference
     {
+        #region [ Constructors ]
+
         /// <summary>
         /// Initializes a new instance of <see cref="TableReference"/> class
         /// </summary>
@@ -12,9 +14,15 @@
         {
         }
 
+        #endregion
+
+        #region [ Properties ]
+
         /// <summary>
         /// Gets or sets the reference description
         /// </summary>
         public string ReferenceDescription { get; set; }
+
+        #endregion
     }
 }

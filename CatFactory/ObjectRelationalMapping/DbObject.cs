@@ -8,6 +8,8 @@ namespace CatFactory.ObjectRelationalMapping
     [DebuggerDisplay("Type={Type}, FullName={FullName}")]
     public class DbObject : IDbObject
     {
+        #region [ Constructors ]
+
         /// <summary>
         /// Initializes a new instance of <see cref="DbObject"/> class
         /// </summary>
@@ -29,6 +31,8 @@ namespace CatFactory.ObjectRelationalMapping
         /// <summary>
         /// Initializes a new instance of <see cref="DbObject"/> class
         /// </summary>
+        /// <param name="dataSource">Server</param>
+        /// <param name="catalog">Database</param>
         /// <param name="schema">Schema name</param>
         /// <param name="name">Name</param>
         public DbObject(string dataSource, string catalog, string schema, string name)
@@ -39,6 +43,10 @@ namespace CatFactory.ObjectRelationalMapping
             Name = name;
         }
 
+        #endregion
+
+        #region [ Properties ]
+
         /// <summary>
         /// Data Source or Server
         /// </summary>
@@ -48,6 +56,10 @@ namespace CatFactory.ObjectRelationalMapping
         /// Catalog or Database Name
         /// </summary>
         public string Catalog { get; set; }
+
+        #endregion
+
+        #region [ Members of IDbObject ]
 
         /// <summary>
         /// Gets or sets the schema for current database object
@@ -69,5 +81,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// Gets or sets the type for current database object
         /// </summary>
         public string Type { get; set; }
+
+        #endregion
     }
 }

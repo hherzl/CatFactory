@@ -5,6 +5,19 @@
     /// </summary>
     public class NamingService : INamingService
     {
+        #region [ Constructors ]
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public NamingService()
+        {
+        }
+
+        #endregion
+
+        #region [ Members of INamingService ]
+
         /// <summary>
         /// Singularizes an input string
         /// </summary>
@@ -52,5 +65,7 @@
             else
                 return string.Format("{0}s", value);
         }
+
+        #endregion
     }
 }

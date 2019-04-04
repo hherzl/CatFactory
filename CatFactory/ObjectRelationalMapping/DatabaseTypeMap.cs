@@ -9,12 +9,18 @@ namespace CatFactory.ObjectRelationalMapping
     [DebuggerDisplay("DatabaseType={DatabaseType}, ClrType={ClrType}, IsUserDefined={IsUserDefined}")]
     public class DatabaseTypeMap
     {
+        #region [ Constructors ]
+
         /// <summary>
         /// Initializes a new instance of <see cref="DatabaseTypeMap"/> class
         /// </summary>
         public DatabaseTypeMap()
         {
         }
+
+        #endregion
+
+        #region [ Properties ]
 
         /// <summary>
         /// Gets or sets the database type
@@ -82,5 +88,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// Gets or sets the collation
         /// </summary>
         public string Collation { get; set; }
+
+        #endregion
     }
 }

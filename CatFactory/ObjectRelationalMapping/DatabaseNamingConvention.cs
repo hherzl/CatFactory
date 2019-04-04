@@ -5,12 +5,18 @@
     /// </summary>
     public class DatabaseNamingConvention : IDatabaseNamingConvention
     {
+        #region [ Constructors ]
+
         /// <summary>
         /// Initializes a new instance of <see cref="DatabaseNamingConvention"/> class
         /// </summary>
         public DatabaseNamingConvention()
         {
         }
+
+        #endregion
+
+        #region [ Members of IDatabaseNamingConvention ]
 
         /// <summary>
         /// Valids a name for current naming convention
@@ -63,5 +69,7 @@
         /// <returns>A string as constraint's name</returns>
         public virtual string GetUniqueConstraintName(ITable table, string[] key)
             => string.Join("_", "U", table.Schema, table.Name, string.Join("_", key));
+
+        #endregion
     }
 }

@@ -13,7 +13,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// Gets the CLR type for database type instance
         /// </summary>
         /// <param name="databaseTypeMap">Database type</param>
-        /// <returns>Returns a <see cref="Type"/> instance that represents an equivalence for <see cref="DatabaseTypeMap"/> instance</returns>
+        /// <returns>An instance of <see cref="Type"/> class that represents an equivalence for <see cref="DatabaseTypeMap"/> instance</returns>
         public static Type GetClrType(this DatabaseTypeMap databaseTypeMap)
             => databaseTypeMap.HasClrFullNameType ? Type.GetType(databaseTypeMap.ClrFullNameType) : null;
 
@@ -22,7 +22,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// </summary>
         /// <param name="databaseTypeMap">Database type</param>
         /// <param name="mappings">A sequence with database types</param>
-        /// <returns>Returns a <see cref="Type"/> instance that represents an equivalence for <see cref="DatabaseTypeMap"/> instance</returns>
+        /// <returns>An instance of <see cref="Type"/> class that represents an equivalence for <see cref="DatabaseTypeMap"/> instance</returns>
         public static DatabaseTypeMap GetParentType(this DatabaseTypeMap databaseTypeMap, IEnumerable<DatabaseTypeMap> mappings)
             => mappings.FirstOrDefault(item => databaseTypeMap.ParentDatabaseType == item.DatabaseType);
     }

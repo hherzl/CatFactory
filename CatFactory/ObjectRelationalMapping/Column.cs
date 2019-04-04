@@ -10,12 +10,24 @@ namespace CatFactory.ObjectRelationalMapping
     [DebuggerDisplay("Name={Name}, Type={Type}, Nullable={Nullable ? \"Yes\": \"No\"}")]
     public class Column
     {
+        #region [ Fields ]
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ExtendedProperty> m_extendedProperties;
+
+        #endregion
+
+        #region [ Constructors ]
+
         /// <summary>
         /// Initializes a new instance of <see cref="Column"/> class
         /// </summary>
         public Column()
         {
         }
+
+        #endregion
+
+        #region [ Properties ]
 
         /// <summary>
         /// Gets or sets name
@@ -73,28 +85,23 @@ namespace CatFactory.ObjectRelationalMapping
         [Obsolete("Save description as extended property")]
         public string Description { get; set; }
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ExtendedProperty> m_extendedProperties;
-
         /// <summary>
         /// Gets or sets the extended properties
         /// </summary>
         public List<ExtendedProperty> ExtendedProperties
         {
-            get
-            {
-                return m_extendedProperties ?? (m_extendedProperties = new List<ExtendedProperty>());
-            }
-            set
-            {
-                m_extendedProperties = value;
-            }
+            get => m_extendedProperties ?? (m_extendedProperties = new List<ExtendedProperty>());
+            set => m_extendedProperties = value;
         }
 
         /// <summary>
         /// Gets or sets the computed expression
         /// </summary>
         public string ComputedExpression { get; set; }
+
+        #endregion
+
+        #region [ Methods ]
 
         /// <summary>
         /// Determines whether the specified object is equal to the current object
@@ -110,5 +117,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// <returns>A 32-bit signed integer hash code</returns>
         public override int GetHashCode()
             => Name == null ? 0 : Name.GetHashCode();
+
+        #endregion
     }
 }

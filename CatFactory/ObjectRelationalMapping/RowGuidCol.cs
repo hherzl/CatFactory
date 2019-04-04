@@ -8,6 +8,8 @@ namespace CatFactory.ObjectRelationalMapping
     [DebuggerDisplay("Name={Name}")]
     public class RowGuidCol
     {
+        #region [ Constructors ]
+
         /// <summary>
         /// Initializes a new instance of <see cref="RowGuidCol"/> class
         /// </summary>
@@ -15,9 +17,15 @@ namespace CatFactory.ObjectRelationalMapping
         {
         }
 
+        #endregion
+
+        #region [ Properties ]
+
         /// <summary>
         /// Gets or sets the column's name
         /// </summary>
         public string Name { get; set; }
+
+        #endregion
     }
 }

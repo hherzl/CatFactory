@@ -5,6 +5,8 @@
     /// </summary>
     public class Check : Constraint
     {
+        #region [ Constructors ]
+
         /// <summary>
         /// Initializes a new instance of <see cref="Check"/> class
         /// </summary>
@@ -20,5 +22,7 @@
             : base(key)
         {
         }
+
+        #endregion
     }
 }

@@ -13,7 +13,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// Adds all tables as database objects in database
         /// </summary>
         /// <param name="database"><see cref="Database"/> instance</param>
-        /// <returns><see cref="Database"/> instance</returns>
+        /// <returns>An instance of <see cref="Database"/> instance</returns>
         public static Database AddDbObjectsFromTables(this Database database)
         {
             foreach (var table in database.Tables)
@@ -26,7 +26,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// Adds all views as database objects in database
         /// </summary>
         /// <param name="database"><see cref="Database"/> instance</param>
-        /// <returns><see cref="Database"/> instance</returns>
+        /// <returns>An instance of <see cref="Database"/> instance</returns>
         public static Database AddDbObjectsFromViews(this Database database)
         {
             foreach (var view in database.Views)
@@ -41,7 +41,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// <param name="database"><see cref="Database"/> instance</param>
         /// <param name="columns">Array of <see cref="Column"/> class</param>
         /// <param name="exclusions">Exclusions for tables in <see cref="Database"/> instance</param>
-        /// <returns><see cref="Database"/> instance</returns>
+        /// <returns>An instance of <see cref="Database"/> instance</returns>
         public static Database AddColumnsForTables(this Database database, Column[] columns, params string[] exclusions)
         {
             foreach (var table in database.Tables)
@@ -65,7 +65,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// <param name="database"><see cref="Database"/> instance</param>
         /// <param name="column"><see cref="Column"/> instance</param>
         /// <param name="exclusions">Exclusions for tables in <see cref="Database"/> instance</param>
-        /// <returns><see cref="Database"/> instance</returns>
+        /// <returns>An instance of <see cref="Database"/> instance</returns>
         public static Database AddColumnForTables(this Database database, Column column, params string[] exclusions)
             => AddColumnsForTables(database, new Column[] { column }, exclusions);
 
@@ -76,7 +76,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// <param name="target">Target table</param>
         /// <param name="key">Key for relation: columns that represent key</param>
         /// <param name="source">Source table</param>
-        /// <returns><see cref="Database"/> instance</returns>
+        /// <returns>An instance of <see cref="Database"/> instance</returns>
         public static Database AddRelation(this Database database, ITable target, string[] key, ITable source)
         {
             target.ForeignKeys.Add(new ForeignKey(key)
@@ -245,7 +245,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// Link all tables in database
         /// </summary>
         /// <param name="database"><see cref="Database"/> instance</param>
-        /// <returns><see cref="Database"/> instance</returns>
+        /// <returns>An instance of <see cref="Database"/> instance</returns>
         public static Database LinkTables(this Database database)
         {
             foreach (var table in database.Tables)
@@ -265,7 +265,7 @@ namespace CatFactory.ObjectRelationalMapping
                             table.ForeignKeys.Add(new ForeignKey(column.Name)
                             {
                                 ConstraintName = database.NamingConvention.GetForeignKeyConstraintName(table, new string[] { column.Name }, parentTable),
-                                References = string.Format("{0}.{1}", database.Name, parentTable.FullName),
+                                References = string.Format("{0}.{1}", database.Catalog, parentTable.FullName),
                                 Child = table.FullName
                             });
                         }
@@ -283,7 +283,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// <param name="seed">Seed for identity</param>
         /// <param name="increment">Increment for identity</param>
         /// <param name="exclusions">Exclusions for tables in <see cref="Database"/> instance</param>
-        /// <returns><see cref="Database"/> instance</returns>
+        /// <returns>An instance of <see cref="Database"/> instance</returns>
         public static Database SetIdentityForTables(this Database database, int seed = 1, int increment = 1, params string[] exclusions)
         {
             foreach (var table in database.Tables)
@@ -303,7 +303,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// </summary>
         /// <param name="database"><see cref="Database"/> instance</param>
         /// <param name="exclusions">Exclusions for tables in <see cref="Database"/> instance</param>
-        /// <returns><see cref="Database"/> instance</returns>
+        /// <returns>An instance of <see cref="Database"/> instance</returns>
         public static Database SetPrimaryKeyForTables(this Database database, params string[] exclusions)
         {
             foreach (var table in database.Tables)

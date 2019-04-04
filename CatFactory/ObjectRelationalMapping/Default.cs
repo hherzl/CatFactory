@@ -5,6 +5,8 @@
     /// </summary>
     public class Default : Constraint
     {
+        #region [ Constructors ]
+
         /// <summary>
         /// Initializes a new instance of <see cref="Default"/> class
         /// </summary>
@@ -21,9 +23,15 @@
         {
         }
 
+        #endregion
+
+        #region [ Properties ]
+
         /// <summary>
         /// Gets or sets the value for default constraint
         /// </summary>
         public string Value { get; set; }
+
+        #endregion
     }
 }

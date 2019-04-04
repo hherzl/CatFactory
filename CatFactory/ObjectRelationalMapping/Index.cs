@@ -3,17 +3,23 @@
 namespace CatFactory.ObjectRelationalMapping
 {
     /// <summary>
-    /// Represents an index for a table
+    /// Represents an index for a table or view
     /// </summary>
     [DebuggerDisplay("IndexName={IndexName}, IndexDescription={IndexDescription}, IndexKeys={IndexKeys}")]
     public class Index
     {
+        #region [ Constructors ]
+
         /// <summary>
         /// Initializes a new instance of <see cref="Index"/> class
         /// </summary>
         public Index()
         {
         }
+
+        #endregion
+
+        #region [ Properties ]
 
         /// <summary>
         /// Gets or sets the index's name
@@ -29,5 +35,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// Gets or sets the index's keys
         /// </summary>
         public string IndexKeys { get; set; }
+
+        #endregion
     }
 }

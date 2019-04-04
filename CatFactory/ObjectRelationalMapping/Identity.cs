@@ -8,11 +8,24 @@ namespace CatFactory.ObjectRelationalMapping
     [DebuggerDisplay("Name={Name}, Seed={Seed}, Increment={Increment}")]
     public class Identity
     {
+        #region [ Constructors ]
+
         /// <summary>
         /// Initializes a new instance of <see cref="Identity"/> class
         /// </summary>
         public Identity()
         {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="Identity"/> class
+        /// </summary>
+        /// <param name="name">Column's name</param>
+        public Identity(string name)
+        {
+            Name = name;
+            Seed = 1;
+            Increment = 1;
         }
 
         /// <summary>
@@ -28,16 +41,9 @@ namespace CatFactory.ObjectRelationalMapping
             Increment = increment;
         }
 
-        /// <summary>
-        /// Initializes a new instance of <see cref="Identity"/> class
-        /// </summary>
-        /// <param name="name">Column's name</param>
-        public Identity(string name)
-        {
-            Name = name;
-            Seed = 1;
-            Increment = 1;
-        }
+        #endregion
+
+        #region [ Properties ]
 
         /// <summary>
         /// Gets or sets the column's name
@@ -53,5 +59,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// Gets or sets the increment
         /// </summary>
         public int Increment { get; set; }
+
+        #endregion
     }
 }

@@ -1,43 +1,48 @@
+using System;
+
 namespace CatFactory.Enumerations.Attributes
 {
     /// <inheritdoc />
     /// <summary>
-    ///     A Single referred short abbreviation string is convenience.
-    ///     Preferred short abbreviation enum types matched to string values often don't match due to human errors.
+    /// A Single referred short abbreviation string is convenience.
+    /// Preferred short abbreviation enum types matched to string values often don't match due to human errors.
     /// </summary>
     /// <TODO>
-    ///     Either convert to a CSV String, or List, or throw an error when comma, semi-colon or other standard separator is
-    ///     discovered.
+    /// Either convert to a CSV String, or List, or throw an error when comma, semi-colon or other standard separator is
+    /// discovered.
     /// </TODO>
-    public sealed class AbbreviationAttribute : System.Attribute
+    public sealed class AbbreviationAttribute : Attribute
     {
-        #region Public Constructors
+        #region Constructors
 
         /// <inheritdoc />
         /// <summary>
-        ///     Constructor
+        /// Initializes a new instance of <see cref="AbbreviationAttribute"/> class
         /// </summary>
         /// <param name="abbreviation"></param>
-        public AbbreviationAttribute(System.String abbreviation) => this.Abbreviation = abbreviation;
+        public AbbreviationAttribute(string abbreviation)
+            => Abbreviation = abbreviation;
 
-        #endregion Public Constructors
+        #endregion
 
-        #region Public Properties
-
-        /// <summary>
-        /// </summary>
-        public System.String Abbreviation { get; }
-
-        #endregion Public Properties
-
-        #region Public Methods
+        #region Properties
 
         /// <summary>
-        ///     Get the string presentation of the object
+        /// Gets the abbreviation
         /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override System.String ToString() => this.Abbreviation;
+        public string Abbreviation { get; }
 
-        #endregion Public Methods
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Gets the string presentation of the object
+        /// </summary>
+        /// <returns><see cref="string"/> presentation of the object</returns>
+        public override string ToString()
+            => Abbreviation;
+
+        #endregion
     }
 }
