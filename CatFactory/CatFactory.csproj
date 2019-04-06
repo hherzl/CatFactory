@@ -8,8 +8,8 @@
         <Company>Herzl Corp.</Company>
         <Description>This is the core for CatFactory engine and the base for child packages.
 
-            This package allows to define CLR objects and database objects.
-        </Description>
+This package allows to define CLR objects and database objects.
+</Description>
         <PackageProjectUrl>https://github.com/hherzl/CatFactory</PackageProjectUrl>
         <RepositoryUrl>https://github.com/hherzl/CatFactory</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
