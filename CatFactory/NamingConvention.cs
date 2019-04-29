@@ -70,7 +70,7 @@ namespace CatFactory
                         continue;
 
                     name.Append(i == 0 ? item[0].ToString().ToLower() : item[0].ToString().ToUpper());
-                    name.Append(item.Substring(1));
+                    name.Append(item.Substring(1).ToLower());
                 }
 
                 return name.ToString();
@@ -89,7 +89,7 @@ namespace CatFactory
                         continue;
 
                     name.Append(i == 0 ? item[0].ToString().ToLower() : item[0].ToString().ToUpper());
-                    name.Append(item.Substring(1));
+                    name.Append(item.Substring(1).ToLower());
                 }
 
                 return name.ToString();

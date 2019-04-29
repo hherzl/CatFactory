@@ -7,32 +7,38 @@ namespace CatFactory.Tests
         [Fact]
         public void TestCamelCase()
         {
-            Assert.True(NamingConvention.GetCamelCase("FOO") == "foo");
-            Assert.True(NamingConvention.GetCamelCase("Bar") == "bar");
-            Assert.True(NamingConvention.GetCamelCase("zaz") == "zaz");
-            Assert.True(NamingConvention.GetCamelCase("FooBarZaz") == "fooBarZaz");
-            Assert.True(NamingConvention.GetCamelCase("foo bar zaz") == "fooBarZaz");
-            Assert.True(NamingConvention.GetCamelCase("foo_bar_zaz") == "fooBarZaz");
+            Assert.True("foo" == NamingConvention.GetCamelCase("FOO"));
+            Assert.True("bar" == NamingConvention.GetCamelCase("Bar"));
+            Assert.True("zaz" == NamingConvention.GetCamelCase("zaz"));
+            Assert.True("fooBarZaz" == NamingConvention.GetCamelCase("FooBarZaz"));
+            Assert.True("fooBarZaz" == NamingConvention.GetCamelCase("foo bar zaz"));
+            Assert.True("fooBarZaz" == NamingConvention.GetCamelCase("FOO BAR ZAZ"));
+            Assert.True("fooBarZaz" == NamingConvention.GetCamelCase("foo_bar_zaz"));
+            Assert.True("fooBarZaz" == NamingConvention.GetCamelCase("FOO_BAR_ZAZ"));
         }
 
         [Fact]
         public void TestPascalCase()
         {
-            Assert.True(NamingConvention.GetPascalCase("FOO") == "Foo");
-            Assert.True(NamingConvention.GetPascalCase("Bar") == "Bar");
-            Assert.True(NamingConvention.GetPascalCase("zaz") == "Zaz");
-            Assert.True(NamingConvention.GetPascalCase("fooBarZaz") == "FooBarZaz");
-            Assert.True(NamingConvention.GetPascalCase("foo.bar.zaz") == "FooBarZaz");
-            Assert.True(NamingConvention.GetPascalCase("foo_bar_zaz") == "FooBarZaz");
-            Assert.True(NamingConvention.GetPascalCase("foo bar zaz") == "FooBarZaz");
+            Assert.True("Foo" == NamingConvention.GetPascalCase("FOO"));
+            Assert.True("Bar" == NamingConvention.GetPascalCase("Bar"));
+            Assert.True("Zaz" == NamingConvention.GetPascalCase("zaz"));
+            Assert.True("FooBarZaz" == NamingConvention.GetPascalCase("fooBarZaz"));
+            Assert.True("FooBarZaz" == NamingConvention.GetPascalCase("foo.bar.zaz"));
+            Assert.True("FooBarZaz" == NamingConvention.GetPascalCase("FOO.BAR.ZAZ"));
+            Assert.True("FooBarZaz" == NamingConvention.GetPascalCase("foo_bar_zaz"));
+            Assert.True("FooBarZaz" == NamingConvention.GetPascalCase("FOO_BAR_ZAZ"));
+            Assert.True("FooBarZaz" == NamingConvention.GetPascalCase("foo bar zaz"));
+            Assert.True("FooBarZaz" == NamingConvention.GetPascalCase("FOO BAR ZAZ"));
         }
 
         [Fact]
         public void TestSnakeCase()
         {
             Assert.Equal("schema_id", NamingConvention.GetSnakeCase("schema_id"));
-            Assert.Equal("schema_id", NamingConvention.GetSnakeCase("schema.id"));
+            Assert.Equal("SCHEMA_ID", NamingConvention.GetSnakeCase("SCHEMA_ID"));
             Assert.Equal("schema_id", NamingConvention.GetSnakeCase("schema id"));
+            Assert.Equal("SCHEMA_ID", NamingConvention.GetSnakeCase("SCHEMA ID"));
             Assert.Equal("FOO", NamingConvention.GetSnakeCase("FOO"));
             Assert.Equal("Bar", NamingConvention.GetSnakeCase("Bar"));
             Assert.Equal("zaz", NamingConvention.GetSnakeCase("zaz"));
@@ -45,13 +51,13 @@ namespace CatFactory.Tests
         [Fact]
         public void TestKebabCase()
         {
-            Assert.True(NamingConvention.GetKebabCase("FOO") == "foo");
-            Assert.True(NamingConvention.GetKebabCase("Bar") == "bar");
-            Assert.True(NamingConvention.GetKebabCase("zaz") == "zaz");
-            Assert.True(NamingConvention.GetKebabCase("FooBarZaz") == "foo-bar-zaz");
-            Assert.True(NamingConvention.GetKebabCase("foo bar zaz") == "foo-bar-zaz");
-            Assert.True(NamingConvention.GetKebabCase("foo-bar-zaz") == "foo-bar-zaz");
-            Assert.True(NamingConvention.GetKebabCase("foo_bar_zaz") == "foo-bar-zaz");
+            Assert.True("foo" == NamingConvention.GetKebabCase("FOO"));
+            Assert.True("bar" == NamingConvention.GetKebabCase("Bar"));
+            Assert.True("zaz" == NamingConvention.GetKebabCase("zaz"));
+            Assert.True("foo-bar-zaz" == NamingConvention.GetKebabCase("FooBarZaz"));
+            Assert.True("foo-bar-zaz" == NamingConvention.GetKebabCase("foo bar zaz"));
+            Assert.True("foo-bar-zaz" == NamingConvention.GetKebabCase("foo-bar-zaz"));
+            Assert.True("foo-bar-zaz" == NamingConvention.GetKebabCase("foo_bar_zaz"));
         }
     }
 }
