@@ -53,15 +53,15 @@ namespace CatFactory
         /// </remarks>
         public static string GetCamelCase(string source)
         {
-            if (source.Length == 0)
+            if (string.IsNullOrEmpty(source?.Trim()) || source.Length == 0)
                 return string.Empty;
+
+            var name = new StringBuilder();
 
             if (source.Contains(" "))
             {
                 var pieces = source.Split(' ');
 
-                var name = new StringBuilder();
-
                 for (var i = 0; i < pieces.Length; i++)
                 {
                     var item = pieces[i];
@@ -72,14 +72,25 @@ namespace CatFactory
                     name.Append(i == 0 ? item[0].ToString().ToLower() : item[0].ToString().ToUpper());
                     name.Append(item.Substring(1).ToLower());
                 }
-
-                return name.ToString();
             }
             else if (source.Contains("_"))
             {
                 var pieces = source.Split('_');
 
-                var name = new StringBuilder();
+                for (var i = 0; i < pieces.Length; i++)
+                {
+                    var item = pieces[i];
+
+                    if (item.Length == 0)
+                        continue;
+
+                    name.Append(i == 0 ? item[0].ToString().ToLower() : item[0].ToString().ToUpper());
+                    name.Append(item.Substring(1).ToLower());
+                }
+            }
+            else if (source.Contains("-"))
+            {
+                var pieces = source.Split('-');
 
                 for (var i = 0; i < pieces.Length; i++)
                 {
@@ -91,12 +102,10 @@ namespace CatFactory
                     name.Append(i == 0 ? item[0].ToString().ToLower() : item[0].ToString().ToUpper());
                     name.Append(item.Substring(1).ToLower());
                 }
-
-                return name.ToString();
             }
             else
             {
-                if ((source.Length == 1) || IsUpper(source))
+                if (source.Length == 1 || IsUpper(source))
                     return source.ToLower();
 
                 var lower = source[0].ToString().ToLower();
@@ -104,11 +113,12 @@ namespace CatFactory
 
                 return $"{lower}{substring}".Replace("_", string.Empty).Replace(".", string.Empty);
             }
+
+            return name.ToString();
         }
 
         /// <summary>
         /// Gets a CamelCase style string
-        ///
         /// </summary>
         /// <param name="source">Source string</param>
         /// <returns>A <see cref="string"/> that represents PascalString for source string</returns>
@@ -138,7 +148,7 @@ namespace CatFactory
         /// <returns>A <see cref="string"/> that represents PascalString for source string</returns>
         public static string GetPascalCase(string source)
         {
-            if ((string.IsNullOrEmpty(source?.Trim())) || (source.Length == 0))
+            if (string.IsNullOrEmpty(source?.Trim()) || source.Length == 0)
                 return string.Empty;
 
             source = source.Replace("  ", " ").Trim();
@@ -153,7 +163,18 @@ namespace CatFactory
                         continue;
 
                     name.Append(item[0].ToString().ToUpper());
-                    name.Append(IsUpper(item) ? item.Substring(1).ToLower() : item.Substring(1));
+                    name.Append(IsUpper(item) ? item.Substring(1).ToLower() : item.Substring(1).ToLower());
+                }
+            }
+            else if (source.Contains("-"))
+            {
+                foreach (var item in source.Split('-'))
+                {
+                    if (item.Length == 0)
+                        continue;
+
+                    name.Append(item[0].ToString().ToUpper());
+                    name.Append(IsUpper(item) ? item.Substring(1).ToLower() : item.Substring(1).ToLower());
                 }
             }
             else if (source.Contains("."))
@@ -164,7 +185,7 @@ namespace CatFactory
                         continue;
 
                     name.Append(item[0].ToString().ToUpper());
-                    name.Append(IsUpper(item) ? item.Substring(1).ToLower() : item.Substring(1));
+                    name.Append(IsUpper(item) ? item.Substring(1).ToLower() : item.Substring(1).ToLower());
                 }
             }
             else if (source.Contains(" "))
@@ -196,7 +217,6 @@ namespace CatFactory
 
         /// <summary>
         /// Gets a Snake_Case style string. Words are separated by underscore
-        ///
         /// </summary>
         /// <param name="source">Source string</param>
         /// <returns>A <see cref="string"/> that represents Snake_Case for source string</returns>
@@ -211,7 +231,7 @@ namespace CatFactory
         /// </remarks>
         public static string GetSnakeCase(string source)
         {
-            if (source.Length == 0)
+            if (string.IsNullOrEmpty(source?.Trim()) || source.Length == 0)
                 return string.Empty;
 
             if (source.Contains("_"))
@@ -221,44 +241,22 @@ namespace CatFactory
 
             var name = new List<string>();
 
-            if (source.Contains("."))
-            {
-                var pieces = source.Split('.');
-
-                for (var i = 0; i < pieces.Length; i++)
-                {
-                    var item = pieces[i];
-
-                    if (item.Length == 0)
-                        continue;
-
-                    name.Add(item);
-                }
-            }
-            else if (source.Contains(" "))
-            {
-                var pieces = source.Split(' ');
-
-                for (var i = 0; i < pieces.Length; i++)
-                {
-                    var item = pieces[i];
-
-                    if (item.Length == 0)
-                        continue;
-
-                    name.Add(item);
-                }
-            }
+            if (source.Contains(" "))
+                name.AddRange(source.Split(' ').Where(item => item.Length != 0));
+            else if (source.Contains("."))
+                name.AddRange(source.Split('.').Where(item => item.Length != 0));
+            else if (source.Contains("-"))
+                name.AddRange(source.Split('-').Where(item => item.Length != 0));
+            else if (HasUpper(source) & !IsUpper(source))
+                name.AddRange(Regex.Split(source, @"(?<!^)(?=[A-Z])"));
             else
-            {
                 name.Add(source);
-            }
 
             return string.Join("_", name);
         }
 
         /// <summary>
-        /// Creates  a kebab-case style string
+        /// Creates a kebab-case style string
         /// <!-- https://en.wikipedia.org/wiki/Letter_case#Special_case_styles -->
         /// "the-quick-brown-fox-jumps-over-the-lazy-dog"
         /// Similar to snake case, above, except hyphens rather than underscores are used to replace spaces.
@@ -271,7 +269,7 @@ namespace CatFactory
         /// <returns>A <see cref="string"/> that represents kebab-case for source string</returns>
         public static string GetKebabCase(string source)
         {
-            if (source.Length == 0)
+            if (string.IsNullOrEmpty(source?.Trim()) || source.Length == 0)
                 return string.Empty;
 
             if (source.Contains("-"))
@@ -281,10 +279,10 @@ namespace CatFactory
 
             var name = new List<string>();
 
-            if (source.Contains("."))
-                name.AddRange(source.Split('.').Where(item => item.Length != 0));
-            else if (source.Contains(" "))
+            if (source.Contains(" "))
                 name.AddRange(source.Split(' ').Where(item => item.Length != 0));
+            else if (source.Contains("."))
+                name.AddRange(source.Split('.').Where(item => item.Length != 0));
             else if (source.Contains("_"))
                 name.AddRange(source.Split('_').Where(item => item.Length != 0));
             else if (HasUpper(source) & !IsUpper(source))
