@@ -32,6 +32,12 @@ This package is the core for child packages, additional packages have created wi
 * CatFactory.AspNetCore
 * CatFactory.Dapper
 
+## Donation
+
+You can make a donation via PayPal using this link: [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=XB49JFNSMGY6U&item_name=CatFactory&currency_code=USD&source=url)
+
+Thanks for your help! ==^^==
+
 ## Roadmap
 
 There will be a lot of improvements for CatFactory on road:
@@ -43,12 +49,6 @@ There will be a lot of improvements for CatFactory on road:
 * Scaffolding Unit Tests for ASP.NET Core
 * Scaffolding Integration Tests for ASP.NET Core
 * Scaffolding Angular
-
-## Donation
-
-You can make a donation via PayPal using this link: [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=XB49JFNSMGY6U&item_name=CatFactory&currency_code=USD&source=url)
-
-Thanks for your help! ==^^==
 
 ## Concepts behind CatFactory
 
