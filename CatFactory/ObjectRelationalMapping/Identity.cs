@@ -20,7 +20,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// <summary>
         /// Initializes a new instance of <see cref="Identity"/> class
         /// </summary>
-        /// <param name="name">Column's name</param>
+        /// <param name="name">Name for column</param>
         public Identity(string name)
         {
             Name = name;
@@ -31,7 +31,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// <summary>
         /// Initializes a new instance of <see cref="Identity"/> class
         /// </summary>
-        /// <param name="name">Column's name</param>
+        /// <param name="name">Name for column</param>
         /// <param name="seed">Seed</param>
         /// <param name="increment">Increment</param>
         public Identity(string name, int seed, int increment)

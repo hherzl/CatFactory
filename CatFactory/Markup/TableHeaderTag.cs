@@ -8,6 +8,8 @@ namespace CatFactory.Markup
     /// </summary>
     public class TableHeaderTag : Tag
     {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<TableCellTag> m_cells;
+
         /// <summary>
         /// 
         /// </summary>
@@ -15,22 +17,13 @@ namespace CatFactory.Markup
         {
         }
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<TableCellTag> m_cells;
-
         /// <summary>
         /// 
         /// </summary>
         public List<TableCellTag> Cells
         {
-            get
-            {
-                return m_cells ?? (m_cells = new List<TableCellTag>());
-            }
-            set
-            {
-                m_cells = value;
-            }
+            get => m_cells ?? (m_cells = new List<TableCellTag>());
+            set => m_cells = value;
         }
     }
 }

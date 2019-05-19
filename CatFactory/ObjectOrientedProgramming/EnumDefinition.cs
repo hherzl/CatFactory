@@ -9,6 +9,8 @@ namespace CatFactory.ObjectOrientedProgramming
     [DebuggerDisplay("AccessModifier={AccessModifier}, Namespace={Namespace}, Name={Name}")]
     public class EnumDefinition : ObjectDefinition, IEnumDefinition
     {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<NameValue> m_sets;
+
         /// <summary>
         /// Initializes a new instance of <see cref="EnumDefinition"/> class
         /// </summary>
@@ -54,22 +56,13 @@ namespace CatFactory.ObjectOrientedProgramming
         public override bool HasInheritance
             => !string.IsNullOrEmpty(BaseType);
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<NameValue> m_sets;
-
         /// <summary>
         /// Gets or sets the sets (name and value) for current enum definition
         /// </summary>
         public List<NameValue> Sets
         {
-            get
-            {
-                return m_sets ?? (m_sets = new List<NameValue>());
-            }
-            set
-            {
-                m_sets = value;
-            }
+            get => m_sets ?? (m_sets = new List<NameValue>());
+            set => m_sets = value;
         }
     }
 }

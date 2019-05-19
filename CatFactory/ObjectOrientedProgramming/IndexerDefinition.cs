@@ -9,6 +9,10 @@ namespace CatFactory.ObjectOrientedProgramming
     /// </summary>
     public class IndexerDefinition : IMemberDefinition
     {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ParameterDefinition> m_parameters;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ILine> m_getBody;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ILine> m_setBody;
+
         /// <summary>
         /// Initializes a new instance of <see cref="IndexerDefinition"/> class
         /// </summary>
@@ -31,58 +35,31 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public string Name { get; set; } = "this";
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ParameterDefinition> m_parameters;
-
         /// <summary>
         /// Gets or sets the parameters for current indexer definition
         /// </summary>
         public List<ParameterDefinition> Parameters
         {
-            get
-            {
-                return m_parameters ?? (m_parameters = new List<ParameterDefinition>());
-            }
-            set
-            {
-                m_parameters = value;
-            }
+            get => m_parameters ?? (m_parameters = new List<ParameterDefinition>());
+            set => m_parameters = value;
         }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ILine> m_getBody;
 
         /// <summary>
         /// Gets or sets the get body for current indexer definition
         /// </summary>
         public List<ILine> GetBody
         {
-            get
-            {
-                return m_getBody ?? (m_getBody = new List<ILine>());
-            }
-            set
-            {
-                m_getBody = value;
-            }
+            get => m_getBody ?? (m_getBody = new List<ILine>());
+            set => m_getBody = value;
         }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ILine> m_setBody;
 
         /// <summary>
         /// Gets or sets the set body for current indexer definition
         /// </summary>
         public List<ILine> SetBody
         {
-            get
-            {
-                return m_setBody ?? (m_setBody = new List<ILine>());
-            }
-            set
-            {
-                m_setBody = value;
-            }
+            get => m_setBody ?? (m_setBody = new List<ILine>());
+            set => m_setBody = value;
         }
     }
 }

@@ -10,6 +10,11 @@ namespace CatFactory.ObjectOrientedProgramming
     [DebuggerDisplay("AccessModifier={AccessModifier}, Type={Type}, Name={Name}")]
     public class PropertyDefinition : IMemberDefinition
     {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private Documentation m_documentation;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<MetadataAttribute> m_attributes;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ILine> m_getBody;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ILine> m_setBody;
+
         /// <summary>
         /// Initializes a new instance of <see cref="PropertyDefinition"/> class
         /// </summary>
@@ -47,22 +52,13 @@ namespace CatFactory.ObjectOrientedProgramming
             Attributes.AddRange(attribs);
         }
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private Documentation m_documentation;
-
         /// <summary>
         /// Gets or sets the XML documentation comments for current property definition
         /// </summary>
         public Documentation Documentation
         {
-            get
-            {
-                return m_documentation ?? (m_documentation = new Documentation());
-            }
-            set
-            {
-                m_documentation = value;
-            }
+            get => m_documentation ?? (m_documentation = new Documentation());
+            set => m_documentation = value;
         }
 
         /// <summary>
@@ -85,22 +81,13 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public bool IsReadOnly { get; set; }
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<MetadataAttribute> m_attributes;
-
         /// <summary>
         /// Gets or sets the attributes for current property definition
         /// </summary>
         public List<MetadataAttribute> Attributes
         {
-            get
-            {
-                return m_attributes ?? (m_attributes = new List<MetadataAttribute>());
-            }
-            set
-            {
-                m_attributes = value;
-            }
+            get => m_attributes ?? (m_attributes = new List<MetadataAttribute>());
+            set => m_attributes = value;
         }
 
         /// <summary>
@@ -118,40 +105,22 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public string Name { get; set; }
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ILine> m_getBody;
-
         /// <summary>
         /// Gets or sets the get body for current property definition
         /// </summary>
         public List<ILine> GetBody
         {
-            get
-            {
-                return m_getBody ?? (m_getBody = new List<ILine>());
-            }
-            set
-            {
-                m_getBody = value;
-            }
+            get => m_getBody ?? (m_getBody = new List<ILine>());
+            set => m_getBody = value;
         }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ILine> m_setBody;
 
         /// <summary>
         /// Gets or sets the set body for current property definition
         /// </summary>
         public List<ILine> SetBody
         {
-            get
-            {
-                return m_setBody ?? (m_setBody = new List<ILine>());
-            }
-            set
-            {
-                m_setBody = value;
-            }
+            get => m_setBody ?? (m_setBody = new List<ILine>());
+            set => m_setBody = value;
         }
 
         /// <summary>

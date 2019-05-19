@@ -9,6 +9,8 @@ namespace CatFactory.ObjectOrientedProgramming
     /// </summary>
     public class FinalizerDefinition
     {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ILine> m_lines;
+
         /// <summary>
         /// Initializes a new instance of <see cref="FinalizerDefinition"/> class
         /// </summary>
@@ -16,22 +18,13 @@ namespace CatFactory.ObjectOrientedProgramming
         {
         }
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ILine> m_lines;
-
         /// <summary>
         /// Gets or sets the method body
         /// </summary>
         public List<ILine> Lines
         {
-            get
-            {
-                return m_lines ?? (m_lines = new List<ILine>());
-            }
-            set
-            {
-                m_lines = value;
-            }
+            get => m_lines ?? (m_lines = new List<ILine>());
+            set => m_lines = value;
         }
     }
 }

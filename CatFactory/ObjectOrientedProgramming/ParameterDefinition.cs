@@ -9,6 +9,9 @@ namespace CatFactory.ObjectOrientedProgramming
     [DebuggerDisplay("Type={Type}, Name={Name}, DefaultValue={DefaultValue}")]
     public class ParameterDefinition
     {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private Documentation m_documentation;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<MetadataAttribute> m_attributes;
+
         /// <summary>
         /// Initializes a new instance of <see cref="ParameterDefinition"/> class
         /// </summary>
@@ -44,40 +47,22 @@ namespace CatFactory.ObjectOrientedProgramming
             Attributes.AddRange(attributes);
         }
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private Documentation m_documentation;
-
         /// <summary>
         /// Gets or sets the XML documentation comments for current parameter definition
         /// </summary>
         public Documentation Documentation
         {
-            get
-            {
-                return m_documentation ?? (m_documentation = new Documentation());
-            }
-            set
-            {
-                m_documentation = value;
-            }
+            get => m_documentation ?? (m_documentation = new Documentation());
+            set => m_documentation = value;
         }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<MetadataAttribute> m_attributes;
 
         /// <summary>
         /// Gets or sets the attributes for current parameter definition
         /// </summary>
         public List<MetadataAttribute> Attributes
         {
-            get
-            {
-                return m_attributes ?? (m_attributes = new List<MetadataAttribute>());
-            }
-            set
-            {
-                m_attributes = value;
-            }
+            get => m_attributes ?? (m_attributes = new List<MetadataAttribute>());
+            set => m_attributes = value;
         }
 
         /// <summary>

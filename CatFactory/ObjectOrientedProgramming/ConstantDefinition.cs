@@ -8,6 +8,8 @@ namespace CatFactory.ObjectOrientedProgramming
     [DebuggerDisplay("IsReadOnly = {IsReadOnly}, AccessModifier={AccessModifier}, Type={Type}, Name={Name}")]
     public class ConstantDefinition
     {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private Documentation m_documentation;
+
         /// <summary>
         /// Initializes a new instance of <see cref="ConstantDefinition"/> class
         /// </summary>
@@ -43,22 +45,13 @@ namespace CatFactory.ObjectOrientedProgramming
             Value = value;
         }
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private Documentation m_documentation;
-
         /// <summary>
         /// Gets or sets the XML documentation comments for current constant definition
         /// </summary>
         public Documentation Documentation
         {
-            get
-            {
-                return m_documentation ?? (m_documentation = new Documentation());
-            }
-            set
-            {
-                m_documentation = value;
-            }
+            get => m_documentation ?? (m_documentation = new Documentation());
+            set => m_documentation = value;
         }
 
         /// <summary>

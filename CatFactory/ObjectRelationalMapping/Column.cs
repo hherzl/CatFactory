@@ -97,7 +97,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// <summary>
         /// Gets or sets the default value
         /// </summary>
-        public string DefaultValue { get; set; }
+        public object DefaultValue { get; set; }
 
         /// <summary>
         /// Gets or sets the computed expression

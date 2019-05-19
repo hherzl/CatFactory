@@ -10,6 +10,13 @@ namespace CatFactory.ObjectOrientedProgramming
     [DebuggerDisplay("Namespace={Namespace}, Name={Name}")]
     public class ObjectDefinition : IObjectDefinition
     {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<string> m_namespaces;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private Documentation m_documentation;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<MetadataAttribute> m_attributes;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<EventDefinition> m_events;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<PropertyDefinition> m_properties;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<MethodDefinition> m_methods;
+
         /// <summary>
         /// Initializes a new instance of <see cref="ObjectDefinition"/> class
         /// </summary>
@@ -18,22 +25,13 @@ namespace CatFactory.ObjectOrientedProgramming
             TypeManager.Register(this);
         }
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<string> m_namespaces;
-
         /// <summary>
         /// Gets or sets the namespaces for current object definition
         /// </summary>
         public List<string> Namespaces
         {
-            get
-            {
-                return m_namespaces ?? (m_namespaces = new List<string>());
-            }
-            set
-            {
-                m_namespaces = value;
-            }
+            get => m_namespaces ?? (m_namespaces = new List<string>());
+            set => m_namespaces = value;
         }
 
         /// <summary>
@@ -41,22 +39,13 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public string Namespace { get; set; }
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private Documentation m_documentation;
-
         /// <summary>
         /// Gets or sets the XML documentation comments for current object definition
         /// </summary>
         public Documentation Documentation
         {
-            get
-            {
-                return m_documentation ?? (m_documentation = new Documentation());
-            }
-            set
-            {
-                m_documentation = value;
-            }
+            get => m_documentation ?? (m_documentation = new Documentation());
+            set => m_documentation = value;
         }
 
         /// <summary>
@@ -91,76 +80,40 @@ namespace CatFactory.ObjectOrientedProgramming
         public virtual bool HasInheritance
             => false;
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<MetadataAttribute> m_attributes;
-
         /// <summary>
         /// Gets or sets the metadata attributes for current object definition
         /// </summary>
         public List<MetadataAttribute> Attributes
         {
-            get
-            {
-                return m_attributes ?? (m_attributes = new List<MetadataAttribute>());
-            }
-            set
-            {
-                m_attributes = value;
-            }
+            get => m_attributes ?? (m_attributes = new List<MetadataAttribute>());
+            set => m_attributes = value;
         }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<EventDefinition> m_events;
 
         /// <summary>
         /// Gets or sets the events for current object definition
         /// </summary>
         public List<EventDefinition> Events
         {
-            get
-            {
-                return m_events ?? (m_events = new List<EventDefinition>());
-            }
-            set
-            {
-                m_events = value;
-            }
+            get => m_events ?? (m_events = new List<EventDefinition>());
+            set => m_events = value;
         }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<PropertyDefinition> m_properties;
 
         /// <summary>
         /// Gets or sets the properties for current object definition
         /// </summary>
         public List<PropertyDefinition> Properties
         {
-            get
-            {
-                return m_properties ?? (m_properties = new List<PropertyDefinition>());
-            }
-            set
-            {
-                m_properties = value;
-            }
+            get => m_properties ?? (m_properties = new List<PropertyDefinition>());
+            set => m_properties = value;
         }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<MethodDefinition> m_methods;
 
         /// <summary>
         /// Gets or sets the methods for current object definition
         /// </summary>
         public List<MethodDefinition> Methods
         {
-            get
-            {
-                return m_methods ?? (m_methods = new List<MethodDefinition>());
-            }
-            set
-            {
-                m_methods = value;
-            }
+            get => m_methods ?? (m_methods = new List<MethodDefinition>());
+            set => m_methods = value;
         }
 
         /// <summary>

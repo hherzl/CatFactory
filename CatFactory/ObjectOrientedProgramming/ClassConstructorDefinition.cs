@@ -10,6 +10,10 @@ namespace CatFactory.ObjectOrientedProgramming
     [DebuggerDisplay("AccessModifier={AccessModifier}, ParentInvoke={ParentInvoke}")]
     public class ClassConstructorDefinition
     {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private Documentation m_documentation;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ParameterDefinition> m_parameters;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ILine> m_lines;
+
         /// <summary>
         /// Initializes a new instance of <see cref="ClassConstructorDefinition"/> class
         /// </summary>
@@ -37,22 +41,13 @@ namespace CatFactory.ObjectOrientedProgramming
             Parameters.AddRange(parameters);
         }
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private Documentation m_documentation;
-
         /// <summary>
         /// Gets or sets the XML documentation comments for current class constructor definition
         /// </summary>
         public Documentation Documentation
         {
-            get
-            {
-                return m_documentation ?? (m_documentation = new Documentation());
-            }
-            set
-            {
-                m_documentation = value;
-            }
+            get => m_documentation ?? (m_documentation = new Documentation());
+            set => m_documentation = value;
         }
 
         /// <summary>
@@ -60,22 +55,13 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public AccessModifier AccessModifier { get; set; }
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ParameterDefinition> m_parameters;
-
         /// <summary>
         /// Gets or sets the parameters for current class constructor definition
         /// </summary>
         public List<ParameterDefinition> Parameters
         {
-            get
-            {
-                return m_parameters ?? (m_parameters = new List<ParameterDefinition>());
-            }
-            set
-            {
-                m_parameters = value;
-            }
+            get => m_parameters ?? (m_parameters = new List<ParameterDefinition>());
+            set => m_parameters = value;
         }
 
         /// <summary>
@@ -83,22 +69,13 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public string Invocation { get; set; }
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ILine> m_lines;
-
         /// <summary>
         /// Gets or sets the code lines (method body) for current class constructor definition
         /// </summary>
         public List<ILine> Lines
         {
-            get
-            {
-                return m_lines ?? (m_lines = new List<ILine>());
-            }
-            set
-            {
-                m_lines = value;
-            }
+            get => m_lines ?? (m_lines = new List<ILine>());
+            set => m_lines = value;
         }
     }
 }

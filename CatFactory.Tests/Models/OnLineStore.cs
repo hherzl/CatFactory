@@ -130,7 +130,7 @@ namespace CatFactory.Tests.Models
                             new Column { Name = "Quantity", Type = "int" },
                             new Column { Name = "Total", Type = "decimal", Prec = 8, Scale = 4 }
                         },
-                        PrimaryKey = new PrimaryKey("OrderHeaderID", "ProductID")
+                        PrimaryKey = new PrimaryKey("PK_Sales_OrderDetail", new string[] { "OrderHeaderID", "ProductID" })
                     }
                 },
                 Views =

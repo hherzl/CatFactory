@@ -30,6 +30,9 @@ namespace CatFactory.Markup
                 IsSelfClosed = isSelfClosed
             };
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<TagAttribute> m_attributes;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<Tag> m_children;
+
         /// <summary>
         /// 
         /// </summary>
@@ -53,40 +56,22 @@ namespace CatFactory.Markup
         /// </summary>
         public string Name { get; set; }
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<TagAttribute> m_attributes;
-
         /// <summary>
         /// 
         /// </summary>
         public List<TagAttribute> Attributes
         {
-            get
-            {
-                return m_attributes ?? (m_attributes = new List<TagAttribute>());
-            }
-            set
-            {
-                m_attributes = value;
-            }
+            get => m_attributes ?? (m_attributes = new List<TagAttribute>());
+            set => m_attributes = value;
         }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<Tag> m_children;
 
         /// <summary>
         /// 
         /// </summary>
         public List<Tag> Children
         {
-            get
-            {
-                return m_children ?? (m_children = new List<Tag>());
-            }
-            set
-            {
-                m_children = value;
-            }
+            get => m_children ?? (m_children = new List<Tag>());
+            set => m_children = value;
         }
 
         /// <summary>

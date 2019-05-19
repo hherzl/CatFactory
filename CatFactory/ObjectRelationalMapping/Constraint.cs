@@ -27,9 +27,20 @@ namespace CatFactory.ObjectRelationalMapping
         /// <summary>
         /// Initializes a new instance of <see cref="Constraint"/> class
         /// </summary>
-        /// <param name="key">Key for constraint</param>
-        public Constraint(params string[] key)
+        /// <param name="constraintName">Constraint name</param>
+        public Constraint(string constraintName)
         {
+            ConstraintName = constraintName;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="Constraint"/> class
+        /// </summary>
+        /// <param name="constraintName">Constraint name</param>
+        /// <param name="key">Key for constraint</param>
+        public Constraint(string constraintName, string[] key)
+        {
+            ConstraintName = constraintName;
             Key.AddRange(key);
         }
 

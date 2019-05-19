@@ -79,9 +79,8 @@ namespace CatFactory.ObjectRelationalMapping
         /// <returns>An instance of <see cref="Database"/> instance</returns>
         public static Database AddRelation(this Database database, ITable target, string[] key, ITable source)
         {
-            target.ForeignKeys.Add(new ForeignKey(key)
+            target.ForeignKeys.Add(new ForeignKey(database.NamingConvention.GetForeignKeyConstraintName(target, key, source), key)
             {
-                ConstraintName = database.NamingConvention.GetForeignKeyConstraintName(target, key, source),
                 References = source.FullName,
                 Child = target.FullName
             });
@@ -262,9 +261,10 @@ namespace CatFactory.ObjectRelationalMapping
 
                         if (parentTable.PrimaryKey != null && parentTable.PrimaryKey.Key.Contains(column.Name))
                         {
-                            table.ForeignKeys.Add(new ForeignKey(column.Name)
+                            var key = new string[] { column.Name };
+
+                            table.ForeignKeys.Add(new ForeignKey(database.NamingConvention.GetForeignKeyConstraintName(table, key, parentTable), key)
                             {
-                                ConstraintName = database.NamingConvention.GetForeignKeyConstraintName(table, new string[] { column.Name }, parentTable),
                                 References = string.Format("{0}.{1}", database.Catalog, parentTable.FullName),
                                 Child = table.FullName
                             });
@@ -312,7 +312,11 @@ namespace CatFactory.ObjectRelationalMapping
                     continue;
 
                 if (table.PrimaryKey == null && table.Columns.Count > 0)
-                    table.PrimaryKey = new PrimaryKey(table.Columns.First().Name);
+                {
+                    var key = new string[] { table.Columns.First().Name };
+
+                    table.PrimaryKey = new PrimaryKey(database.NamingConvention.GetPrimaryKeyConstraintName(table, key), key);
+                }
             }
 
             return database;

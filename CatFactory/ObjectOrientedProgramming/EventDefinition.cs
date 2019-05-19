@@ -8,6 +8,8 @@ namespace CatFactory.ObjectOrientedProgramming
     [DebuggerDisplay("AccessModifier={AccessModifier}, Type={Type}, Name={Name}")]
     public class EventDefinition : IMemberDefinition
     {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private Documentation m_documentation;
+
         /// <summary>
         /// Initializes a new instance of <see cref="EventDefinition"/> class
         /// </summary>
@@ -39,22 +41,13 @@ namespace CatFactory.ObjectOrientedProgramming
             Name = name;
         }
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private Documentation m_documentation;
-
         /// <summary>
         /// Gets or sets the XML documentation comments for current event definition
         /// </summary>
         public Documentation Documentation
         {
-            get
-            {
-                return m_documentation ?? (m_documentation = new Documentation());
-            }
-            set
-            {
-                m_documentation = value;
-            }
+            get => m_documentation ?? (m_documentation = new Documentation());
+            set => m_documentation = value;
         }
 
         /// <summary>

@@ -9,6 +9,8 @@ namespace CatFactory.ObjectOrientedProgramming
     [DebuggerDisplay("Summary={Summary}, Returns={Returns}")]
     public class Documentation
     {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<dynamic> m_customTags;
+
         /// <summary>
         /// Initializes a new instance of <see cref="Documentation"/> class
         /// </summary>
@@ -60,22 +62,13 @@ namespace CatFactory.ObjectOrientedProgramming
         public bool HasReturns
             => !string.IsNullOrEmpty(Returns);
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<dynamic> m_customTags;
-
         /// <summary>
         /// Gets or sets the custom tags for current documentation
         /// </summary>
         public List<dynamic> CustomTags
         {
-            get
-            {
-                return m_customTags ?? (m_customTags = new List<dynamic>());
-            }
-            set
-            {
-                m_customTags = value;
-            }
+            get => m_customTags ?? (m_customTags = new List<dynamic>());
+            set => m_customTags = value;
         }
     }
 }

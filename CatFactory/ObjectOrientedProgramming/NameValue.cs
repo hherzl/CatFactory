@@ -9,6 +9,9 @@ namespace CatFactory.ObjectOrientedProgramming
     [DebuggerDisplay("Name={Name}, Value={Value}")]
     public class NameValue : INameValue
     {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private Documentation m_documentation;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<MetadataAttribute> m_attributes;
+
         /// <summary>
         /// Initializes a new instance of <see cref="NameValue"/> class
         /// </summary>
@@ -46,40 +49,22 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public string Value { get; set; }
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private Documentation m_documentation;
-
         /// <summary>
         /// Gets or sets the XML documentation comments
         /// </summary>
         public Documentation Documentation
         {
-            get
-            {
-                return m_documentation ?? (m_documentation = new Documentation());
-            }
-            set
-            {
-                m_documentation = value;
-            }
+            get => m_documentation ?? (m_documentation = new Documentation());
+            set => m_documentation = value;
         }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<MetadataAttribute> m_attributes;
 
         /// <summary>
         /// Gets or sets the metadata attributes
         /// </summary>
         public List<MetadataAttribute> Attributes
         {
-            get
-            {
-                return m_attributes ?? (m_attributes = new List<MetadataAttribute>());
-            }
-            set
-            {
-                m_attributes = value;
-            }
+            get => m_attributes ?? (m_attributes = new List<MetadataAttribute>());
+            set => m_attributes = value;
         }
     }
 }

@@ -10,6 +10,13 @@ namespace CatFactory.ObjectOrientedProgramming
     [DebuggerDisplay("AccessModifier={AccessModifier}, Type={Type}, Name={Name}, Parameters={Parameters.Count}")]
     public class MethodDefinition : IMemberDefinition
     {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private Documentation m_documentation;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<MetadataAttribute> m_attributes;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<GenericTypeDefinition> m_genericTypes;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ParameterDefinition> m_parameters;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ILine> m_lines;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<string> m_namespacesForDependencies;
+
         /// <summary>
         /// Initializes a new instance of <see cref="MethodDefinition"/> class
         /// </summary>
@@ -45,40 +52,22 @@ namespace CatFactory.ObjectOrientedProgramming
             Parameters.AddRange(parameters);
         }
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private Documentation m_documentation;
-
         /// <summary>
         /// Gets or sets the XML documentation comments for current class constructor definition
         /// </summary>
         public Documentation Documentation
         {
-            get
-            {
-                return m_documentation ?? (m_documentation = new Documentation());
-            }
-            set
-            {
-                m_documentation = value;
-            }
+            get => m_documentation ?? (m_documentation = new Documentation());
+            set => m_documentation = value;
         }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<MetadataAttribute> m_attributes;
 
         /// <summary>
         /// Gets or sets the attributes for current property definition
         /// </summary>
         public List<MetadataAttribute> Attributes
         {
-            get
-            {
-                return m_attributes ?? (m_attributes = new List<MetadataAttribute>());
-            }
-            set
-            {
-                m_attributes = value;
-            }
+            get => m_attributes ?? (m_attributes = new List<MetadataAttribute>());
+            set => m_attributes = value;
         }
 
         /// <summary>
@@ -121,22 +110,13 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public string Name { get; set; }
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<GenericTypeDefinition> m_genericTypes;
-
         /// <summary>
         /// Gets or sets the generic types for current method definition
         /// </summary>
         public List<GenericTypeDefinition> GenericTypes
         {
-            get
-            {
-                return m_genericTypes ?? (m_genericTypes = new List<GenericTypeDefinition>());
-            }
-            set
-            {
-                m_genericTypes = value;
-            }
+            get => m_genericTypes ?? (m_genericTypes = new List<GenericTypeDefinition>());
+            set => m_genericTypes = value;
         }
 
         /// <summary>
@@ -144,58 +124,31 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public bool IsExtension { get; set; }
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ParameterDefinition> m_parameters;
-
         /// <summary>
         /// Gets or sets the parameters for current method definition
         /// </summary>
         public List<ParameterDefinition> Parameters
         {
-            get
-            {
-                return m_parameters ?? (m_parameters = new List<ParameterDefinition>());
-            }
-            set
-            {
-                m_parameters = value;
-            }
+            get => m_parameters ?? (m_parameters = new List<ParameterDefinition>());
+            set => m_parameters = value;
         }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ILine> m_lines;
 
         /// <summary>
         /// Gets or sets the lines for method body
         /// </summary>
         public List<ILine> Lines
         {
-            get
-            {
-                return m_lines ?? (m_lines = new List<ILine>());
-            }
-            set
-            {
-                m_lines = value;
-            }
+            get => m_lines ?? (m_lines = new List<ILine>());
+            set => m_lines = value;
         }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<string> m_namespacesForDependencies;
 
         /// <summary>
         /// Gets or sets the namespaces for dependencies
         /// </summary>
         public List<string> NamespacesForDependencies
         {
-            get
-            {
-                return m_namespacesForDependencies ?? (m_namespacesForDependencies = new List<string>());
-            }
-            set
-            {
-                m_namespacesForDependencies = value;
-            }
+            get => m_namespacesForDependencies ?? (m_namespacesForDependencies = new List<string>());
+            set => m_namespacesForDependencies = value;
         }
     }
 }

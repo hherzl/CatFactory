@@ -9,6 +9,9 @@ namespace CatFactory.ObjectOrientedProgramming
     [DebuggerDisplay("AccessModifier={AccessModifier}, Namespace={Namespace}, Name={Name}")]
     public class InterfaceDefinition : ObjectDefinition, IInterfaceDefinition
     {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<GenericTypeDefinition> m_genericTypes;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<string> m_implements;
+
         /// <summary>
         /// Initializes a new instance of <see cref="InterfaceDefinition"/> class
         /// </summary>
@@ -17,40 +20,22 @@ namespace CatFactory.ObjectOrientedProgramming
         {
         }
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<GenericTypeDefinition> m_genericTypes;
-
         /// <summary>
         /// Gets or sets the generic types for current object definition
         /// </summary>
         public List<GenericTypeDefinition> GenericTypes
         {
-            get
-            {
-                return m_genericTypes ?? (m_genericTypes = new List<GenericTypeDefinition>());
-            }
-            set
-            {
-                m_genericTypes = value;
-            }
+            get => m_genericTypes ?? (m_genericTypes = new List<GenericTypeDefinition>());
+            set => m_genericTypes = value;
         }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<string> m_implements;
 
         /// <summary>
         /// Gets or sets the implements list (Interfaces) for current class definition
         /// </summary>
         public List<string> Implements
         {
-            get
-            {
-                return m_implements ?? (m_implements = new List<string>());
-            }
-            set
-            {
-                m_implements = value;
-            }
+            get => m_implements ?? (m_implements = new List<string>());
+            set => m_implements = value;
         }
 
         /// <summary>

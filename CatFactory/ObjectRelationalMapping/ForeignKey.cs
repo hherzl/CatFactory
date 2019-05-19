@@ -11,15 +11,26 @@
         /// Initializes a new instance of <see cref="ForeignKey"/> class
         /// </summary>
         public ForeignKey()
+            : base()
         {
         }
 
         /// <summary>
         /// Initializes a new instance of <see cref="ForeignKey"/> class
         /// </summary>
+        /// <param name="constraintName">Constraint name</param>
+        public ForeignKey(string constraintName)
+            : base(constraintName)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="ForeignKey"/> class
+        /// </summary>
+        /// <param name="constraintName">Constraint name</param>
         /// <param name="key">Key for constraint</param>
-        public ForeignKey(params string[] key)
-            : base(key)
+        public ForeignKey(string constraintName, string[] key)
+            : base(constraintName, key)
         {
         }
 

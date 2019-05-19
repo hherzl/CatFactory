@@ -10,47 +10,33 @@ namespace CatFactory.Markup
     /// </summary>
     public class TableTag : Tag
     {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private TableHeaderTag m_header;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<TableRowTag> m_rows;
+
         /// <summary>
         /// 
         /// </summary>
         public TableTag()
+            : base()
         {
         }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private TableHeaderTag m_header;
 
         /// <summary>
         /// 
         /// </summary>
         public TableHeaderTag Header
         {
-            get
-            {
-                return m_header ?? (m_header = new TableHeaderTag());
-            }
-            set
-            {
-                m_header = value;
-            }
+            get => m_header ?? (m_header = new TableHeaderTag());
+            set => m_header = value;
         }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<TableRowTag> m_rows;
 
         /// <summary>
         /// 
         /// </summary>
         public List<TableRowTag> Rows
         {
-            get
-            {
-                return m_rows ?? (m_rows = new List<TableRowTag>());
-            }
-            set
-            {
-                m_rows = value;
-            }
+            get => m_rows ?? (m_rows = new List<TableRowTag>());
+            set => m_rows = value;
         }
 
         /// <summary>

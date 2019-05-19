@@ -9,6 +9,9 @@ namespace CatFactory.ObjectOrientedProgramming
     [DebuggerDisplay("Name={Name}, Arguments={Arguments.Count}, Sets={Sets.Count}")]
     public class MetadataAttribute
     {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<string> m_arguments;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<MetadataAttributeSet> m_sets;
+
         /// <summary>
         /// Initializes a new instance of <see cref="MetadataAttribute"/> class
         /// </summary>
@@ -32,40 +35,22 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public string Name { get; set; }
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<string> m_arguments;
-
         /// <summary>
         /// Gets or sets the arguments for current Metadata attribute
         /// </summary>
         public List<string> Arguments
         {
-            get
-            {
-                return m_arguments ?? (m_arguments = new List<string>());
-            }
-            set
-            {
-                m_arguments = value;
-            }
+            get => m_arguments ?? (m_arguments = new List<string>());
+            set => m_arguments = value;
         }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<MetadataAttributeSet> m_sets;
 
         /// <summary>
         /// Gets or sets the sets (name and value) for current Metadata attribute
         /// </summary>
         public List<MetadataAttributeSet> Sets
         {
-            get
-            {
-                return m_sets ?? (m_sets = new List<MetadataAttributeSet>());
-            }
-            set
-            {
-                m_sets = value;
-            }
+            get => m_sets ?? (m_sets = new List<MetadataAttributeSet>());
+            set => m_sets = value;
         }
 
         /// <summary>
