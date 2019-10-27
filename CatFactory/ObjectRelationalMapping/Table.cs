@@ -13,15 +13,32 @@ namespace CatFactory.ObjectRelationalMapping
     {
         #region [ Fields ]
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<Index> m_indexes;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ForeignKey> m_foreignKeys;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<Unique> m_uniques;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<Check> m_checks;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<Default> m_defaults;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<Column> m_columns;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ExtendedProperty> m_extendedProperties;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ConstraintDetail> m_constraintDetails;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<TableReference> m_tableReferences;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<Index> m_indexes;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ForeignKey> m_foreignKeys;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<Unique> m_uniques;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<Check> m_checks;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<Default> m_defaults;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<Column> m_columns;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ExtendedProperty> m_extendedProperties;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ConstraintDetail> m_constraintDetails;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<TableReference> m_tableReferences;
 
         #endregion
 
@@ -31,6 +48,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// Initializes a new instance of <see cref="Table"/> class
         /// </summary>
         public Table()
+            : base()
         {
         }
 
@@ -47,33 +65,6 @@ namespace CatFactory.ObjectRelationalMapping
             set => m_columns = value;
         }
 
-        /// <summary>
-        /// Gets or sets the extended properties
-        /// </summary>
-        public List<ExtendedProperty> ExtendedProperties
-        {
-            get => m_extendedProperties ?? (m_extendedProperties = new List<ExtendedProperty>());
-            set => m_extendedProperties = value;
-        }
-
-        /// <summary>
-        /// Gets or sets details for constraints
-        /// </summary>
-        public List<ConstraintDetail> ConstraintDetails
-        {
-            get => m_constraintDetails ?? (m_constraintDetails = new List<ConstraintDetail>());
-            set => m_constraintDetails = value;
-        }
-
-        /// <summary>
-        /// Gets or sets references for table
-        /// </summary>
-        public List<TableReference> TableReferences
-        {
-            get => m_tableReferences ?? (m_tableReferences = new List<TableReference>());
-            set => m_tableReferences = value;
-        }
-
         #endregion
 
         #region [ Indexers ]
@@ -81,7 +72,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// <summary>
         /// Gets or sets a column by index
         /// </summary>
-        /// <param name="index">Column's index</param>
+        /// <param name="index">Column index</param>
         /// <returns>A <see cref="Column"/> from current table</returns>
         public Column this[int index]
         {
@@ -92,7 +83,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// <summary>
         /// Gets or sets a column by name
         /// </summary>
-        /// <param name="name">Column's name</param>
+        /// <param name="name">Column name</param>
         /// <returns>A <see cref="Column"/> from current table</returns>
         public Column this[string name]
         {
@@ -127,6 +118,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// <summary>
         /// Gets or sets row Guid column
         /// </summary>
+        [Obsolete("This is a model class for SQL Server")]
         public RowGuidCol RowGuidCol { get; set; }
 
         /// <summary>
@@ -180,5 +172,35 @@ namespace CatFactory.ObjectRelationalMapping
         }
 
         #endregion
+
+        /// <summary>
+        /// Gets or sets the extended properties
+        /// </summary>
+        [Obsolete("This is a model class for SQL Server")]
+        public List<ExtendedProperty> ExtendedProperties
+        {
+            get => m_extendedProperties ?? (m_extendedProperties = new List<ExtendedProperty>());
+            set => m_extendedProperties = value;
+        }
+
+        /// <summary>
+        /// Gets or sets details for constraints
+        /// </summary>
+        [Obsolete("This is a model class for SQL Server")]
+        public List<ConstraintDetail> ConstraintDetails
+        {
+            get => m_constraintDetails ?? (m_constraintDetails = new List<ConstraintDetail>());
+            set => m_constraintDetails = value;
+        }
+
+        /// <summary>
+        /// Gets or sets references for table
+        /// </summary>
+        [Obsolete("This is a model class for SQL Server")]
+        public List<TableReference> TableReferences
+        {
+            get => m_tableReferences ?? (m_tableReferences = new List<TableReference>());
+            set => m_tableReferences = value;
+        }
     }
 }

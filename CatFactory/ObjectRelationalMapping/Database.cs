@@ -13,20 +13,39 @@ namespace CatFactory.ObjectRelationalMapping
     /// <![CDATA[  https://www.webucator.com/how-to/how-check-case-sensitivity-sql-server.cfm  ]]>
     /// </summary>
     [DebuggerDisplay("Name={Name}, DbObjects={DbObjects.Count}, Tables={Tables.Count}, Views={Views.Count}")]
-    public class Database
+    public class Database : IDatabase
     {
         #region [ Fields ]
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<DbObject> m_dbObjects;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private IDatabaseNamingConvention m_namingConvention;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<DatabaseTypeMap> m_databaseTypeMaps;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ExtendedProperty> m_extendedProperties;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<Table> m_tables;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<View> m_views;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ScalarFunction> m_scalarFunctions;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<TableFunction> m_tableFunctions;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<StoredProcedure> m_storedProcedures;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<Sequence> m_sequences;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<DbObject> m_dbObjects;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private IDatabaseNamingConvention m_namingConvention;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<DatabaseTypeMap> m_databaseTypeMaps;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ExtendedProperty> m_extendedProperties;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<Table> m_tables;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<View> m_views;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ScalarFunction> m_scalarFunctions;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<TableFunction> m_tableFunctions;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<StoredProcedure> m_storedProcedures;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<Sequence> m_sequences;
 
         #endregion
 
@@ -44,24 +63,19 @@ namespace CatFactory.ObjectRelationalMapping
         #region [ Properties ]
 
         /// <summary>
-        /// Gets or sets the data source
+        /// Gets or sets the server name
         /// </summary>
-        public string DataSource { get; set; }
-
-        /// <summary>
-        /// Gets or sets the catalog (Database name)
-        /// </summary>
-        public string Catalog { get; set; }
+        public string ServerName { get; set; }
 
         /// <summary>
         /// Gets or sets the name for database
         /// </summary>
-        [Obsolete("Prefer Catalog over Name")]
-        public string Name
-        {
-            get => Catalog;
-            set => Catalog = value;
-        }
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the description
+        /// </summary>
+        public string Description { get; set; }
 
         /// <summary>
         /// Gets or sets the default schema for database
@@ -72,12 +86,6 @@ namespace CatFactory.ObjectRelationalMapping
         /// Gets or sets if database supports transactions
         /// </summary>
         public bool SupportTransactions { get; set; }
-
-        /// <summary>
-        /// Gets or sets the description
-        /// </summary>
-        [Obsolete("Save description as extended property")]
-        public string Description { get; set; }
 
         /// <summary>
         /// Gets or sets Db objects
@@ -110,6 +118,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// <summary>
         /// Gets or sets the extended properties
         /// </summary>
+        [Obsolete("This is a model class for SQL Server")]
         public List<ExtendedProperty> ExtendedProperties
         {
             get => m_extendedProperties ?? (m_extendedProperties = new List<ExtendedProperty>());
@@ -170,9 +179,37 @@ namespace CatFactory.ObjectRelationalMapping
             set => m_sequences = value;
         }
 
+        /// <summary>
+        /// Gets or sets the data source
+        /// </summary>
+        [Obsolete("Prefer ServerName over DataSource")]
+        public string DataSource
+        {
+            get => ServerName;
+            set => ServerName = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the catalog (Database name)
+        /// </summary>
+        [Obsolete("Prefer Name over Catalog")]
+        public string Catalog
+        {
+            get => Name;
+            set => Name = value;
+        }
+
         #endregion
 
         #region [ Methods ]
+
+        /// <summary>
+        /// Gets database objects by name
+        /// </summary>
+        /// <param name="name">Db object name</param>
+        /// <returns>A <see cref="List{DbObject}"/></returns>
+        public virtual List<DbObject> GetDbObjectsByName(string name)
+            => DbObjects.Where(item => item.Schema == name).ToList();
 
         /// <summary>
         /// Gets database objects by schema
@@ -194,10 +231,10 @@ namespace CatFactory.ObjectRelationalMapping
         public virtual Table FindTable(string name)
         {
             string Join4(Table item)
-                => string.Join(".", new string[] { item.DataSource, item.Catalog, item.Schema, item.Name });
+                => string.Join(".", new string[] { item.ServerName, item.DatabaseName, item.Schema, item.Name });
 
             string Join3(Table item)
-                => string.Join(".", new string[] { item.Catalog, item.Schema, item.Name });
+                => string.Join(".", new string[] { item.DatabaseName, item.Schema, item.Name });
 
             string Join2(Table item)
                 => string.Join(".", new string[] { item.Schema, item.Name });
@@ -207,7 +244,7 @@ namespace CatFactory.ObjectRelationalMapping
                 || string.Equals(Join2(item: item), name, StringComparison.OrdinalIgnoreCase));
 
             if (table == null)
-                table = Tables.FirstOrDefault(item => string.Join(".", new string[] { Catalog, item.Schema, item.Name }) == name);
+                table = Tables.FirstOrDefault(item => string.Join(".", new string[] { Name, item.Schema, item.Name }) == name);
 
             return table;
         }
@@ -238,7 +275,7 @@ namespace CatFactory.ObjectRelationalMapping
             var view = Views.FirstOrDefault(item => string.Join(".", new string[] { item.Schema, item.Name }) == name);
 
             if (view == null)
-                view = Views.FirstOrDefault(item => string.Join(".", new string[] { Catalog, item.Schema, item.Name }) == name);
+                view = Views.FirstOrDefault(item => string.Join(".", new string[] { Name, item.Schema, item.Name }) == name);
 
             return view;
         }

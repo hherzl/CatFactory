@@ -22,17 +22,17 @@ namespace CatFactory.ObjectRelationalMapping
         #region [ Properties ]
 
         /// <summary>
-        /// Gets or sets the index's name
+        /// Gets or sets the index name
         /// </summary>
         public string IndexName { get; set; }
 
         /// <summary>
-        /// Gets or sets the index's description
+        /// Gets or sets the index description
         /// </summary>
         public string IndexDescription { get; set; }
 
         /// <summary>
-        /// Gets or sets the index's keys
+        /// Gets or sets the index keys
         /// </summary>
         public string IndexKeys { get; set; }
 

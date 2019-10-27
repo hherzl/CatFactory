@@ -13,8 +13,8 @@ namespace CatFactory.ObjectRelationalMapping.Programmability
         List<Parameter> Parameters { get; set; }
 
         /// <summary>
-        /// Gets or sets the first result sets for stored procedure
+        /// Gets or sets the result sets for stored procedure
         /// </summary>
-        List<FirstResultSetForObject> FirstResultSetsForObject { get; set; }
+        List<ResultSet> ResultSets { get; set; }
     }
 }

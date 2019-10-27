@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 namespace CatFactory.ObjectRelationalMapping
 {
@@ -6,6 +7,7 @@ namespace CatFactory.ObjectRelationalMapping
     /// Represents an extended property for a database object
     /// </summary>
     [DebuggerDisplay("Name={Name}, Value={Value}")]
+    [Obsolete("This is a model class for SQL Server")]
     public class ExtendedProperty
     {
         #region [ Constructors ]

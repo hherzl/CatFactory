@@ -1,8 +1,11 @@
-﻿namespace CatFactory.ObjectRelationalMapping
+﻿using System;
+
+namespace CatFactory.ObjectRelationalMapping
 {
     /// <summary>
     /// Represents a reference for user table
     /// </summary>
+    [Obsolete("This is a model class for SQL Server")]
     public class TableReference
     {
         #region [ Constructors ]

@@ -1,4 +1,4 @@
-﻿namespace CatFactory.ObjectRelationalMapping
+﻿namespace CatFactory.ObjectRelationalMapping.Programmability
 {
     /// <summary>
     /// Represents the model for <see cref="byte"/> sequence
@@ -11,6 +11,7 @@
         /// Initializes a new instance of <see cref="ByteSequence"/> class
         /// </summary>
         public ByteSequence()
+            : base()
         {
         }
 
@@ -27,12 +28,12 @@
         /// <summary>
         /// Initializes a new instance of <see cref="ByteSequence"/> class
         /// </summary>
-        /// <param name="dataSource">Data source</param>
-        /// <param name="catalog">Catalog</param>
+        /// <param name="serverName">Server name</param>
+        /// <param name="databaseName">Database name</param>
         /// <param name="schema">Schema</param>
         /// <param name="name">Name</param>
-        public ByteSequence(string dataSource, string catalog, string schema, string name)
-            : base(dataSource, catalog, schema, name)
+        public ByteSequence(string serverName, string databaseName, string schema, string name)
+            : base(serverName, databaseName, schema, name)
         {
         }
 

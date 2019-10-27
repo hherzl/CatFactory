@@ -8,11 +8,12 @@ namespace CatFactory.ObjectRelationalMapping
     /// Represents a column for table, view or table function
     /// </summary>
     [DebuggerDisplay("Name={Name}, Type={Type}, Nullable={Nullable ? \"Yes\": \"No\"}")]
-    public class Column
+    public class Column : IColumn
     {
         #region [ Fields ]
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ExtendedProperty> m_extendedProperties;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ExtendedProperty> m_extendedProperties;
 
         #endregion
 
@@ -65,34 +66,9 @@ namespace CatFactory.ObjectRelationalMapping
         public bool Nullable { get; set; }
 
         /// <summary>
-        /// Gets or sets if column trim trailing blanks 
-        /// </summary>
-        public string TrimTrailingBlanks { get; set; }
-
-        /// <summary>
-        /// Gets or sets if column has fixed len null in source
-        /// </summary>
-        public string FixedLenNullInSource { get; set; }
-
-        /// <summary>
         /// Gets or sets collation for column
         /// </summary>
         public string Collation { get; set; }
-
-        /// <summary>
-        /// Gets or sets description
-        /// </summary>
-        [Obsolete("Save description as extended property")]
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Gets or sets the extended properties
-        /// </summary>
-        public List<ExtendedProperty> ExtendedProperties
-        {
-            get => m_extendedProperties ?? (m_extendedProperties = new List<ExtendedProperty>());
-            set => m_extendedProperties = value;
-        }
 
         /// <summary>
         /// Gets or sets the default value
@@ -100,9 +76,9 @@ namespace CatFactory.ObjectRelationalMapping
         public object DefaultValue { get; set; }
 
         /// <summary>
-        /// Gets or sets the computed expression
+        /// Gets or sets description
         /// </summary>
-        public string ComputedExpression { get; set; }
+        public string Description { get; set; }
 
         #endregion
 
@@ -124,5 +100,32 @@ namespace CatFactory.ObjectRelationalMapping
             => Name == null ? 0 : Name.GetHashCode();
 
         #endregion
+
+        /// <summary>
+        /// Gets or sets the computed expression
+        /// </summary>
+        [Obsolete("This property is specific for SQL Server")]
+        public string ComputedExpression { get; set; }
+
+        /// <summary>
+        /// Gets or sets if column trim trailing blanks 
+        /// </summary>
+        [Obsolete("This property is specific for SQL Server")]
+        public string TrimTrailingBlanks { get; set; }
+
+        /// <summary>
+        /// Gets or sets if column has fixed len null in source
+        /// </summary>
+        [Obsolete("This property is specific for SQL Server")]
+        public string FixedLenNullInSource { get; set; }
+
+        /// <summary>
+        /// Gets or sets the extended properties
+        /// </summary>
+        public List<ExtendedProperty> ExtendedProperties
+        {
+            get => m_extendedProperties ?? (m_extendedProperties = new List<ExtendedProperty>());
+            set => m_extendedProperties = value;
+        }
     }
 }

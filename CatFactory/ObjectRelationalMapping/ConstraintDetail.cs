@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 namespace CatFactory.ObjectRelationalMapping
 {
@@ -6,6 +7,7 @@ namespace CatFactory.ObjectRelationalMapping
     /// Represents details for constraint
     /// </summary>
     [DebuggerDisplay("ConstraintType={ConstraintType}, ConstraintName={ConstraintName}, ConstraintKeys={ConstraintKeys}")]
+    [Obsolete("This is a model class for SQL Server")]
     public class ConstraintDetail
     {
         #region [ Constructors ]

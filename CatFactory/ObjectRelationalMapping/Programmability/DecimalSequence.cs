@@ -1,38 +1,39 @@
-﻿namespace CatFactory.ObjectRelationalMapping
+﻿namespace CatFactory.ObjectRelationalMapping.Programmability
 {
     /// <summary>
-    /// Represents the model for <see cref="short"/> sequence
+    /// Represents the model for <see cref="decimal"/> sequence
     /// </summary>
-    public class Int16Sequence : Sequence
+    public class DecimalSequence : Sequence
     {
         #region [ Constructors ]
 
         /// <summary>
-        /// Initializes a new instance of <see cref="Int16Sequence"/> class
+        /// Initializes a new instance of <see cref="DecimalSequence"/> class
         /// </summary>
-        public Int16Sequence()
+        public DecimalSequence()
+            : base()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="Int16Sequence"/> class
+        /// Initializes a new instance of <see cref="DecimalSequence"/> class
         /// </summary>
         /// <param name="schema">Schema</param>
         /// <param name="name">Name</param>
-        public Int16Sequence(string schema, string name)
+        public DecimalSequence(string schema, string name)
             : base(schema, name)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="Int16Sequence"/> class
+        /// Initializes a new instance of <see cref="DecimalSequence"/> class
         /// </summary>
-        /// <param name="dataSource">Data source</param>
-        /// <param name="catalog">Catalog</param>
+        /// <param name="serverName">Server name</param>
+        /// <param name="databaseName">Database name</param>
         /// <param name="schema">Schema</param>
         /// <param name="name">Name</param>
-        public Int16Sequence(string dataSource, string catalog, string schema, string name)
-            : base(dataSource, catalog, schema, name)
+        public DecimalSequence(string serverName, string databaseName, string schema, string name)
+            : base(serverName, databaseName, schema, name)
         {
         }
 
@@ -43,27 +44,27 @@
         /// <summary>
         /// Gets or sets the start value for current sequence
         /// </summary>
-        public short StartValue { get; set; }
+        public decimal StartValue { get; set; }
 
         /// <summary>
         /// Gets or sets the increment for current sequence
         /// </summary>
-        public short Increment { get; set; }
+        public decimal Increment { get; set; }
 
         /// <summary>
         /// Gets or sets the minimum value for current sequence
         /// </summary>
-        public short MinimumValue { get; set; }
+        public decimal MinimumValue { get; set; }
 
         /// <summary>
         /// Gets or sets the maximum value for current sequence
         /// </summary>
-        public short MaximumValue { get; set; }
+        public decimal MaximumValue { get; set; }
 
         /// <summary>
         /// Gets or sets the current value for current sequence
         /// </summary>
-        public short CurrentValue { get; set; }
+        public decimal CurrentValue { get; set; }
 
         #endregion
     }

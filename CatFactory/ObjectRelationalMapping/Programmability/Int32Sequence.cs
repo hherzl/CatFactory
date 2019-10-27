@@ -1,4 +1,4 @@
-﻿namespace CatFactory.ObjectRelationalMapping
+﻿namespace CatFactory.ObjectRelationalMapping.Programmability
 {
     /// <summary>
     /// Represents the model for <see cref="int"/> sequence
@@ -11,6 +11,7 @@
         /// Initializes a new instance of <see cref="Int32Sequence"/> class
         /// </summary>
         public Int32Sequence()
+            : base()
         {
         }
 
@@ -27,12 +28,12 @@
         /// <summary>
         /// Initializes a new instance of <see cref="Int32Sequence"/> class
         /// </summary>
-        /// <param name="dataSource">Data source</param>
-        /// <param name="catalog">Catalog</param>
+        /// <param name="serverName">Server name</param>
+        /// <param name="databaseName">Database name</param>
         /// <param name="schema">Schema</param>
         /// <param name="name">Name</param>
-        public Int32Sequence(string dataSource, string catalog, string schema, string name)
-            : base(dataSource, catalog, schema, name)
+        public Int32Sequence(string serverName, string databaseName, string schema, string name)
+            : base(serverName, databaseName, schema, name)
         {
         }
 

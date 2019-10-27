@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 namespace CatFactory.ObjectRelationalMapping
 {
@@ -6,6 +7,7 @@ namespace CatFactory.ObjectRelationalMapping
     /// Represents a row Guid column
     /// </summary>
     [DebuggerDisplay("Name={Name}")]
+    [Obsolete("This is a model class for SQL Server")]
     public class RowGuidCol
     {
         #region [ Constructors ]

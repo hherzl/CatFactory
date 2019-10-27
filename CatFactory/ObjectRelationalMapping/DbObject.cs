@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 namespace CatFactory.ObjectRelationalMapping
 {
@@ -14,6 +15,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// Initializes a new instance of <see cref="DbObject"/> class
         /// </summary>
         public DbObject()
+            : base()
         {
         }
 
@@ -31,14 +33,14 @@ namespace CatFactory.ObjectRelationalMapping
         /// <summary>
         /// Initializes a new instance of <see cref="DbObject"/> class
         /// </summary>
-        /// <param name="dataSource">Server</param>
-        /// <param name="catalog">Database</param>
+        /// <param name="serverName">Server name</param>
+        /// <param name="databaseName">Database name</param>
         /// <param name="schema">Schema name</param>
         /// <param name="name">Name</param>
-        public DbObject(string dataSource, string catalog, string schema, string name)
+        public DbObject(string serverName, string databaseName, string schema, string name)
         {
-            DataSource = dataSource;
-            Catalog = catalog;
+            ServerName = serverName;
+            DatabaseName = databaseName;
             Schema = schema;
             Name = name;
         }
@@ -48,14 +50,34 @@ namespace CatFactory.ObjectRelationalMapping
         #region [ Properties ]
 
         /// <summary>
+        /// Gets or sets the server name
+        /// </summary>
+        public string ServerName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the database name
+        /// </summary>
+        public string DatabaseName { get; set; }
+
+        /// <summary>
         /// Data Source or Server
         /// </summary>
-        public string DataSource { get; set; }
+        [Obsolete("Prefer server name over datasource")]
+        public string DataSource
+        {
+            get => ServerName;
+            set => ServerName = value;
+        }
 
         /// <summary>
         /// Catalog or Database Name
         /// </summary>
-        public string Catalog { get; set; }
+        [Obsolete("Prefer database name over catalog")]
+        public string Catalog
+        {
+            get => DatabaseName;
+            set => DatabaseName = value;
+        }
 
         #endregion
 

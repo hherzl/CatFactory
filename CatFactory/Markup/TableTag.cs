@@ -10,8 +10,11 @@ namespace CatFactory.Markup
     /// </summary>
     public class TableTag : Tag
     {
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private TableHeaderTag m_header;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<TableRowTag> m_rows;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private TableHeaderTag m_header;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<TableRowTag> m_rows;
 
         /// <summary>
         /// 

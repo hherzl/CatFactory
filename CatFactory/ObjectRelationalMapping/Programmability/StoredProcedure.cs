@@ -11,8 +11,14 @@ namespace CatFactory.ObjectRelationalMapping.Programmability
     {
         #region [ Fields ]
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<Parameter> m_parameters;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<FirstResultSetForObject> m_firstResultSetsForObject;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<Parameter> m_parameters;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ResultSet> m_resultSetsForObject;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<FirstResultSetForObject> m_firstResultSetsForObject;
 
         #endregion
 
@@ -49,6 +55,17 @@ namespace CatFactory.ObjectRelationalMapping.Programmability
         }
 
         /// <summary>
+        /// Gets or sets the result sets
+        /// </summary>
+        public List<ResultSet> ResultSets
+        {
+            get => m_resultSetsForObject ?? (m_resultSetsForObject = new List<ResultSet>());
+            set => m_resultSetsForObject = value;
+        }
+
+        #endregion
+
+        /// <summary>
         /// Gets or sets the sequence for first result sets for object
         /// </summary>
         public List<FirstResultSetForObject> FirstResultSetsForObject
@@ -56,7 +73,5 @@ namespace CatFactory.ObjectRelationalMapping.Programmability
             get => m_firstResultSetsForObject ?? (m_firstResultSetsForObject = new List<FirstResultSetForObject>());
             set => m_firstResultSetsForObject = value;
         }
-
-        #endregion
     }
 }

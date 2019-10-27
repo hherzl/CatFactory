@@ -39,7 +39,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// Adds columns array for all tables in <see cref="Database"/> instance
         /// </summary>
         /// <param name="database"><see cref="Database"/> instance</param>
-        /// <param name="columns">Array of <see cref="Column"/> class</param>
+        /// <param name="columns">Array of <see cref="IColumn"/></param>
         /// <param name="exclusions">Exclusions for tables in <see cref="Database"/> instance</param>
         /// <returns>An instance of <see cref="Database"/> instance</returns>
         public static Database AddColumnsForTables(this Database database, Column[] columns, params string[] exclusions)
@@ -60,10 +60,10 @@ namespace CatFactory.ObjectRelationalMapping
         }
 
         /// <summary>
-        /// Adds a <see cref="Column"/> instance in all tables for <see cref="Database"/> instance
+        /// Adds a <see cref="IColumn"/> instance in all tables for <see cref="Database"/> instance
         /// </summary>
         /// <param name="database"><see cref="Database"/> instance</param>
-        /// <param name="column"><see cref="Column"/> instance</param>
+        /// <param name="column"><see cref="IColumn"/> instance</param>
         /// <param name="exclusions">Exclusions for tables in <see cref="Database"/> instance</param>
         /// <returns>An instance of <see cref="Database"/> instance</returns>
         public static Database AddColumnForTables(this Database database, Column column, params string[] exclusions)
@@ -94,7 +94,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// <param name="database"><see cref="Database"/> instance</param>
         /// <param name="column"><see cref="Column"/> database</param>
         /// <returns>True if <see cref="Column"/> database type is <see cref="bool"/>, otherwise false</returns>
-        public static bool ColumnIsBoolean(this Database database, Column column)
+        public static bool ColumnIsBoolean(this Database database, IColumn column)
             => database.DatabaseTypeMaps.Count(item => item.DatabaseType == column.Type && item.ClrFullNameType == typeof(bool).FullName) == 0 ? false : true;
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// <param name="database"><see cref="Database"/> instance</param>
         /// <param name="column"><see cref="Column"/> database</param>
         /// <returns>True if <see cref="Column"/> database type is <see cref="byte"/>, otherwise false</returns>
-        public static bool ColumnIsByte(this Database database, Column column)
+        public static bool ColumnIsByte(this Database database, IColumn column)
             => database.DatabaseTypeMaps.Count(item => item.DatabaseType == column.Type && item.ClrFullNameType == typeof(byte).FullName) == 0 ? false : true;
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// <param name="database"><see cref="Database"/> instance</param>
         /// <param name="column"><see cref="Column"/> database</param>
         /// <returns>True if <see cref="Column"/> database type is <see cref="byte"/> array, otherwise false</returns>
-        public static bool ColumnIsByteArray(this Database database, Column column)
+        public static bool ColumnIsByteArray(this Database database, IColumn column)
             => database.DatabaseTypeMaps.Count(item => item.DatabaseType == column.Type && item.ClrFullNameType == typeof(byte[]).FullName) == 0 ? false : true;
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// <param name="database"><see cref="Database"/> instance</param>
         /// <param name="column"><see cref="Column"/> database</param>
         /// <returns>True if <see cref="Column"/> database type is <see cref="DateTime"/>, otherwise false</returns>
-        public static bool ColumnIsDateTime(this Database database, Column column)
+        public static bool ColumnIsDateTime(this Database database, IColumn column)
             => database.DatabaseTypeMaps.Count(item => item.DatabaseType == column.Type && item.ClrFullNameType == typeof(DateTime).FullName) == 0 ? false : true;
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// <param name="database"><see cref="Database"/> instance</param>
         /// <param name="column"><see cref="Column"/> database</param>
         /// <returns>True if <see cref="Column"/> database type is <see cref="decimal"/>, otherwise false</returns>
-        public static bool ColumnIsDecimal(this Database database, Column column)
+        public static bool ColumnIsDecimal(this Database database, IColumn column)
             => database.DatabaseTypeMaps.Count(item => item.DatabaseType == column.Type && item.ClrFullNameType == typeof(decimal).FullName) == 0 ? false : true;
 
         /// <summary>
@@ -139,16 +139,16 @@ namespace CatFactory.ObjectRelationalMapping
         /// <param name="database"><see cref="Database"/> instance</param>
         /// <param name="column"><see cref="Column"/> database</param>
         /// <returns>True if <see cref="Column"/> database type is <see cref="double"/>, otherwise false</returns>
-        public static bool ColumnIsDouble(this Database database, Column column)
+        public static bool ColumnIsDouble(this Database database, IColumn column)
             => database.DatabaseTypeMaps.Count(item => item.DatabaseType == column.Type && item.ClrFullNameType == typeof(double).FullName) == 0 ? false : true;
 
         /// <summary>
         /// Validates if column database type is <see cref="Guid"/>
         /// </summary>
         /// <param name="database"><see cref="Database"/> instance</param>
-        /// <param name="column"><see cref="Column"/> database</param>
+        /// <param name="column"><see cref="IColumn"/> database</param>
         /// <returns>True if <see cref="Column"/> database type is <see cref="Guid"/>, otherwise false</returns>
-        public static bool ColumnIsGuid(this Database database, Column column)
+        public static bool ColumnIsGuid(this Database database, IColumn column)
             => database.DatabaseTypeMaps.Count(item => item.DatabaseType == column.Type && item.ClrFullNameType == typeof(Guid).FullName) == 0 ? false : true;
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// <param name="database"><see cref="Database"/> instance</param>
         /// <param name="column"><see cref="Column"/> database</param>
         /// <returns>True if <see cref="Column"/> database type is <see cref="short"/>, otherwise false</returns>
-        public static bool ColumnIsInt16(this Database database, Column column)
+        public static bool ColumnIsInt16(this Database database, IColumn column)
             => database.DatabaseTypeMaps.Count(item => item.DatabaseType == column.Type && item.ClrFullNameType == typeof(short).FullName) == 0 ? false : true;
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// <param name="database"><see cref="Database"/> instance</param>
         /// <param name="column"><see cref="Column"/> database</param>
         /// <returns>True if <see cref="Column"/> database type is <see cref="int"/>, otherwise false</returns>
-        public static bool ColumnIsInt32(this Database database, Column column)
+        public static bool ColumnIsInt32(this Database database, IColumn column)
             => database.DatabaseTypeMaps.Count(item => item.DatabaseType == column.Type && item.ClrFullNameType == typeof(int).FullName) == 0 ? false : true;
 
         /// <summary>
@@ -175,7 +175,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// <param name="database"><see cref="Database"/> instance</param>
         /// <param name="column"><see cref="Column"/> database</param>
         /// <returns>True if <see cref="Column"/> database type is <see cref="long"/>, otherwise false</returns>
-        public static bool ColumnIsInt64(this Database database, Column column)
+        public static bool ColumnIsInt64(this Database database, IColumn column)
             => database.DatabaseTypeMaps.Count(item => item.DatabaseType == column.Type && item.ClrFullNameType == typeof(long).FullName) == 0 ? false : true;
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// <param name="database"><see cref="Database"/> instance</param>
         /// <param name="column"><see cref="Column"/> database</param>
         /// <returns>True if <see cref="Column"/> database type is number, otherwise false</returns>
-        public static bool ColumnIsNumber(this Database database, Column column)
+        public static bool ColumnIsNumber(this Database database, IColumn column)
             => (new string[]
             {
                 typeof(decimal).FullName,
@@ -199,18 +199,18 @@ namespace CatFactory.ObjectRelationalMapping
         /// Validates if column database type is <see cref="float"/>
         /// </summary>
         /// <param name="database"><see cref="Database"/> instance</param>
-        /// <param name="column"><see cref="Column"/> database</param>
+        /// <param name="column"><see cref="IColumn"/> database</param>
         /// <returns>True if <see cref="Column"/> database type is <see cref="float"/>, otherwise false</returns>
-        public static bool ColumnIsSingle(this Database database, Column column)
+        public static bool ColumnIsSingle(this Database database, IColumn column)
             => database.DatabaseTypeMaps.Count(item => item.DatabaseType == column.Type && item.ClrFullNameType == typeof(float).FullName) == 0 ? false : true;
 
         /// <summary>
         /// Validates if column database type is <see cref="string"/>
         /// </summary>
         /// <param name="database"><see cref="Database"/> instance</param>
-        /// <param name="column"><see cref="Column"/> database</param>
+        /// <param name="column"><see cref="IColumn"/> database</param>
         /// <returns>True if <see cref="Column"/> database type is <see cref="string"/>, otherwise false</returns>
-        public static bool ColumnIsString(this Database database, Column column)
+        public static bool ColumnIsString(this Database database, IColumn column)
             => database.DatabaseTypeMaps.Count(item => item.DatabaseType == column.Type && item.ClrFullNameType == typeof(string).FullName) == 0 ? false : true;
 
         /// <summary>
@@ -265,7 +265,7 @@ namespace CatFactory.ObjectRelationalMapping
 
                             table.ForeignKeys.Add(new ForeignKey(database.NamingConvention.GetForeignKeyConstraintName(table, key, parentTable), key)
                             {
-                                References = string.Format("{0}.{1}", database.Catalog, parentTable.FullName),
+                                References = string.Format("{0}.{1}", database.Name, parentTable.FullName),
                                 Child = table.FullName
                             });
                         }
@@ -299,7 +299,7 @@ namespace CatFactory.ObjectRelationalMapping
         }
 
         /// <summary>
-        /// Sets <see cref="PrimaryKey"/> in <see cref="Table"/> collection for <see cref="Database"/> instance
+        /// Sets an instance of <see cref="PrimaryKey"/> class in <see cref="Table"/> collection for <see cref="Database"/> instance
         /// </summary>
         /// <param name="database"><see cref="Database"/> instance</param>
         /// <param name="exclusions">Exclusions for tables in <see cref="Database"/> instance</param>

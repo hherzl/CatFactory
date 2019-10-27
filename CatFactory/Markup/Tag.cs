@@ -30,8 +30,11 @@ namespace CatFactory.Markup
                 IsSelfClosed = isSelfClosed
             };
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<TagAttribute> m_attributes;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<Tag> m_children;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<TagAttribute> m_attributes;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<Tag> m_children;
 
         /// <summary>
         /// 

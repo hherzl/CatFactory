@@ -8,7 +8,8 @@ namespace CatFactory.Markup
     /// </summary>
     public class TableRowTag : Tag
     {
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<TableCellTag> m_cells;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<TableCellTag> m_cells;
 
         /// <summary>
         /// 

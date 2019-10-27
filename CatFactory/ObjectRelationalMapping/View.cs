@@ -13,9 +13,14 @@ namespace CatFactory.ObjectRelationalMapping
     {
         #region [ Fields ]
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<Column> m_columns;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<Index> m_indexes;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ExtendedProperty> m_extendedProperties;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<Column> m_columns;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<Index> m_indexes;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ExtendedProperty> m_extendedProperties;
 
         #endregion
 
@@ -34,13 +39,14 @@ namespace CatFactory.ObjectRelationalMapping
         #region [ Properties ]
 
         /// <summary>
-        /// Gets or sets the columns list
+        /// Gets or sets identity (auto increment)
         /// </summary>
-        public List<Column> Columns
-        {
-            get => m_columns ?? (m_columns = new List<Column>());
-            set => m_columns = value;
-        }
+        public Identity Identity { get; set; }
+
+        /// <summary>
+        /// Gets or sets row Guid column
+        /// </summary>
+        public RowGuidCol RowGuidCol { get; set; }
 
         /// <summary>
         /// Gets or sets the extended properties
@@ -91,20 +97,19 @@ namespace CatFactory.ObjectRelationalMapping
         #region [ Members of IView ]
 
         /// <summary>
+        /// Gets or sets the columns list
+        /// </summary>
+        public List<Column> Columns
+        {
+            get => m_columns ?? (m_columns = new List<Column>());
+            set => m_columns = value;
+        }
+
+        /// <summary>
         /// Gets or sets the description
         /// </summary>
         [Obsolete("Save description as extended property")]
         public string Description { get; set; }
-
-        /// <summary>
-        /// Gets or sets identity (auto increment)
-        /// </summary>
-        public Identity Identity { get; set; }
-
-        /// <summary>
-        /// Gets or sets row Guid column
-        /// </summary>
-        public RowGuidCol RowGuidCol { get; set; }
 
         /// <summary>
         /// Gets or sets indexes list

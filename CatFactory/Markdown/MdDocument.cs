@@ -6,39 +6,34 @@ using CatFactory.CodeFactory;
 namespace CatFactory.Markdown
 {
     /// <summary>
-    /// 
+    /// Represents a document for markdown language
     /// </summary>
+    /// <remarks>For more info: https://en.wikipedia.org/wiki/Markdown</remarks>
     public class MdDocument
     {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ILine> m_lines;
+
         /// <summary>
-        /// 
+        /// Initializes a new instance of <see cref="MdDocument"/> class
         /// </summary>
         public MdDocument()
         {
         }
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ILine> m_lines;
-
         /// <summary>
-        /// 
+        /// Gets or sets the lines for current document
         /// </summary>
         public List<ILine> Lines
         {
-            get
-            {
-                return m_lines ?? (m_lines = new List<ILine>());
-            }
-            set
-            {
-                m_lines = value;
-            }
+            get => m_lines ?? (m_lines = new List<ILine>());
+            set => m_lines = value;
         }
 
         /// <summary>
-        /// 
+        /// Returns a string that represents the current document
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A string that represents the current document</returns>
         public override string ToString()
         {
             var output = new StringBuilder();

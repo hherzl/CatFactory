@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 namespace CatFactory.ObjectRelationalMapping.Programmability
 {
@@ -6,6 +7,7 @@ namespace CatFactory.ObjectRelationalMapping.Programmability
     /// Represents the first result set for object (database object)
     /// </summary>
     [DebuggerDisplay("ColumnOrdinal={ColumnOrdinal}, Name={Name}, IsNullable={IsNullable}, SystemTypeName={SystemTypeName}")]
+    [Obsolete("This is a model class for SQL Server")]
     public class FirstResultSetForObject
     {
         #region [ Constructors ]

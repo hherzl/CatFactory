@@ -11,7 +11,8 @@ namespace CatFactory.ObjectRelationalMapping
     {
         #region [ Fields ]
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<string> m_key;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<string> m_key;
 
         #endregion
 
