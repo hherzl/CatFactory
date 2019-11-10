@@ -10,12 +10,23 @@ namespace CatFactory.ObjectOrientedProgramming
     [DebuggerDisplay("AccessModifier={AccessModifier}, Type={Type}, Name={Name}, Parameters={Parameters.Count}")]
     public class MethodDefinition : IMemberDefinition
     {
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private Documentation m_documentation;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<MetadataAttribute> m_attributes;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<GenericTypeDefinition> m_genericTypes;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ParameterDefinition> m_parameters;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ILine> m_lines;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<string> m_namespacesForDependencies;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private Documentation m_documentation;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<MetadataAttribute> m_attributes;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<GenericTypeDefinition> m_genericTypes;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ParameterDefinition> m_parameters;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ILine> m_lines;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<string> m_namespacesForDependencies;
 
         /// <summary>
         /// Initializes a new instance of <see cref="MethodDefinition"/> class

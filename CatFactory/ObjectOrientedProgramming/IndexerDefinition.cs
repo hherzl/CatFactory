@@ -9,9 +9,14 @@ namespace CatFactory.ObjectOrientedProgramming
     /// </summary>
     public class IndexerDefinition : IMemberDefinition
     {
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ParameterDefinition> m_parameters;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ILine> m_getBody;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ILine> m_setBody;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ParameterDefinition> m_parameters;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ILine> m_getBody;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ILine> m_setBody;
 
         /// <summary>
         /// Initializes a new instance of <see cref="IndexerDefinition"/> class

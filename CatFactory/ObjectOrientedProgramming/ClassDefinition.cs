@@ -9,9 +9,14 @@ namespace CatFactory.ObjectOrientedProgramming
     [DebuggerDisplay("AccessModifier={AccessModifier}, Namespace={Namespace}, Name={Name}")]
     public class ClassDefinition : ObjectDefinition, IClassDefinition
     {
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ClassConstructorDefinition> m_constructors;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<IndexerDefinition> m_indexers;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<FieldDefinition> m_fields;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ClassConstructorDefinition> m_constructors;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<IndexerDefinition> m_indexers;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<FieldDefinition> m_fields;
 
         /// <summary>
         /// Initializes a new instance of <see cref="ClassDefinition"/> class

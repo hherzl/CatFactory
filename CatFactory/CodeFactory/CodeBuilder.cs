@@ -18,6 +18,9 @@ namespace CatFactory.CodeFactory
         /// </summary>
         public event TranslatedDefinition TranslatedDefinition;
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ILine> m_lines;
+
         /// <summary>
         /// Initializes a new instance of <see cref="CodeBuilder"/> class
         /// </summary>
@@ -82,22 +85,13 @@ namespace CatFactory.CodeFactory
         {
         }
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ILine> m_lines;
-
         /// <summary>
         /// Gets or sets the code lines for current code builder
         /// </summary>
         public List<ILine> Lines
         {
-            get
-            {
-                return m_lines ?? (m_lines = new List<ILine>());
-            }
-            set
-            {
-                m_lines = value;
-            }
+            get => m_lines ?? (m_lines = new List<ILine>());
+            set => m_lines = value;
         }
 
         /// <summary>

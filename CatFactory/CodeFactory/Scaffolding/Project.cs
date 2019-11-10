@@ -14,6 +14,12 @@ namespace CatFactory.CodeFactory.Scaffolding
     [DebuggerDisplay("Name={Name}, OutputDirectory={OutputDirectory}, Features={Features.Count}, Selections={Selections.Count}")]
     public class Project<TProjectSettings> : IProject<TProjectSettings> where TProjectSettings : class, IProjectSettings, new()
     {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ProjectFeature<TProjectSettings>> m_features;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ProjectSelection<TProjectSettings>> m_selections;
+
         /// <summary>
         /// Occurs before of create the output file
         /// </summary>
@@ -77,50 +83,26 @@ namespace CatFactory.CodeFactory.Scaffolding
         /// <returns>A <see cref="Project{TProjectSettings}"/> from features list</returns>
         public ProjectFeature<TProjectSettings> this[int index]
         {
-            get
-            {
-                return Features[index];
-            }
-            set
-            {
-                Features[index] = value;
-            }
+            get => Features[index];
+            set => Features[index] = value;
         }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ProjectFeature<TProjectSettings>> m_features;
 
         /// <summary>
         /// Gets or sets the features
         /// </summary>
         public List<ProjectFeature<TProjectSettings>> Features
         {
-            get
-            {
-                return m_features ?? (m_features = new List<ProjectFeature<TProjectSettings>>());
-            }
-            set
-            {
-                m_features = value;
-            }
+            get => m_features ?? (m_features = new List<ProjectFeature<TProjectSettings>>());
+            set => m_features = value;
         }
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ProjectSelection<TProjectSettings>> m_selections;
 
         /// <summary>
         /// Gets or sets the selections
         /// </summary>
         public List<ProjectSelection<TProjectSettings>> Selections
         {
-            get
-            {
-                return m_selections ?? (m_selections = new List<ProjectSelection<TProjectSettings>>());
-            }
-            set
-            {
-                m_selections = value;
-            }
+            get => m_selections ?? (m_selections = new List<ProjectSelection<TProjectSettings>>());
+            set => m_selections = value;
         }
 
         /// <summary>
@@ -150,7 +132,7 @@ namespace CatFactory.CodeFactory.Scaffolding
                     .Distinct()
                     .Select(schema => new ProjectFeature<TProjectSettings>(schema, Database.GetDbObjectsBySchema(schema), this))
                     .ToList()
-                    );
+                );
             }
         }
 

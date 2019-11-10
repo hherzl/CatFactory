@@ -16,7 +16,7 @@ namespace CatFactory.Tests
             {
                 Name = "OnlineStore",
                 Database = Databases.OnlineStore,
-                OutputDirectory = "C:\\Temp\\CatFactory\\Dapper",
+                OutputDirectory = @"C:\Temp\CatFactory\Dapper",
                 AuthorInfo = new AuthorInfo
                 {
                     Name = "Hans H.",

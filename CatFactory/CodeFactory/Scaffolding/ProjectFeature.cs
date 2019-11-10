@@ -12,6 +12,9 @@ namespace CatFactory.CodeFactory.Scaffolding
     [DebuggerDisplay("Name={Name}, Description={Description}, DbObjects={DbObjects.Count}")]
     public class ProjectFeature<TProjectSettings> where TProjectSettings : class, IProjectSettings, new()
     {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<IDbObject> m_dbObjects;
+
         /// <summary>
         /// Initializes a new instance of <see cref="ProjectFeature{TProjectSettings}"/> class
         /// </summary>
@@ -57,22 +60,13 @@ namespace CatFactory.CodeFactory.Scaffolding
         /// </summary>
         public string Name { get; set; }
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<IDbObject> m_dbObjects;
-
         /// <summary>
         /// Gets or sets the database objects
         /// </summary>
         public List<IDbObject> DbObjects
         {
-            get
-            {
-                return m_dbObjects ?? (m_dbObjects = new List<IDbObject>());
-            }
-            set
-            {
-                m_dbObjects = value;
-            }
+            get => m_dbObjects ?? (m_dbObjects = new List<IDbObject>());
+            set => m_dbObjects = value;
         }
 
         /// <summary>

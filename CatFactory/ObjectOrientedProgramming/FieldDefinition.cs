@@ -9,8 +9,11 @@ namespace CatFactory.ObjectOrientedProgramming
     [DebuggerDisplay("IsReadOnly = {IsReadOnly}, AccessModifier={AccessModifier}, Type={Type}, Name={Name}")]
     public class FieldDefinition : IMemberDefinition
     {
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private Documentation m_documentation;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<MetadataAttribute> m_attributes;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private Documentation m_documentation;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<MetadataAttribute> m_attributes;
 
         /// <summary>
         /// Initializes a new instance of <see cref="FieldDefinition"/> class

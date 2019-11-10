@@ -9,8 +9,11 @@ namespace CatFactory.ObjectOrientedProgramming
     [DebuggerDisplay("Name={Name}, Value={Value}")]
     public class NameValue : INameValue
     {
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private Documentation m_documentation;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<MetadataAttribute> m_attributes;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private Documentation m_documentation;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<MetadataAttribute> m_attributes;
 
         /// <summary>
         /// Initializes a new instance of <see cref="NameValue"/> class

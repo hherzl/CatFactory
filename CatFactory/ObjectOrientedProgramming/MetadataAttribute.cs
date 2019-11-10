@@ -9,8 +9,11 @@ namespace CatFactory.ObjectOrientedProgramming
     [DebuggerDisplay("Name={Name}, Arguments={Arguments.Count}, Sets={Sets.Count}")]
     public class MetadataAttribute
     {
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<string> m_arguments;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<MetadataAttributeSet> m_sets;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<string> m_arguments;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<MetadataAttributeSet> m_sets;
 
         /// <summary>
         /// Initializes a new instance of <see cref="MetadataAttribute"/> class

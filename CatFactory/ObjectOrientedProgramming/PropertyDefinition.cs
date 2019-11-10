@@ -10,10 +10,17 @@ namespace CatFactory.ObjectOrientedProgramming
     [DebuggerDisplay("AccessModifier={AccessModifier}, Type={Type}, Name={Name}")]
     public class PropertyDefinition : IMemberDefinition
     {
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private Documentation m_documentation;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<MetadataAttribute> m_attributes;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ILine> m_getBody;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ILine> m_setBody;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private Documentation m_documentation;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<MetadataAttribute> m_attributes;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ILine> m_getBody;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ILine> m_setBody;
 
         /// <summary>
         /// Initializes a new instance of <see cref="PropertyDefinition"/> class

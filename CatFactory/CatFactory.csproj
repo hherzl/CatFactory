@@ -17,6 +17,7 @@ This package allows to define CLR objects and database objects.
         <PackageReleaseNotes>1.0.0-beta-sun-build24 Version:
 
 * Addition of XML comments for Markdown namespace
+* Addition of extension method for DbDataReader class
 * Code refactor: move all sequence definitions to Programmability namespace
 * Code improvement: addition of interface for Database definition
 * Code improvement: addition of interface for Column definition

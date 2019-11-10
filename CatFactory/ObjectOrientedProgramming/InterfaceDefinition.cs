@@ -9,8 +9,11 @@ namespace CatFactory.ObjectOrientedProgramming
     [DebuggerDisplay("AccessModifier={AccessModifier}, Namespace={Namespace}, Name={Name}")]
     public class InterfaceDefinition : ObjectDefinition, IInterfaceDefinition
     {
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<GenericTypeDefinition> m_genericTypes;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<string> m_implements;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<GenericTypeDefinition> m_genericTypes;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<string> m_implements;
 
         /// <summary>
         /// Initializes a new instance of <see cref="InterfaceDefinition"/> class

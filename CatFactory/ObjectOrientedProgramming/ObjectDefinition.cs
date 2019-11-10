@@ -10,12 +10,23 @@ namespace CatFactory.ObjectOrientedProgramming
     [DebuggerDisplay("Namespace={Namespace}, Name={Name}")]
     public class ObjectDefinition : IObjectDefinition
     {
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<string> m_namespaces;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private Documentation m_documentation;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<MetadataAttribute> m_attributes;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<EventDefinition> m_events;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<PropertyDefinition> m_properties;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<MethodDefinition> m_methods;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<string> m_namespaces;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private Documentation m_documentation;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<MetadataAttribute> m_attributes;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<EventDefinition> m_events;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<PropertyDefinition> m_properties;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<MethodDefinition> m_methods;
 
         /// <summary>
         /// Initializes a new instance of <see cref="ObjectDefinition"/> class

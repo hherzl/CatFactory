@@ -14,6 +14,16 @@ namespace CatFactory.CodeFactory.Scaffolding
         /// </summary>
         public const string GlobalPattern = "*.*";
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private TProjectSettings m_settings;
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="Project{TProjectSettings}"/> class
+        /// </summary>
+        public ProjectSelection()
+        {
+        }
+
         /// <summary>
         /// Gets or sets the pattern
         /// </summary>
@@ -25,22 +35,13 @@ namespace CatFactory.CodeFactory.Scaffolding
         public bool IsGlobal
             => Pattern == GlobalPattern;
 
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private TProjectSettings m_settings;
-
         /// <summary>
         /// Gets or sets the project settings
         /// </summary>
         public virtual TProjectSettings Settings
         {
-            get
-            {
-                return m_settings ?? (m_settings = new TProjectSettings());
-            }
-            set
-            {
-                m_settings = value;
-            }
+            get => m_settings ?? (m_settings = new TProjectSettings());
+            set => m_settings = value;
         }
     }
 }

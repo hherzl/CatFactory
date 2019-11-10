@@ -8,8 +8,7 @@ namespace CatFactory.Enumerations.Attributes
     /// Preferred short abbreviation enum types matched to string values often don't match due to human errors.
     /// </summary>
     /// <TODO>
-    /// Either convert to a CSV String, or List, or throw an error when comma, semi-colon or other standard separator is
-    /// discovered.
+    /// Either convert to a CSV String, or List, or throw an error when comma, semi-colon or other standard separator is discovered.
     /// </TODO>
     public sealed class AbbreviationAttribute : Attribute
     {
@@ -39,7 +38,7 @@ namespace CatFactory.Enumerations.Attributes
         /// <summary>
         /// Gets the string presentation of the object
         /// </summary>
-        /// <returns><see cref="string"/> presentation of the object</returns>
+        /// <returns>A <see cref="string"/> presentation of the object</returns>
         public override string ToString()
             => Abbreviation;
 

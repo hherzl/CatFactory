@@ -8,7 +8,8 @@ namespace CatFactory.ObjectOrientedProgramming
     [DebuggerDisplay("AccessModifier={AccessModifier}, Type={Type}, Name={Name}")]
     public class EventDefinition : IMemberDefinition
     {
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private Documentation m_documentation;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private Documentation m_documentation;
 
         /// <summary>
         /// Initializes a new instance of <see cref="EventDefinition"/> class

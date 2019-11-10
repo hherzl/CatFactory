@@ -9,7 +9,8 @@ namespace CatFactory.ObjectOrientedProgramming
     /// </summary>
     public class FinalizerDefinition
     {
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ILine> m_lines;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ILine> m_lines;
 
         /// <summary>
         /// Initializes a new instance of <see cref="FinalizerDefinition"/> class

@@ -9,7 +9,8 @@ namespace CatFactory.ObjectOrientedProgramming
     [DebuggerDisplay("Summary={Summary}, Returns={Returns}")]
     public class Documentation
     {
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<dynamic> m_customTags;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<dynamic> m_customTags;
 
         /// <summary>
         /// Initializes a new instance of <see cref="Documentation"/> class
