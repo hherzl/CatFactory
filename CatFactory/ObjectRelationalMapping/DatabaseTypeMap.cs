@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using System.Diagnostics;
 using System.Dynamic;
+using System.Xml.Serialization;
 
 namespace CatFactory.ObjectRelationalMapping
 {
@@ -100,6 +101,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// <summary>
         /// Gets or sets the extension data for import
         /// </summary>
+        [XmlIgnore]
         public dynamic ImportBag
         {
             get => m_importBag ?? (m_importBag = new ExpandoObject());
