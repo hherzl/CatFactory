@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Dynamic;
 using System.Linq;
 
 namespace CatFactory.ObjectRelationalMapping
@@ -32,13 +33,7 @@ namespace CatFactory.ObjectRelationalMapping
         private List<Column> m_columns;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ExtendedProperty> m_extendedProperties;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ConstraintDetail> m_constraintDetails;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<TableReference> m_tableReferences;
+        private dynamic m_importBag;
 
         #endregion
 
@@ -116,12 +111,6 @@ namespace CatFactory.ObjectRelationalMapping
         public Identity Identity { get; set; }
 
         /// <summary>
-        /// Gets or sets row Guid column
-        /// </summary>
-        [Obsolete("This is a model class for SQL Server")]
-        public RowGuidCol RowGuidCol { get; set; }
-
-        /// <summary>
         /// Gets or sets indexes list
         /// </summary>
         public List<Index> Indexes
@@ -171,36 +160,15 @@ namespace CatFactory.ObjectRelationalMapping
             set => m_defaults = value;
         }
 
+        /// <summary>
+        /// Gets or sets the extension data for import
+        /// </summary>
+        public dynamic ImportBag
+        {
+            get => m_importBag ?? (m_importBag = new ExpandoObject());
+            set => m_importBag = value;
+        }
+
         #endregion
-
-        /// <summary>
-        /// Gets or sets the extended properties
-        /// </summary>
-        [Obsolete("This is a model class for SQL Server")]
-        public List<ExtendedProperty> ExtendedProperties
-        {
-            get => m_extendedProperties ?? (m_extendedProperties = new List<ExtendedProperty>());
-            set => m_extendedProperties = value;
-        }
-
-        /// <summary>
-        /// Gets or sets details for constraints
-        /// </summary>
-        [Obsolete("This is a model class for SQL Server")]
-        public List<ConstraintDetail> ConstraintDetails
-        {
-            get => m_constraintDetails ?? (m_constraintDetails = new List<ConstraintDetail>());
-            set => m_constraintDetails = value;
-        }
-
-        /// <summary>
-        /// Gets or sets references for table
-        /// </summary>
-        [Obsolete("This is a model class for SQL Server")]
-        public List<TableReference> TableReferences
-        {
-            get => m_tableReferences ?? (m_tableReferences = new List<TableReference>());
-            set => m_tableReferences = value;
-        }
     }
 }

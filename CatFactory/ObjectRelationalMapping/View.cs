@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Dynamic;
 using System.Linq;
 
 namespace CatFactory.ObjectRelationalMapping
@@ -20,7 +21,7 @@ namespace CatFactory.ObjectRelationalMapping
         private List<Index> m_indexes;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ExtendedProperty> m_extendedProperties;
+        private dynamic m_importBag;
 
         #endregion
 
@@ -44,17 +45,12 @@ namespace CatFactory.ObjectRelationalMapping
         public Identity Identity { get; set; }
 
         /// <summary>
-        /// Gets or sets row Guid column
+        /// Gets or sets the extension data for import
         /// </summary>
-        public RowGuidCol RowGuidCol { get; set; }
-
-        /// <summary>
-        /// Gets or sets the extended properties
-        /// </summary>
-        public List<ExtendedProperty> ExtendedProperties
+        public dynamic ImportBag
         {
-            get => m_extendedProperties ?? (m_extendedProperties = new List<ExtendedProperty>());
-            set => m_extendedProperties = value;
+            get => m_importBag ?? (m_importBag = new ExpandoObject());
+            set => m_importBag = value;
         }
 
         #endregion

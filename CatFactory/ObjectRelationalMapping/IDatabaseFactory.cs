@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CatFactory.ObjectRelationalMapping
 {
@@ -17,5 +18,11 @@ namespace CatFactory.ObjectRelationalMapping
         /// </summary>
         /// <returns>A <see cref="Database"/> instance that represents an existing database in DBMS</returns>
         Database Import();
+
+        /// <summary>
+        /// Imports an existing database in async mode
+        /// </summary>
+        /// <returns>A <see cref="Database"/> instance that represents an existing database in DBMS</returns>
+        Task<Database> ImportAsync();
     }
 }

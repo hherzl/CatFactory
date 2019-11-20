@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using System.Dynamic;
 
 namespace CatFactory.ObjectRelationalMapping
 {
@@ -13,7 +12,7 @@ namespace CatFactory.ObjectRelationalMapping
         #region [ Fields ]
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ExtendedProperty> m_extendedProperties;
+        private dynamic m_importBag;
 
         #endregion
 
@@ -80,6 +79,15 @@ namespace CatFactory.ObjectRelationalMapping
         /// </summary>
         public string Description { get; set; }
 
+        /// <summary>
+        /// Gets or sets the extension data for import
+        /// </summary>
+        public dynamic ImportBag
+        {
+            get => m_importBag ?? (m_importBag = new ExpandoObject());
+            set => m_importBag = value;
+        }
+
         #endregion
 
         #region [ Methods ]
@@ -100,32 +108,5 @@ namespace CatFactory.ObjectRelationalMapping
             => Name == null ? 0 : Name.GetHashCode();
 
         #endregion
-
-        /// <summary>
-        /// Gets or sets the computed expression
-        /// </summary>
-        [Obsolete("This property is specific for SQL Server")]
-        public string ComputedExpression { get; set; }
-
-        /// <summary>
-        /// Gets or sets if column trim trailing blanks 
-        /// </summary>
-        [Obsolete("This property is specific for SQL Server")]
-        public string TrimTrailingBlanks { get; set; }
-
-        /// <summary>
-        /// Gets or sets if column has fixed len null in source
-        /// </summary>
-        [Obsolete("This property is specific for SQL Server")]
-        public string FixedLenNullInSource { get; set; }
-
-        /// <summary>
-        /// Gets or sets the extended properties
-        /// </summary>
-        public List<ExtendedProperty> ExtendedProperties
-        {
-            get => m_extendedProperties ?? (m_extendedProperties = new List<ExtendedProperty>());
-            set => m_extendedProperties = value;
-        }
     }
 }

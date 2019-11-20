@@ -48,6 +48,11 @@ namespace CatFactory.ObjectRelationalMapping
         List<DatabaseTypeMap> DatabaseTypeMaps { get; set; }
 
         /// <summary>
+        /// Gets or sets the extension data for import
+        /// </summary>
+        dynamic ImportBag { get; set; }
+
+        /// <summary>
         /// Gets database objects by name
         /// </summary>
         /// <param name="name">Db object name</param>

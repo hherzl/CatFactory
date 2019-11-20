@@ -11,12 +11,14 @@ namespace CatFactory.Tests
         public void ValidateContactDatabase()
         {
             // Arrange
-            var database = Databases.Contact;
+            var db = Databases.Contact;
+
+            db.ImportBag.Foo = "foo";
 
             // Act
-            var contactTypeTable = database.FindTable("dbo.ContactType");
-            var contactTable = database.FindTable("dbo.Contact");
-            var contactEmailTable = database.FindTable("dbo.ContactEmail");
+            var contactTypeTable = db.FindTable("dbo.ContactType");
+            var contactTable = db.FindTable("dbo.Contact");
+            var contactEmailTable = db.FindTable("dbo.ContactEmail");
 
             // Assert
             Assert.True(contactTypeTable.ForeignKeys.Count == 0);
@@ -43,12 +45,12 @@ namespace CatFactory.Tests
         public void TestDatabaseTypeMaps()
         {
             // Arrange
-            var database = Databases.OnlineStore;
+            var db = Databases.OnlineStore;
 
             // Act
-            var table = database.FindTable("Sales.OrderHeader");
+            var table = db.FindTable("Sales.OrderHeader");
             var column = table.Columns[0];
-            var clrType = database.DatabaseTypeMaps.FirstOrDefault(item => item.DatabaseType == column.Type);
+            var clrType = db.DatabaseTypeMaps.FirstOrDefault(item => item.DatabaseType == column.Type);
 
             // Assert
             Assert.True(clrType.GetClrType() == typeof(long));

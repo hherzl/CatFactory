@@ -4,7 +4,7 @@ using System.Diagnostics;
 namespace CatFactory.ObjectRelationalMapping
 {
     /// <summary>
-    /// Represents a Database Object (Table, View, Table Function, Scalar Function, Stored Procedure, etc)
+    /// Represents a Database object (Table, View, Table Function, Scalar Function, Stored Procedure, Sequence, etc)
     /// </summary>
     [DebuggerDisplay("Type={Type}, FullName={FullName}")]
     public class DbObject : IDbObject
@@ -50,9 +50,9 @@ namespace CatFactory.ObjectRelationalMapping
         #region [ Properties ]
 
         /// <summary>
-        /// Gets or sets the server name
+        /// Data Source or Server
         /// </summary>
-        public string ServerName { get; set; }
+        public string DataSource { get; set; }
 
         /// <summary>
         /// Gets or sets the database name
@@ -60,13 +60,13 @@ namespace CatFactory.ObjectRelationalMapping
         public string DatabaseName { get; set; }
 
         /// <summary>
-        /// Data Source or Server
+        /// Gets or sets the server name
         /// </summary>
-        [Obsolete("Prefer server name over datasource")]
-        public string DataSource
+        [Obsolete("Prefer data source over server name")]
+        public string ServerName
         {
-            get => ServerName;
-            set => ServerName = value;
+            get => DataSource;
+            set => DataSource = value;
         }
 
         /// <summary>

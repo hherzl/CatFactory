@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Diagnostics;
+using System.Dynamic;
 
 namespace CatFactory.ObjectRelationalMapping
 {
@@ -9,6 +10,13 @@ namespace CatFactory.ObjectRelationalMapping
     [DebuggerDisplay("DatabaseType={DatabaseType}, ClrType={ClrType}, IsUserDefined={IsUserDefined}")]
     public class DatabaseTypeMap
     {
+        #region [ Fields ]
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private dynamic m_importBag;
+
+        #endregion
+
         #region [ Constructors ]
 
         /// <summary>
@@ -88,6 +96,15 @@ namespace CatFactory.ObjectRelationalMapping
         /// Gets or sets the collation
         /// </summary>
         public string Collation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the extension data for import
+        /// </summary>
+        public dynamic ImportBag
+        {
+            get => m_importBag ?? (m_importBag = new ExpandoObject());
+            set => m_importBag = value;
+        }
 
         #endregion
     }

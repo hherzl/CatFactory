@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Dynamic;
 using System.Linq;
 using System.Xml.Serialization;
-using CatFactory.ObjectRelationalMapping.Programmability;
 
 namespace CatFactory.ObjectRelationalMapping
 {
     /// <summary>
-    /// Represents a database
-    /// TODO refactor to work with case sensitive database and/or collations as indicated by the data
-    /// <![CDATA[  https://www.webucator.com/how-to/how-check-case-sensitivity-sql-server.cfm  ]]>
+    /// Represents a database model
     /// </summary>
+    /// <remarks>
+    /// //todo: refactor to work with case sensitive database and/or collations as indicated by the data
+    /// <![CDATA[  https://www.webucator.com/how-to/how-check-case-sensitivity-sql-server.cfm  ]]>
+    /// </remarks>
     [DebuggerDisplay("Name={Name}, DbObjects={DbObjects.Count}, Tables={Tables.Count}, Views={Views.Count}")]
     public class Database : IDatabase
     {
@@ -27,25 +29,13 @@ namespace CatFactory.ObjectRelationalMapping
         private List<DatabaseTypeMap> m_databaseTypeMaps;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ExtendedProperty> m_extendedProperties;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<Table> m_tables;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<View> m_views;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<ScalarFunction> m_scalarFunctions;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<TableFunction> m_tableFunctions;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<StoredProcedure> m_storedProcedures;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<Sequence> m_sequences;
+        private dynamic m_importBag;
 
         #endregion
 
@@ -116,16 +106,6 @@ namespace CatFactory.ObjectRelationalMapping
         }
 
         /// <summary>
-        /// Gets or sets the extended properties
-        /// </summary>
-        [Obsolete("This is a model class for SQL Server")]
-        public List<ExtendedProperty> ExtendedProperties
-        {
-            get => m_extendedProperties ?? (m_extendedProperties = new List<ExtendedProperty>());
-            set => m_extendedProperties = value;
-        }
-
-        /// <summary>
         /// Gets or sets the tables
         /// </summary>
         public List<Table> Tables
@@ -141,42 +121,6 @@ namespace CatFactory.ObjectRelationalMapping
         {
             get => m_views ?? (m_views = new List<View>());
             set => m_views = value;
-        }
-
-        /// <summary>
-        /// Gets or sets the scalar functions
-        /// </summary>
-        public List<ScalarFunction> ScalarFunctions
-        {
-            get => m_scalarFunctions ?? (m_scalarFunctions = new List<ScalarFunction>());
-            set => m_scalarFunctions = value;
-        }
-
-        /// <summary>
-        /// Gets or sets the table functions
-        /// </summary>
-        public List<TableFunction> TableFunctions
-        {
-            get => m_tableFunctions ?? (m_tableFunctions = new List<TableFunction>());
-            set => m_tableFunctions = value;
-        }
-
-        /// <summary>
-        /// Gets or sets the store procedures
-        /// </summary>
-        public List<StoredProcedure> StoredProcedures
-        {
-            get => m_storedProcedures ?? (m_storedProcedures = new List<StoredProcedure>());
-            set => m_storedProcedures = value;
-        }
-
-        /// <summary>
-        /// Gets or sets the sequences
-        /// </summary>
-        public List<Sequence> Sequences
-        {
-            get => m_sequences ?? (m_sequences = new List<Sequence>());
-            set => m_sequences = value;
         }
 
         /// <summary>
@@ -197,6 +141,15 @@ namespace CatFactory.ObjectRelationalMapping
         {
             get => Name;
             set => Name = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the extension data for import
+        /// </summary>
+        public dynamic ImportBag
+        {
+            get => m_importBag ?? (m_importBag = new ExpandoObject());
+            set => m_importBag = value;
         }
 
         #endregion

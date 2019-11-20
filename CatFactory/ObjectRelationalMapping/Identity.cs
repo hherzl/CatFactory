@@ -46,7 +46,7 @@ namespace CatFactory.ObjectRelationalMapping
         #region [ Properties ]
 
         /// <summary>
-        /// Gets or sets the column's name
+        /// Gets or sets the column name
         /// </summary>
         public string Name { get; set; }
 
