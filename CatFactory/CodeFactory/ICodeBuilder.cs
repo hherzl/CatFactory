@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using CatFactory.ObjectOrientedProgramming;
 
 namespace CatFactory.CodeFactory
@@ -76,5 +77,12 @@ namespace CatFactory.CodeFactory
         /// <param name="subdirectory">Subdirectory name</param>
         /// <param name="fileName">File name</param>
         void CreateFile(string subdirectory = "", string fileName = "");
+
+        /// <summary>
+        /// Creates the code file in output directory
+        /// </summary>
+        /// <param name="subdirectory">Subdirectory name</param>
+        /// <param name="fileName">File name</param>
+        Task CreateFileAsync(string subdirectory = "", string fileName = "");
     }
 }

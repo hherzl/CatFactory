@@ -5,27 +5,16 @@ using System.Text;
 
 namespace CatFactory.Markup
 {
-    /// <summary>
-    /// 
-    /// </summary>
+#pragma warning disable CS1591
     [DebuggerDisplay("Namespace={Namespace}, Name={Name}, TagAttributes={TagAttributes.Count}, IsSelfClosed={IsSelfClosed}")]
     public class Tag
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="attribs"></param>
-        /// <param name="ns"></param>
-        /// <param name="isSelfClosed"></param>
-        /// <param name="content"></param>
-        /// <returns></returns>
         public static Tag Create(string name, object attribs = null, string ns = "", bool isSelfClosed = false, string content = "")
             => new Tag
             {
                 Name = name,
                 Namespace = ns,
-                Attributes = attribs?.GetAttributes(),
+                Attributes = attribs?.GetTagAttribs(),
                 Content = content,
                 IsSelfClosed = isSelfClosed
             };
@@ -36,67 +25,36 @@ namespace CatFactory.Markup
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<Tag> m_children;
 
-        /// <summary>
-        /// 
-        /// </summary>
         public Tag()
         {
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public string Namespace { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public bool HasNamespace
             => !string.IsNullOrEmpty(Namespace);
 
-        /// <summary>
-        /// 
-        /// </summary>
         public string Name { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public List<TagAttribute> Attributes
         {
             get => m_attributes ?? (m_attributes = new List<TagAttribute>());
             set => m_attributes = value;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public List<Tag> Children
         {
             get => m_children ?? (m_children = new List<Tag>());
             set => m_children = value;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public string Content { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public bool HasContent
             => !string.IsNullOrEmpty(Content);
 
-        /// <summary>
-        /// 
-        /// </summary>
         public bool IsSelfClosed { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
         public override string ToString()
         {
             var output = new StringBuilder();
@@ -140,4 +98,5 @@ namespace CatFactory.Markup
             return output.ToString();
         }
     }
+#pragma warning restore CS1591
 }

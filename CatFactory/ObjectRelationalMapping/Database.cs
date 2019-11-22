@@ -185,7 +185,7 @@ namespace CatFactory.ObjectRelationalMapping
         public virtual Table FindTable(string name)
         {
             string Join4(Table item)
-                => string.Join(".", new string[] { item.ServerName, item.DatabaseName, item.Schema, item.Name });
+                => string.Join(".", new string[] { item.DataSource, item.DatabaseName, item.Schema, item.Name });
 
             string Join3(Table item)
                 => string.Join(".", new string[] { item.DatabaseName, item.Schema, item.Name });

@@ -16,8 +16,11 @@ This package allows to define CLR objects and database objects.
         <PackageTags>Markdown Markup OOP ORM Scaffolding</PackageTags>
         <PackageReleaseNotes>1.0.0-beta-sun-build25 Version:
 
+* Addition of CreateFileAsync method in ICodeBuilder interface
 * Addition of ImportAsync method in IDatabaseFactory interface
 * Addition of ImportBag property for classes: Database, Table, View and Column
+* Code refactor for TableHeaderTag class =&gt; TableHeadTag
+* Addition of TableFootTag class
 </PackageReleaseNotes>
         <PackageLicenseUrl>https://github.com/hherzl/CatFactory/blob/master/LICENSE</PackageLicenseUrl>
     </PropertyGroup>

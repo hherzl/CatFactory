@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using CatFactory.Collections;
 using CatFactory.ObjectOrientedProgramming;
 using Microsoft.Extensions.Logging;
@@ -163,6 +164,43 @@ namespace CatFactory.CodeFactory
             OnTranslatedDefinition(new TranslatedDefinitionEventArgs(Logger));
 
             File.WriteAllText(filePath, Lines.ToStringBuilder().ToString());
+        }
+
+        /// <summary>
+        /// Creates the code file in output directory
+        /// </summary>
+        /// <param name="subdirectory">Subdirectory name</param>
+        /// <param name="fileName">File name</param>
+        public virtual async Task CreateFileAsync(string subdirectory = "", string fileName = "")
+        {
+            Logger?.LogDebug("'{0}' has been invoked", nameof(CreateFile));
+
+            CreateOutputDirectory();
+
+            var filePath = string.IsNullOrEmpty(fileName) ? Path.Combine(OutputDirectory, subdirectory, FilePath) : Path.Combine(OutputDirectory, subdirectory, fileName);
+
+            if (!ForceOverwrite && File.Exists(filePath))
+                throw new CodeFactoryException(string.Format("The '{0}' file already exists, if you want to overwrite it, set ForceOverwrite property as true", filePath));
+
+            if (!string.IsNullOrEmpty(subdirectory))
+            {
+                var subdirectoryPath = Path.Combine(OutputDirectory, subdirectory);
+
+                if (!Directory.Exists(subdirectoryPath))
+                {
+                    Logger?.LogInformation("Creating '{0}' directory...", subdirectoryPath);
+
+                    Directory.CreateDirectory(subdirectoryPath);
+                }
+            }
+
+            Logger?.LogInformation("Creating '{0}' file...", filePath);
+
+            Translating();
+
+            OnTranslatedDefinition(new TranslatedDefinitionEventArgs(Logger));
+
+            await File.WriteAllTextAsync(filePath, Lines.ToStringBuilder().ToString());
         }
     }
 }

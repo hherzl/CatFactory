@@ -1,29 +1,19 @@
 ﻿namespace CatFactory.Markup
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public class TableCellTag
+#pragma warning disable CS1591
+    public class TableCellTag : Tag
     {
-        /// <summary>
-        /// 
-        /// </summary>
         public TableCellTag()
+            : base()
         {
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="text"></param>
         public TableCellTag(string text)
         {
             Text = text;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public string Text { get; set; }
     }
+#pragma warning restore CS1591
 }
