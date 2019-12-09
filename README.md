@@ -27,6 +27,7 @@ Currently, the following technologies are supported:
 This package is the core for child packages, additional packages have created with this naming convention: CatFactory.**PackageName**.
 
 * CatFactory.SqlServer
+* CatFactory.PostgreSql
 * CatFactory.NetCore
 * CatFactory.EntityFrameworkCore
 * CatFactory.AspNetCore
@@ -149,10 +150,7 @@ project.GlobalSelection(settings =>
 });
 
 // Apply settings for specific object
-project.Select("Sales.OrderHeader", settings =>
-{
-    settings.EntitiesWithDataContracts = true;
-});
+project.Select("Sales.OrderHeader", settings => settings.EntitiesWithDataContracts = true);
 ```
 
 ### Event Handlers to Scaffold
@@ -172,6 +170,43 @@ project.ScaffoldedDefinition += (source, args) =>
     // Add code to perform operations after of create code file
 };
 ```
+
+### Document Object Model
+
+The most databases now have a document object model, this model provides a simple way to know the structure for database and objects.
+
+In *SQL Server* there are views like *sys.tables*, *sys.views*, *sys.columns* that contain all information about these objects.
+
+Also there are stored procedures and functions like *sp_help* and *dm_exec_describe_first_result_set_for_object* that retrieve information about a *database object* and columns for the result of execute an object.
+
+In **CatFactory**, this model is available through extension methods for *DbConnection* class:
+
+```csharp
+using (var connection = new SqlConnection("server=(local);database=OnlineStore;integrated security=yes;"))
+{
+	connection.Open();
+
+	// Retrieve all tables defined in database
+	var tables = connection.GetSysTables().ToList();	
+}
+```
+
+These methods are available for *SQL Server Document Object Model*:
+
+    GetSysSchemas
+    GetSysTypes
+    GetSysTables
+    GetSysViews
+    GetSysColumns
+    GetSysSequencesAsync
+
+### Import Bag
+
+Based on **ViewBag** concept from *ASP MVC*, this concept allows to add specific data for different databases providers.
+
+**ImportBag** is a dynamic property, the **CatFactory** engine saves specific information in this property, for *SQL Server* saves *extended properties*, *scalar functions*, *table functions*, *stored procedures* and *sequences*.
+
+For *Postgre SQL* saves *sequences*, in the future versions it will save another information related to database objects like *stored procedures*.
 
 ## Packages
 
@@ -204,6 +239,20 @@ This packages contains logic to import existing databases from SQL Server instan
 |Stored Procedures|Yes|
 |Sequences|Yes|
 |Extended Properties|Yes|
+|Data Types|Yes|
+
+### CatFactory.PostgreSql
+
+This packages contains logic to import existing databases from Postgre SQL instances.
+
+|Object|Supported|
+|------|---------|
+|Tables|Yes|
+|Views|Yes|
+|Scalar Functions|Not yet|
+|Table Functions|Not yet|
+|Stored Procedures|Not yet|
+|Sequences|Yes|
 |Data Types|Yes|
 
 ### CatFactory.NetCore
