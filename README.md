@@ -63,142 +63,16 @@ Read more on: [`Concepts behind CatFactory`](https://github.com/hherzl/CatFactor
 
 ## Packages
 
-### CatFactory
+    CatFactory
+    CatFactory.SqlServer
+    CatFactory.PostgreSql
+    CatFactory.NetCore
+    CatFactory.EntityFrameworkCore
+    CatFactory.AspNetCore
+    CatFactory.Dapper
+    CatFactory.TypeScript
 
-This package provides all definitions for CatFactory engine, this is the core for child packages.
-
-#### Namespaces
-
-    CodeFactory
-    Diagnostics
-    Markdown
-    Markup
-    ObjectOrientedProgramming
-    ObjectRelationalMapping
-
-### CatFactory.SqlServer
-
-This packages contains logic to import existing databases from SQL Server instances.
-
-|Object|Supported|
-|------|---------|
-|Tables|Yes|
-|Views|Yes|
-|Scalar Functions|Yes|
-|Table Functions|Yes|
-|Stored Procedures|Yes|
-|Sequences|Yes|
-|Extended Properties|Yes|
-|Data Types|Yes|
-
-### CatFactory.PostgreSql
-
-This packages contains logic to import existing databases from Postgre SQL instances.
-
-|Object|Supported|
-|------|---------|
-|Tables|Yes|
-|Views|Yes|
-|Scalar Functions|Not yet|
-|Table Functions|Not yet|
-|Stored Procedures|Not yet|
-|Sequences|Yes|
-|Data Types|Yes|
-
-### CatFactory.NetCore
-
-This package contains code builders and definitions for .NET Core (C#).
-
-|Object|Members|Supported|
-|------|-------|---------|
-|Struct|All|Not yet|
-|Interface|Inheritance|Yes|
-|Interface|Events|Yes|
-|Interface|Properties|Yes|
-|Interface|Methods|Yes|
-|Class|Inheritance|Yes|
-|Class|Events|Yes|
-|Class|Fields|Yes|
-|Class|Properties|Yes|
-|Class|Methods|Yes|
-|Enum|Options|Yes|
-
-### CatFactory.EntityFrameworkCore
-
-This package provides scaffolding for Entity Framework Core.
-
-|Object|Supported|
-|------|---------|
-|Class for table|Yes|
-|Class for view|Yes|
-|Class for table function|Yes|
-|Class for stored procedure result|Not yet|
-|Class for DbContext|Yes|
-|Class for entity configuration (table)|Yes|
-|Class for entity configuration (view)|Yes|
-|Interface for Repository|Yes|
-|Class for Repository|Yes|
-|Method for scalar function invocation|Yes|
-|Method for table function invocation|Yes|
-|Method for stored procedure invocation|Not yet|
-
-#### Entity Framework Core 2 Feature Chart
-
-|Category|Feature|Supported|
-|--------|-------|---------|
-|Modeling|Table splitting|Not yet|
-|Modeling|Owned types|Not yet|
-|Modeling|Model-level query filters|Not yet|
-|Modeling|Database scalar function mapping|Not yet|
-|Modeling|Self-contained type configuration for code first|Not yet|
-|High Performance|DbContext pooling|Not yet|
-|High Performance|Explicitly compiled queries|Not yet|
-
-[`New features in EF Core 2.0`](https://docs.microsoft.com/en-us/ef/core/what-is-new/ef-core-2.0)
-
-### CatFactory.AspNetCore
-
-This package provides scaffolding for Asp .NET Core.
-
-|Feature|Supported|
-|-------|---------|
-|Controllers|Yes|
-|Requests|Yes|
-|Responses|Yes|
-|Scaffold Client|Not yet|
-|Help Page for Web API|Not yet|
-|Unit Tests|Not yet|
-|Integration Tests|Not yet|
-
-### CatFactory.Dapper
-
-This package provides scaffolding for Dapper.
-
-|Object|Supported|
-|------|---------|
-|Table|Yes|
-|View|Yes|
-|Scalar Function|Yes|
-|Table Function|Yes|
-|Stored Procedures|Yes|
-|Sequences|Not yet|
-
-### CatFactory.TypeScript
-
-This package provides scaffolding for Type Script.
-
-|Object|Feature|Supported|
-|------|-------|---------|
-|Interface|Inheritance|Yes|
-|Interface|Fields|Yes|
-|Interface|Properties|Yes|
-|Interface|Methods|Yes|
-|Class|Inheritance|Yes|
-|Class|Fields|Yes|
-|Class|Constructors|Yes|
-|Class|Properties|Yes|
-|Class|Methods|Yes|
-|Module|Methods|Yes|
+Read more on: [`Packages Features Chart`](https://github.com/hherzl/CatFactory/wiki/Packages-Features-Chart)
 
 ## History
 
@@ -232,10 +106,12 @@ Why I named CatFactory? It was I had a cat, her name was Mindy and that cat had 
 
 ## Quick Starts
 
+[`Scaffolding Dapper with CatFactory`](https://www.codeproject.com/Articles/1213355/Scaffolding-Dapper-with-CatFactory)
+
 [`Scaffolding View Models with CatFactory`](https://www.codeproject.com/Tips/1164636/Scaffolding-View-Models-with-CatFactory)
 
 [`Scaffolding Entity Framework Core 2 with CatFactory`](https://www.codeproject.com/Articles/1160615/Scaffolding-Entity-Framework-Core-with-CatFactory)
 
-[`Scaffolding Dapper with CatFactory`](https://www.codeproject.com/Articles/1213355/Scaffolding-Dapper-with-CatFactory)
-
 [`Scaffolding ASP.NET Core 2 with CatFactory`](https://www.codeproject.com/Tips/1229909/Scaffolding-ASP-NET-Core-with-CatFactory)
+
+[`Scaffolding TypeScript with CatFactory`](https://www.codeproject.com/Tips/1166380/Scaffolding-TypeScript-with-CatFactory)
