@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netcoreapp2.2</TargetFramework>
         <LangVersion>latest</LangVersion>
-        <Version>1.0.0-beta-sun-build26</Version>
+        <Version>1.0.0-beta-sun-build27</Version>
         <Authors>H. Herzl</Authors>
         <Company>Herzl Corp.</Company>
         <Description>This is the core for CatFactory engine and the base for child packages.
@@ -14,15 +14,9 @@ This package allows to define CLR objects and database objects.
         <RepositoryUrl>https://github.com/hherzl/CatFactory</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>Markdown Markup OOP ORM Scaffolding</PackageTags>
-        <PackageReleaseNotes>1.0.0-beta-sun-build26 Version:
+        <PackageReleaseNotes>1.0.0-beta-sun-build27 Version:
 
-* Code fix
-
-* Addition of CreateFileAsync method in ICodeBuilder interface
-* Addition of ImportAsync method in IDatabaseFactory interface
-* Addition of ImportBag property for classes: Database, Table, View and Column
-* Code refactor for TableHeaderTag class =&gt; TableHeadTag
-* Addition of TableFootTag class
+* Code fix for properties in ResultSet class
 </PackageReleaseNotes>
         <PackageLicenseUrl>https://github.com/hherzl/CatFactory/blob/master/LICENSE</PackageLicenseUrl>
     </PropertyGroup>
