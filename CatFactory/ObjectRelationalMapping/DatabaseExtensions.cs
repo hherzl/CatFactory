@@ -17,7 +17,9 @@ namespace CatFactory.ObjectRelationalMapping
         public static Database AddDbObjectsFromTables(this Database database)
         {
             foreach (var table in database.Tables)
+            {
                 database.DbObjects.Add(new DbObject(table.Schema, table.Name) { Type = "table" });
+            }
 
             return database;
         }
@@ -30,7 +32,9 @@ namespace CatFactory.ObjectRelationalMapping
         public static Database AddDbObjectsFromViews(this Database database)
         {
             foreach (var view in database.Views)
+            {
                 database.DbObjects.Add(new DbObject(view.Schema, view.Name) { Type = "view" });
+            }
 
             return database;
         }

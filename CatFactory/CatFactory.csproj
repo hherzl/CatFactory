@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netcoreapp2.2</TargetFramework>
         <LangVersion>latest</LangVersion>
-        <Version>1.0.0-beta-sun-build27</Version>
+        <Version>1.0.0-beta-sun-build28</Version>
         <Authors>H. Herzl</Authors>
         <Company>Herzl Corp.</Company>
         <Description>This is the core for CatFactory engine and the base for child packages.
@@ -14,9 +14,9 @@ This package allows to define CLR objects and database objects.
         <RepositoryUrl>https://github.com/hherzl/CatFactory</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>Markdown Markup OOP ORM Scaffolding</PackageTags>
-        <PackageReleaseNotes>1.0.0-beta-sun-build27 Version:
+        <PackageReleaseNotes>1.0.0-beta-sun-build28 Version:
 
-* Code fix for properties in ResultSet class
+* Addition of methods for to get contraint name for default and check
 </PackageReleaseNotes>
         <PackageLicenseUrl>https://github.com/hherzl/CatFactory/blob/master/LICENSE</PackageLicenseUrl>
     </PropertyGroup>
