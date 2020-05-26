@@ -35,5 +35,14 @@
         }
 
         #endregion
+
+        #region [ Properties ]
+
+        /// <summary>
+        /// Gets or sets the expression 
+        /// </summary>
+        public string Expression { get; set; }
+
+        #endregion
     }
 }

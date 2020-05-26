@@ -29,8 +29,8 @@
         /// </summary>
         /// <param name="constraintName">Constraint name</param>
         /// <param name="key">Key for constraint</param>
-        public Default(string constraintName, string[] key)
-            : base(constraintName, key)
+        public Default(string constraintName, string key)
+            : base(constraintName, new string[] { key })
         {
         }
 

@@ -94,15 +94,17 @@ In 2016, I decided to create a nuget package and integrates with EF Core, using 
 
 Why I named CatFactory? It was I had a cat, her name was Mindy and that cat had manny kittens (sons), so the basic idea it was the code generation engine generates the code as fast Mindy provided kittens ha,ha,ha
 
+![Source picture for CatFactory concept](CatFactory.jpg)
+
 ## Trivia
 
-+ The name for this framework it was F4N1 before than CatFactory
++ The name for this framework it was *F4N1* before than **CatFactory**
 + Framework's name is related to kitties
-+ Import logic uses sp_help stored procedure to retrieve the database object's definition, I learned that in my database course at college
-+ Load mapping for entities with MEF, it's inspired in "OdeToCode" (Scott Allen) article for Entity Framework 6.x
++ Import logic uses **sp_help** sp to retrieve the database object's definition, I learned about this in my database course at college
++ Load mapping for entities with MEF, it's inspired in **"OdeToCode"** (Scott Allen) article for Entity Framework 6.x
 + Expose all settings in one class inside of project's definition is inspired on DevExpress settings for Web controls (Web Forms)
-+ There are three alpha versions for CatFactory as reference for Street Fighter Alpha fighting game.
-+ There will be two beta versions for CatFactory: Sun and Moon as reference for characters from The King of Fighters game: Kusanagi Kyo and Yagami Iori.
++ There are three alpha versions for **CatFactory** as reference for *Street Fighter Alpha* fighting game.
++ There will be two beta versions for **CatFactory**: Sun and Moon as reference for characters from The King of Fighters game: Kusanagi Kyo and Yagami Iori.
 
 ## Quick Starts
 
