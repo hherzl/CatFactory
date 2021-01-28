@@ -11,24 +11,21 @@ namespace CatFactory.Tests
         [Fact]
         public async Task TestGetClassDefinitionFromDbDataReaderAsync()
         {
-            using (var connection = new SqlConnection("server=(local);database=Northwind;integrated security=yes;"))
-            {
-                await connection.OpenAsync();
+            using var connection = new SqlConnection("server=(local);database=Northwind;integrated security=yes;");
 
-                using (var command = connection.CreateCommand())
-                {
-                    command.Connection = connection;
-                    command.CommandType = CommandType.Text;
-                    command.CommandText = " select top 1 * from sys.tables ";
+            await connection.OpenAsync();
 
-                    using (var dataReader = await command.ExecuteReaderAsync())
-                    {
-                        var classDefinition = dataReader.GetClassDefinition();
+            using var command = connection.CreateCommand();
 
-                        Assert.True(classDefinition.Properties.Count > 0);
-                    }
-                }
-            }
+            command.Connection = connection;
+            command.CommandType = CommandType.Text;
+            command.CommandText = " select top 1 * from sys.tables ";
+
+            using var dataReader = await command.ExecuteReaderAsync();
+
+            var classDefinition = dataReader.GetClassDefinition();
+
+            Assert.True(classDefinition.Properties.Count > 0);
         }
     }
 }

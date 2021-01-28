@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netcoreapp2.2</TargetFramework>
         <LangVersion>latest</LangVersion>
-        <Version>1.0.0-beta-sun-build28</Version>
+        <Version>1.0.0-beta-sun-build29</Version>
         <Authors>H. Herzl</Authors>
         <Company>Herzl Corp.</Company>
         <Description>This is the core for CatFactory engine and the base for child packages.
@@ -13,10 +13,30 @@ This package allows to define CLR objects and database objects.
         <PackageProjectUrl>https://github.com/hherzl/CatFactory</PackageProjectUrl>
         <RepositoryUrl>https://github.com/hherzl/CatFactory</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
-        <PackageTags>Markdown Markup OOP ORM Scaffolding</PackageTags>
-        <PackageReleaseNotes>1.0.0-beta-sun-build28 Version:
+        <PackageTags>Scaffolding Markup Markdown OOP ORM</PackageTags>
+        <PackageReleaseNotes>1.0.0-beta-sun-build29 Version:
 
-* Addition of methods for to get contraint name for default and check
+Refactoring for database validators, database has a list of validators.
+
+To apply a custom validator:
+
+1. Create a class that implements IDatabaseValidator interface:
+
+	public class MyCustomDatabaseValidator : IDatabaseValidator
+	{
+		public ValidationResult Validate(Database database)
+		{
+			// Add code to perform the validation
+		}
+	}
+
+2. Add instance of your current database validator in database validators list:
+
+	db.Validators.Add(new MyCustomDatabaseValidator());
+
+3. Validate database instance:
+
+	var validationResults = db.Validate();
 </PackageReleaseNotes>
         <PackageLicenseUrl>https://github.com/hherzl/CatFactory/blob/master/LICENSE</PackageLicenseUrl>
     </PropertyGroup>
