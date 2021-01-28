@@ -11,7 +11,7 @@ namespace CatFactory.Tests
         {
             // Arrange
             var db = Databases.OnlineStore;
-            var dbValidator = new DatabaseValidator();
+            var dbValidator = new NullPrimaryKeyReferenceDatabaseValidator();
 
             // Act
             var result = dbValidator.Validate(db);
@@ -25,14 +25,13 @@ namespace CatFactory.Tests
         {
             // Arrange
             var db = Databases.Supermarket;
-            var dbValidator = new DatabaseValidator();
+            var dbValidator = new NullPrimaryKeyReferenceDatabaseValidator();
 
             // Act
             var result = dbValidator.Validate(db);
 
             // Assert
-            Assert.False(result.IsValid);
-            Assert.True(result.ValidationMessages.Count == 4);
+            Assert.True(result.IsValid);
         }
     }
 }

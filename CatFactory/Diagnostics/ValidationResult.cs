@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text;
 using Microsoft.Extensions.Logging;
 
 namespace CatFactory.Diagnostics
@@ -34,6 +35,22 @@ namespace CatFactory.Diagnostics
         /// Indicates if the current validation result is valid
         /// </summary>
         public virtual bool IsValid
-            => ValidationMessages.Count(item => item.LogLevel == LogLevel.Error || item.LogLevel == LogLevel.Critical) == 0 ? true : false;
+            => ValidationMessages.Count(item => item.LogLevel == LogLevel.Error || item.LogLevel == LogLevel.Critical) == 0;
+
+        /// <summary>
+        /// Returns a string that represents the current object
+        /// </summary>
+        /// <returns>A <see cref="string"/> that represents the current object</returns>
+        public override string ToString()
+        {
+            var result = new StringBuilder();
+
+            foreach (var item in ValidationMessages)
+            {
+                result.AppendLine(string.Format("{0}: {1}", item.LogLevel, item.Message));
+            }
+
+            return result.ToString();
+        }
     }
 }

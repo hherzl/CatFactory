@@ -4,6 +4,8 @@ using System.Diagnostics;
 using System.Dynamic;
 using System.Linq;
 using System.Xml.Serialization;
+using CatFactory.Diagnostics;
+using CatFactory.ObjectRelationalMapping.Validation;
 
 namespace CatFactory.ObjectRelationalMapping
 {
@@ -36,6 +38,9 @@ namespace CatFactory.ObjectRelationalMapping
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private dynamic m_importBag;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<IDatabaseValidator> m_databaseValidators;
 
         #endregion
 
@@ -153,6 +158,16 @@ namespace CatFactory.ObjectRelationalMapping
             set => m_importBag = value;
         }
 
+        /// <summary>
+        /// Gets or sets the database validators
+        /// </summary>
+        [XmlIgnore]
+        public List<IDatabaseValidator> DatabaseValidators
+        {
+            get => m_databaseValidators ?? (m_databaseValidators = new List<IDatabaseValidator>());
+            set => m_databaseValidators = value;
+        }
+
         #endregion
 
         #region [ Methods ]
@@ -249,6 +264,18 @@ namespace CatFactory.ObjectRelationalMapping
         /// <returns>A <see cref="IEnumerable{View}"/></returns>
         public virtual IEnumerable<View> FindViewsByName(string name)
             => Views.Where(item => item.Name == name);
+
+        /// <summary>
+        /// Gets validations for current database instance
+        /// </summary>
+        /// <returns>A <see cref="IEnumerable{ValidationResult}"/></returns>
+        public virtual IEnumerable<ValidationResult> Validate()
+        {
+            foreach (var item in DatabaseValidators)
+            {
+                yield return item.Validate(this);
+            }
+        }
 
         #endregion
     }

@@ -1,4 +1,5 @@
-﻿using CatFactory.ObjectRelationalMapping;
+﻿using System.IO;
+using CatFactory.ObjectRelationalMapping;
 using CatFactory.Tests.Helpers;
 using CatFactory.Tests.Models;
 using Newtonsoft.Json;
@@ -12,41 +13,41 @@ namespace CatFactory.Tests
         public void SerializeMockDatabaseToXmlTest()
         {
             // Arrange
-            var fileName = "C:\\Temp\\CatFactory\\OnlineStore.xml";
-            var database = Databases.OnlineStore;
-            var xml = XmlSerializerHelper.Serialize(database);
+            var fileName = @"C:\Temp\CatFactory\OnlineStore.xml";
+            var db = Databases.OnlineStore;
+            var xml = XmlSerializerHelper.Serialize(db);
 
             // Act
             TextFileHelper.CreateFile(fileName, xml);
 
-            var deserializedDatabase = XmlSerializerHelper.DeserializeFrom<Database>(fileName);
+            var deserializedDb = XmlSerializerHelper.DeserializeFrom<Database>(fileName);
 
             // Assert
-            Assert.True(database.Name == deserializedDatabase.Name);
-            Assert.True(database.Tables.Count == deserializedDatabase.Tables.Count);
-            Assert.True(database.FindTable("Sales.OrderHeader").FullName == deserializedDatabase.FindTable("Sales.OrderHeader").FullName);
-            Assert.True(database.Views.Count == deserializedDatabase.Views.Count);
+            Assert.True(db.Name == deserializedDb.Name);
+            Assert.True(db.Tables.Count == deserializedDb.Tables.Count);
+            Assert.True(db.FindTable("Sales.OrderHeader").FullName == deserializedDb.FindTable("Sales.OrderHeader").FullName);
+            Assert.True(db.Views.Count == deserializedDb.Views.Count);
         }
 
         [Fact]
         public void SerializeMockDatabaseToJsonTest()
         {
             // Arrange
-            var database = Databases.OnlineStore;
-            var fileName = "C:\\Temp\\CatFactory\\OnlineStore.json";
+            var db = Databases.OnlineStore;
+            var fileName = @"C:\Temp\CatFactory\OnlineStore.json";
 
             // Act
-            var json = JsonConvert.SerializeObject(database);
+            var json = JsonConvert.SerializeObject(db);
 
-            System.IO.File.WriteAllText(fileName, json);
+            File.WriteAllText(fileName, json);
 
-            var deserializedDatabase = JsonConvert.DeserializeObject<Database>(json);
+            var deserializedDb = JsonConvert.DeserializeObject<Database>(json);
 
             // Assert
-            Assert.True(database.Name == deserializedDatabase.Name);
-            Assert.True(database.Tables.Count == deserializedDatabase.Tables.Count);
-            Assert.True(database.FindTable("Sales.OrderHeader").FullName == deserializedDatabase.FindTable("Sales.OrderHeader").FullName);
-            Assert.True(database.Views.Count == deserializedDatabase.Views.Count);
+            Assert.True(db.Name == deserializedDb.Name);
+            Assert.True(db.Tables.Count == deserializedDb.Tables.Count);
+            Assert.True(db.FindTable("Sales.OrderHeader").FullName == deserializedDb.FindTable("Sales.OrderHeader").FullName);
+            Assert.True(db.Views.Count == deserializedDb.Views.Count);
         }
     }
 }
