@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netcoreapp2.2</TargetFramework>
         <LangVersion>latest</LangVersion>
-        <Version>1.0.0-beta-sun-build29</Version>
+        <Version>1.0.0-beta-sun-build30</Version>
         <Authors>H. Herzl</Authors>
         <Company>Herzl Corp.</Company>
         <Description>This is the core for CatFactory engine and the base for child packages.
@@ -14,29 +14,11 @@ This package allows to define CLR objects and database objects.
         <RepositoryUrl>https://github.com/hherzl/CatFactory</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>Scaffolding Markup Markdown OOP ORM</PackageTags>
-        <PackageReleaseNotes>1.0.0-beta-sun-build29 Version:
+        <PackageReleaseNotes>1.0.0-beta-sun-build30 Version:
 
-Refactoring for database validators, database has a list of validators.
+ Add Smileys &amp; Emotion Emojis for MD
 
-To apply a custom validator:
-
-1. Create a class that implements IDatabaseValidator interface:
-
-	public class MyCustomDatabaseValidator : IDatabaseValidator
-	{
-		public ValidationResult Validate(Database database)
-		{
-			// Add code to perform the validation
-		}
-	}
-
-2. Add instance of your current database validator in database validators list:
-
-	db.Validators.Add(new MyCustomDatabaseValidator());
-
-3. Validate database instance:
-
-	var validationResults = db.Validate();
+  Reference: https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md#smileys--emotion
 </PackageReleaseNotes>
         <PackageLicenseUrl>https://github.com/hherzl/CatFactory/blob/master/LICENSE</PackageLicenseUrl>
     </PropertyGroup>
