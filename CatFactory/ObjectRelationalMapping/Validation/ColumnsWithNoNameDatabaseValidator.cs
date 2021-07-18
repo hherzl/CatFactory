@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 
 namespace CatFactory.ObjectRelationalMapping.Validation
 {
+#pragma warning disable CS1591
     public class ColumnsWithNoNameDatabaseValidator : IDatabaseValidator
     {
         public ColumnsWithNoNameDatabaseValidator()

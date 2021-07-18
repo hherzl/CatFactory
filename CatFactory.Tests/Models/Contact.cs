@@ -7,7 +7,7 @@ namespace CatFactory.Tests.Models
         public static Database Contact
             => new Database
             {
-                Name = "Store",
+                Name = "Contact",
                 DefaultSchema = "dbo",
                 DatabaseTypeMaps = DatabaseTypeMapList.Default,
                 Tables =

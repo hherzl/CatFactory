@@ -5,7 +5,7 @@ namespace CatFactory.Tests
     public class NamingServiceTests
     {
         [Fact]
-        public void TestSingular()
+        public void ValidateSingularNames()
         {
             // Arrange
             var service = new NamingService();
@@ -29,7 +29,7 @@ namespace CatFactory.Tests
         }
 
         [Fact]
-        public void TestPlural()
+        public void ValidatePlurals()
         {
             // Arrange
             var service = new NamingService();
