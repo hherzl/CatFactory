@@ -1,7 +1,7 @@
 ﻿using System.Data;
-using System.Data.SqlClient;
 using System.Threading.Tasks;
 using CatFactory.ObjectOrientedProgramming;
+using Microsoft.Data.SqlClient;
 using Xunit;
 
 namespace CatFactory.Tests

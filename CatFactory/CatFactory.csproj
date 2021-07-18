@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp2.2</TargetFramework>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
         <LangVersion>latest</LangVersion>
-        <Version>1.0.0-beta-sun-build30</Version>
+        <Version>1.0.0-beta-sun-build31</Version>
         <Authors>H. Herzl</Authors>
         <Company>Herzl Corp.</Company>
         <Description>This is the core for CatFactory engine and the base for child packages.
@@ -14,11 +14,9 @@ This package allows to define CLR objects and database objects.
         <RepositoryUrl>https://github.com/hherzl/CatFactory</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>Scaffolding Markup Markdown OOP ORM</PackageTags>
-        <PackageReleaseNotes>1.0.0-beta-sun-build30 Version:
+        <PackageReleaseNotes>1.0.0-beta-sun-build31 Version:
 
- Add Smileys &amp; Emotion Emojis for MD
-
-  Reference: https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md#smileys--emotion
+ Upgrade for .NET Core 3.1
 </PackageReleaseNotes>
         <PackageLicenseUrl>https://github.com/hherzl/CatFactory/blob/master/LICENSE</PackageLicenseUrl>
     </PropertyGroup>
@@ -29,9 +27,9 @@ This package allows to define CLR objects and database objects.
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.App" />
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
-        <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
-        <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.2.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.17" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.17" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.17" />
     </ItemGroup>
 
 </Project>
