@@ -42,7 +42,7 @@ namespace CatFactory.Tests
         }
 
         [Fact]
-        public void TestDatabaseTypeMaps()
+        public void DatabaseTypeMaps()
         {
             // Arrange
             var db = Databases.OnlineStore;

@@ -7,7 +7,7 @@ namespace CatFactory.Tests
     public class ProjectTests
     {
         [Fact]
-        public void TestBuildFeaturesForProject()
+        public void BuildFeaturesForProject()
         {
             // Arrange
             var project = new Project<ProjectSettings>

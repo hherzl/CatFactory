@@ -8,7 +8,7 @@ namespace CatFactory.Tests
     public class MarkupTests
     {
         [Fact]
-        public void TestHtmlTag()
+        public void BuildHtmlTag()
         {
             var tag = Tag.Create("p", new { style = "font-weight: bold;" });
 
@@ -16,7 +16,7 @@ namespace CatFactory.Tests
         }
 
         [Fact]
-        public void TestSelfCloseHtmlTag()
+        public void BuildSelfCloseHtmlTag()
         {
             var tag = Tag.Create("hr", isSelfClosed: true);
 
@@ -24,7 +24,7 @@ namespace CatFactory.Tests
         }
 
         [Fact]
-        public void TestWebFormTag()
+        public void BuildWebFormTag()
         {
             var tag = Tag.Create("TextBox", new { runat = "server", Text = "Hello from CatFactory uni tests!" }, ns: "asp");
 
@@ -32,7 +32,7 @@ namespace CatFactory.Tests
         }
 
         [Fact]
-        public void TestResponseTag()
+        public void BuildResponseTag()
         {
             var tag = Tag.Create("response", new { code = "200" }, content: "A success response");
 
@@ -40,7 +40,7 @@ namespace CatFactory.Tests
         }
 
         [Fact]
-        public void TestHtmlDocument()
+        public void CreateHtmlDocument()
         {
             var html = new StringBuilder();
 
@@ -74,33 +74,33 @@ namespace CatFactory.Tests
             html.CloseTag("html");
             html.AppendLine();
 
-            File.WriteAllText("C:\\Temp\\CatFactory\\HtmlDocument.html", html.ToString());
+            File.WriteAllText(@"C:\Temp\CatFactory\HtmlDocument.html", html.ToString());
         }
 
         [Fact]
-        public void TestOrderedList()
+        public void CreateOrderedList()
         {
             var drinks = Html.Ol(new { color = "red" })
                 .Li("Batman Begins")
                 .Li("Batman Dark Knight")
                 .Li("Batman Dark Knight Rises");
 
-            File.WriteAllText("C:\\Temp\\CatFactory\\OlMovies.html", drinks.ToString());
+            File.WriteAllText(@"C:\Temp\CatFactory\OlMovies.html", drinks.ToString());
         }
 
         [Fact]
-        public void TestUnorderedList()
+        public void CreateUnorderedList()
         {
             var drinks = Html.Ul()
                 .Li("Beer")
                 .Li("Wine")
                 .Li("Sake");
 
-            File.WriteAllText("C:\\Temp\\CatFactory\\UlDrinks.html", drinks.ToString());
+            File.WriteAllText(@"C:\Temp\CatFactory\UlDrinks.html", drinks.ToString());
         }
 
         [Fact]
-        public void TestTable()
+        public void CreateTable()
         {
             var table = Html.Table(new { style = "border: 1px solid Black;" })
                 .WithHeaders("First name", "Middle name", "Last name")
@@ -109,7 +109,7 @@ namespace CatFactory.Tests
                 .AddRow("Stan", "", "Marsh")
                 .AddRow("Kenny", "", "McCormick");
 
-            File.WriteAllText("C:\\Temp\\CatFactory\\Table.html", table.ToString());
+            File.WriteAllText(@"C:\Temp\CatFactory\Table.html", table.ToString());
         }
     }
 }
