@@ -21,5 +21,4 @@ namespace CatFactory.Markup
             return items;
         }
     }
-#pragma warning restore CS1591
 }

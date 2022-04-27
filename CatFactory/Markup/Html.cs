@@ -149,5 +149,4 @@
                 Attributes = attribs.GetTagAttribs()
             };
     }
-#pragma warning restore CS1591
 }

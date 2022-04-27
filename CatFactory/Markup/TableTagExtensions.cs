@@ -20,5 +20,4 @@
             return table;
         }
     }
-#pragma warning restore CS1591
 }

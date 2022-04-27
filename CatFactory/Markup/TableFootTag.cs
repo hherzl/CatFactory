@@ -7,7 +7,7 @@ namespace CatFactory.Markup
     public class TableFootTag
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<TableCellTag> m_cells;
+        private List<TableCellTag> _cells;
 
         public TableFootTag()
             : base()
@@ -16,9 +16,8 @@ namespace CatFactory.Markup
 
         public List<TableCellTag> Cells
         {
-            get => m_cells ?? (m_cells = new List<TableCellTag>());
-            set => m_cells = value;
+            get => _cells ?? (_cells = new List<TableCellTag>());
+            set => _cells = value;
         }
     }
-#pragma warning restore CS1591
 }

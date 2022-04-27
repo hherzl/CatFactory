@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <LangVersion>latest</LangVersion>
-        <Version>1.0.0-beta-sun-build31</Version>
+        <Version>1.0.0-beta-sun-build32</Version>
         <Authors>H. Herzl</Authors>
         <Company>Herzl Corp.</Company>
         <Description>This is the core for CatFactory engine and the base for child packages.
@@ -14,9 +14,9 @@ This package allows to define CLR objects and database objects.
         <RepositoryUrl>https://github.com/hherzl/CatFactory</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>Scaffolding Markup Markdown OOP ORM</PackageTags>
-        <PackageReleaseNotes>1.0.0-beta-sun-build31 Version:
+        <PackageReleaseNotes>1.0.0-beta-sun-build32 Version:
 
- Upgrade for .NET Core 3.1
+Addition of html helpers
 </PackageReleaseNotes>
         <PackageLicenseUrl>https://github.com/hherzl/CatFactory/blob/master/LICENSE</PackageLicenseUrl>
     </PropertyGroup>

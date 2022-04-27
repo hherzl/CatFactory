@@ -30,5 +30,4 @@ namespace CatFactory.Markup
         public static void AppendTag(this StringBuilder stringBuilder, string name, string content)
             => stringBuilder.AppendTag(name, content, null);
     }
-#pragma warning restore CS1591
 }

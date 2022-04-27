@@ -80,12 +80,12 @@ namespace CatFactory.Tests
         [Fact]
         public void CreateOrderedList()
         {
-            var drinks = Html.Ol(new { color = "red" })
+            var movies = Html.Ol(new { color = "red" })
                 .Li("Batman Begins")
                 .Li("Batman Dark Knight")
                 .Li("Batman Dark Knight Rises");
 
-            File.WriteAllText(@"C:\Temp\CatFactory\OlMovies.html", drinks.ToString());
+            File.WriteAllText(@"C:\Temp\CatFactory\OlMovies.html", movies.ToString());
         }
 
         [Fact]

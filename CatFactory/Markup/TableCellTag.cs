@@ -15,5 +15,4 @@
 
         public string Text { get; set; }
     }
-#pragma warning restore CS1591
 }

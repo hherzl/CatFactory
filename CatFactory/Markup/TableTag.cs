@@ -9,13 +9,13 @@ namespace CatFactory.Markup
     public class TableTag : Tag
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private TableHeadTag m_head;
+        private TableHeadTag _head;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<TableRowTag> m_rows;
+        private List<TableRowTag> _rows;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private TableFootTag m_foot;
+        private TableFootTag _foot;
 
         public TableTag()
             : base()
@@ -24,20 +24,20 @@ namespace CatFactory.Markup
 
         public TableHeadTag Head
         {
-            get => m_head ?? (m_head = new TableHeadTag());
-            set => m_head = value;
+            get => _head ?? (_head = new TableHeadTag());
+            set => _head = value;
         }
 
         public List<TableRowTag> Rows
         {
-            get => m_rows ?? (m_rows = new List<TableRowTag>());
-            set => m_rows = value;
+            get => _rows ?? (_rows = new List<TableRowTag>());
+            set => _rows = value;
         }
 
-        public TableFootTag Footer
+        public TableFootTag Foot
         {
-            get => m_foot ?? (m_foot = new TableFootTag());
-            set => m_foot = value;
+            get => _foot ?? (_foot = new TableFootTag());
+            set => _foot = value;
         }
 
         public override string ToString()
@@ -83,7 +83,7 @@ namespace CatFactory.Markup
             output.AppendLine("<tfoot>");
             output.AppendLine("<tr>");
 
-            foreach (var cell in Footer.Cells)
+            foreach (var cell in Foot.Cells)
             {
                 output.AppendFormat("<td>{0}</td>", cell.Text);
                 output.AppendLine();
@@ -92,10 +92,10 @@ namespace CatFactory.Markup
             output.AppendLine("</tr>");
             output.AppendLine("</tfoot>");
 
-            output.AppendLine("</table>");
+            output.AppendFormat("<{0}>", name);
+            output.AppendLine();
 
             return output.ToString();
         }
     }
-#pragma warning restore CS1591
 }
