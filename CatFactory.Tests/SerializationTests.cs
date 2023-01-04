@@ -1,8 +1,8 @@
 ﻿using System.IO;
+using System.Text.Json;
 using CatFactory.ObjectRelationalMapping;
 using CatFactory.Tests.Helpers;
 using CatFactory.Tests.Models;
-using Newtonsoft.Json;
 using Xunit;
 
 namespace CatFactory.Tests
@@ -37,11 +37,11 @@ namespace CatFactory.Tests
             var fileName = @"C:\Temp\CatFactory\OnlineStore.json";
 
             // Act
-            var json = JsonConvert.SerializeObject(db);
+            var json = JsonSerializer.Serialize(db);
 
             File.WriteAllText(fileName, json);
 
-            var deserializedDb = JsonConvert.DeserializeObject<Database>(json);
+            var deserializedDb = JsonSerializer.Deserialize<Database>(json);
 
             // Assert
             Assert.True(db.Name == deserializedDb.Name);

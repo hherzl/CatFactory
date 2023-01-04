@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Dynamic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using CatFactory.Diagnostics;
 using CatFactory.ObjectRelationalMapping.Validation;
@@ -95,6 +96,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// Gets or sets naming convention for database
         /// </summary>
         [XmlIgnore]
+        [JsonIgnore]
         public IDatabaseNamingConvention NamingConvention
         {
             get => m_namingConvention ?? (m_namingConvention = new DatabaseNamingConvention());
