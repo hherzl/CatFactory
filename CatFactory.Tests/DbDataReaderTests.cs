@@ -11,7 +11,7 @@ namespace CatFactory.Tests
         [Fact]
         public async Task TestGetClassDefinitionFromDbDataReaderAsync()
         {
-            using var connection = new SqlConnection("server=(local);database=Northwind;integrated security=yes;");
+            using var connection = new SqlConnection("server=(local); database=master; integrated security=yes; TrustServerCertificate=True;");
 
             await connection.OpenAsync();
 
