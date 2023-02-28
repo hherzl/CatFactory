@@ -97,7 +97,7 @@ namespace CatFactory.ObjectRelationalMapping.Programmability
         /// </summary>
         public List<Column> Columns
         {
-            get => m_columns ?? (m_columns = new List<Column>());
+            get => m_columns ??= new List<Column>();
             set => m_columns = value;
         }
 
@@ -106,7 +106,7 @@ namespace CatFactory.ObjectRelationalMapping.Programmability
         /// </summary>
         public List<Parameter> Parameters
         {
-            get => m_parameters ?? (m_parameters = new List<Parameter>());
+            get => m_parameters ??= new List<Parameter>();
             set => m_parameters = value;
         }
 

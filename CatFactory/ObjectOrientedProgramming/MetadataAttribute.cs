@@ -43,7 +43,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public List<string> Arguments
         {
-            get => m_arguments ?? (m_arguments = new List<string>());
+            get => m_arguments ??= new List<string>();
             set => m_arguments = value;
         }
 
@@ -52,7 +52,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public List<MetadataAttributeSet> Sets
         {
-            get => m_sets ?? (m_sets = new List<MetadataAttributeSet>());
+            get => m_sets ??= new List<MetadataAttributeSet>();
             set => m_sets = value;
         }
 

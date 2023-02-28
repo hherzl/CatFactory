@@ -92,7 +92,7 @@ namespace CatFactory.CodeFactory.Scaffolding
         /// </summary>
         public List<ProjectFeature<TProjectSettings>> Features
         {
-            get => m_features ?? (m_features = new List<ProjectFeature<TProjectSettings>>());
+            get => m_features ??= new List<ProjectFeature<TProjectSettings>>();
             set => m_features = value;
         }
 
@@ -101,7 +101,7 @@ namespace CatFactory.CodeFactory.Scaffolding
         /// </summary>
         public List<ProjectSelection<TProjectSettings>> Selections
         {
-            get => m_selections ?? (m_selections = new List<ProjectSelection<TProjectSettings>>());
+            get => m_selections ??= new List<ProjectSelection<TProjectSettings>>();
             set => m_selections = value;
         }
 

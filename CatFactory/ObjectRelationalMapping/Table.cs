@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Dynamic;
 using System.Linq;
@@ -10,7 +9,7 @@ namespace CatFactory.ObjectRelationalMapping
     /// <summary>
     /// Represents an user table
     /// </summary>
-    [DebuggerDisplay("FullName={FullName}, Columns={Columns.Count}")]
+    [DebuggerDisplay("FullName={FullName}, Columns={Columns.Count}, Identity={Identity}, PrimaryKey={PrimaryKey}")]
     public class Table : DbObject, ITable
     {
         #region [ Fields ]
@@ -57,7 +56,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// </summary>
         public List<Column> Columns
         {
-            get => m_columns ?? (m_columns = new List<Column>());
+            get => m_columns ??= new List<Column>();
             set => m_columns = value;
         }
 
@@ -103,7 +102,6 @@ namespace CatFactory.ObjectRelationalMapping
         /// <summary>
         /// Gets or sets the description
         /// </summary>
-        [Obsolete("Save description as extended property")]
         public string Description { get; set; }
 
         /// <summary>
@@ -116,7 +114,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// </summary>
         public List<Index> Indexes
         {
-            get => m_indexes ?? (m_indexes = new List<Index>());
+            get => m_indexes ??= new List<Index>();
             set => m_indexes = value;
         }
 
@@ -130,7 +128,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// </summary>
         public List<ForeignKey> ForeignKeys
         {
-            get => m_foreignKeys ?? (m_foreignKeys = new List<ForeignKey>());
+            get => m_foreignKeys ??= new List<ForeignKey>();
             set => m_foreignKeys = value;
         }
 
@@ -139,7 +137,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// </summary>
         public List<Unique> Uniques
         {
-            get => m_uniques ?? (m_uniques = new List<Unique>());
+            get => m_uniques ??= new List<Unique>();
             set => m_uniques = value;
         }
 
@@ -148,7 +146,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// </summary>
         public List<Check> Checks
         {
-            get => m_checks ?? (m_checks = new List<Check>());
+            get => m_checks ??= new List<Check>();
             set => m_checks = value;
         }
 
@@ -157,7 +155,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// </summary>
         public List<Default> Defaults
         {
-            get => m_defaults ?? (m_defaults = new List<Default>());
+            get => m_defaults ??= new List<Default>();
             set => m_defaults = value;
         }
 
@@ -167,7 +165,7 @@ namespace CatFactory.ObjectRelationalMapping
         [XmlIgnore]
         public dynamic ImportBag
         {
-            get => m_importBag ?? (m_importBag = new ExpandoObject());
+            get => m_importBag ??= new ExpandoObject();
             set => m_importBag = value;
         }
 

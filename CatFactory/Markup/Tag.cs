@@ -38,13 +38,13 @@ namespace CatFactory.Markup
 
         public List<TagAttribute> Attributes
         {
-            get => m_attributes ?? (m_attributes = new List<TagAttribute>());
+            get => m_attributes ??= new List<TagAttribute>();
             set => m_attributes = value;
         }
 
         public List<Tag> Children
         {
-            get => m_children ?? (m_children = new List<Tag>());
+            get => m_children ??= new List<Tag>();
             set => m_children = value;
         }
 
@@ -98,5 +98,4 @@ namespace CatFactory.Markup
             return output.ToString();
         }
     }
-#pragma warning restore CS1591
 }

@@ -55,7 +55,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public Documentation Documentation
         {
-            get => m_documentation ?? (m_documentation = new Documentation());
+            get => m_documentation ??= new Documentation();
             set => m_documentation = value;
         }
 
@@ -64,7 +64,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public List<MetadataAttribute> Attributes
         {
-            get => m_attributes ?? (m_attributes = new List<MetadataAttribute>());
+            get => m_attributes ??= new List<MetadataAttribute>();
             set => m_attributes = value;
         }
 

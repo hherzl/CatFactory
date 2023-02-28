@@ -86,7 +86,7 @@ namespace CatFactory.ObjectRelationalMapping
         [XmlIgnore]
         public dynamic ImportBag
         {
-            get => m_importBag ?? (m_importBag = new ExpandoObject());
+            get => m_importBag ??= new ExpandoObject();
             set => m_importBag = value;
         }
 
@@ -100,7 +100,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// <param name="obj">The object to compare with the current object</param>
         /// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
         public override bool Equals(object obj)
-            => obj is Column cast ? string.Compare(Name, cast.Name) == 0 ? true : false : false;
+            => obj is Column cast && string.Compare(Name, cast.Name) == 0;
 
         /// <summary>
         /// Returns the hash code for this column

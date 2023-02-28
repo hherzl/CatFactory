@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Dynamic;
 using System.Linq;
@@ -51,7 +50,7 @@ namespace CatFactory.ObjectRelationalMapping
         [XmlIgnore]
         public dynamic ImportBag
         {
-            get => m_importBag ?? (m_importBag = new ExpandoObject());
+            get => m_importBag ??= new ExpandoObject();
             set => m_importBag = value;
         }
 
@@ -99,14 +98,13 @@ namespace CatFactory.ObjectRelationalMapping
         /// </summary>
         public List<Column> Columns
         {
-            get => m_columns ?? (m_columns = new List<Column>());
+            get => m_columns ??= new List<Column>();
             set => m_columns = value;
         }
 
         /// <summary>
         /// Gets or sets the description
         /// </summary>
-        [Obsolete("Save description as extended property")]
         public string Description { get; set; }
 
         /// <summary>
@@ -114,7 +112,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// </summary>
         public List<Index> Indexes
         {
-            get => m_indexes ?? (m_indexes = new List<Index>());
+            get => m_indexes ??= new List<Index>();
             set => m_indexes = value;
         }
 

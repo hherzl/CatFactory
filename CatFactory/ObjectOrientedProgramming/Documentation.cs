@@ -68,7 +68,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public List<dynamic> CustomTags
         {
-            get => m_customTags ?? (m_customTags = new List<dynamic>());
+            get => m_customTags ??= new List<dynamic>();
             set => m_customTags = value;
         }
     }

@@ -104,7 +104,7 @@ namespace CatFactory.ObjectRelationalMapping
         [XmlIgnore]
         public dynamic ImportBag
         {
-            get => m_importBag ?? (m_importBag = new ExpandoObject());
+            get => m_importBag ??= new ExpandoObject();
             set => m_importBag = value;
         }
 

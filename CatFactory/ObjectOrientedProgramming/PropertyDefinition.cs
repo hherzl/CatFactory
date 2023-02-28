@@ -64,7 +64,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public Documentation Documentation
         {
-            get => m_documentation ?? (m_documentation = new Documentation());
+            get => m_documentation ??= new Documentation();
             set => m_documentation = value;
         }
 
@@ -93,7 +93,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public List<MetadataAttribute> Attributes
         {
-            get => m_attributes ?? (m_attributes = new List<MetadataAttribute>());
+            get => m_attributes ??= new List<MetadataAttribute>();
             set => m_attributes = value;
         }
 
@@ -117,7 +117,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public List<ILine> GetBody
         {
-            get => m_getBody ?? (m_getBody = new List<ILine>());
+            get => m_getBody ??= new List<ILine>();
             set => m_getBody = value;
         }
 
@@ -126,7 +126,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public List<ILine> SetBody
         {
-            get => m_setBody ?? (m_setBody = new List<ILine>());
+            get => m_setBody ??= new List<ILine>();
             set => m_setBody = value;
         }
 

@@ -45,7 +45,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public List<ParameterDefinition> Parameters
         {
-            get => m_parameters ?? (m_parameters = new List<ParameterDefinition>());
+            get => m_parameters ??= new List<ParameterDefinition>();
             set => m_parameters = value;
         }
 
@@ -54,7 +54,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public List<ILine> GetBody
         {
-            get => m_getBody ?? (m_getBody = new List<ILine>());
+            get => m_getBody ??= new List<ILine>();
             set => m_getBody = value;
         }
 
@@ -63,7 +63,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public List<ILine> SetBody
         {
-            get => m_setBody ?? (m_setBody = new List<ILine>());
+            get => m_setBody ??= new List<ILine>();
             set => m_setBody = value;
         }
     }

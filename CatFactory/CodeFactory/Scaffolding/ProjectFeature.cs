@@ -65,7 +65,7 @@ namespace CatFactory.CodeFactory.Scaffolding
         /// </summary>
         public List<IDbObject> DbObjects
         {
-            get => m_dbObjects ?? (m_dbObjects = new List<IDbObject>());
+            get => m_dbObjects ??= new List<IDbObject>();
             set => m_dbObjects = value;
         }
 

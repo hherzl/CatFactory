@@ -62,7 +62,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public List<NameValue> Sets
         {
-            get => m_sets ?? (m_sets = new List<NameValue>());
+            get => m_sets ??= new List<NameValue>();
             set => m_sets = value;
         }
     }

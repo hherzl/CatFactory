@@ -47,7 +47,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public Documentation Documentation
         {
-            get => m_documentation ?? (m_documentation = new Documentation());
+            get => m_documentation ??= new Documentation();
             set => m_documentation = value;
         }
 

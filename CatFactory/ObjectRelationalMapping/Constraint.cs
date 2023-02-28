@@ -59,7 +59,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// </summary>
         public List<string> Key
         {
-            get => m_key ?? (m_key = new List<string>());
+            get => m_key ??= new List<string>();
             set => m_key = value;
         }
 

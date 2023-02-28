@@ -24,9 +24,8 @@ namespace CatFactory.Markup
 
         public List<TableCellTag> Cells
         {
-            get => m_cells ?? (m_cells = new List<TableCellTag>());
+            get => m_cells ??= new List<TableCellTag>();
             set => m_cells = value;
         }
     }
-#pragma warning restore CS1591
 }

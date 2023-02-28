@@ -91,7 +91,7 @@ namespace CatFactory.CodeFactory
         /// </summary>
         public List<ILine> Lines
         {
-            get => m_lines ?? (m_lines = new List<ILine>());
+            get => m_lines ??= new List<ILine>();
             set => m_lines = value;
         }
 

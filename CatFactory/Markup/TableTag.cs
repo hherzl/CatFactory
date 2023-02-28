@@ -24,19 +24,19 @@ namespace CatFactory.Markup
 
         public TableHeadTag Head
         {
-            get => m_head ?? (m_head = new TableHeadTag());
+            get => m_head ??= new TableHeadTag();
             set => m_head = value;
         }
 
         public List<TableRowTag> Rows
         {
-            get => m_rows ?? (m_rows = new List<TableRowTag>());
+            get => m_rows ??= new List<TableRowTag>();
             set => m_rows = value;
         }
 
         public TableFootTag Footer
         {
-            get => m_foot ?? (m_foot = new TableFootTag());
+            get => m_foot ??= new TableFootTag();
             set => m_foot = value;
         }
 
@@ -97,5 +97,4 @@ namespace CatFactory.Markup
             return output.ToString();
         }
     }
-#pragma warning restore CS1591
 }

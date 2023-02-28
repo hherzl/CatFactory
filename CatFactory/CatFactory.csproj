@@ -1,34 +1,37 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <LangVersion>latest</LangVersion>
-        <Version>1.0.0-beta-sun-build32</Version>
-        <Authors>H. Herzl</Authors>
-        <Company>Herzl Corp.</Company>
-        <Description>This is the core for CatFactory engine and the base for child packages.
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Version>1.0.0-beta-sun-build33</Version>
+    <Authors>H. Herzl</Authors>
+    <Company>Herzl Corp.</Company>
+    <Description>
+      This is the core for CatFactory engine and the base for child packages.
 
-This package allows to define CLR objects and database objects.
-</Description>
-        <PackageProjectUrl>https://github.com/hherzl/CatFactory</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/hherzl/CatFactory</RepositoryUrl>
-        <RepositoryType>git</RepositoryType>
-        <PackageTags>Scaffolding Markup Markdown OOP ORM</PackageTags>
-        <PackageReleaseNotes>1.0.0-beta-sun-build32 Version:
+      This package allows to define CLR objects and database objects.
+    </Description>
+    <PackageProjectUrl>https://github.com/hherzl/CatFactory</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/hherzl/CatFactory</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Scaffolding Markup Markdown OOP ORM</PackageTags>
+    <PackageReleaseNotes>
+      1.0.0-beta-sun-build33 Version:
 
- Upgrade for .NET  6
-</PackageReleaseNotes>
-        <PackageLicenseUrl>https://github.com/hherzl/CatFactory/blob/master/LICENSE</PackageLicenseUrl>
-    </PropertyGroup>
+      Fix issue 19: https://github.com/hherzl/CatFactory/issues/19
+      Fix issue 20: https://github.com/hherzl/CatFactory/issues/20
+    </PackageReleaseNotes>
+    <PackageLicenseUrl>https://github.com/hherzl/CatFactory/blob/master/LICENSE</PackageLicenseUrl>
+  </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-        <DocumentationFile>bin\Debug\netcoreapp2.0\CatFactory.xml</DocumentationFile>
-    </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netcoreapp2.0\CatFactory.xml</DocumentationFile>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
+  </ItemGroup>
 
 </Project>

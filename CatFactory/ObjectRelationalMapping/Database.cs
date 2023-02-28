@@ -88,7 +88,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// </summary>
         public List<DbObject> DbObjects
         {
-            get => m_dbObjects ?? (m_dbObjects = new List<DbObject>());
+            get => m_dbObjects ??= new List<DbObject>();
             set => m_dbObjects = value;
         }
 
@@ -99,7 +99,7 @@ namespace CatFactory.ObjectRelationalMapping
         [JsonIgnore]
         public IDatabaseNamingConvention NamingConvention
         {
-            get => m_namingConvention ?? (m_namingConvention = new DatabaseNamingConvention());
+            get => m_namingConvention ??= new DatabaseNamingConvention();
             set => m_namingConvention = value;
         }
 
@@ -108,7 +108,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// </summary>
         public List<DatabaseTypeMap> DatabaseTypeMaps
         {
-            get => m_databaseTypeMaps ?? (m_databaseTypeMaps = new List<DatabaseTypeMap>());
+            get => m_databaseTypeMaps ??= new List<DatabaseTypeMap>();
             set => m_databaseTypeMaps = value;
         }
 
@@ -117,7 +117,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// </summary>
         public List<Table> Tables
         {
-            get => m_tables ?? (m_tables = new List<Table>());
+            get => m_tables ??= new List<Table>();
             set => m_tables = value;
         }
 
@@ -126,28 +126,8 @@ namespace CatFactory.ObjectRelationalMapping
         /// </summary>
         public List<View> Views
         {
-            get => m_views ?? (m_views = new List<View>());
+            get => m_views ??= new List<View>();
             set => m_views = value;
-        }
-
-        /// <summary>
-        /// Gets or sets the data source
-        /// </summary>
-        [Obsolete("Prefer ServerName over DataSource")]
-        public string DataSource
-        {
-            get => ServerName;
-            set => ServerName = value;
-        }
-
-        /// <summary>
-        /// Gets or sets the catalog (Database name)
-        /// </summary>
-        [Obsolete("Prefer Name over Catalog")]
-        public string Catalog
-        {
-            get => Name;
-            set => Name = value;
         }
 
         /// <summary>
@@ -156,7 +136,7 @@ namespace CatFactory.ObjectRelationalMapping
         [XmlIgnore]
         public dynamic ImportBag
         {
-            get => m_importBag ?? (m_importBag = new ExpandoObject());
+            get => m_importBag ??= new ExpandoObject();
             set => m_importBag = value;
         }
 
@@ -166,7 +146,7 @@ namespace CatFactory.ObjectRelationalMapping
         [XmlIgnore]
         public List<IDatabaseValidator> DatabaseValidators
         {
-            get => m_databaseValidators ?? (m_databaseValidators = new List<IDatabaseValidator>());
+            get => m_databaseValidators ??= new List<IDatabaseValidator>();
             set => m_databaseValidators = value;
         }
 

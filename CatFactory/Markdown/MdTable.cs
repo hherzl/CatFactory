@@ -34,7 +34,7 @@ namespace CatFactory.Markdown
         /// </summary>
         public MdTableHeader Header
         {
-            get => m_headers ?? (m_headers = new MdTableHeader());
+            get => m_headers ??= new MdTableHeader();
             set => m_headers = value;
         }
 
@@ -43,7 +43,7 @@ namespace CatFactory.Markdown
         /// </summary>
         public List<MdTableRow> Rows
         {
-            get => m_rows ?? (m_rows = new List<MdTableRow>());
+            get => m_rows ??= new List<MdTableRow>();
             set => m_rows = value;
         }
     }

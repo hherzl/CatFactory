@@ -4,10 +4,10 @@ using System.Diagnostics;
 namespace CatFactory.ObjectOrientedProgramming
 {
     /// <summary>
-    /// Represents a definition for Class in Object Oriented Programming context
+    /// Represents a definition for record in Object Oriented Programming context
     /// </summary>
     [DebuggerDisplay("AccessModifier={AccessModifier}, Namespace={Namespace}, Name={Name}")]
-    public class ClassDefinition : ObjectDefinition, IClassDefinition
+    public class RecordDefinition : ObjectDefinition, IRecordDefinition
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ClassConstructorDefinition> m_constructors;
@@ -19,17 +19,12 @@ namespace CatFactory.ObjectOrientedProgramming
         private List<FieldDefinition> m_fields;
 
         /// <summary>
-        /// Initializes a new instance of <see cref="ClassDefinition"/> class
+        /// Initializes a new instance of <see cref="RecordDefinition"/> class
         /// </summary>
-        public ClassDefinition()
-            : base()
+        public RecordDefinition()
+                : base()
         {
         }
-
-        /// <summary>
-        /// Indicates if current object definition is static
-        /// </summary>
-        public bool IsStatic { get; set; }
 
         /// <summary>
         /// Indicates if current object definition is abstract
@@ -37,9 +32,9 @@ namespace CatFactory.ObjectOrientedProgramming
         public bool IsAbstract { get; set; }
 
         /// <summary>
-        /// Gets or sets the base class for current class definition
+        /// Gets or sets the base record for current class definition
         /// </summary>
-        public string BaseClass { get; set; }
+        public string BaseRecord { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<string> m_implements;
@@ -57,7 +52,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// Indicates if current object definition has inheritance (Base class or implements)
         /// </summary>
         public override bool HasInheritance
-            => !string.IsNullOrEmpty(BaseClass) || Implements.Count > 0;
+            => !string.IsNullOrEmpty(BaseRecord) || Implements.Count > 0;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<GenericTypeDefinition> m_genericTypes;

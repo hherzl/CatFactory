@@ -28,7 +28,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public List<GenericTypeDefinition> GenericTypes
         {
-            get => m_genericTypes ?? (m_genericTypes = new List<GenericTypeDefinition>());
+            get => m_genericTypes ??= new List<GenericTypeDefinition>();
             set => m_genericTypes = value;
         }
 
@@ -37,7 +37,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public List<string> Implements
         {
-            get => m_implements ?? (m_implements = new List<string>());
+            get => m_implements ??= new List<string>();
             set => m_implements = value;
         }
 

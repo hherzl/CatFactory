@@ -10,9 +10,14 @@ namespace CatFactory.ObjectOrientedProgramming
     [DebuggerDisplay("AccessModifier={AccessModifier}, ParentInvoke={ParentInvoke}")]
     public class ClassConstructorDefinition
     {
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private Documentation m_documentation;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ParameterDefinition> m_parameters;
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private List<ILine> m_lines;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private Documentation m_documentation;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ParameterDefinition> m_parameters;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ILine> m_lines;
 
         /// <summary>
         /// Initializes a new instance of <see cref="ClassConstructorDefinition"/> class
@@ -46,7 +51,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public Documentation Documentation
         {
-            get => m_documentation ?? (m_documentation = new Documentation());
+            get => m_documentation ??= new Documentation();
             set => m_documentation = value;
         }
 
@@ -60,7 +65,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public List<ParameterDefinition> Parameters
         {
-            get => m_parameters ?? (m_parameters = new List<ParameterDefinition>());
+            get => m_parameters ??= new List<ParameterDefinition>();
             set => m_parameters = value;
         }
 
@@ -74,7 +79,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public List<ILine> Lines
         {
-            get => m_lines ?? (m_lines = new List<ILine>());
+            get => m_lines ??= new List<ILine>();
             set => m_lines = value;
         }
     }

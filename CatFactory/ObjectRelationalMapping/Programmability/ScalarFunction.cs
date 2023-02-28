@@ -65,7 +65,7 @@ namespace CatFactory.ObjectRelationalMapping.Programmability
         /// </summary>
         public List<Parameter> Parameters
         {
-            get => m_parameters ?? (m_parameters = new List<Parameter>());
+            get => m_parameters ??= new List<Parameter>();
             set => m_parameters = value;
         }
 

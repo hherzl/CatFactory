@@ -8,7 +8,7 @@
         #region [ Constructors ]
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of <see cref="NamingService"/> class
         /// </summary>
         public NamingService()
         {

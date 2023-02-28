@@ -68,7 +68,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public Documentation Documentation
         {
-            get => m_documentation ?? (m_documentation = new Documentation());
+            get => m_documentation ??= new Documentation();
             set => m_documentation = value;
         }
 
@@ -77,7 +77,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public List<MetadataAttribute> Attributes
         {
-            get => m_attributes ?? (m_attributes = new List<MetadataAttribute>());
+            get => m_attributes ??= new List<MetadataAttribute>();
             set => m_attributes = value;
         }
 
@@ -126,7 +126,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public List<GenericTypeDefinition> GenericTypes
         {
-            get => m_genericTypes ?? (m_genericTypes = new List<GenericTypeDefinition>());
+            get => m_genericTypes ??= new List<GenericTypeDefinition>();
             set => m_genericTypes = value;
         }
 
@@ -140,7 +140,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public List<ParameterDefinition> Parameters
         {
-            get => m_parameters ?? (m_parameters = new List<ParameterDefinition>());
+            get => m_parameters ??= new List<ParameterDefinition>();
             set => m_parameters = value;
         }
 
@@ -149,7 +149,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public List<ILine> Lines
         {
-            get => m_lines ?? (m_lines = new List<ILine>());
+            get => m_lines ??= new List<ILine>();
             set => m_lines = value;
         }
 
@@ -158,7 +158,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public List<string> NamespacesForDependencies
         {
-            get => m_namespacesForDependencies ?? (m_namespacesForDependencies = new List<string>());
+            get => m_namespacesForDependencies ??= new List<string>();
             set => m_namespacesForDependencies = value;
         }
     }

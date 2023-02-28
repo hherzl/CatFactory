@@ -50,7 +50,7 @@ namespace CatFactory.ObjectRelationalMapping.Programmability
         /// </summary>
         public List<Parameter> Parameters
         {
-            get => m_parameters ?? (m_parameters = new List<Parameter>());
+            get => m_parameters ??= new List<Parameter>();
             set => m_parameters = value;
         }
 
@@ -59,7 +59,7 @@ namespace CatFactory.ObjectRelationalMapping.Programmability
         /// </summary>
         public List<ResultSet> ResultSets
         {
-            get => m_resultSets ?? (m_resultSets = new List<ResultSet>());
+            get => m_resultSets ??= new List<ResultSet>();
             set => m_resultSets = value;
         }
 
@@ -70,7 +70,7 @@ namespace CatFactory.ObjectRelationalMapping.Programmability
         /// </summary>
         public List<FirstResultSetForObject> FirstResultSetsForObject
         {
-            get => m_firstResultSetsForObject ?? (m_firstResultSetsForObject = new List<FirstResultSetForObject>());
+            get => m_firstResultSetsForObject ??= new List<FirstResultSetForObject>();
             set => m_firstResultSetsForObject = value;
         }
     }

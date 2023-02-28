@@ -33,7 +33,7 @@ namespace CatFactory.Markdown
         /// </summary>
         public List<string> Cells
         {
-            get => m_cells ?? (m_cells = new List<string>());
+            get => m_cells ??= new List<string>();
             set => m_cells = value;
         }
     }

@@ -27,7 +27,7 @@ namespace CatFactory.Diagnostics
         /// </summary>
         public List<ValidationMessage> ValidationMessages
         {
-            get => m_validationMessages ?? (m_validationMessages = new List<ValidationMessage>());
+            get => m_validationMessages ??= new List<ValidationMessage>();
             set => m_validationMessages = value;
         }
 

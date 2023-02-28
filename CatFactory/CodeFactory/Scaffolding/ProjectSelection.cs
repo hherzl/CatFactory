@@ -40,7 +40,7 @@ namespace CatFactory.CodeFactory.Scaffolding
         /// </summary>
         public virtual TProjectSettings Settings
         {
-            get => m_settings ?? (m_settings = new TProjectSettings());
+            get => m_settings ??= new TProjectSettings();
             set => m_settings = value;
         }
     }

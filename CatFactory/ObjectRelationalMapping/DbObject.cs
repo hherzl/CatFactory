@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace CatFactory.ObjectRelationalMapping
 {
@@ -33,13 +32,13 @@ namespace CatFactory.ObjectRelationalMapping
         /// <summary>
         /// Initializes a new instance of <see cref="DbObject"/> class
         /// </summary>
-        /// <param name="serverName">Server name</param>
+        /// <param name="dataSource">Data source</param>
         /// <param name="databaseName">Database name</param>
         /// <param name="schema">Schema name</param>
         /// <param name="name">Name</param>
-        public DbObject(string serverName, string databaseName, string schema, string name)
+        public DbObject(string dataSource, string databaseName, string schema, string name)
         {
-            ServerName = serverName;
+            DataSource = dataSource;
             DatabaseName = databaseName;
             Schema = schema;
             Name = name;
@@ -58,26 +57,6 @@ namespace CatFactory.ObjectRelationalMapping
         /// Gets or sets the database name
         /// </summary>
         public string DatabaseName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the server name
-        /// </summary>
-        [Obsolete("Prefer data source over server name")]
-        public string ServerName
-        {
-            get => DataSource;
-            set => DataSource = value;
-        }
-
-        /// <summary>
-        /// Catalog or Database Name
-        /// </summary>
-        [Obsolete("Prefer database name over catalog")]
-        public string Catalog
-        {
-            get => DatabaseName;
-            set => DatabaseName = value;
-        }
 
         #endregion
 

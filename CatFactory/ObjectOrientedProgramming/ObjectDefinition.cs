@@ -41,7 +41,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public List<string> Namespaces
         {
-            get => m_namespaces ?? (m_namespaces = new List<string>());
+            get => m_namespaces ??= new List<string>();
             set => m_namespaces = value;
         }
 
@@ -55,7 +55,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public Documentation Documentation
         {
-            get => m_documentation ?? (m_documentation = new Documentation());
+            get => m_documentation ??= new Documentation();
             set => m_documentation = value;
         }
 
@@ -96,7 +96,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public List<MetadataAttribute> Attributes
         {
-            get => m_attributes ?? (m_attributes = new List<MetadataAttribute>());
+            get => m_attributes ??= new List<MetadataAttribute>();
             set => m_attributes = value;
         }
 
@@ -105,7 +105,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public List<EventDefinition> Events
         {
-            get => m_events ?? (m_events = new List<EventDefinition>());
+            get => m_events ??= new List<EventDefinition>();
             set => m_events = value;
         }
 
@@ -114,7 +114,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public List<PropertyDefinition> Properties
         {
-            get => m_properties ?? (m_properties = new List<PropertyDefinition>());
+            get => m_properties ??= new List<PropertyDefinition>();
             set => m_properties = value;
         }
 
@@ -123,7 +123,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public List<MethodDefinition> Methods
         {
-            get => m_methods ?? (m_methods = new List<MethodDefinition>());
+            get => m_methods ??= new List<MethodDefinition>();
             set => m_methods = value;
         }
 

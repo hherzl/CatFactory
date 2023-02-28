@@ -23,9 +23,10 @@ namespace CatFactory.Tests
                 Name = "Product",
                 Properties =
                 {
-                    new PropertyDefinition("Int32?", "ID"),
-                    new PropertyDefinition("String", "Name"),
-                    new PropertyDefinition("String", "Description")
+                    new PropertyDefinition(AccessModifier.Public, "int?", "Id"),
+                    new PropertyDefinition(AccessModifier.Public, "string", "Name"),
+                    new PropertyDefinition("string", "Description"),
+                    new PropertyDefinition("decimal?", "Description")
                 }
             };
 
@@ -33,13 +34,14 @@ namespace CatFactory.Tests
 
             // Assert
             Assert.True(definition.AccessModifier == AccessModifier.Private);
-            Assert.True(definition.Properties[0].AccessModifier == AccessModifier.Private);
-            Assert.True(definition.Properties[1].AccessModifier == AccessModifier.Private);
+            Assert.True(definition.Properties[0].AccessModifier == AccessModifier.Public);
+            Assert.True(definition.Properties[1].AccessModifier == AccessModifier.Public);
             Assert.True(definition.Properties[2].AccessModifier == AccessModifier.Private);
+            Assert.True(definition.Properties[3].AccessModifier == AccessModifier.Private);
         }
 
         [Fact]
-        public void TestEntityWithDataAnnotationsDefinition()
+        public void TestEntityClassWithDataAnnotationsDefinition()
         {
             // Arrange
             var definition = new ClassDefinition
@@ -170,6 +172,37 @@ namespace CatFactory.Tests
             Assert.False(interfaceDefinition.Implements.Count == 0);
 
             Assert.True(enumDefinition.HasInheritance);
+        }
+
+        [Fact]
+        public void TestRecordDefinition()
+        {
+            // Arrange
+            var definition = new RecordDefinition
+            {
+                Documentation = new Documentation
+                {
+                    Summary = "Represents a simple record definition for person"
+                },
+                AccessModifier = AccessModifier.Public,
+                Name = "Person",
+                Properties =
+                {
+                    new PropertyDefinition(AccessModifier.Public, "int?", "Id"),
+                    new PropertyDefinition(AccessModifier.Public, "string", "GivenName"),
+                    new PropertyDefinition(AccessModifier.Public, "string", "MiddleName"),
+                    new PropertyDefinition(AccessModifier.Public, "string", "FamilyName")
+                }
+            };
+
+            // Act
+
+            // Assert
+            Assert.True(definition.AccessModifier == AccessModifier.Public);
+            Assert.True(definition.Properties[0].AccessModifier == AccessModifier.Public);
+            Assert.True(definition.Properties[1].AccessModifier == AccessModifier.Public);
+            Assert.True(definition.Properties[2].AccessModifier == AccessModifier.Public);
+            Assert.True(definition.Properties[3].AccessModifier == AccessModifier.Public);
         }
     }
 }
