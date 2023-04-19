@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using CatFactory.Diagnostics;
+using CatFactory.ObjectRelationalMapping.Programmability;
 using CatFactory.ObjectRelationalMapping.Validation;
 
 namespace CatFactory.ObjectRelationalMapping
@@ -42,6 +43,18 @@ namespace CatFactory.ObjectRelationalMapping
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<IDatabaseValidator> m_databaseValidators;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ScalarFunction> m_scalarFunctions;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<TableFunction> m_tableFunctions;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<StoredProcedure> m_storedProcedures;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<Sequence> m_sequences;
 
         #endregion
 
@@ -138,6 +151,42 @@ namespace CatFactory.ObjectRelationalMapping
         {
             get => m_importBag ??= new ExpandoObject();
             set => m_importBag = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the scalar functions
+        /// </summary>
+        public List<ScalarFunction> ScalarFunctions
+        {
+            get => m_scalarFunctions ??= new List<ScalarFunction>();
+            set => m_scalarFunctions = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the table functions
+        /// </summary>
+        public List<TableFunction> TableFunctions
+        {
+            get => m_tableFunctions ??= new List<TableFunction>();
+            set => m_tableFunctions = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the store procedures
+        /// </summary>
+        public List<StoredProcedure> StoredProcedures
+        {
+            get => m_storedProcedures ??= new List<StoredProcedure>();
+            set => m_storedProcedures = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the sequences
+        /// </summary>
+        public List<Sequence> Sequences
+        {
+            get => m_sequences ??= new List<Sequence>();
+            set => m_sequences = value;
         }
 
         /// <summary>
