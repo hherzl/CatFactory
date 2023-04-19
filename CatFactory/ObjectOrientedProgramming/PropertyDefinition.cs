@@ -22,6 +22,9 @@ namespace CatFactory.ObjectOrientedProgramming
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ILine> m_setBody;
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ILine> m_initBody;
+
         /// <summary>
         /// Initializes a new instance of <see cref="PropertyDefinition"/> class
         /// </summary>
@@ -128,6 +131,15 @@ namespace CatFactory.ObjectOrientedProgramming
         {
             get => m_setBody ??= new List<ILine>();
             set => m_setBody = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the set body for current property definition
+        /// </summary>
+        public List<ILine> InitBody
+        {
+            get => m_initBody ??= new List<ILine>();
+            set => m_initBody = value;
         }
 
         /// <summary>
