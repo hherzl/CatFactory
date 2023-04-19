@@ -108,8 +108,7 @@ namespace CatFactory.ObjectRelationalMapping
         /// <summary>
         /// Gets or sets naming convention for database
         /// </summary>
-        [XmlIgnore]
-        [JsonIgnore]
+        [XmlIgnore, JsonIgnore]
         public IDatabaseNamingConvention NamingConvention
         {
             get => m_namingConvention ??= new DatabaseNamingConvention();
