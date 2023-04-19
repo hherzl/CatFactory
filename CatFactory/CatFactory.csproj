@@ -18,6 +18,7 @@
     <PackageReleaseNotes>
       1.0.0-beta-sun-build34 Version:
 
+      Fix issue 21: https://github.com/hherzl/CatFactory/issues/21
       Fix issue 25: https://github.com/hherzl/CatFactory/issues/25
     </PackageReleaseNotes>
     <PackageLicenseUrl>https://github.com/hherzl/CatFactory/blob/master/LICENSE</PackageLicenseUrl>
