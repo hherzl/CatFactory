@@ -37,8 +37,8 @@ namespace CatFactory.Tests
             var mapsForDecimal = mappings.Where(item => item.GetClrType() == typeof(decimal)).ToList();
 
             // Assert
-            Assert.True(mapsForString.Count() == 6);
-            Assert.True(mapsForDecimal.Count() == 4);
+            Assert.True(mapsForString.Count == 6);
+            Assert.True(mapsForDecimal.Count == 4);
         }
 
         [Fact]

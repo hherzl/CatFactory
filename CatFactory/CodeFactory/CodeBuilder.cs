@@ -106,6 +106,11 @@ namespace CatFactory.CodeFactory
         public bool ForceOverwrite { get; set; }
 
         /// <summary>
+        /// Indicates if current <see cref="CatFactory.CodeFactory.CodeBuilder" /> instance has scoped namespace
+        /// </summary>
+        public bool IsFileScopedNamespace { get; set; }
+
+        /// <summary>
         /// Raises the <see cref="TranslatedDefinition"/> event
         /// </summary>
         /// <param name="args">Data for <see cref="TranslatedDefinition"/> class</param>

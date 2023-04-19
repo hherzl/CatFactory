@@ -136,6 +136,11 @@ namespace CatFactory.ObjectOrientedProgramming
         public bool IsExtension { get; set; }
 
         /// <summary>
+        /// Indicates if currenty method definition is partial
+        /// </summary>
+        public bool IsPartial { get; set; }
+
+        /// <summary>
         /// Gets or sets the parameters for current method definition
         /// </summary>
         public List<ParameterDefinition> Parameters

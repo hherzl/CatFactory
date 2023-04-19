@@ -18,11 +18,15 @@ namespace CatFactory.ObjectOrientedProgramming
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ILine> m_setBody;
 
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<ILine> m_initBody;
+
         /// <summary>
         /// Initializes a new instance of <see cref="IndexerDefinition"/> class
         /// </summary>
         public IndexerDefinition()
         {
+            Name = "this";
         }
 
         /// <summary>
@@ -38,7 +42,7 @@ namespace CatFactory.ObjectOrientedProgramming
         /// <summary>
         /// Gets or sets the name for current indexer definition
         /// </summary>
-        public string Name { get; set; } = "this";
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the parameters for current indexer definition
@@ -65,6 +69,15 @@ namespace CatFactory.ObjectOrientedProgramming
         {
             get => m_setBody ??= new List<ILine>();
             set => m_setBody = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the set body for current property definition
+        /// </summary>
+        public List<ILine> InitBody
+        {
+            get => m_initBody ??= new List<ILine>();
+            set => m_initBody = value;
         }
     }
 }

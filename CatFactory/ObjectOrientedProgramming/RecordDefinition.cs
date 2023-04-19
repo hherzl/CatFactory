@@ -22,17 +22,22 @@ namespace CatFactory.ObjectOrientedProgramming
         /// Initializes a new instance of <see cref="RecordDefinition"/> class
         /// </summary>
         public RecordDefinition()
-                : base()
+            : base()
         {
         }
 
         /// <summary>
-        /// Indicates if current object definition is abstract
+        /// Indicates if current record definition is abstract
         /// </summary>
         public bool IsAbstract { get; set; }
 
         /// <summary>
-        /// Gets or sets the base record for current class definition
+        /// Indicates if current record definition is struct
+        /// </summary>
+        public bool IsStruct { get; set; }
+
+        /// <summary>
+        /// Gets or sets the base record for current record definition
         /// </summary>
         public string BaseRecord { get; set; }
 
@@ -40,7 +45,7 @@ namespace CatFactory.ObjectOrientedProgramming
         private List<string> m_implements;
 
         /// <summary>
-        /// Gets or sets the implements list (Interfaces) for current class definition
+        /// Gets or sets the implements list (Interfaces) for current record definition
         /// </summary>
         public List<string> Implements
         {
@@ -49,7 +54,7 @@ namespace CatFactory.ObjectOrientedProgramming
         }
 
         /// <summary>
-        /// Indicates if current object definition has inheritance (Base class or implements)
+        /// Indicates if current object definition has inheritance (Base record or implements)
         /// </summary>
         public override bool HasInheritance
             => !string.IsNullOrEmpty(BaseRecord) || Implements.Count > 0;
@@ -70,7 +75,7 @@ namespace CatFactory.ObjectOrientedProgramming
         private List<ConstantDefinition> m_constants;
 
         /// <summary>
-        /// Gets or sets the constants for current class definition
+        /// Gets or sets the constants for current record definition
         /// </summary>
         public List<ConstantDefinition> Constants
         {
@@ -79,17 +84,17 @@ namespace CatFactory.ObjectOrientedProgramming
         }
 
         /// <summary>
-        /// Gets or sets the static constructor for current class definition
+        /// Gets or sets the static constructor for current record definition
         /// </summary>
         public ClassConstructorDefinition StaticConstructor { get; set; }
 
         /// <summary>
-        /// Gets or sets the finalizer for current class definition
+        /// Gets or sets the finalizer for current record definition
         /// </summary>
         public FinalizerDefinition Finalizer { get; set; }
 
         /// <summary>
-        /// Gets or sets the constructors for current class definition
+        /// Gets or sets the constructors for current record definition
         /// </summary>
         public List<ClassConstructorDefinition> Constructors
         {
@@ -98,7 +103,7 @@ namespace CatFactory.ObjectOrientedProgramming
         }
 
         /// <summary>
-        /// Gets or sets the indexers for current class definition
+        /// Gets or sets the indexers for current record definition
         /// </summary>
         public List<IndexerDefinition> Indexers
         {
@@ -107,7 +112,7 @@ namespace CatFactory.ObjectOrientedProgramming
         }
 
         /// <summary>
-        /// Gets or sets the fields for current class definition
+        /// Gets or sets the fields for current record definition
         /// </summary>
         public List<FieldDefinition> Fields
         {

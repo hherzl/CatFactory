@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -21,7 +21,10 @@
       Fix issue 21: https://github.com/hherzl/CatFactory/issues/21
       Fix issue 22: https://github.com/hherzl/CatFactory/issues/22
       Fix issue 23: https://github.com/hherzl/CatFactory/issues/23
+      Fix issue 24: https://github.com/hherzl/CatFactory/issues/24
       Fix issue 25: https://github.com/hherzl/CatFactory/issues/25
+      Fix issue 26: https://github.com/hherzl/CatFactory/issues/26
+      Fix issue 27: https://github.com/hherzl/CatFactory/issues/27
     </PackageReleaseNotes>
     <PackageLicenseUrl>https://github.com/hherzl/CatFactory/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>
