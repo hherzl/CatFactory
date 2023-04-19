@@ -134,5 +134,10 @@ namespace CatFactory.ObjectOrientedProgramming
         /// Gets or sets the initialization value for current property definition
         /// </summary>
         public string InitializationValue { get; set; }
+
+        /// <summary>
+        /// Inidcates if current property is positional (declaration in record)
+        /// </summary>
+        public bool IsPositional { get; set; }
     }
 }
