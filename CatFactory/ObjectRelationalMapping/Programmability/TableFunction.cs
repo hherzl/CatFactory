@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.Dynamic;
 using System.Linq;
+using System.Xml.Serialization;
 
 namespace CatFactory.ObjectRelationalMapping.Programmability
 {
@@ -11,6 +13,9 @@ namespace CatFactory.ObjectRelationalMapping.Programmability
     public class TableFunction : DbObject, ITableFunction
     {
         #region [ Fields ]
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private dynamic m_importBag;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<Column> m_columns;
@@ -54,7 +59,26 @@ namespace CatFactory.ObjectRelationalMapping.Programmability
 
         #endregion
 
+        /// <summary>
+        /// Gets or sets the extension data for import
+        /// </summary>
+        [XmlIgnore]
+        public dynamic ImportBag
+        {
+            get => m_importBag ??= new ExpandoObject();
+            set => m_importBag = value;
+        }
+
         #region [ Members of ITableFunction ]
+
+        /// <summary>
+        /// Gets or sets the columns list
+        /// </summary>
+        public List<Column> Columns
+        {
+            get => m_columns ??= new List<Column>();
+            set => m_columns = value;
+        }
 
         /// <summary>
         /// Gets or sets a column by index
@@ -85,20 +109,6 @@ namespace CatFactory.ObjectRelationalMapping.Programmability
                         column = value;
                 }
             }
-        }
-
-        /// <summary>
-        /// Gets or sets the description
-        /// </summary>
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Gets or sets the columns list
-        /// </summary>
-        public List<Column> Columns
-        {
-            get => m_columns ??= new List<Column>();
-            set => m_columns = value;
         }
 
         /// <summary>

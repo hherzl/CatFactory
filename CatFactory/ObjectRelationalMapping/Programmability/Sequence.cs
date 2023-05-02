@@ -1,10 +1,21 @@
-﻿namespace CatFactory.ObjectRelationalMapping.Programmability
+﻿using System.Diagnostics;
+using System.Dynamic;
+using System.Xml.Serialization;
+
+namespace CatFactory.ObjectRelationalMapping.Programmability
 {
     /// <summary>
     /// Represents the model for sequences
     /// </summary>
     public class Sequence : DbObject
     {
+        #region [ Fields ]
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private dynamic m_importBag;
+
+        #endregion
+
         #region [ Constructors ]
 
         /// <summary>
@@ -40,6 +51,16 @@
         #endregion
 
         #region [ Properties ]
+
+        /// <summary>
+        /// Gets or sets the extension data for import
+        /// </summary>
+        [XmlIgnore]
+        public dynamic ImportBag
+        {
+            get => m_importBag ??= new ExpandoObject();
+            set => m_importBag = value;
+        }
 
         /// <summary>
         /// Indicates if current sequence is cycling

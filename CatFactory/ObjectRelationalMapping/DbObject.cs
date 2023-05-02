@@ -83,6 +83,11 @@ namespace CatFactory.ObjectRelationalMapping
         /// </summary>
         public string Type { get; set; }
 
+        /// <summary>
+        /// Gets or sets the description
+        /// </summary>
+        public string Description { get; set; }
+
         #endregion
     }
 }

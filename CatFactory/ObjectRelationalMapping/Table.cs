@@ -100,11 +100,6 @@ namespace CatFactory.ObjectRelationalMapping
         #region [ Members of ITable ]
 
         /// <summary>
-        /// Gets or sets the description
-        /// </summary>
-        public string Description { get; set; }
-
-        /// <summary>
         /// Gets or sets identity (auto increment)
         /// </summary>
         public Identity Identity { get; set; }

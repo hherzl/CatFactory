@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.Dynamic;
+using System.Xml.Serialization;
 
 namespace CatFactory.ObjectRelationalMapping.Programmability
 {
@@ -10,6 +12,9 @@ namespace CatFactory.ObjectRelationalMapping.Programmability
     public class StoredProcedure : DbObject, IStoredProcedure
     {
         #region [ Fields ]
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private dynamic m_importBag;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<Parameter> m_parameters;
@@ -37,9 +42,14 @@ namespace CatFactory.ObjectRelationalMapping.Programmability
         #region [ Properties ]
 
         /// <summary>
-        /// Gets or sets the description
+        /// Gets or sets the extension data for import
         /// </summary>
-        public string Description { get; set; }
+        [XmlIgnore]
+        public dynamic ImportBag
+        {
+            get => m_importBag ??= new ExpandoObject();
+            set => m_importBag = value;
+        }
 
         #endregion
 

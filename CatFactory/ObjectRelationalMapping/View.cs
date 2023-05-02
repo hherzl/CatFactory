@@ -103,11 +103,6 @@ namespace CatFactory.ObjectRelationalMapping
         }
 
         /// <summary>
-        /// Gets or sets the description
-        /// </summary>
-        public string Description { get; set; }
-
-        /// <summary>
         /// Gets or sets indexes list
         /// </summary>
         public List<Index> Indexes

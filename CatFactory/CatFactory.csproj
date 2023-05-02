@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <LangVersion>latest</LangVersion>
-    <Version>1.0.0-beta-sun-build34</Version>
+    <Version>1.0.0-beta-sun-build35</Version>
     <Authors>H. Herzl</Authors>
     <Company>Herzl Corp.</Company>
     <Description>
@@ -16,15 +16,9 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>Scaffolding Markup Markdown OOP ORM</PackageTags>
     <PackageReleaseNotes>
-      1.0.0-beta-sun-build34 Version:
-
-      Fix issue 21: https://github.com/hherzl/CatFactory/issues/21
-      Fix issue 22: https://github.com/hherzl/CatFactory/issues/22
-      Fix issue 23: https://github.com/hherzl/CatFactory/issues/23
-      Fix issue 24: https://github.com/hherzl/CatFactory/issues/24
-      Fix issue 25: https://github.com/hherzl/CatFactory/issues/25
-      Fix issue 26: https://github.com/hherzl/CatFactory/issues/26
-      Fix issue 27: https://github.com/hherzl/CatFactory/issues/27
+      1.0.0-beta-sun-build35 Version:
+      
+      Fix issue 28: https://github.com/hherzl/CatFactory/issues/28
     </PackageReleaseNotes>
     <PackageLicenseUrl>https://github.com/hherzl/CatFactory/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>

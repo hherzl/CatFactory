@@ -39,12 +39,6 @@ namespace CatFactory.ObjectRelationalMapping
         private List<View> m_views;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private dynamic m_importBag;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private List<IDatabaseValidator> m_databaseValidators;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<ScalarFunction> m_scalarFunctions;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -55,6 +49,12 @@ namespace CatFactory.ObjectRelationalMapping
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private List<Sequence> m_sequences;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private dynamic m_importBag;
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private List<IDatabaseValidator> m_databaseValidators;
 
         #endregion
 
@@ -70,6 +70,11 @@ namespace CatFactory.ObjectRelationalMapping
         #endregion
 
         #region [ Properties ]
+
+        /// <summary>
+        /// Gets or sets the database management system
+        /// </summary>
+        public string Dbms { get; set; }
 
         /// <summary>
         /// Gets or sets the server name
@@ -143,16 +148,6 @@ namespace CatFactory.ObjectRelationalMapping
         }
 
         /// <summary>
-        /// Gets or sets the extension data for import
-        /// </summary>
-        [XmlIgnore]
-        public dynamic ImportBag
-        {
-            get => m_importBag ??= new ExpandoObject();
-            set => m_importBag = value;
-        }
-
-        /// <summary>
         /// Gets or sets the scalar functions
         /// </summary>
         public List<ScalarFunction> ScalarFunctions
@@ -186,6 +181,16 @@ namespace CatFactory.ObjectRelationalMapping
         {
             get => m_sequences ??= new List<Sequence>();
             set => m_sequences = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the extension data for import
+        /// </summary>
+        [XmlIgnore]
+        public dynamic ImportBag
+        {
+            get => m_importBag ??= new ExpandoObject();
+            set => m_importBag = value;
         }
 
         /// <summary>
