@@ -17,8 +17,9 @@
     <PackageTags>Scaffolding Markup Markdown OOP ORM</PackageTags>
     <PackageReleaseNotes>
       1.0.0-beta-sun-build35 Version:
-      
+
       Fix issue 28: https://github.com/hherzl/CatFactory/issues/28
+      Fix issue 29: https://github.com/hherzl/CatFactory/issues/29
     </PackageReleaseNotes>
     <PackageLicenseUrl>https://github.com/hherzl/CatFactory/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>

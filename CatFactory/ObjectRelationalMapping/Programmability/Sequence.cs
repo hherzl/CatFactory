@@ -68,7 +68,7 @@ namespace CatFactory.ObjectRelationalMapping.Programmability
         public bool IsCycling { get; set; }
 
         /// <summary>
-        /// Indicates if current sequence is cahed
+        /// Indicates if current sequence is cached
         /// </summary>
         public bool IsCached { get; set; }
 

@@ -44,27 +44,27 @@
         /// <summary>
         /// Gets or sets the start value for current sequence
         /// </summary>
-        public long StartValue { get; set; }
+        public long? StartValue { get; set; }
 
         /// <summary>
         /// Gets or sets the increment for current sequence
         /// </summary>
-        public long Increment { get; set; }
+        public long? Increment { get; set; }
 
         /// <summary>
         /// Gets or sets the minimum value for current sequence
         /// </summary>
-        public long MinimumValue { get; set; }
+        public long? MinimumValue { get; set; }
 
         /// <summary>
         /// Gets or sets the maximum value for current sequence
         /// </summary>
-        public long MaximumValue { get; set; }
+        public long? MaximumValue { get; set; }
 
         /// <summary>
         /// Gets or sets the current value for current sequence
         /// </summary>
-        public long CurrentValue { get; set; }
+        public long? CurrentValue { get; set; }
 
         #endregion
     }

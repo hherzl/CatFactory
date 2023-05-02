@@ -44,27 +44,27 @@
         /// <summary>
         /// Gets or sets the start value for current sequence
         /// </summary>
-        public byte StartValue { get; set; }
+        public byte? StartValue { get; set; }
 
         /// <summary>
         /// Gets or sets the increment for current sequence
         /// </summary>
-        public byte Increment { get; set; }
+        public byte? Increment { get; set; }
 
         /// <summary>
         /// Gets or sets the minimum value for current sequence
         /// </summary>
-        public byte MinimumValue { get; set; }
+        public byte? MinimumValue { get; set; }
 
         /// <summary>
         /// Gets or sets the maximum value for current sequence
         /// </summary>
-        public byte MaximumValue { get; set; }
+        public byte? MaximumValue { get; set; }
 
         /// <summary>
         /// Gets or sets the current value for current sequence
         /// </summary>
-        public byte CurrentValue { get; set; }
+        public byte? CurrentValue { get; set; }
 
         #endregion
     }

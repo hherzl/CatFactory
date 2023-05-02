@@ -44,27 +44,27 @@
         /// <summary>
         /// Gets or sets the start value for current sequence
         /// </summary>
-        public int StartValue { get; set; }
+        public int? StartValue { get; set; }
 
         /// <summary>
         /// Gets or sets the increment for current sequence
         /// </summary>
-        public int Increment { get; set; }
+        public int? Increment { get; set; }
 
         /// <summary>
         /// Gets or sets the minimum value for current sequence
         /// </summary>
-        public int MinimumValue { get; set; }
+        public int? MinimumValue { get; set; }
 
         /// <summary>
         /// Gets or sets the maximum value for current sequence
         /// </summary>
-        public int MaximumValue { get; set; }
+        public int? MaximumValue { get; set; }
 
         /// <summary>
         /// Gets or sets the current value for current sequence
         /// </summary>
-        public int CurrentValue { get; set; }
+        public int? CurrentValue { get; set; }
 
         #endregion
     }
