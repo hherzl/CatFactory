@@ -1,64 +1,64 @@
 ﻿namespace CatFactory.ObjectOrientedProgramming
 {
     /// <summary>
-    /// Provides extension methods for class definitions
+    /// Provides extension methods for record definitions
     /// </summary>
-    public static class ClassDefinitionExtensions
+    public static class RecordDefinitionExtensions
     {
         /// <summary>
-        /// Adds a new automatic property in class definition
+        /// Adds a new automatic property in record definition
         /// </summary>
-        /// <param name="classDefinition">Instance of <see cref="ClassDefinition"/> class</param>
+        /// <param name="recordDefinition">Instance of <see cref="RecordDefinition"/> class</param>
         /// <param name="type">Type for property</param>
         /// <param name="name">Name for property</param>
-        public static void AddAutomaticProperty(this ClassDefinition classDefinition, string type, string name)
+        public static void AddAutomaticProperty(this RecordDefinition recordDefinition, string type, string name)
         {
             var property = new PropertyDefinition(AccessModifier.Public, type, name)
             {
                 IsAutomatic = true
             };
 
-            classDefinition.Properties.Add(property);
+            recordDefinition.Properties.Add(property);
         }
 
         /// <summary>
-        /// Adds a new automatic property in class definition
+        /// Adds a new automatic property in record definition
         /// </summary>
-        /// <param name="classDefinition">Instance of <see cref="ClassDefinition"/> class</param>
+        /// <param name="recordDefinition">Instance of <see cref="RecordDefinition"/> class</param>
         /// <param name="accessModifier">Access modifier for property</param>
         /// <param name="type">Type for property</param>
         /// <param name="name">Name for property</param>
-        public static void AddAutomaticProperty(this ClassDefinition classDefinition, AccessModifier accessModifier, string type, string name)
+        public static void AddAutomaticProperty(this RecordDefinition recordDefinition, AccessModifier accessModifier, string type, string name)
         {
             var property = new PropertyDefinition(accessModifier, type, name)
             {
                 IsAutomatic = true
             };
 
-            classDefinition.Properties.Add(property);
+            recordDefinition.Properties.Add(property);
         }
 
         /// <summary>
         /// Creates a record definition from class definition
         /// </summary>
-        /// <param name="classDefinition">Instance of <see cref="ClassDefinition"/> class</param>
+        /// <param name="recordDefinition">Instance of <see cref="RecordDefinition"/> class</param>
         /// <param name="convertOptions">Instance of <see cref="ConvertOptions"/> record</param>
         /// <returns></returns>
-        public static RecordDefinition ToRecordDefinition(this ClassDefinition classDefinition, ConvertOptions convertOptions = null)
+        public static ClassDefinition ToClassDefinition(this RecordDefinition recordDefinition, ConvertOptions convertOptions = null)
         {
-            var recordDefinition = new RecordDefinition
+            var classDefinition = new ClassDefinition
             {
-                AccessModifier = classDefinition.AccessModifier,
-                Name = classDefinition.Name
+                AccessModifier = recordDefinition.AccessModifier,
+                Name = recordDefinition.Name
             };
 
             convertOptions ??= new();
 
             if (convertOptions.IncludeFields)
             {
-                foreach (var field in classDefinition.Fields)
+                foreach (var field in recordDefinition.Fields)
                 {
-                    recordDefinition.Fields.Add(new FieldDefinition(field.AccessModifier, field.Type, field.Name)
+                    classDefinition.Fields.Add(new FieldDefinition(field.AccessModifier, field.Type, field.Name)
                     {
                         IsReadOnly = field.IsReadOnly,
                         IsStatic = field.IsStatic,
@@ -69,9 +69,9 @@
 
             if (convertOptions.IncludeProperties)
             {
-                foreach (var property in classDefinition.Properties)
+                foreach (var property in recordDefinition.Properties)
                 {
-                    recordDefinition.Properties.Add(new PropertyDefinition(property.AccessModifier, property.Type, property.Name)
+                    classDefinition.Properties.Add(new PropertyDefinition(property.AccessModifier, property.Type, property.Name)
                     {
                         IsAutomatic = property.IsAutomatic,
                         IsPositional = property.IsPositional,
@@ -81,7 +81,7 @@
                 }
             }
 
-            return recordDefinition;
+            return classDefinition;
         }
     }
 }

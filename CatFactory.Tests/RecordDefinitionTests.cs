@@ -37,7 +37,7 @@ namespace CatFactory.Tests
         }
 
         [Fact]
-        public void TestClassToRecord()
+        public void TestConvertClassToRecord()
         {
             // Arrange
             var classDefinition = new ClassDefinition
@@ -63,7 +63,7 @@ namespace CatFactory.Tests
         }
 
         [Fact]
-        public void TestClassToRecordWithConvertOptions()
+        public void TestConvertClassToRecordWithConvertOptions()
         {
             // Arrange
             var classDefinition = new ClassDefinition
@@ -80,10 +80,10 @@ namespace CatFactory.Tests
 
             classDefinition.Fields.Add(new FieldDefinition("bool", "Flag"));
 
-            var options = new ConvertToRecordOptions(includeFields: true);
+            var convertOptions = new ConvertOptions(includeFields: true);
 
             // Act
-            var recordDefinition = classDefinition.ToRecordDefinition(options);
+            var recordDefinition = classDefinition.ToRecordDefinition(convertOptions);
 
             // Assert
             Assert.True(recordDefinition.AccessModifier == classDefinition.AccessModifier);

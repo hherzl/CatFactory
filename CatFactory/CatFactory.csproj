@@ -19,6 +19,7 @@
       1.0.0-beta-sun-build37 Version:
 
       Fix issue 31: https://github.com/hherzl/CatFactory/issues/31
+      Fix issue 32: https://github.com/hherzl/CatFactory/issues/32
     </PackageReleaseNotes>
     <PackageLicenseUrl>https://github.com/hherzl/CatFactory/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>

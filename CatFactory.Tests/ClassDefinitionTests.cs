@@ -173,5 +173,61 @@ namespace CatFactory.Tests
 
             Assert.True(enumDefinition.HasInheritance);
         }
+
+        [Fact]
+        public void TestConvertRecordToClass()
+        {
+            // Arrange
+            var recordDefinition = new RecordDefinition
+            {
+                AccessModifier = AccessModifier.Public,
+                Name = "Member"
+            };
+
+            recordDefinition.AddAutomaticProperty("short?", "Id");
+            recordDefinition.AddAutomaticProperty("string", "Name");
+            recordDefinition.AddAutomaticProperty("string", "Phone");
+            recordDefinition.AddAutomaticProperty("string", "Email");
+            recordDefinition.AddAutomaticProperty("DateTime", "SignDate");
+
+            // Act
+            var classDefinition = recordDefinition.ToClassDefinition();
+
+            // Assert
+            Assert.True(classDefinition.AccessModifier == recordDefinition.AccessModifier);
+            Assert.True(classDefinition.FullName == recordDefinition.FullName);
+            Assert.True(classDefinition.Properties.Count == recordDefinition.Properties.Count);
+            Assert.True(classDefinition.Fields.Count == 0);
+        }
+
+        [Fact]
+        public void TestConvertRecordToClassWithConvertOptions()
+        {
+            // Arrange
+            var recordDefinition = new RecordDefinition
+            {
+                AccessModifier = AccessModifier.Public,
+                Name = "StockItem"
+            };
+
+            recordDefinition.AddAutomaticProperty("Guid", "Id");
+            recordDefinition.AddAutomaticProperty("string", "Name");
+            recordDefinition.AddAutomaticProperty("string", "SKU");
+            recordDefinition.AddAutomaticProperty("decimal", "UnitPrice");
+            recordDefinition.AddAutomaticProperty("DateTime?", "ReleaseDate");
+
+            recordDefinition.Fields.Add(new FieldDefinition("bool", "Flag"));
+
+            var convertOptions = new ConvertOptions(includeFields: true);
+
+            // Act
+            var classDefinition = recordDefinition.ToClassDefinition(convertOptions);
+
+            // Assert
+            Assert.True(classDefinition.AccessModifier == recordDefinition.AccessModifier);
+            Assert.True(classDefinition.FullName == recordDefinition.FullName);
+            Assert.True(classDefinition.Fields.Count == recordDefinition.Fields.Count);
+            Assert.True(classDefinition.Properties.Count == recordDefinition.Properties.Count);
+        }
     }
 }

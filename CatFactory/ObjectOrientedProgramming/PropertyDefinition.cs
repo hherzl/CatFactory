@@ -30,7 +30,6 @@ namespace CatFactory.ObjectOrientedProgramming
         /// </summary>
         public PropertyDefinition()
         {
-            IsAutomatic = true;
         }
 
         /// <summary>
@@ -41,7 +40,6 @@ namespace CatFactory.ObjectOrientedProgramming
         /// <param name="attribs">Metadata attributes</param>
         public PropertyDefinition(string type, string name, params MetadataAttribute[] attribs)
         {
-            IsAutomatic = true;
             Type = type;
             Name = name;
             Attributes.AddRange(attribs);

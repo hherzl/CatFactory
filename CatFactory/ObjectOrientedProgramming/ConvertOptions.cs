@@ -1,15 +1,15 @@
 ﻿namespace CatFactory.ObjectOrientedProgramming
 {
     /// <summary>
-    /// Provides options for convert a class definition in record definition
+    /// Provides options for convert definitions
     /// </summary>
-    public record ConvertToRecordOptions
+    public record ConvertOptions
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="ConvertToRecordOptions"/> record
+        /// Initializes a new instance of <see cref="ConvertOptions"/> record
         /// </summary>
         /// <param name="includeFields">Include fields</param>
-        public ConvertToRecordOptions(bool includeFields = false)
+        public ConvertOptions(bool includeFields = false)
         {
             IncludeProperties = true;
             IncludeFields = includeFields;
