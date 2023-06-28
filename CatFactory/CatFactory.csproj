@@ -16,10 +16,9 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>Scaffolding Markup Markdown OOP ORM</PackageTags>
     <PackageReleaseNotes>
-      1.0.0-beta-sun-build36 Version:
+      1.0.0-beta-sun-build37 Version:
 
-      Fix issue 28: https://github.com/hherzl/CatFactory/issues/28
-      Fix issue 29: https://github.com/hherzl/CatFactory/issues/29
+      Fix issue 31: https://github.com/hherzl/CatFactory/issues/31
     </PackageReleaseNotes>
     <PackageLicenseUrl>https://github.com/hherzl/CatFactory/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>

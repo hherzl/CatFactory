@@ -4,7 +4,7 @@ using Xunit;
 
 namespace CatFactory.Tests
 {
-    public class ObjectOrientedProgrammingTests
+    public class ClassDefinitionTests
     {
         [Fact]
         public void TestClassDefinition()
@@ -63,11 +63,11 @@ namespace CatFactory.Tests
                 Name = "Person",
                 Properties =
                 {
-                    new PropertyDefinition("Int32?", "ID", new MetadataAttribute("Key")),
-                    new PropertyDefinition("String", "FirstName", new MetadataAttribute("Required"), new MetadataAttribute("StringLength", "25")),
-                    new PropertyDefinition("String", "MiddleName", new MetadataAttribute("StringLength", "25")),
-                    new PropertyDefinition("String", "LastName", new MetadataAttribute("Required"), new MetadataAttribute("StringLength", "25")),
-                    new PropertyDefinition("String", "Gender", new MetadataAttribute("Required"), new MetadataAttribute("StringLength", "1")),
+                    new PropertyDefinition("int?", "Id", new MetadataAttribute("Key")),
+                    new PropertyDefinition("string", "FirstName", new MetadataAttribute("Required"), new MetadataAttribute("StringLength", "25")),
+                    new PropertyDefinition("string", "MiddleName", new MetadataAttribute("StringLength", "25")),
+                    new PropertyDefinition("string", "LastName", new MetadataAttribute("Required"), new MetadataAttribute("StringLength", "25")),
+                    new PropertyDefinition("string", "Gender", new MetadataAttribute("Required"), new MetadataAttribute("StringLength", "1")),
                     new PropertyDefinition("DateTime?", "BirthDate", new MetadataAttribute("Required"))
                 }
             };
@@ -105,7 +105,7 @@ namespace CatFactory.Tests
                 }
             };
 
-            definition.Properties.Add(new PropertyDefinition(AccessModifier.Public, "String", "FirstName")
+            definition.Properties.Add(new PropertyDefinition(AccessModifier.Public, "string", "FirstName")
             {
                 GetBody =
                 {
@@ -172,37 +172,6 @@ namespace CatFactory.Tests
             Assert.False(interfaceDefinition.Implements.Count == 0);
 
             Assert.True(enumDefinition.HasInheritance);
-        }
-
-        [Fact]
-        public void TestRecordDefinition()
-        {
-            // Arrange
-            var definition = new RecordDefinition
-            {
-                Documentation = new Documentation
-                {
-                    Summary = "Represents a simple record definition for person"
-                },
-                AccessModifier = AccessModifier.Public,
-                Name = "Person",
-                Properties =
-                {
-                    new PropertyDefinition(AccessModifier.Public, "int?", "Id"),
-                    new PropertyDefinition(AccessModifier.Public, "string", "GivenName"),
-                    new PropertyDefinition(AccessModifier.Public, "string", "MiddleName"),
-                    new PropertyDefinition(AccessModifier.Public, "string", "FamilyName")
-                }
-            };
-
-            // Act
-
-            // Assert
-            Assert.True(definition.AccessModifier == AccessModifier.Public);
-            Assert.True(definition.Properties[0].AccessModifier == AccessModifier.Public);
-            Assert.True(definition.Properties[1].AccessModifier == AccessModifier.Public);
-            Assert.True(definition.Properties[2].AccessModifier == AccessModifier.Public);
-            Assert.True(definition.Properties[3].AccessModifier == AccessModifier.Public);
         }
     }
 }
