@@ -44,6 +44,11 @@ namespace CatFactory.CodeFactory
         protected ILogger Logger { get; }
 
         /// <summary>
+        /// Gets or sets the <see cref="IndentationStyle"/> for the current instance
+        /// </summary>
+        public IndentationStyle IndentationStyle { get; set; }
+
+        /// <summary>
         /// Gets or sets the tab
         /// </summary>
         public string Tab { get; set; } = "\t";
