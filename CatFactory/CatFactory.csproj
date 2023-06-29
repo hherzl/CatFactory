@@ -21,6 +21,7 @@
       Fix issue 31: https://github.com/hherzl/CatFactory/issues/31
       Fix issue 32: https://github.com/hherzl/CatFactory/issues/32
       Fix issue 33: https://github.com/hherzl/CatFactory/issues/33
+      Fix issue 34: https://github.com/hherzl/CatFactory/issues/34
     </PackageReleaseNotes>
     <PackageLicenseUrl>https://github.com/hherzl/CatFactory/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>

@@ -1,4 +1,5 @@
-﻿using CatFactory.CodeFactory;
+﻿using System;
+using CatFactory.CodeFactory;
 using CatFactory.ObjectOrientedProgramming;
 using Xunit;
 
@@ -7,7 +8,7 @@ namespace CatFactory.Tests
     public class ClassDefinitionTests
     {
         [Fact]
-        public void TestClassDefinition()
+        public void Test_ClassDefinition()
         {
             // Arrange
             var definition = new ClassDefinition
@@ -41,7 +42,7 @@ namespace CatFactory.Tests
         }
 
         [Fact]
-        public void TestEntityClassWithDataAnnotationsDefinition()
+        public void Test_EntityClassWithDataAnnotationsDefinition()
         {
             // Arrange
             var definition = new ClassDefinition
@@ -80,7 +81,7 @@ namespace CatFactory.Tests
         }
 
         [Fact]
-        public void TestViewModelClassDefinition()
+        public void Test_ViewModelClassDefinition()
         {
             // Arrange
             var definition = new ClassDefinition
@@ -132,7 +133,7 @@ namespace CatFactory.Tests
         }
 
         [Fact]
-        public void TestInheritance()
+        public void Test_Inheritance()
         {
             // Arrange
             var classDefinition = new ClassDefinition
@@ -175,7 +176,7 @@ namespace CatFactory.Tests
         }
 
         [Fact]
-        public void TestConvertRecordToClass()
+        public void Test_ConvertRecordToClass()
         {
             // Arrange
             var recordDefinition = new RecordDefinition
@@ -201,7 +202,7 @@ namespace CatFactory.Tests
         }
 
         [Fact]
-        public void TestConvertRecordToClassWithConvertOptions()
+        public void Test_ConvertRecordToClassWithConvertOptions()
         {
             // Arrange
             var recordDefinition = new RecordDefinition
@@ -228,6 +229,27 @@ namespace CatFactory.Tests
             Assert.True(classDefinition.FullName == recordDefinition.FullName);
             Assert.True(classDefinition.Fields.Count == recordDefinition.Fields.Count);
             Assert.True(classDefinition.Properties.Count == recordDefinition.Properties.Count);
+        }
+
+        [Fact]
+        public void Test_RefactClassDefinitionFromAnonymous()
+        {
+            // Arrange
+            var anonymousDefinition = new
+            {
+                Id = Guid.Empty,
+                Name = "",
+                Price = 0m,
+                ReleaseDate = DateTime.Now
+            };
+
+            // Act
+            var classDefinition = anonymousDefinition.RefactClassDefinition("Product");
+
+            // Assert
+            Assert.True(string.IsNullOrEmpty(classDefinition.Namespace));
+            Assert.True(classDefinition.Name == "Product");
+            Assert.True(classDefinition.Properties.Count == 4);
         }
     }
 }
