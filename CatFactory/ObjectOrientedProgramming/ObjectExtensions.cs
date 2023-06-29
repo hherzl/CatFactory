@@ -13,25 +13,39 @@ namespace CatFactory.ObjectOrientedProgramming
         /// <param name="obj">Instance of model</param>
         /// <param name="name">Name of <see cref="ClassDefinition"/></param>
         /// <param name="ns">Namespace of <see cref="ClassDefinition"/></param>
+        /// <param name="convertOptions">Convert options</param>
         /// <returns></returns>
-        public static ClassDefinition RefactClassDefinition(this object obj, string name = null, string ns = null)
+        public static ClassDefinition RefactClassDefinition(this object obj, string name = null, string ns = null, ConvertOptions convertOptions = null)
         {
             var sourceType = obj.GetType();
 
-            var classDefinition = new ClassDefinition
+            var definition = new ClassDefinition
             {
                 Name = string.IsNullOrEmpty(name) ? sourceType.Name : name,
                 Namespace = string.IsNullOrEmpty(ns) ? string.Empty : ns
             };
 
+            convertOptions ??= new();
+
             foreach (var property in sourceType.GetProperties().Where(item => item.CanRead))
             {
                 var type = property.PropertyType.Name;
 
-                classDefinition.AddAutomaticProperty(AccessModifier.Public, type, property.Name);
+                if (convertOptions.ConvertPropertiesAsFields)
+                {
+                    definition.Fields.Add(new FieldDefinition(AccessModifier.Public, type, property.Name));
+                }
+                else if (convertOptions.UseAutomaticProperties)
+                {
+                    definition.AddAutomaticProperty(AccessModifier.Public, type, property.Name);
+                }
+                else
+                {
+                    definition.Properties.Add(new PropertyDefinition(AccessModifier.Public, type, property.Name));
+                }
             }
 
-            return classDefinition;
+            return definition;
         }
 
         /// <summary>
@@ -40,25 +54,39 @@ namespace CatFactory.ObjectOrientedProgramming
         /// <param name="obj">Instance of model</param>
         /// <param name="name">Name of <see cref="RecordDefinition"/></param>
         /// <param name="ns">Namespace of <see cref="RecordDefinition"/></param>
+        /// <param name="convertOptions">Convert options</param>
         /// <returns></returns>
-        public static RecordDefinition RefactRecordDefinition(this object obj, string name = null, string ns = null)
+        public static RecordDefinition RefactRecordDefinition(this object obj, string name = null, string ns = null, ConvertOptions convertOptions = null)
         {
             var sourceType = obj.GetType();
 
-            var recordDefinition = new RecordDefinition
+            var definition = new RecordDefinition
             {
                 Name = string.IsNullOrEmpty(name) ? sourceType.Name : name,
                 Namespace = string.IsNullOrEmpty(ns) ? string.Empty : ns
             };
 
+            convertOptions ??= new();
+
             foreach (var property in sourceType.GetProperties().Where(item => item.CanRead))
             {
                 var type = property.PropertyType.Name;
 
-                recordDefinition.AddAutomaticProperty(AccessModifier.Public, type, property.Name);
+                if (convertOptions.ConvertPropertiesAsFields)
+                {
+                    definition.Fields.Add(new FieldDefinition(AccessModifier.Public, type, property.Name));
+                }
+                else if (convertOptions.UseAutomaticProperties)
+                {
+                    definition.AddAutomaticProperty(AccessModifier.Public, type, property.Name);
+                }
+                else
+                {
+                    definition.Properties.Add(new PropertyDefinition(AccessModifier.Public, type, property.Name));
+                }
             }
 
-            return recordDefinition;
+            return definition;
         }
     }
 }
