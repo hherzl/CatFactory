@@ -1,4 +1,5 @@
-﻿using CatFactory.ObjectOrientedProgramming;
+﻿using System;
+using CatFactory.ObjectOrientedProgramming;
 using Xunit;
 
 namespace CatFactory.Tests
@@ -90,6 +91,27 @@ namespace CatFactory.Tests
             Assert.True(recordDefinition.FullName == classDefinition.FullName);
             Assert.True(recordDefinition.Fields.Count == classDefinition.Fields.Count);
             Assert.True(recordDefinition.Properties.Count == classDefinition.Properties.Count);
+        }
+
+        [Fact]
+        public void Test_RefactRecordDefinitionFromAnonymous()
+        {
+            // Arrange
+            var anonymousDefinition = new
+            {
+                Id = Guid.Empty,
+                Name = "",
+                Price = 0m,
+                ReleaseDate = DateTime.Now
+            };
+
+            // Act
+            var recordDefinition = anonymousDefinition.RefactRecordDefinition("StockItem");
+
+            // Assert
+            Assert.True(string.IsNullOrEmpty(recordDefinition.Namespace));
+            Assert.True(recordDefinition.Name == "StockItem");
+            Assert.True(recordDefinition.Properties.Count == 4);
         }
     }
 }

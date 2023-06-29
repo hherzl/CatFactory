@@ -33,5 +33,32 @@ namespace CatFactory.ObjectOrientedProgramming
 
             return classDefinition;
         }
+
+        /// <summary>
+        /// Creates a new <see cref="RecordDefinition"/> from instance
+        /// </summary>
+        /// <param name="obj">Instance of model</param>
+        /// <param name="name">Name of <see cref="RecordDefinition"/></param>
+        /// <param name="ns">Namespace of <see cref="RecordDefinition"/></param>
+        /// <returns></returns>
+        public static RecordDefinition RefactRecordDefinition(this object obj, string name = null, string ns = null)
+        {
+            var sourceType = obj.GetType();
+
+            var recordDefinition = new RecordDefinition
+            {
+                Name = string.IsNullOrEmpty(name) ? sourceType.Name : name,
+                Namespace = string.IsNullOrEmpty(ns) ? string.Empty : ns
+            };
+
+            foreach (var property in sourceType.GetProperties().Where(item => item.CanRead))
+            {
+                var type = property.PropertyType.Name;
+
+                recordDefinition.AddAutomaticProperty(AccessModifier.Public, type, property.Name);
+            }
+
+            return recordDefinition;
+        }
     }
 }
