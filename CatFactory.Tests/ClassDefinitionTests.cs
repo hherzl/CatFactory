@@ -27,7 +27,7 @@ namespace CatFactory.Tests
                     new PropertyDefinition(AccessModifier.Public, "int?", "Id"),
                     new PropertyDefinition(AccessModifier.Public, "string", "Name"),
                     new PropertyDefinition("string", "Description"),
-                    new PropertyDefinition("decimal?", "Description")
+                    new PropertyDefinition("decimal?", "UnitPrice")
                 }
             };
 
@@ -102,7 +102,7 @@ namespace CatFactory.Tests
                 },
                 Fields =
                 {
-                    new FieldDefinition("String", "m_firstName")
+                    new FieldDefinition("string", "m_firstName")
                 }
             };
 
@@ -181,6 +181,10 @@ namespace CatFactory.Tests
             // Arrange
             var recordDefinition = new RecordDefinition
             {
+                Namespaces =
+                {
+                    "System"
+                },
                 AccessModifier = AccessModifier.Public,
                 Name = "Member"
             };
@@ -207,6 +211,10 @@ namespace CatFactory.Tests
             // Arrange
             var recordDefinition = new RecordDefinition
             {
+                Namespaces =
+                {
+                    "System"
+                },
                 AccessModifier = AccessModifier.Public,
                 Name = "StockItem"
             };

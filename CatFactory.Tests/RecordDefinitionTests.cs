@@ -7,7 +7,7 @@ namespace CatFactory.Tests
     public class RecordDefinitionTests
     {
         [Fact]
-        public void TestRecordDefinition()
+        public void Test_RecordDefinition()
         {
             // Arrange
             var definition = new RecordDefinition
@@ -38,11 +38,15 @@ namespace CatFactory.Tests
         }
 
         [Fact]
-        public void TestConvertClassToRecord()
+        public void Test_ConvertClassToRecord()
         {
             // Arrange
             var classDefinition = new ClassDefinition
             {
+                Namespaces =
+                {
+                    "System"
+                },
                 AccessModifier = AccessModifier.Public,
                 Name = "Member"
             };
@@ -64,7 +68,7 @@ namespace CatFactory.Tests
         }
 
         [Fact]
-        public void TestConvertClassToRecordWithConvertOptions()
+        public void Test_ConvertClassToRecordWithConvertOptions()
         {
             // Arrange
             var classDefinition = new ClassDefinition

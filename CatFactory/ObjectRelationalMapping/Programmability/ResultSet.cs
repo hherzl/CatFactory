@@ -1,8 +1,11 @@
-﻿namespace CatFactory.ObjectRelationalMapping.Programmability
+﻿using System.Diagnostics;
+
+namespace CatFactory.ObjectRelationalMapping.Programmability
 {
     /// <summary>
     /// Represents the result set for readable object
     /// </summary>
+    [DebuggerDisplay("Name={Name}, Type={Type}, Length={Length}, IsNullable={IsNullable}")]
     public class ResultSet
     {
         /// <summary>

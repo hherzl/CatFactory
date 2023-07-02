@@ -48,5 +48,10 @@
         /// Indicates if ourput definition will declare properties as positional (record)
         /// </summary>
         public bool DeclarePropertiesAsPositionals { get; set; }
+
+        /// <summary>
+        /// Gets or sets the exclusions in convert process
+        /// </summary>
+        public string[] Exclusions { get; set; }
     }
 }

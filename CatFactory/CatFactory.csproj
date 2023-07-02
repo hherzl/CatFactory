@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <LangVersion>latest</LangVersion>
-    <Version>1.0.0-beta-sun-build36</Version>
+    <Version>1.0.0-beta-sun-build37</Version>
     <Authors>H. Herzl</Authors>
     <Company>Herzl Corp.</Company>
     <Description>
@@ -23,6 +23,7 @@
       Fix issue 33: https://github.com/hherzl/CatFactory/issues/33
       Fix issue 34: https://github.com/hherzl/CatFactory/issues/34
       Fix issue 35: https://github.com/hherzl/CatFactory/issues/35
+      Fix issue 36: https://github.com/hherzl/CatFactory/issues/36
     </PackageReleaseNotes>
     <PackageLicenseUrl>https://github.com/hherzl/CatFactory/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>
