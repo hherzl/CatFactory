@@ -18,10 +18,10 @@ namespace CatFactory.Tests.Models
                         Name = "ContactType",
                         Columns =
                         {
-                            new Column { Name = "ContactTypeID", Type = "int" },
-                            new Column { Name = "Description", Type = "varchar", Length = 50 }
+                            new Column("ContactTypeId", "int"),
+                            new Column("Description", "varchar", 50)
                         },
-                        Identity = new Identity("ContactTypeID", 100, 100)
+                        Identity = new("ContactTypeId", 100, 100)
                     },
                     new Table
                     {
@@ -29,15 +29,15 @@ namespace CatFactory.Tests.Models
                         Name = "Contact",
                         Columns =
                         {
-                            new Column { Name = "ContactID", Type = "int" },
-                            new Column { Name = "ContactTypeID", Type = "int" },
-                            new Column { Name = "FirstName", Type = "varchar", Length = 10 },
-                            new Column { Name = "MiddleName", Type = "varchar", Length = 10, Nullable = true },
-                            new Column { Name = "LastName", Type = "varchar", Length = 10 },
-                            new Column { Name = "Gender", Type = "varchar", Length = 1 },
-                            new Column { Name = "BirthDate", Type = "datetime" }
+                            new Column("ContactId", "int"),
+                            new Column("ContactTypeId", "int"),
+                            new Column("FirstName", "varchar", 10),
+                            new Column("MiddleName", "varchar", 10, true),
+                            new Column("LastName", "varchar", 10),
+                            new Column("Gender", "varchar", 1),
+                            new Column("BirthDate", "datetime")
                         },
-                        Identity = new Identity("ContactID")
+                        Identity = new("ContactId")
                     },
                     new Table
                     {
@@ -45,10 +45,10 @@ namespace CatFactory.Tests.Models
                         Name = "EmailType",
                         Columns =
                         {
-                            new Column { Name = "EmailTypeID", Type = "int" },
-                            new Column { Name = "Description", Type = "varchar", Length = 50 }
+                            new Column("EmailTypeId", "int"),
+                            new Column("Description", "varchar", 50)
                         },
-                        Identity = new Identity("EmailTypeID", 100, 100)
+                        Identity = new("EmailTypeID", 100, 100)
                     },
                     new Table
                     {
@@ -56,12 +56,12 @@ namespace CatFactory.Tests.Models
                         Name = "ContactEmail",
                         Columns =
                         {
-                            new Column { Name = "ContactEmailID", Type = "int" },
-                            new Column { Name = "ContactID", Type = "int" },
-                            new Column { Name = "EmailTypeID", Type = "int" },
-                            new Column { Name = "Email", Type = "varchar", Length = 100 }
+                            new Column("ContactEmailId", "int"),
+                            new Column("ContactId", "int"),
+                            new Column("EmailTypeId", "int"),
+                            new Column("Email", "varchar", 100)
                         },
-                        Identity = new Identity("ContactEmailID")
+                        Identity = new("ContactEmailId")
                     }
                 }
             }
