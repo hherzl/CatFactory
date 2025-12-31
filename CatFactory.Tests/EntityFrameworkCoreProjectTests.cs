@@ -1,49 +1,48 @@
 ﻿using CatFactory.Tests.Models;
 using Xunit;
 
-namespace CatFactory.Tests
+namespace CatFactory.Tests;
+
+public class EntityFrameworkCoreProjectTests
 {
-    public class EntityFrameworkCoreProjectTests
+    [Fact]
+    public void TestEntityFrameworkCoreProject()
     {
-        [Fact]
-        public void TestEntityFrameworkCoreProject()
+        // Arrange
+        var project = new EntityFrameworkCoreProject
         {
-            // Arrange
-            var project = new EntityFrameworkCoreProject
+            Name = "OnlineStore",
+            Database = Databases.OnlineStore,
+            OutputDirectory = @"C:\Temp\CatFactory\EntityFrameworkCore",
+            AuthorInfo = new AuthorInfo
             {
-                Name = "OnlineStore",
-                Database = Databases.OnlineStore,
-                OutputDirectory = @"C:\Temp\CatFactory\EntityFrameworkCore",
-                AuthorInfo = new AuthorInfo
-                {
-                    Name = "Hans H.",
-                    Email = "hansh@catfactory.org"
-                }
-            };
+                Name = "Hans H.",
+                Email = "hansh@catfactory.org"
+            }
+        };
 
-            project.BuildFeatures();
+        project.BuildFeatures();
 
-            project.GlobalSelection(settings =>
-            {
-                settings.UseDataAnnotations = true;
-                settings.AddDataBindings = true;
-            });
+        project.GlobalSelection(settings =>
+        {
+            settings.UseDataAnnotations = true;
+            settings.AddDataBindings = true;
+        });
 
-            project.Selection("Sales.OrderHeader", settings => settings.EntitiesWithDataContracts = true);
+        project.Selection("Sales.OrderHeader", settings => settings.EntitiesWithDataContracts = true);
 
-            project.ScaffoldingDefinition += (source, args) =>
-            {
-            };
+        project.ScaffoldingDefinition += (source, args) =>
+        {
+        };
 
-            project.ScaffoldedDefinition += (source, args) =>
-            {
-            };
+        project.ScaffoldedDefinition += (source, args) =>
+        {
+        };
 
-            // Act
-            project.Scaffold();
+        // Act
+        project.Scaffold();
 
-            // Assert
-            Assert.True(project.Selections.Count == 2);
-        }
+        // Assert
+        Assert.Equal(2, project.Selections.Count);
     }
 }
