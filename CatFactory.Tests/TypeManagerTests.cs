@@ -1,68 +1,67 @@
 ﻿using CatFactory.ObjectOrientedProgramming;
 using Xunit;
 
-namespace CatFactory.Tests
+namespace CatFactory.Tests;
+
+public class TypeManagerTests
 {
-    public class TypeManagerTests
+    [Fact]
+    public void TestCheckIfClassExists()
     {
-        [Fact]
-        public void TestCheckIfClassExists()
+        // Arrange
+        var definition = new ClassDefinition
         {
-            // Arrange
-            var definition = new ClassDefinition
-            {
-                Namespace = "OnlineStore",
-                Name = "Product"
-            };
+            Namespace = "OnlineStore",
+            Name = "Product"
+        };
 
-            // Act
-            var obj = TypeManager.GetItemByFullName("OnlineStore.Product");
+        // Act
+        var obj = TypeManager.GetItemByFullName("OnlineStore.Product");
 
-            // Assert
-            Assert.False(obj == null);
-            Assert.True(obj is ClassDefinition);
-        }
+        // Assert
+        Assert.False(obj == null);
+        Assert.True(obj is ClassDefinition);
+    }
 
-        [Fact]
-        public void TestGetNonExistingClass()
+    [Fact]
+    public void TestGetNonExistingClass()
+    {
+        // Arrange
+
+        // Act
+        var obj = TypeManager.GetItemByFullName("OnlineStore.Foo");
+
+        // Assert
+        Assert.True(obj == null);
+    }
+
+    [Fact]
+    public void TestCheckIfInterfaceExists()
+    {
+        // Arrange
+        var definition = new InterfaceDefinition
         {
-            // Arrange
+            Namespace = "OnlineStore",
+            Name = "ISalesRepository"
+        };
 
-            // Act
-            var obj = TypeManager.GetItemByFullName("OnlineStore.Foo");
+        // Act
+        var obj = TypeManager.GetItemByFullName("OnlineStore.ISalesRepository");
 
-            // Assert
-            Assert.True(obj == null);
-        }
+        // Assert
+        Assert.False(obj == null);
+        Assert.True(obj is InterfaceDefinition);
+    }
 
-        [Fact]
-        public void TestCheckIfInterfaceExists()
-        {
-            // Arrange
-            var definition = new InterfaceDefinition
-            {
-                Namespace = "OnlineStore",
-                Name = "ISalesRepository"
-            };
+    [Fact]
+    public void TestGetNonExistingInterface()
+    {
+        // Arrange
 
-            // Act
-            var obj = TypeManager.GetItemByFullName("OnlineStore.ISalesRepository");
+        // Act
+        var obj = TypeManager.GetItemByFullName("OnlineStore.IRepository");
 
-            // Assert
-            Assert.False(obj == null);
-            Assert.True(obj is InterfaceDefinition);
-        }
-
-        [Fact]
-        public void TestGetNonExistingInterface()
-        {
-            // Arrange
-
-            // Act
-            var obj = TypeManager.GetItemByFullName("OnlineStore.IRepository");
-
-            // Assert
-            Assert.True(obj == null);
-        }
+        // Assert
+        Assert.True(obj == null);
     }
 }

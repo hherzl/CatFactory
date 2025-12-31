@@ -2,56 +2,55 @@
 using CatFactory.ObjectOrientedProgramming;
 using Xunit;
 
-namespace CatFactory.Tests
+namespace CatFactory.Tests;
+
+public class InterfaceDefinitionTests
 {
-    public class InterfaceDefinitionTests
+    [Fact]
+    public void Test_InterfaceDefinition()
     {
-        [Fact]
-        public void Test_InterfaceDefinition()
+        // Arrange
+        var definition = new InterfaceDefinition
         {
-            // Arrange
-            var definition = new InterfaceDefinition
+            Documentation = new Documentation
             {
-                Documentation = new Documentation
-                {
-                    Summary = "Represents a simple contract"
-                },
-                Name = "IStockItem",
-                Properties =
-                {
-                    new PropertyDefinition("int?", "Id"),
-                    new PropertyDefinition("string", "Name"),
-                    new PropertyDefinition("string", "Description"),
-                    new PropertyDefinition("decimal?", "UnitPrice")
-                }
-            };
+                Summary = "Represents a simple contract"
+            },
+            Name = "IStockItem",
+            Properties =
+            {
+                new PropertyDefinition("int?", "Id"),
+                new PropertyDefinition("string", "Name"),
+                new PropertyDefinition("string", "Description"),
+                new PropertyDefinition("decimal?", "UnitPrice")
+            }
+        };
 
-            // Act
+        // Act
 
-            // Assert
-            Assert.True(definition.AccessModifier == AccessModifier.Private);
-            Assert.True(definition.Properties.Count == 4);
-        }
+        // Assert
+        Assert.True(definition.AccessModifier == AccessModifier.Private);
+        Assert.True(definition.Properties.Count == 4);
+    }
 
-        [Fact]
-        public void Test_RefactInterfaceDefinitionFromAnonymous()
+    [Fact]
+    public void Test_RefactInterfaceDefinitionFromAnonymous()
+    {
+        // Arrange
+        var anonymousDefinition = new
         {
-            // Arrange
-            var anonymousDefinition = new
-            {
-                Id = Guid.Empty,
-                Name = "",
-                Price = 0m,
-                ReleaseDate = DateTime.Now
-            };
+            Id = Guid.Empty,
+            Name = "",
+            Price = 0m,
+            ReleaseDate = DateTime.Now
+        };
 
-            // Act
-            var interfaceDefinition = anonymousDefinition.RefactInterfaceDefinition("StockItem");
+        // Act
+        var interfaceDefinition = anonymousDefinition.RefactInterfaceDefinition("StockItem");
 
-            // Assert
-            Assert.True(string.IsNullOrEmpty(interfaceDefinition.Namespace));
-            Assert.True(interfaceDefinition.Name == "StockItem");
-            Assert.True(interfaceDefinition.Properties.Count == 4);
-        }
+        // Assert
+        Assert.True(string.IsNullOrEmpty(interfaceDefinition.Namespace));
+        Assert.True(interfaceDefinition.Name == "StockItem");
+        Assert.True(interfaceDefinition.Properties.Count == 4);
     }
 }

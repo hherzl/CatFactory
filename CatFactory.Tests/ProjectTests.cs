@@ -2,25 +2,24 @@
 using CatFactory.Tests.Models;
 using Xunit;
 
-namespace CatFactory.Tests
+namespace CatFactory.Tests;
+
+public class ProjectTests
 {
-    public class ProjectTests
+    [Fact]
+    public void BuildFeaturesForProject()
     {
-        [Fact]
-        public void BuildFeaturesForProject()
+        // Arrange
+        var project = new Project<ProjectSettings>
         {
-            // Arrange
-            var project = new Project<ProjectSettings>
-            {
-                Name = "OnlineStore",
-                Database = Databases.OnlineStore
-            };
+            Name = "OnlineStore",
+            Database = Databases.OnlineStore
+        };
 
-            // Act
-            project.BuildFeatures();
+        // Act
+        project.BuildFeatures();
 
-            // Assert
-            Assert.True(project.Features.Count == 4);
-        }
+        // Assert
+        Assert.True(project.Features.Count == 4);
     }
 }
