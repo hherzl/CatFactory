@@ -37,7 +37,7 @@ namespace CatFactory.ObjectOrientedProgramming
                 }
                 else if (convertOptions.UseAutomaticProperties)
                 {
-                    definition.AddAutomaticProperty(AccessModifier.Public, type, property.Name);
+                    definition.AddAutomaticProp(AccessModifier.Public, type, property.Name);
                 }
                 else
                 {
@@ -78,7 +78,7 @@ namespace CatFactory.ObjectOrientedProgramming
                 }
                 else if (convertOptions.UseAutomaticProperties)
                 {
-                    definition.AddAutomaticProperty(AccessModifier.Public, type, property.Name);
+                    definition.AddAutomaticProp(AccessModifier.Public, type, property.Name);
                 }
                 else
                 {

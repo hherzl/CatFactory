@@ -76,7 +76,7 @@ public class FieldDefinition : IMemberDefinition
     /// <summary>
     /// Indicates if current field definition is readonly
     /// </summary>
-    public bool IsReadOnly { get; set; }
+    public bool IsReadonly { get; set; }
 
     /// <summary>
     /// Gets or sets the access modifier for current field definition

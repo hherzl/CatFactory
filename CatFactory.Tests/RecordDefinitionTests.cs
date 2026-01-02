@@ -51,11 +51,11 @@ public class RecordDefinitionTests
             Name = "Member"
         };
 
-        classDefinition.AddAutomaticProperty("short?", "Id");
-        classDefinition.AddAutomaticProperty("string", "Name");
-        classDefinition.AddAutomaticProperty("string", "Phone");
-        classDefinition.AddAutomaticProperty("string", "Email");
-        classDefinition.AddAutomaticProperty("DateTime", "SignDate");
+        classDefinition.AddAutomaticProp("short?", "Id");
+        classDefinition.AddAutomaticProp("string", "Name");
+        classDefinition.AddAutomaticProp("string", "Phone");
+        classDefinition.AddAutomaticProp("string", "Email");
+        classDefinition.AddAutomaticProp("DateTime", "SignDate");
 
         // Act
         var recordDefinition = classDefinition.ToRecordDefinition();
@@ -77,11 +77,11 @@ public class RecordDefinitionTests
             Name = "StockItem"
         };
 
-        classDefinition.AddAutomaticProperty("Guid", "Id");
-        classDefinition.AddAutomaticProperty("string", "Name");
-        classDefinition.AddAutomaticProperty("string", "SKU");
-        classDefinition.AddAutomaticProperty("decimal", "UnitPrice");
-        classDefinition.AddAutomaticProperty("DateTime?", "ReleaseDate");
+        classDefinition.AddAutomaticProp("Guid", "Id");
+        classDefinition.AddAutomaticProp("string", "Name");
+        classDefinition.AddAutomaticProp("string", "SKU");
+        classDefinition.AddAutomaticProp("decimal", "UnitPrice");
+        classDefinition.AddAutomaticProp("DateTime?", "ReleaseDate");
 
         classDefinition.Fields.Add(new FieldDefinition("bool", "Flag"));
 
