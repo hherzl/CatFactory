@@ -40,17 +40,11 @@ public class MethodDefinition : IMemberDefinition
     /// </summary>
     /// <param name="type">Type</param>
     /// <param name="name">Name</param>
-    /// <param name="isStatic">Is static</param>
-    /// <param name="isExtesion">Is extension</param>
-    /// <param name="isAsync">Is async</param>
     /// <param name="parameters">Parameters</param>
-    public MethodDefinition(string type, string name, bool isStatic = false, bool isExtesion = false, bool isAsync = false, params ParameterDefinition[] parameters)
+    public MethodDefinition(string type, string name, params ParameterDefinition[] parameters)
     {
         Type = type;
         Name = name;
-        IsStatic = isStatic;
-        IsExtension = isExtesion;
-        IsAsync = isAsync;
 
         Parameters.AddRange(parameters);
     }

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <LangVersion>latest</LangVersion>
-    <Version>1.0.0-beta-aurora-build02</Version>
+    <Version>1.0.0-beta-aurora-build03</Version>
     <Authors>H. Herzl</Authors>
     <Company>Herzl Corp.</Company>
     <Description>
@@ -16,9 +16,9 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>Scaffolding Markup Markdown OOP ORM</PackageTags>
     <PackageReleaseNotes>
-      1.0.0-beta-aurora-build02 Version:
-
-      Fix issue 42: https://github.com/hherzl/CatFactory/issues/42
+      1.0.0-beta-aurora-build03 Version:
+      
+      Small fixes with Fluent API for object definitions
     </PackageReleaseNotes>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
   </PropertyGroup>
